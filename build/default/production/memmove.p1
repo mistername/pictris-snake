@@ -1,0 +1,80 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"10 memmove.c
+[; ;memmove.c: 10: void *memmove(void *dest, const void *src, size_t n)
+[v _memmove `(*v ~T0 @X0 1 ef3`*v`*Cv`ui ]
+"11
+[; ;memmove.c: 11: {
+{
+[e :U _memmove ]
+"10
+[; ;memmove.c: 10: void *memmove(void *dest, const void *src, size_t n)
+[v _dest `*v ~T0 @X0 1 r1 ]
+[v _src `*Cv ~T0 @X0 1 r2 ]
+[v _n `ui ~T0 @X0 1 r3 ]
+"11
+[; ;memmove.c: 11: {
+[f ]
+"12
+[; ;memmove.c: 12:     char *d = (char*)dest, *s = (char*)src;
+[v _d `*uc ~T0 @X0 1 a ]
+[e = _d -> _dest `*uc ]
+[v _s `*uc ~T0 @X0 1 a ]
+[e = _s -> _src `*uc ]
+"14
+[; ;memmove.c: 14:     if (d > s && (d+n) > s ||
+[e $ ! || && > _d _s > + _d * -> _n `ux -> -> # *U _d `ui `ux _s < + _d * -> _n `ux -> -> # *U _d `ui `ux _s 3  ]
+"16
+[; ;memmove.c: 16:     {
+{
+"17
+[; ;memmove.c: 17:         while(n--)
+[e $U 4  ]
+[e :U 5 ]
+"18
+[; ;memmove.c: 18:             *d++ = *s++;
+[e = *U ++ _d * -> -> 1 `i `x -> -> # *U _d `i `x *U ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 4 ]
+"17
+[; ;memmove.c: 17:         while(n--)
+[e $ != -- _n -> -> 1 `i `ui -> -> 0 `i `ui 5  ]
+[e :U 6 ]
+"19
+[; ;memmove.c: 19:     }
+}
+[e $U 7  ]
+"20
+[; ;memmove.c: 20:     else
+[e :U 3 ]
+"21
+[; ;memmove.c: 21:     {
+{
+"22
+[; ;memmove.c: 22:         d += n;
+[e =+ _d * -> _n `ux -> -> # *U _d `ui `ux ]
+"23
+[; ;memmove.c: 23:         s += n;
+[e =+ _s * -> _n `ux -> -> # *U _s `ui `ux ]
+"24
+[; ;memmove.c: 24:         while (n--)
+[e $U 8  ]
+[e :U 9 ]
+"25
+[; ;memmove.c: 25:             *d-- = *s--;
+[e = *U -- _d * -> -> 1 `i `x -> -> # *U _d `i `x *U -- _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 8 ]
+"24
+[; ;memmove.c: 24:         while (n--)
+[e $ != -- _n -> -> 1 `i `ui -> -> 0 `i `ui 9  ]
+[e :U 10 ]
+"26
+[; ;memmove.c: 26:     }
+}
+[e :U 7 ]
+"27
+[; ;memmove.c: 27:     return dest;
+[e ) _dest ]
+[e $UE 2  ]
+"28
+[; ;memmove.c: 28: }
+[e :UE 2 ]
+}

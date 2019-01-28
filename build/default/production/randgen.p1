@@ -1,0 +1,50 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"6 randgen.c
+[; ;randgen.c: 6: uint8_t _lfsr = -1;
+[v __lfsr `uc ~T0 @X0 1 e ]
+[i __lfsr
+-> -U -> 1 `i `uc
+]
+"8
+[; ;randgen.c: 8: uint8_t rnd_get_num(void)
+[v _rnd_get_num `(uc ~T0 @X0 1 ef ]
+"9
+[; ;randgen.c: 9: {
+{
+[e :U _rnd_get_num ]
+[f ]
+"11
+[; ;randgen.c: 11:     unsigned b = ((_lfsr >> 0) ^ (_lfsr >> 2) ^ (_lfsr >> 3) ^ (_lfsr >> 4) ) & 1;
+[v _b `ui ~T0 @X0 1 a ]
+[e = _b -> & ^ ^ ^ >> -> __lfsr `i -> 0 `i >> -> __lfsr `i -> 2 `i >> -> __lfsr `i -> 3 `i >> -> __lfsr `i -> 4 `i -> 1 `i `ui ]
+"12
+[; ;randgen.c: 12:     _lfsr = (_lfsr >> 1) | (b << 7);
+[e = __lfsr -> | -> >> -> __lfsr `i -> 1 `i `ui << _b -> 7 `i `uc ]
+"13
+[; ;randgen.c: 13:     return _lfsr;
+[e ) __lfsr ]
+[e $UE 1  ]
+"14
+[; ;randgen.c: 14: }
+[e :UE 1 ]
+}
+"24
+[; ;randgen.c: 24: void rnd_initialize(uint8_t seed)
+[v _rnd_initialize `(v ~T0 @X0 1 ef1`uc ]
+"25
+[; ;randgen.c: 25: {
+{
+[e :U _rnd_initialize ]
+"24
+[; ;randgen.c: 24: void rnd_initialize(uint8_t seed)
+[v _seed `uc ~T0 @X0 1 r1 ]
+"25
+[; ;randgen.c: 25: {
+[f ]
+"26
+[; ;randgen.c: 26:     _lfsr = seed;
+[e = __lfsr _seed ]
+"27
+[; ;randgen.c: 27: }
+[e :UE 2 ]
+}

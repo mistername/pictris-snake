@@ -1,0 +1,42 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"10 memcpy.c
+[; ;memcpy.c: 10: void *memcpy(void *dest, const void *src, size_t n)
+[v _memcpy `(*v ~T0 @X0 1 ef3`*v`*Cv`ui ]
+"11
+[; ;memcpy.c: 11: {
+{
+[e :U _memcpy ]
+"10
+[; ;memcpy.c: 10: void *memcpy(void *dest, const void *src, size_t n)
+[v _dest `*v ~T0 @X0 1 r1 ]
+[v _src `*Cv ~T0 @X0 1 r2 ]
+[v _n `ui ~T0 @X0 1 r3 ]
+"11
+[; ;memcpy.c: 11: {
+[f ]
+"12
+[; ;memcpy.c: 12:     char *d = (char*)dest, *s = (char*)src;
+[v _d `*uc ~T0 @X0 1 a ]
+[e = _d -> _dest `*uc ]
+[v _s `*uc ~T0 @X0 1 a ]
+[e = _s -> _src `*uc ]
+"14
+[; ;memcpy.c: 14:     while(n--)
+[e $U 3  ]
+[e :U 4 ]
+"15
+[; ;memcpy.c: 15:         *d++ = *s++;
+[e = *U ++ _d * -> -> 1 `i `x -> -> # *U _d `i `x *U ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 3 ]
+"14
+[; ;memcpy.c: 14:     while(n--)
+[e $ != -- _n -> -> 1 `i `ui -> -> 0 `i `ui 4  ]
+[e :U 5 ]
+"17
+[; ;memcpy.c: 17:     return dest;
+[e ) _dest ]
+[e $UE 2  ]
+"18
+[; ;memcpy.c: 18: }
+[e :UE 2 ]
+}

@@ -1,0 +1,4144 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"6 ./shapes.h
+[; ;./shapes.h: 6: {
+[s S282 `us -> 8 `i `uc 1 `uc 1 `uc 1 ]
+[n S282 shape graphic x y limitedRotation ]
+"259 pictris.c
+[; ;pictris.c: 259: struct position{
+[s S283 `uc 1 `uc 1 ]
+[n S283 position x y ]
+[t ~ __interrupt . k ]
+[t T41 __interrupt ]
+"6698 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6698:     struct {
+[s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6708:     struct {
+[s S276 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S276 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6718
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6718:     struct {
+[s S277 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S277 . . GIEL GIEH ]
+"6697
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6697: typedef union {
+[u S274 `S275 1 `S276 1 `S277 1 ]
+[n S274 . . . . ]
+"6724
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
+"6251
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
+"277
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 277:     struct {
+[s S17 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S17 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"287
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 287:     struct {
+[s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S18 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"297
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 297:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . AN12 AN10 AN8 AN9 AN11 PGM PGC PGD ]
+"307
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 307:     struct {
+[s S20 :1 `uc 1 ]
+[n S20 . FLT0 ]
+"310
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 310:     struct {
+[s S21 :3 `uc 1 :1 `uc 1 ]
+[n S21 . . CCP2_PA2 ]
+"276
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 276: typedef union {
+[u S16 `S17 1 `S18 1 `S19 1 `S20 1 `S21 1 ]
+[n S16 . . . . . . ]
+"315
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 315: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
+[v _PORTBbits `VS16 ~T0 @X0 0 e@3969 ]
+"282 pictris.c
+[; ;pictris.c: 282:   extern volatile unsigned short port_display __attribute__((address(0xF82)));
+[v _port_display `Vus ~T0 @X0 0 e@3970 ]
+"52 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 52: extern volatile unsigned char PORTA __attribute__((address(0xF80)));
+[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
+"24 ./randgen.h
+[; ;./randgen.h: 24: uint8_t rnd_get_num(void);
+[v _rnd_get_num `(uc ~T0 @X0 0 ef ]
+"27 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 27: void *memcpy (void *restrict, const void *restrict, size_t);
+[v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
+"684 pictris.c
+[; ;pictris.c: 684: void mergeObjects(volatile uint16_t * pSource, volatile uint16_t * pTarget, mode_t mode)
+[c E2767 0 1 2 .. ]
+[n E2767 . OVERRIDE MERGE INVERT  ]
+"706
+[; ;pictris.c: 706: void moveObject(volatile uint16_t * pObject, direction_t direction, byte cycles)
+[c E2761 0 1 2 3 .. ]
+[n E2761 . DOWN UP LEFT RIGHT  ]
+"796
+[; ;pictris.c: 796: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+[c E2756 0 1 .. ]
+[n E2756 . CCW CW  ]
+"6174 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6174:     struct {
+[s S262 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S262 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"6182
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6182:     struct {
+[s S263 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S263 . T0PS0 T0PS1 T0PS2 T0PS3 . T016BIT ]
+"6173
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6173: typedef union {
+[u S261 `S262 1 `S263 1 ]
+[n S261 . . . ]
+"6191
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6191: extern volatile T0CONbits_t T0CONbits __attribute__((address(0xFD5)));
+[v _T0CONbits `VS261 ~T0 @X0 0 e@4053 ]
+"8014
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 8014: extern volatile __bit PSA __attribute__((address(0x7EAB)));
+[v _PSA `Vb ~T0 @X0 0 e@32427 ]
+"8404
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 8404: extern volatile __bit T0CS __attribute__((address(0x7EAD)));
+[v _T0CS `Vb ~T0 @X0 0 e@32429 ]
+"8503
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 8503: extern volatile __bit TMR0ON __attribute__((address(0x7EAF)));
+[v _TMR0ON `Vb ~T0 @X0 0 e@32431 ]
+"8494
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 8494: extern volatile __bit TMR0IE __attribute__((address(0x7F95)));
+[v _TMR0IE `Vb ~T0 @X0 0 e@32661 ]
+"6091
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6091:     struct {
+[s S259 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S259 . SCS IOFS OSTS IRCF IDLEN ]
+"6098
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6098:     struct {
+[s S260 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S260 . SCS0 SCS1 FLTS . IRCF0 IRCF1 IRCF2 ]
+"6090
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6090: typedef union {
+[u S258 `S259 1 `S260 1 ]
+[n S258 . . . ]
+"6108
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6108: extern volatile OSCCONbits_t OSCCONbits __attribute__((address(0xFD3)));
+[v _OSCCONbits `VS258 ~T0 @X0 0 e@4051 ]
+"4696
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4696:     struct {
+[s S185 :4 `uc 1 :2 `uc 1 ]
+[n S185 . PCFG VCFG ]
+"4700
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4700:     struct {
+[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S186 . PCFG0 PCFG1 PCFG2 PCFG3 VCFG0 VCFG1 ]
+"4708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4708:     struct {
+[s S187 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S187 . . CHSN3 VCFG01 VCFG11 ]
+"4695
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4695: typedef union {
+[u S184 `S185 1 `S186 1 `S187 1 ]
+[n S184 . . . . ]
+"4715
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4715: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0xFC1)));
+[v _ADCON1bits `VS184 ~T0 @X0 0 e@4033 ]
+"1482
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1482: extern volatile unsigned char DDRA __attribute__((address(0xF92)));
+[v _DDRA `Vuc ~T0 @X0 0 e@3986 ]
+"1704
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1704: extern volatile unsigned char DDRB __attribute__((address(0xF93)));
+[v _DDRB `Vuc ~T0 @X0 0 e@3987 ]
+"271
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"6628
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6628:     struct {
+[s S271 :7 `uc 1 :1 `uc 1 ]
+[n S271 . . NOT_RBPU ]
+"6632
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6632:     struct {
+[s S272 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S272 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"6642
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6642:     struct {
+[s S273 :7 `uc 1 :1 `uc 1 ]
+[n S273 . . RBPU ]
+"6627
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6627: typedef union {
+[u S270 `S271 1 `S272 1 `S273 1 ]
+[n S270 . . . . ]
+"6647
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6647: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS270 ~T0 @X0 0 e@4081 ]
+"1926
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1926: extern volatile unsigned char DDRC __attribute__((address(0xF94)));
+[v _DDRC `Vuc ~T0 @X0 0 e@3988 ]
+"450
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 450: extern volatile unsigned char PORTC __attribute__((address(0xF82)));
+[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
+"2148
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2148: extern volatile unsigned char DDRD __attribute__((address(0xF95)));
+[v _DDRD `Vuc ~T0 @X0 0 e@3989 ]
+"632
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"7546
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 7546: extern volatile __bit IPEN __attribute__((address(0x7E87)));
+[v _IPEN `Vb ~T0 @X0 0 e@32391 ]
+"7411
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 7411: extern volatile __bit GIE __attribute__((address(0x7F97)));
+[v _GIE `Vb ~T0 @X0 0 e@32663 ]
+"3103
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3103: extern volatile unsigned char EEADR __attribute__((address(0xFA9)));
+[v _EEADR `Vuc ~T0 @X0 0 e@4009 ]
+"3029
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3029:     struct {
+[s S111 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S111 . RD WR WREN WRERR FREE . CFGS EEPGD ]
+"3039
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3039:     struct {
+[s S112 :6 `uc 1 :1 `uc 1 ]
+[n S112 . . EEFS ]
+"3028
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3028: typedef union {
+[u S110 `S111 1 `S112 1 ]
+[n S110 . . . ]
+"3044
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3044: extern volatile EECON1bits_t EECON1bits __attribute__((address(0xFA6)));
+[v _EECON1bits `VS110 ~T0 @X0 0 e@4006 ]
+"3096
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3096: extern volatile unsigned char EEDATA __attribute__((address(0xFA8)));
+[v _EEDATA `Vuc ~T0 @X0 0 e@4008 ]
+"3089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3089: extern volatile unsigned char EECON2 __attribute__((address(0xFA7)));
+[v _EECON2 `Vuc ~T0 @X0 0 e@4007 ]
+[p mainexit ]
+"25 ./randgen.h
+[; ;./randgen.h: 25: void rnd_initialize(uint8_t seed);
+[v _rnd_initialize `(v ~T0 @X0 0 ef1`uc ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
+[; <" PORTA equ 0F80h ;# ">
+"273
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 273: __asm("PORTB equ 0F81h");
+[; <" PORTB equ 0F81h ;# ">
+"452
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 452: __asm("PORTC equ 0F82h");
+[; <" PORTC equ 0F82h ;# ">
+"634
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 634: __asm("PORTD equ 0F83h");
+[; <" PORTD equ 0F83h ;# ">
+"776
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 776: __asm("PORTE equ 0F84h");
+[; <" PORTE equ 0F84h ;# ">
+"979
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 979: __asm("LATA equ 0F89h");
+[; <" LATA equ 0F89h ;# ">
+"1091
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1091: __asm("LATB equ 0F8Ah");
+[; <" LATB equ 0F8Ah ;# ">
+"1203
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1203: __asm("LATC equ 0F8Bh");
+[; <" LATC equ 0F8Bh ;# ">
+"1315
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1315: __asm("LATD equ 0F8Ch");
+[; <" LATD equ 0F8Ch ;# ">
+"1427
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1427: __asm("LATE equ 0F8Dh");
+[; <" LATE equ 0F8Dh ;# ">
+"1479
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1479: __asm("TRISA equ 0F92h");
+[; <" TRISA equ 0F92h ;# ">
+"1484
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1484: __asm("DDRA equ 0F92h");
+[; <" DDRA equ 0F92h ;# ">
+"1701
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1701: __asm("TRISB equ 0F93h");
+[; <" TRISB equ 0F93h ;# ">
+"1706
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1706: __asm("DDRB equ 0F93h");
+[; <" DDRB equ 0F93h ;# ">
+"1923
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1923: __asm("TRISC equ 0F94h");
+[; <" TRISC equ 0F94h ;# ">
+"1928
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 1928: __asm("DDRC equ 0F94h");
+[; <" DDRC equ 0F94h ;# ">
+"2145
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2145: __asm("TRISD equ 0F95h");
+[; <" TRISD equ 0F95h ;# ">
+"2150
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2150: __asm("DDRD equ 0F95h");
+[; <" DDRD equ 0F95h ;# ">
+"2367
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2367: __asm("TRISE equ 0F96h");
+[; <" TRISE equ 0F96h ;# ">
+"2372
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2372: __asm("DDRE equ 0F96h");
+[; <" DDRE equ 0F96h ;# ">
+"2531
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2531: __asm("OSCTUNE equ 0F9Bh");
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2596: __asm("PIE1 equ 0F9Dh");
+[; <" PIE1 equ 0F9Dh ;# ">
+"2673
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2673: __asm("PIR1 equ 0F9Eh");
+[; <" PIR1 equ 0F9Eh ;# ">
+"2750
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2750: __asm("IPR1 equ 0F9Fh");
+[; <" IPR1 equ 0F9Fh ;# ">
+"2827
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2827: __asm("PIE2 equ 0FA0h");
+[; <" PIE2 equ 0FA0h ;# ">
+"2893
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2893: __asm("PIR2 equ 0FA1h");
+[; <" PIR2 equ 0FA1h ;# ">
+"2959
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 2959: __asm("IPR2 equ 0FA2h");
+[; <" IPR2 equ 0FA2h ;# ">
+"3025
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3025: __asm("EECON1 equ 0FA6h");
+[; <" EECON1 equ 0FA6h ;# ">
+"3091
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3091: __asm("EECON2 equ 0FA7h");
+[; <" EECON2 equ 0FA7h ;# ">
+"3098
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3098: __asm("EEDATA equ 0FA8h");
+[; <" EEDATA equ 0FA8h ;# ">
+"3105
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3105: __asm("EEADR equ 0FA9h");
+[; <" EEADR equ 0FA9h ;# ">
+"3112
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3112: __asm("RCSTA equ 0FABh");
+[; <" RCSTA equ 0FABh ;# ">
+"3117
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3117: __asm("RCSTA1 equ 0FABh");
+[; <" RCSTA1 equ 0FABh ;# ">
+"3322
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3322: __asm("TXSTA equ 0FACh");
+[; <" TXSTA equ 0FACh ;# ">
+"3327
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3327: __asm("TXSTA1 equ 0FACh");
+[; <" TXSTA1 equ 0FACh ;# ">
+"3578
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3578: __asm("TXREG equ 0FADh");
+[; <" TXREG equ 0FADh ;# ">
+"3583
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3583: __asm("TXREG1 equ 0FADh");
+[; <" TXREG1 equ 0FADh ;# ">
+"3590
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3590: __asm("RCREG equ 0FAEh");
+[; <" RCREG equ 0FAEh ;# ">
+"3595
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3595: __asm("RCREG1 equ 0FAEh");
+[; <" RCREG1 equ 0FAEh ;# ">
+"3602
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3602: __asm("SPBRG equ 0FAFh");
+[; <" SPBRG equ 0FAFh ;# ">
+"3607
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3607: __asm("SPBRG1 equ 0FAFh");
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3614
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3614: __asm("SPBRGH equ 0FB0h");
+[; <" SPBRGH equ 0FB0h ;# ">
+"3621
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3621: __asm("T3CON equ 0FB1h");
+[; <" T3CON equ 0FB1h ;# ">
+"3733
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3733: __asm("TMR3 equ 0FB2h");
+[; <" TMR3 equ 0FB2h ;# ">
+"3740
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3740: __asm("TMR3L equ 0FB2h");
+[; <" TMR3L equ 0FB2h ;# ">
+"3747
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3747: __asm("TMR3H equ 0FB3h");
+[; <" TMR3H equ 0FB3h ;# ">
+"3754
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3754: __asm("CMCON equ 0FB4h");
+[; <" CMCON equ 0FB4h ;# ">
+"3844
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3844: __asm("CVRCON equ 0FB5h");
+[; <" CVRCON equ 0FB5h ;# ">
+"3923
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3923: __asm("ECCP1AS equ 0FB6h");
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3928
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 3928: __asm("ECCPAS equ 0FB6h");
+[; <" ECCPAS equ 0FB6h ;# ">
+"4085
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4085: __asm("PWM1CON equ 0FB7h");
+[; <" PWM1CON equ 0FB7h ;# ">
+"4090
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4090: __asm("ECCP1DEL equ 0FB7h");
+[; <" ECCP1DEL equ 0FB7h ;# ">
+"4223
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4223: __asm("BAUDCON equ 0FB8h");
+[; <" BAUDCON equ 0FB8h ;# ">
+"4228
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4228: __asm("BAUDCTL equ 0FB8h");
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4403
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4403: __asm("CCP2CON equ 0FBAh");
+[; <" CCP2CON equ 0FBAh ;# ">
+"4482
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4482: __asm("CCPR2 equ 0FBBh");
+[; <" CCPR2 equ 0FBBh ;# ">
+"4489
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4489: __asm("CCPR2L equ 0FBBh");
+[; <" CCPR2L equ 0FBBh ;# ">
+"4496
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4496: __asm("CCPR2H equ 0FBCh");
+[; <" CCPR2H equ 0FBCh ;# ">
+"4503
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4503: __asm("CCP1CON equ 0FBDh");
+[; <" CCP1CON equ 0FBDh ;# ">
+"4600
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4600: __asm("CCPR1 equ 0FBEh");
+[; <" CCPR1 equ 0FBEh ;# ">
+"4607
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4607: __asm("CCPR1L equ 0FBEh");
+[; <" CCPR1L equ 0FBEh ;# ">
+"4614
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4614: __asm("CCPR1H equ 0FBFh");
+[; <" CCPR1H equ 0FBFh ;# ">
+"4621
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4621: __asm("ADCON2 equ 0FC0h");
+[; <" ADCON2 equ 0FC0h ;# ">
+"4692
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4692: __asm("ADCON1 equ 0FC1h");
+[; <" ADCON1 equ 0FC1h ;# ">
+"4777
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4777: __asm("ADCON0 equ 0FC2h");
+[; <" ADCON0 equ 0FC2h ;# ">
+"4896
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4896: __asm("ADRES equ 0FC3h");
+[; <" ADRES equ 0FC3h ;# ">
+"4903
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4903: __asm("ADRESL equ 0FC3h");
+[; <" ADRESL equ 0FC3h ;# ">
+"4910
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4910: __asm("ADRESH equ 0FC4h");
+[; <" ADRESH equ 0FC4h ;# ">
+"4917
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 4917: __asm("SSPCON2 equ 0FC5h");
+[; <" SSPCON2 equ 0FC5h ;# ">
+"5012
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5012: __asm("SSPCON1 equ 0FC6h");
+[; <" SSPCON1 equ 0FC6h ;# ">
+"5082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5082: __asm("SSPSTAT equ 0FC7h");
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5303
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5303: __asm("SSPADD equ 0FC8h");
+[; <" SSPADD equ 0FC8h ;# ">
+"5310
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5310: __asm("SSPBUF equ 0FC9h");
+[; <" SSPBUF equ 0FC9h ;# ">
+"5317
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5317: __asm("T2CON equ 0FCAh");
+[; <" T2CON equ 0FCAh ;# ">
+"5415
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5415: __asm("PR2 equ 0FCBh");
+[; <" PR2 equ 0FCBh ;# ">
+"5420
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5420: __asm("MEMCON equ 0FCBh");
+[; <" MEMCON equ 0FCBh ;# ">
+"5525
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5525: __asm("TMR2 equ 0FCCh");
+[; <" TMR2 equ 0FCCh ;# ">
+"5532
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5532: __asm("T1CON equ 0FCDh");
+[; <" T1CON equ 0FCDh ;# ">
+"5635
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5635: __asm("TMR1 equ 0FCEh");
+[; <" TMR1 equ 0FCEh ;# ">
+"5642
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5642: __asm("TMR1L equ 0FCEh");
+[; <" TMR1L equ 0FCEh ;# ">
+"5649
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5649: __asm("TMR1H equ 0FCFh");
+[; <" TMR1H equ 0FCFh ;# ">
+"5656
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5656: __asm("RCON equ 0FD0h");
+[; <" RCON equ 0FD0h ;# ">
+"5789
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5789: __asm("WDTCON equ 0FD1h");
+[; <" WDTCON equ 0FD1h ;# ">
+"5817
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5817: __asm("HLVDCON equ 0FD2h");
+[; <" HLVDCON equ 0FD2h ;# ">
+"5822
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 5822: __asm("LVDCON equ 0FD2h");
+[; <" LVDCON equ 0FD2h ;# ">
+"6087
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6087: __asm("OSCCON equ 0FD3h");
+[; <" OSCCON equ 0FD3h ;# ">
+"6170
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6170: __asm("T0CON equ 0FD5h");
+[; <" T0CON equ 0FD5h ;# ">
+"6253
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6253: __asm("TMR0 equ 0FD6h");
+[; <" TMR0 equ 0FD6h ;# ">
+"6260
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6260: __asm("TMR0L equ 0FD6h");
+[; <" TMR0L equ 0FD6h ;# ">
+"6267
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6267: __asm("TMR0H equ 0FD7h");
+[; <" TMR0H equ 0FD7h ;# ">
+"6274
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6274: __asm("STATUS equ 0FD8h");
+[; <" STATUS equ 0FD8h ;# ">
+"6345
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6345: __asm("FSR2 equ 0FD9h");
+[; <" FSR2 equ 0FD9h ;# ">
+"6352
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6352: __asm("FSR2L equ 0FD9h");
+[; <" FSR2L equ 0FD9h ;# ">
+"6359
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6359: __asm("FSR2H equ 0FDAh");
+[; <" FSR2H equ 0FDAh ;# ">
+"6366
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6366: __asm("PLUSW2 equ 0FDBh");
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6373
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6373: __asm("PREINC2 equ 0FDCh");
+[; <" PREINC2 equ 0FDCh ;# ">
+"6380
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6380: __asm("POSTDEC2 equ 0FDDh");
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6387
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6387: __asm("POSTINC2 equ 0FDEh");
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6394
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6394: __asm("INDF2 equ 0FDFh");
+[; <" INDF2 equ 0FDFh ;# ">
+"6401
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6401: __asm("BSR equ 0FE0h");
+[; <" BSR equ 0FE0h ;# ">
+"6408
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6408: __asm("FSR1 equ 0FE1h");
+[; <" FSR1 equ 0FE1h ;# ">
+"6415
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6415: __asm("FSR1L equ 0FE1h");
+[; <" FSR1L equ 0FE1h ;# ">
+"6422
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6422: __asm("FSR1H equ 0FE2h");
+[; <" FSR1H equ 0FE2h ;# ">
+"6429
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6429: __asm("PLUSW1 equ 0FE3h");
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6436
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6436: __asm("PREINC1 equ 0FE4h");
+[; <" PREINC1 equ 0FE4h ;# ">
+"6443
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6443: __asm("POSTDEC1 equ 0FE5h");
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6450
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6450: __asm("POSTINC1 equ 0FE6h");
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6457
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6457: __asm("INDF1 equ 0FE7h");
+[; <" INDF1 equ 0FE7h ;# ">
+"6464
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6464: __asm("WREG equ 0FE8h");
+[; <" WREG equ 0FE8h ;# ">
+"6476
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6476: __asm("FSR0 equ 0FE9h");
+[; <" FSR0 equ 0FE9h ;# ">
+"6483
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6483: __asm("FSR0L equ 0FE9h");
+[; <" FSR0L equ 0FE9h ;# ">
+"6490
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6490: __asm("FSR0H equ 0FEAh");
+[; <" FSR0H equ 0FEAh ;# ">
+"6497
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6497: __asm("PLUSW0 equ 0FEBh");
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6504
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6504: __asm("PREINC0 equ 0FECh");
+[; <" PREINC0 equ 0FECh ;# ">
+"6511
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6511: __asm("POSTDEC0 equ 0FEDh");
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6518
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6518: __asm("POSTINC0 equ 0FEEh");
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6525
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6525: __asm("INDF0 equ 0FEFh");
+[; <" INDF0 equ 0FEFh ;# ">
+"6532
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6532: __asm("INTCON3 equ 0FF0h");
+[; <" INTCON3 equ 0FF0h ;# ">
+"6624
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6624: __asm("INTCON2 equ 0FF1h");
+[; <" INTCON2 equ 0FF1h ;# ">
+"6694
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6694: __asm("INTCON equ 0FF2h");
+[; <" INTCON equ 0FF2h ;# ">
+"6811
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6811: __asm("PROD equ 0FF3h");
+[; <" PROD equ 0FF3h ;# ">
+"6818
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6818: __asm("PRODL equ 0FF3h");
+[; <" PRODL equ 0FF3h ;# ">
+"6825
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6825: __asm("PRODH equ 0FF4h");
+[; <" PRODH equ 0FF4h ;# ">
+"6832
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6832: __asm("TABLAT equ 0FF5h");
+[; <" TABLAT equ 0FF5h ;# ">
+"6841
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6841: __asm("TBLPTR equ 0FF6h");
+[; <" TBLPTR equ 0FF6h ;# ">
+"6848
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6848: __asm("TBLPTRL equ 0FF6h");
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6855
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6855: __asm("TBLPTRH equ 0FF7h");
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6862
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6862: __asm("TBLPTRU equ 0FF8h");
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6871
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6871: __asm("PCLAT equ 0FF9h");
+[; <" PCLAT equ 0FF9h ;# ">
+"6878
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6878: __asm("PC equ 0FF9h");
+[; <" PC equ 0FF9h ;# ">
+"6885
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6885: __asm("PCL equ 0FF9h");
+[; <" PCL equ 0FF9h ;# ">
+"6892
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6892: __asm("PCLATH equ 0FFAh");
+[; <" PCLATH equ 0FFAh ;# ">
+"6899
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6899: __asm("PCLATU equ 0FFBh");
+[; <" PCLATU equ 0FFBh ;# ">
+"6906
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6906: __asm("STKPTR equ 0FFCh");
+[; <" STKPTR equ 0FFCh ;# ">
+"6980
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6980: __asm("TOS equ 0FFDh");
+[; <" TOS equ 0FFDh ;# ">
+"6987
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6987: __asm("TOSL equ 0FFDh");
+[; <" TOSL equ 0FFDh ;# ">
+"6994
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 6994: __asm("TOSH equ 0FFEh");
+[; <" TOSH equ 0FFEh ;# ">
+"7001
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
+[; <" TOSU equ 0FFFh ;# ">
+"10 ./shapes.h
+[; ;./shapes.h: 10: } shapes[] =
+[v _shapes `S282 ~T0 @X0 -> 7 `i e ]
+[i _shapes
+:U ..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 1 `i `us
+-> -> 3 `i `us
+-> -> 1 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 3 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 3 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 3 `i `us
+-> -> 3 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 3 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 2 `i `us
+-> -> 3 `i `us
+-> -> 1 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+:U ..
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 1 `i `us
+-> -> 3 `i `us
+-> -> 2 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+-> -> 4 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+..
+]
+[v F2731 `Cus ~T0 @X0 -> 8 `i t ]
+"5 ./numbers.h
+[; ;./numbers.h: 5: const uint16_t Number[10][8] = {
+[v _Number `F2731 ~T0 @X0 -> 10 `i e ]
+[i _Number
+:U ..
+:U ..
+-> -> 30 `i `us
+-> -> 18 `i `us
+-> -> 18 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 4 `i `us
+-> -> 12 `i `us
+-> -> 4 `i `us
+-> -> 4 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 30 `i `us
+-> -> 16 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 14 `i `us
+-> -> 2 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 18 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 16 `i `us
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 16 `i `us
+-> -> 30 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 4 `i `us
+-> -> 8 `i `us
+-> -> 16 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+:U ..
+-> -> 30 `i `us
+-> -> 18 `i `us
+-> -> 30 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+..
+..
+]
+"66 pictris.c
+[p x OSC = INTIO67 ]
+"67
+[p x FCMEN = OFF ]
+"68
+[p x IESO = OFF ]
+"71
+[p x PWRT = OFF ]
+"72
+[p x BOREN = SBORDIS ]
+"73
+[p x BORV = 3 ]
+"76
+[p x WDT = OFF ]
+"77
+[p x WDTPS = 32768 ]
+"80
+[p x CCP2MX = PORTC ]
+"81
+[p x PBADEN = OFF ]
+"82
+[p x LPT1OSC = OFF ]
+"83
+[p x MCLRE = ON ]
+"86
+[p x STVREN = ON ]
+"87
+[p x LVP = OFF ]
+"88
+[p x XINST = OFF ]
+"91
+[p x CP0 = OFF ]
+"92
+[p x CP1 = OFF ]
+"93
+[p x CP2 = OFF ]
+"94
+[p x CP3 = OFF ]
+"97
+[p x CPB = OFF ]
+"98
+[p x CPD = OFF ]
+"101
+[p x WRT0 = OFF ]
+"102
+[p x WRT1 = OFF ]
+"103
+[p x WRT2 = OFF ]
+"104
+[p x WRT3 = OFF ]
+"107
+[p x WRTC = OFF ]
+"108
+[p x WRTB = OFF ]
+"109
+[p x WRTD = OFF ]
+"112
+[p x EBTR0 = OFF ]
+"113
+[p x EBTR1 = OFF ]
+"114
+[p x EBTR2 = OFF ]
+"115
+[p x EBTR3 = OFF ]
+"118
+[p x EBTRB = OFF ]
+"128
+[; ;pictris.c: 128: volatile uint16_t ObjectData[8];
+[v _ObjectData `Vus ~T0 @X0 -> 8 `i e ]
+"129
+[; ;pictris.c: 129: volatile uint16_t BackgroundData[8];
+[v _BackgroundData `Vus ~T0 @X0 -> 8 `i e ]
+"130
+[; ;pictris.c: 130: uint16_t tmpObjectData[8];
+[v _tmpObjectData `us ~T0 @X0 -> 8 `i e ]
+"163
+[; ;pictris.c: 163: volatile _Bool mtxButtons;
+[v _mtxButtons `Va ~T0 @X0 1 e ]
+"166
+[; ;pictris.c: 166:         int16_t Left_Delay, Right_Delay, Rotate_Delay, Down_Delay;
+[v _Left_Delay `Vs ~T0 @X0 1 e ]
+[v _Right_Delay `Vs ~T0 @X0 1 e ]
+[v _Rotate_Delay `Vs ~T0 @X0 1 e ]
+[v _Down_Delay `Vs ~T0 @X0 1 e ]
+"168
+[; ;pictris.c: 168:         _Bool Left_Debounced, Right_Debounced, Rotate_Debounced, Down_Debounced;
+[v _Left_Debounced `Va ~T0 @X0 1 e ]
+[v _Right_Debounced `Va ~T0 @X0 1 e ]
+[v _Rotate_Debounced `Va ~T0 @X0 1 e ]
+[v _Down_Debounced `Va ~T0 @X0 1 e ]
+"175
+[; ;pictris.c: 175: byte LimitedRotation;
+[v _LimitedRotation `uc ~T0 @X0 1 e ]
+"176
+[; ;pictris.c: 176: byte NumberOfLines;
+[v _NumberOfLines `uc ~T0 @X0 1 e ]
+"177
+[; ;pictris.c: 177: byte LastHighScore;
+[v _LastHighScore `uc ~T0 @X0 1 e ]
+"179
+[; ;pictris.c: 179: _Bool IsRotated;
+[v _IsRotated `a ~T0 @X0 1 e ]
+"181
+[; ;pictris.c: 181: _Bool EndOfGame;
+[v _EndOfGame `a ~T0 @X0 1 e ]
+"182
+[; ;pictris.c: 182: _Bool CheckForNewLines;
+[v _CheckForNewLines `a ~T0 @X0 1 e ]
+"184
+[; ;pictris.c: 184: volatile _Bool DropObject;
+[v _DropObject `Va ~T0 @X0 1 e ]
+"186
+[; ;pictris.c: 186: byte OriginX, OriginY;
+[v _OriginX `uc ~T0 @X0 1 e ]
+[v _OriginY `uc ~T0 @X0 1 e ]
+"192
+[; ;pictris.c: 192: volatile uint16_t mS;
+[v _mS `Vus ~T0 @X0 1 e ]
+"198
+[; ;pictris.c: 198: const uint16_t TETRIS[] =
+[v _TETRIS `Cus ~T0 @X0 -> 8 `i e ]
+[i _TETRIS
+:U ..
+-> -> 34881 `ui `us
+-> -> 64479 `ui `us
+-> -> 34881 `ui `us
+-> -> 0 `i `us
+-> -> 39903 `ui `us
+-> -> 43349 `ui `us
+-> -> 51857 `ui `us
+-> -> 0 `i `us
+..
+]
+"210
+[; ;pictris.c: 210: const uint16_t SNAKE[] =
+[v _SNAKE `Cus ~T0 @X0 -> 8 `i e ]
+[i _SNAKE
+:U ..
+-> -> 64407 `ui `us
+-> -> 43349 `ui `us
+-> -> 43933 `ui `us
+-> -> 0 `i `us
+-> -> 991 `i `us
+-> -> 47233 `ui `us
+-> -> 863 `i `us
+-> -> 0 `i `us
+..
+]
+"230
+[; ;pictris.c: 230: const uint16_t choose_screen[] =
+[v _choose_screen `Cus ~T0 @X0 -> 8 `i e ]
+[i _choose_screen
+:U ..
+-> -> 65535 `ui `us
+-> -> 33153 `ui `us
+-> -> 48513 `ui `us
+-> -> 34189 `ui `us
+-> -> 34201 `ui `us
+-> -> 44417 `ui `us
+-> -> 33153 `ui `us
+-> -> 65535 `ui `us
+..
+]
+"257
+[; ;pictris.c: 257: const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
+[v _SnakeYtext `Cus ~T0 @X0 -> 16 `i e ]
+[i _SnakeYtext
+:U ..
+-> -> 1 `i `us
+-> -> 2 `i `us
+-> -> 4 `i `us
+-> -> 8 `i `us
+-> -> 16 `i `us
+-> -> 32 `i `us
+-> -> 64 `i `us
+-> -> 128 `i `us
+-> -> 256 `i `us
+-> -> 512 `i `us
+-> -> 1024 `i `us
+-> -> 2048 `i `us
+-> -> 4096 `i `us
+-> -> 8192 `i `us
+-> -> 16384 `i `us
+-> -> 32768 `ui `us
+..
+]
+"263
+[; ;pictris.c: 263: uint8_t direction;
+[v _direction `uc ~T0 @X0 1 e ]
+"264
+[; ;pictris.c: 264: _Bool moveSnake;
+[v _moveSnake `a ~T0 @X0 1 e ]
+"265
+[; ;pictris.c: 265: struct position positions[100];
+[v _positions `S283 ~T0 @X0 -> 100 `i e ]
+"266
+[; ;pictris.c: 266: uint8_t snakeLength;
+[v _snakeLength `uc ~T0 @X0 1 e ]
+"267
+[; ;pictris.c: 267: uint8_t berryX;
+[v _berryX `uc ~T0 @X0 1 e ]
+"268
+[; ;pictris.c: 268: uint8_t berryY;
+[v _berryY `uc ~T0 @X0 1 e ]
+"269
+[; ;pictris.c: 269: uint8_t previous_direction;
+[v _previous_direction `uc ~T0 @X0 1 e ]
+"271
+[; ;pictris.c: 271: _Bool tetris;
+[v _tetris `a ~T0 @X0 1 e ]
+"283
+[; ;pictris.c: 283:   __asm("port_display equ 0F82h");
+[; <" port_display equ 0F82h ;# ">
+"292
+[; ;pictris.c: 292: void swap(char* a, char* b)
+[v _swap `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"293
+[; ;pictris.c: 293: {
+{
+[e :U _swap ]
+"292
+[; ;pictris.c: 292: void swap(char* a, char* b)
+[v _a `*uc ~T0 @X0 1 r1 ]
+[v _b `*uc ~T0 @X0 1 r2 ]
+"293
+[; ;pictris.c: 293: {
+[f ]
+"294
+[; ;pictris.c: 294:     char t = *a;
+[v _t `uc ~T0 @X0 1 a ]
+[e = _t *U _a ]
+"295
+[; ;pictris.c: 295:     *a = *b;
+[e = *U _a *U _b ]
+"296
+[; ;pictris.c: 296:     *b = t;
+[e = *U _b _t ]
+"297
+[; ;pictris.c: 297: }
+[e :UE 284 ]
+}
+"300
+[; ;pictris.c: 300: void reverse(char str[], int length)
+[v _reverse `(v ~T0 @X0 1 ef2`*uc`i ]
+"301
+[; ;pictris.c: 301: {
+{
+[e :U _reverse ]
+"300
+[; ;pictris.c: 300: void reverse(char str[], int length)
+[v _str `*uc ~T0 @X0 1 r1 ]
+[v _length `i ~T0 @X0 1 r2 ]
+"301
+[; ;pictris.c: 301: {
+[f ]
+"302
+[; ;pictris.c: 302:     int start = 0;
+[v _start `i ~T0 @X0 1 a ]
+[e = _start -> 0 `i ]
+"303
+[; ;pictris.c: 303:     int end = length -1;
+[v _end `i ~T0 @X0 1 a ]
+[e = _end - _length -> 1 `i ]
+"304
+[; ;pictris.c: 304:     while (start < end)
+[e $U 286  ]
+[e :U 287 ]
+"305
+[; ;pictris.c: 305:     {
+{
+"306
+[; ;pictris.c: 306:         swap(str+start, str+end);
+[e ( _swap (2 , + _str * -> _start `x -> -> # *U _str `i `x + _str * -> _end `x -> -> # *U _str `i `x ]
+"307
+[; ;pictris.c: 307:         start++;
+[e ++ _start -> 1 `i ]
+"308
+[; ;pictris.c: 308:         end--;
+[e -- _end -> 1 `i ]
+"309
+[; ;pictris.c: 309:     }
+}
+[e :U 286 ]
+"304
+[; ;pictris.c: 304:     while (start < end)
+[e $ < _start _end 287  ]
+[e :U 288 ]
+"310
+[; ;pictris.c: 310: }
+[e :UE 285 ]
+}
+"312
+[; ;pictris.c: 312: char * itoa(int value, char * str, int bas)
+[v _itoa `(*uc ~T0 @X0 1 ef3`i`*uc`i ]
+"313
+[; ;pictris.c: 313: {
+{
+[e :U _itoa ]
+"312
+[; ;pictris.c: 312: char * itoa(int value, char * str, int bas)
+[v _value `i ~T0 @X0 1 r1 ]
+[v _str `*uc ~T0 @X0 1 r2 ]
+[v _bas `i ~T0 @X0 1 r3 ]
+"313
+[; ;pictris.c: 313: {
+[f ]
+"314
+[; ;pictris.c: 314:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"315
+[; ;pictris.c: 315:     _Bool isNegative = 0;
+[v _isNegative `a ~T0 @X0 1 a ]
+[e = _isNegative -> -> 0 `i `a ]
+"318
+[; ;pictris.c: 318:     if (value == 0)
+[e $ ! == _value -> 0 `i 290  ]
+"319
+[; ;pictris.c: 319:     {
+{
+"320
+[; ;pictris.c: 320:         str[i++] = '0';
+[e = *U + _str * -> ++ _i -> 1 `i `x -> -> # *U _str `i `x -> -> 48 `ui `uc ]
+"321
+[; ;pictris.c: 321:         str[i] = '\0';
+[e = *U + _str * -> _i `x -> -> # *U _str `i `x -> -> 0 `ui `uc ]
+"322
+[; ;pictris.c: 322:         return str;
+[e ) _str ]
+[e $UE 289  ]
+"323
+[; ;pictris.c: 323:     }
+}
+[e :U 290 ]
+"327
+[; ;pictris.c: 327:     if (value < 0 && bas == 10)
+[e $ ! && < _value -> 0 `i == _bas -> 10 `i 291  ]
+"328
+[; ;pictris.c: 328:     {
+{
+"329
+[; ;pictris.c: 329:         isNegative = 1;
+[e = _isNegative -> -> 1 `i `a ]
+"330
+[; ;pictris.c: 330:         value = -value;
+[e = _value -U _value ]
+"331
+[; ;pictris.c: 331:     }
+}
+[e :U 291 ]
+"334
+[; ;pictris.c: 334:     while (value != 0)
+[e $U 292  ]
+[e :U 293 ]
+"335
+[; ;pictris.c: 335:     {
+{
+"336
+[; ;pictris.c: 336:         int rem = value % bas;
+[v _rem `i ~T0 @X0 1 a ]
+[e = _rem % _value _bas ]
+"337
+[; ;pictris.c: 337:         str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
+[e = *U + _str * -> ++ _i -> 1 `i `x -> -> # *U _str `i `x -> ? > _rem -> 9 `i : + -> - _rem -> 10 `i `ui -> 97 `ui + -> _rem `ui -> 48 `ui `uc ]
+"338
+[; ;pictris.c: 338:         value = value/bas;
+[e = _value / _value _bas ]
+"339
+[; ;pictris.c: 339:     }
+}
+[e :U 292 ]
+"334
+[; ;pictris.c: 334:     while (value != 0)
+[e $ != _value -> 0 `i 293  ]
+[e :U 294 ]
+"342
+[; ;pictris.c: 342:     if (isNegative)
+[e $ ! != -> _isNegative `i -> 0 `i 295  ]
+"343
+[; ;pictris.c: 343:         str[i++] = '-';
+[e = *U + _str * -> ++ _i -> 1 `i `x -> -> # *U _str `i `x -> -> 45 `ui `uc ]
+[e :U 295 ]
+"345
+[; ;pictris.c: 345:     str[i] = '\0';
+[e = *U + _str * -> _i `x -> -> # *U _str `i `x -> -> 0 `ui `uc ]
+"348
+[; ;pictris.c: 348:     reverse(str, i);
+[e ( _reverse (2 , _str _i ]
+"350
+[; ;pictris.c: 350:     return str;
+[e ) _str ]
+[e $UE 289  ]
+"351
+[; ;pictris.c: 351: }
+[e :UE 289 ]
+}
+"354
+[; ;pictris.c: 354: void pauseButtons()
+[v _pauseButtons `(v ~T0 @X0 1 ef ]
+"355
+[; ;pictris.c: 355: {
+{
+[e :U _pauseButtons ]
+[f ]
+"358
+[; ;pictris.c: 358:     mtxButtons = 0;
+[e = _mtxButtons -> -> 0 `i `a ]
+"359
+[; ;pictris.c: 359: }
+[e :UE 296 ]
+}
+"361
+[; ;pictris.c: 361: void resumeButtons()
+[v _resumeButtons `(v ~T0 @X0 1 ef ]
+"362
+[; ;pictris.c: 362: {
+{
+[e :U _resumeButtons ]
+[f ]
+"363
+[; ;pictris.c: 363:     mtxButtons = 1;
+[e = _mtxButtons -> -> 1 `i `a ]
+"364
+[; ;pictris.c: 364: }
+[e :UE 297 ]
+}
+"366
+[; ;pictris.c: 366: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
+[v _debounceButton `(v ~T0 @X0 1 ef3`Va`*Vs`*Va ]
+"367
+[; ;pictris.c: 367: {
+{
+[e :U _debounceButton ]
+"366
+[; ;pictris.c: 366: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
+[v _button `Va ~T0 @X0 1 r1 ]
+[v _delay `*Vs ~T0 @X0 1 r2 ]
+[v _debounced `*Va ~T0 @X0 1 r3 ]
+"367
+[; ;pictris.c: 367: {
+[f ]
+"368
+[; ;pictris.c: 368:     if (button == 0)
+[e $ ! == -> _button `i -> 0 `i 299  ]
+"369
+[; ;pictris.c: 369:     {
+{
+"370
+[; ;pictris.c: 370:         if (*delay < 0)
+[e $ ! < -> *U _delay `i -> 0 `i 300  ]
+"371
+[; ;pictris.c: 371:             *delay = 20;
+[e = *U _delay -> -> 20 `i `s ]
+[e $U 301  ]
+"372
+[; ;pictris.c: 372:         else if ((*delay)-- == 0)
+[e :U 300 ]
+[e $ ! == -> -- *U _delay -> -> 1 `i `s `i -> 0 `i 302  ]
+"373
+[; ;pictris.c: 373:             *debounced = 1;
+[e = *U _debounced -> -> 1 `i `a ]
+[e :U 302 ]
+[e :U 301 ]
+"374
+[; ;pictris.c: 374:     }
+}
+[e $U 303  ]
+"375
+[; ;pictris.c: 375:     else
+[e :U 299 ]
+"376
+[; ;pictris.c: 376:     {
+{
+"377
+[; ;pictris.c: 377:         *delay = -1;
+[e = *U _delay -> -U -> 1 `i `s ]
+"378
+[; ;pictris.c: 378:         *debounced = 0;
+[e = *U _debounced -> -> 0 `i `a ]
+"379
+[; ;pictris.c: 379:     }
+}
+[e :U 303 ]
+"380
+[; ;pictris.c: 380: }
+[e :UE 298 ]
+}
+"406
+[; ;pictris.c: 406: volatile unsigned time;
+[v _time `Vui ~T0 @X0 1 e ]
+"407
+[; ;pictris.c: 407: void waitms(unsigned t)
+[v _waitms `(v ~T0 @X0 1 ef1`ui ]
+"408
+[; ;pictris.c: 408: {
+{
+[e :U _waitms ]
+"407
+[; ;pictris.c: 407: void waitms(unsigned t)
+[v _t `ui ~T0 @X0 1 r1 ]
+"408
+[; ;pictris.c: 408: {
+[f ]
+"409
+[; ;pictris.c: 409:     time = t;
+[e = _time _t ]
+"410
+[; ;pictris.c: 410:     while(time)
+[e $U 305  ]
+[e :U 306 ]
+"411
+[; ;pictris.c: 411:         continue;
+[e $U 305  ]
+[e :U 305 ]
+"410
+[; ;pictris.c: 410:     while(time)
+[e $ != _time -> -> 0 `i `ui 306  ]
+[e :U 307 ]
+"412
+[; ;pictris.c: 412: }
+[e :UE 304 ]
+}
+"416
+[; ;pictris.c: 416: volatile _Bool UpdateScreen;
+[v _UpdateScreen `Va ~T0 @X0 1 e ]
+"417
+[; ;pictris.c: 417: volatile _Bool InterruptComplete;
+[v _InterruptComplete `Va ~T0 @X0 1 e ]
+"421
+[; ;pictris.c: 421: void waitForInterrupt(void)
+[v _waitForInterrupt `(v ~T0 @X0 1 ef ]
+"422
+[; ;pictris.c: 422: {
+{
+[e :U _waitForInterrupt ]
+[f ]
+"423
+[; ;pictris.c: 423:     InterruptComplete = 0;
+[e = _InterruptComplete -> -> 0 `i `a ]
+"424
+[; ;pictris.c: 424:     while (!InterruptComplete)
+[e $U 309  ]
+[e :U 310 ]
+"425
+[; ;pictris.c: 425:         continue;
+[e $U 309  ]
+[e :U 309 ]
+"424
+[; ;pictris.c: 424:     while (!InterruptComplete)
+[e $ ! != -> _InterruptComplete `i -> 0 `i 310  ]
+[e :U 311 ]
+"426
+[; ;pictris.c: 426: }
+[e :UE 308 ]
+}
+"429
+[; ;pictris.c: 429: void pauseMultiplexing(void)
+[v _pauseMultiplexing `(v ~T0 @X0 1 ef ]
+"430
+[; ;pictris.c: 430: {
+{
+[e :U _pauseMultiplexing ]
+[f ]
+"431
+[; ;pictris.c: 431:     if (UpdateScreen)
+[e $ ! != -> _UpdateScreen `i -> 0 `i 313  ]
+"432
+[; ;pictris.c: 432:     {
+{
+"433
+[; ;pictris.c: 433:         waitForInterrupt();
+[e ( _waitForInterrupt ..  ]
+"434
+[; ;pictris.c: 434:         UpdateScreen = 0;
+[e = _UpdateScreen -> -> 0 `i `a ]
+"436
+[; ;pictris.c: 436:     }
+}
+[e :U 313 ]
+"437
+[; ;pictris.c: 437: }
+[e :UE 312 ]
+}
+"440
+[; ;pictris.c: 440: void resumeMultiplexing(void)
+[v _resumeMultiplexing `(v ~T0 @X0 1 ef ]
+"441
+[; ;pictris.c: 441: {
+{
+[e :U _resumeMultiplexing ]
+[f ]
+"442
+[; ;pictris.c: 442:     UpdateScreen = 1;
+[e = _UpdateScreen -> -> 1 `i `a ]
+"443
+[; ;pictris.c: 443: }
+[e :UE 314 ]
+}
+[v $root$_isr `(v ~T0 @X0 0 e ]
+"449
+[; ;pictris.c: 449: void __attribute__((picinterrupt(""))) isr(void)
+[v _isr `(v ~T41 @X0 1 ef ]
+"451
+[; ;pictris.c: 451: {
+{
+[e :U _isr ]
+[f ]
+"452
+[; ;pictris.c: 452:     if (INTCONbits.TMR0IF)
+[e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 316  ]
+"453
+[; ;pictris.c: 453:     {
+{
+"454
+[; ;pictris.c: 454:         INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"455
+[; ;pictris.c: 455:         TMR0 = (~125);
+[e = _TMR0 -> ~ -> 125 `i `us ]
+"458
+[; ;pictris.c: 458:         time--;
+[e -- _time -> -> 1 `i `Vui ]
+"461
+[; ;pictris.c: 461:         if (++mS >= 1000)
+[e $ ! >= -> =+ _mS -> -> 1 `i `Vus `ui -> -> 1000 `i `ui 317  ]
+"462
+[; ;pictris.c: 462:         {
+{
+"463
+[; ;pictris.c: 463:             mS = 0;
+[e = _mS -> -> 0 `i `us ]
+"467
+[; ;pictris.c: 467:         }
+}
+[e :U 317 ]
+"476
+[; ;pictris.c: 476:         if (mtxButtons)
+[e $ ! != -> _mtxButtons `i -> 0 `i 318  ]
+"477
+[; ;pictris.c: 477:         {
+{
+"478
+[; ;pictris.c: 478:             debounceButton(PORTBbits.RB0, &Left_Delay, &Left_Debounced );
+[e ( _debounceButton (3 , , -> . . _PORTBbits 0 0 `a &U _Left_Delay &U _Left_Debounced ]
+"479
+[; ;pictris.c: 479:             debounceButton(PORTBbits.RB1, &Right_Delay, &Right_Debounced );
+[e ( _debounceButton (3 , , -> . . _PORTBbits 0 1 `a &U _Right_Delay &U _Right_Debounced ]
+"480
+[; ;pictris.c: 480:             debounceButton(PORTBbits.RB2, &Rotate_Delay, &Rotate_Debounced);
+[e ( _debounceButton (3 , , -> . . _PORTBbits 0 2 `a &U _Rotate_Delay &U _Rotate_Debounced ]
+"481
+[; ;pictris.c: 481:             debounceButton(PORTBbits.RB3, &Down_Delay, &Down_Debounced );
+[e ( _debounceButton (3 , , -> . . _PORTBbits 0 3 `a &U _Down_Delay &U _Down_Debounced ]
+"482
+[; ;pictris.c: 482:         }
+}
+[e :U 318 ]
+"489
+[; ;pictris.c: 489:         if (tetris == 1){
+[e $ ! == -> _tetris `i -> 1 `i 319  ]
+{
+"490
+[; ;pictris.c: 490:         DropObject |= mS == 800;}
+[e =| _DropObject -> == -> _mS `ui -> -> 800 `i `ui `i ]
+}
+[e $U 320  ]
+"492
+[; ;pictris.c: 492:         else if(mS % 200 == 0 ){
+[e :U 319 ]
+[e $ ! == % -> _mS `ui -> -> 200 `i `ui -> -> 0 `i `ui 321  ]
+{
+"493
+[; ;pictris.c: 493:         moveSnake = 1;
+[e = _moveSnake -> -> 1 `i `a ]
+"494
+[; ;pictris.c: 494:         }
+}
+[e :U 321 ]
+[e :U 320 ]
+"503
+[; ;pictris.c: 503:         if (UpdateScreen)
+[e $ ! != -> _UpdateScreen `i -> 0 `i 322  ]
+"504
+[; ;pictris.c: 504:         {
+{
+"505
+[; ;pictris.c: 505:             static byte CurrentX = 0;
+[v F2816 `uc ~T0 @X0 1 s CurrentX ]
+[i F2816
+-> -> 0 `i `uc
+]
+"507
+[; ;pictris.c: 507:             uint8_t xmask = 1 << CurrentX;
+[v _xmask `uc ~T0 @X0 1 a ]
+[e = _xmask -> << -> 1 `i -> F2816 `i `uc ]
+"508
+[; ;pictris.c: 508:             uint16_t ymask = ObjectData[CurrentX] | BackgroundData[CurrentX];
+[v _ymask `us ~T0 @X0 1 a ]
+[e = _ymask -> | -> *U + &U _ObjectData * -> F2816 `ux -> -> # *U &U _ObjectData `ui `ux `ui -> *U + &U _BackgroundData * -> F2816 `ux -> -> # *U &U _BackgroundData `ui `ux `ui `us ]
+"510
+[; ;pictris.c: 510:             port_display = 0;
+[e = _port_display -> -> 0 `i `us ]
+"512
+[; ;pictris.c: 512:             PORTA = xmask;
+[e = _PORTA _xmask ]
+"517
+[; ;pictris.c: 517:             port_display = ~ymask;
+[e = _port_display -> ~ -> _ymask `ui `us ]
+"520
+[; ;pictris.c: 520:             CurrentX++;
+[e ++ F2816 -> -> 1 `i `uc ]
+"521
+[; ;pictris.c: 521:             CurrentX &= 0x07;
+[e =& F2816 -> -> 7 `i `uc ]
+"525
+[; ;pictris.c: 525:         }
+}
+[e :U 322 ]
+"526
+[; ;pictris.c: 526:         InterruptComplete = 1;
+[e = _InterruptComplete -> -> 1 `i `a ]
+"528
+[; ;pictris.c: 528:     }
+}
+[e :U 316 ]
+"530
+[; ;pictris.c: 530: }
+[e :UE 315 ]
+}
+"533
+[; ;pictris.c: 533: void clearArray(volatile uint16_t *pArray, size_t size)
+[v _clearArray `(v ~T0 @X0 1 ef2`*Vus`ui ]
+"534
+[; ;pictris.c: 534: {
+{
+[e :U _clearArray ]
+"533
+[; ;pictris.c: 533: void clearArray(volatile uint16_t *pArray, size_t size)
+[v _pArray `*Vus ~T0 @X0 1 r1 ]
+[v _size `ui ~T0 @X0 1 r2 ]
+"534
+[; ;pictris.c: 534: {
+[f ]
+"535
+[; ;pictris.c: 535:     byte i;
+[v _i `uc ~T0 @X0 1 a ]
+"536
+[; ;pictris.c: 536:     for (i = 0; i < size; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 327  ]
+[e :U 324 ]
+"537
+[; ;pictris.c: 537:         pArray[i] = 0;
+[e = *U + _pArray * -> _i `ux -> -> # *U _pArray `ui `ux -> -> 0 `i `us ]
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 327 ]
+[e $ < -> _i `ui _size 324  ]
+[e :U 325 ]
+}
+"538
+[; ;pictris.c: 538: }
+[e :UE 323 ]
+}
+"542
+[; ;pictris.c: 542: void selectNextObject(volatile uint16_t *pTarget)
+[v _selectNextObject `(v ~T0 @X0 1 ef1`*Vus ]
+"543
+[; ;pictris.c: 543: {
+{
+[e :U _selectNextObject ]
+"542
+[; ;pictris.c: 542: void selectNextObject(volatile uint16_t *pTarget)
+[v _pTarget `*Vus ~T0 @X0 1 r1 ]
+"543
+[; ;pictris.c: 543: {
+[f ]
+"544
+[; ;pictris.c: 544:     byte rndSelection, counter, selection;
+[v _rndSelection `uc ~T0 @X0 1 a ]
+[v _counter `uc ~T0 @X0 1 a ]
+[v _selection `uc ~T0 @X0 1 a ]
+"545
+[; ;pictris.c: 545:     struct shape * s;
+[v _s `*S282 ~T0 @X0 1 a ]
+"551
+[; ;pictris.c: 551:     rndSelection = rnd_get_num();
+[e = _rndSelection ( _rnd_get_num ..  ]
+"554
+[; ;pictris.c: 554:     counter = 0;
+[e = _counter -> -> 0 `i `uc ]
+"555
+[; ;pictris.c: 555:     selection = 0;
+[e = _selection -> -> 0 `i `uc ]
+"556
+[; ;pictris.c: 556:     do
+[e :U 331 ]
+"557
+[; ;pictris.c: 557:     {
+{
+"558
+[; ;pictris.c: 558:         counter += (55/7);
+[e =+ _counter -> / -> 55 `i -> 7 `i `uc ]
+"559
+[; ;pictris.c: 559:         selection++;
+[e ++ _selection -> -> 1 `i `uc ]
+"560
+[; ;pictris.c: 560:     } while (counter < rndSelection);
+}
+[e $ < -> _counter `i -> _rndSelection `i 331  ]
+[e :U 330 ]
+"564
+[; ;pictris.c: 564:     s = &shapes[selection % 7];
+[e = _s &U *U + &U _shapes * -> -> % -> _selection `i -> 7 `i `ui `ux -> -> # *U &U _shapes `ui `ux ]
+"565
+[; ;pictris.c: 565:     memcpy(pTarget, s->graphic, 16);
+[e ( _memcpy (3 , , -> _pTarget `*v -> &U . *U _s 0 `*Cv -> -> 16 `i `ui ]
+"566
+[; ;pictris.c: 566:     OriginX = s->x;
+[e = _OriginX . *U _s 1 ]
+"567
+[; ;pictris.c: 567:     OriginY = s->y;
+[e = _OriginY . *U _s 2 ]
+"569
+[; ;pictris.c: 569:     IsRotated = 0;
+[e = _IsRotated -> -> 0 `i `a ]
+"570
+[; ;pictris.c: 570:     LimitedRotation = s->limitedRotation;
+[e = _LimitedRotation . *U _s 3 ]
+"572
+[; ;pictris.c: 572:     mS = 0;
+[e = _mS -> -> 0 `i `us ]
+"573
+[; ;pictris.c: 573: }
+[e :UE 328 ]
+}
+"576
+[; ;pictris.c: 576: uint8_t genBerry(uint8_t size)
+[v _genBerry `(uc ~T0 @X0 1 ef1`uc ]
+"577
+[; ;pictris.c: 577: {
+{
+[e :U _genBerry ]
+"576
+[; ;pictris.c: 576: uint8_t genBerry(uint8_t size)
+[v _size `uc ~T0 @X0 1 r1 ]
+"577
+[; ;pictris.c: 577: {
+[f ]
+"578
+[; ;pictris.c: 578:     uint8_t temp;
+[v _temp `uc ~T0 @X0 1 a ]
+"579
+[; ;pictris.c: 579:     temp = rnd_get_num();
+[e = _temp ( _rnd_get_num ..  ]
+"580
+[; ;pictris.c: 580:     temp = temp % size;
+[e = _temp -> % -> _temp `i -> _size `i `uc ]
+"581
+[; ;pictris.c: 581:     return temp;
+[e ) _temp ]
+[e $UE 332  ]
+"582
+[; ;pictris.c: 582: }
+[e :UE 332 ]
+}
+"583
+[; ;pictris.c: 583: void CreateBerry()
+[v _CreateBerry `(v ~T0 @X0 1 ef ]
+"584
+[; ;pictris.c: 584: {
+{
+[e :U _CreateBerry ]
+[f ]
+"585
+[; ;pictris.c: 585:     _Bool randomGood;
+[v _randomGood `a ~T0 @X0 1 a ]
+"586
+[; ;pictris.c: 586:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"587
+[; ;pictris.c: 587:     randomGood = 1;
+[e = _randomGood -> -> 1 `i `a ]
+"588
+[; ;pictris.c: 588:     do
+[e :U 336 ]
+"589
+[; ;pictris.c: 589:     {
+{
+"590
+[; ;pictris.c: 590:         randomGood = 0;
+[e = _randomGood -> -> 0 `i `a ]
+"591
+[; ;pictris.c: 591:         berryX = genBerry(8);
+[e = _berryX ( _genBerry (1 -> -> 8 `i `uc ]
+"592
+[; ;pictris.c: 592:         berryY = genBerry(16);
+[e = _berryY ( _genBerry (1 -> -> 16 `i `uc ]
+"593
+[; ;pictris.c: 593:         for(i=0;i<snakeLength;i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 340  ]
+[e :U 337 ]
+"594
+[; ;pictris.c: 594:         {
+{
+"595
+[; ;pictris.c: 595:             if (berryX == positions[i].x && berryY == positions[i].y)
+[e $ ! && == -> _berryX `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 `i == -> _berryY `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `i 341  ]
+"596
+[; ;pictris.c: 596:             {
+{
+"597
+[; ;pictris.c: 597:                 randomGood = 1;
+[e = _randomGood -> -> 1 `i `a ]
+"598
+[; ;pictris.c: 598:             }
+}
+[e :U 341 ]
+"599
+[; ;pictris.c: 599:         }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 340 ]
+[e $ < -> _i `i -> _snakeLength `i 337  ]
+[e :U 338 ]
+}
+"600
+[; ;pictris.c: 600:     } while (randomGood == 1);
+}
+[e $ == -> _randomGood `i -> 1 `i 336  ]
+[e :U 335 ]
+"601
+[; ;pictris.c: 601: }
+[e :UE 333 ]
+}
+"603
+[; ;pictris.c: 603: void SnakeGraph()
+[v _SnakeGraph `(v ~T0 @X0 1 ef ]
+"604
+[; ;pictris.c: 604: {
+{
+[e :U _SnakeGraph ]
+[f ]
+"605
+[; ;pictris.c: 605:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"606
+[; ;pictris.c: 606:     uint8_t j;
+[v _j `uc ~T0 @X0 1 a ]
+"607
+[; ;pictris.c: 607:     clearArray(tmpObjectData, 8);
+[e ( _clearArray (2 , -> &U _tmpObjectData `*Vus -> -> 8 `i `ui ]
+"608
+[; ;pictris.c: 608:     for(i=0;i<=snakeLength;i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 346  ]
+[e :U 343 ]
+{
+"609
+[; ;pictris.c: 609:         j = positions[i].x;
+[e = _j . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 ]
+"610
+[; ;pictris.c: 610:         tmpObjectData[j] = (SnakeYtext[positions[i].y] | tmpObjectData[j]);
+[e = *U + &U _tmpObjectData * -> _j `ux -> -> # *U &U _tmpObjectData `ui `ux -> | -> *U + &U _SnakeYtext * -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `ux -> -> # *U &U _SnakeYtext `ui `ux `ui -> *U + &U _tmpObjectData * -> _j `ux -> -> # *U &U _tmpObjectData `ui `ux `ui `us ]
+"619
+[; ;pictris.c: 619:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 346 ]
+[e $ <= -> _i `i -> _snakeLength `i 343  ]
+[e :U 344 ]
+}
+"620
+[; ;pictris.c: 620:     for(i=0;i<8;i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 347  ]
+[e $U 348  ]
+[e :U 347 ]
+{
+"621
+[; ;pictris.c: 621:         if (berryX == i){
+[e $ ! == -> _berryX `i -> _i `i 350  ]
+{
+"622
+[; ;pictris.c: 622:             tmpObjectData[i] = SnakeYtext[berryY] | tmpObjectData[i];
+[e = *U + &U _tmpObjectData * -> _i `ux -> -> # *U &U _tmpObjectData `ui `ux -> | -> *U + &U _SnakeYtext * -> _berryY `ux -> -> # *U &U _SnakeYtext `ui `ux `ui -> *U + &U _tmpObjectData * -> _i `ux -> -> # *U &U _tmpObjectData `ui `ux `ui `us ]
+"623
+[; ;pictris.c: 623:         }
+}
+[e :U 350 ]
+"624
+[; ;pictris.c: 624:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 347  ]
+[e :U 348 ]
+}
+"625
+[; ;pictris.c: 625:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"626
+[; ;pictris.c: 626:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"627
+[; ;pictris.c: 627:     for(i=0;i<8;i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 351  ]
+[e $U 352  ]
+[e :U 351 ]
+{
+"628
+[; ;pictris.c: 628:         ObjectData[i] = tmpObjectData[i];
+[e = *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux *U + &U _tmpObjectData * -> _i `ux -> -> # *U &U _tmpObjectData `ui `ux ]
+"629
+[; ;pictris.c: 629:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 351  ]
+[e :U 352 ]
+}
+"630
+[; ;pictris.c: 630:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"631
+[; ;pictris.c: 631: }
+[e :UE 342 ]
+}
+"633
+[; ;pictris.c: 633: void MoveSnakes()
+[v _MoveSnakes `(v ~T0 @X0 1 ef ]
+"634
+[; ;pictris.c: 634: {
+{
+[e :U _MoveSnakes ]
+[f ]
+"635
+[; ;pictris.c: 635:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"636
+[; ;pictris.c: 636:     switch (direction){
+[e $U 356  ]
+{
+"637
+[; ;pictris.c: 637:         case 0:
+[e :U 357 ]
+"638
+[; ;pictris.c: 638:             positions[0].y = positions[0].y - 1;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> - -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 1 `i `uc ]
+"639
+[; ;pictris.c: 639:             previous_direction = 0;
+[e = _previous_direction -> -> 0 `i `uc ]
+"640
+[; ;pictris.c: 640:             if (positions[0].y >= 200){
+[e $ ! >= -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 200 `i 358  ]
+{
+"641
+[; ;pictris.c: 641:                 positions[0].y = 15;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 15 `i `uc ]
+"642
+[; ;pictris.c: 642:             };
+}
+[e :U 358 ]
+"643
+[; ;pictris.c: 643:             break;
+[e $U 355  ]
+"644
+[; ;pictris.c: 644:         case 1:
+[e :U 359 ]
+"645
+[; ;pictris.c: 645:             positions[0].x = positions[0].x + 1;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> + -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 1 `i `uc ]
+"646
+[; ;pictris.c: 646:             previous_direction = 1;
+[e = _previous_direction -> -> 1 `i `uc ]
+"647
+[; ;pictris.c: 647:             if (positions[0].x > 7 & positions[0].x < 200){
+[e $ ! & > -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 7 `i < -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 200 `i 360  ]
+{
+"648
+[; ;pictris.c: 648:                 positions[0].x = 0;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 0 `i `uc ]
+"649
+[; ;pictris.c: 649:             };
+}
+[e :U 360 ]
+"650
+[; ;pictris.c: 650:             break;
+[e $U 355  ]
+"651
+[; ;pictris.c: 651:         case 2:
+[e :U 361 ]
+"652
+[; ;pictris.c: 652:             positions[0].y = positions[0].y + 1;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> + -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 1 `i `uc ]
+"653
+[; ;pictris.c: 653:             previous_direction = 2;
+[e = _previous_direction -> -> 2 `i `uc ]
+"654
+[; ;pictris.c: 654:             if (positions[0].y > 15 & positions[0].y < 200) {
+[e $ ! & > -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 15 `i < -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 200 `i 362  ]
+{
+"655
+[; ;pictris.c: 655:                 positions[0].y = 0;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 0 `i `uc ]
+"656
+[; ;pictris.c: 656:             };
+}
+[e :U 362 ]
+"657
+[; ;pictris.c: 657:             break;
+[e $U 355  ]
+"658
+[; ;pictris.c: 658:         case 3:
+[e :U 363 ]
+"659
+[; ;pictris.c: 659:             positions[0].x = positions[0].x - 1;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> - -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 1 `i `uc ]
+"660
+[; ;pictris.c: 660:             previous_direction = 3;
+[e = _previous_direction -> -> 3 `i `uc ]
+"661
+[; ;pictris.c: 661:             if (positions[0].x >= 200){
+[e $ ! >= -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 200 `i 364  ]
+{
+"662
+[; ;pictris.c: 662:                 positions[0].x = 7;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 7 `i `uc ]
+"663
+[; ;pictris.c: 663:             };
+}
+[e :U 364 ]
+"664
+[; ;pictris.c: 664:             break;
+[e $U 355  ]
+"665
+[; ;pictris.c: 665:     };
+}
+[e $U 355  ]
+[e :U 356 ]
+[e [\ -> _direction `i , $ -> 0 `i 357
+ , $ -> 1 `i 359
+ , $ -> 2 `i 361
+ , $ -> 3 `i 363
+ 355 ]
+[e :U 355 ]
+"666
+[; ;pictris.c: 666:     for (i=0;i<=snakeLength;i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 368  ]
+[e :U 365 ]
+{
+"667
+[; ;pictris.c: 667:         positions[(snakeLength - i)+1].y = positions[snakeLength-i].y;
+[e = . *U + &U _positions * -> -> + - -> _snakeLength `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 . *U + &U _positions * -> -> - -> _snakeLength `i -> _i `i `ui `ux -> -> # *U &U _positions `ui `ux 1 ]
+"668
+[; ;pictris.c: 668:         positions[(snakeLength - i)+1].x = positions[snakeLength-i].x;
+[e = . *U + &U _positions * -> -> + - -> _snakeLength `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 . *U + &U _positions * -> -> - -> _snakeLength `i -> _i `i `ui `ux -> -> # *U &U _positions `ui `ux 0 ]
+"669
+[; ;pictris.c: 669:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 368 ]
+[e $ <= -> _i `i -> _snakeLength `i 365  ]
+[e :U 366 ]
+}
+"670
+[; ;pictris.c: 670:     if (positions[0].y == berryY && positions[0].x == berryX){
+[e $ ! && == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> _berryY `i == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> _berryX `i 369  ]
+{
+"671
+[; ;pictris.c: 671:         snakeLength = snakeLength + 1;
+[e = _snakeLength -> + -> _snakeLength `i -> 1 `i `uc ]
+"672
+[; ;pictris.c: 672:         CreateBerry();
+[e ( _CreateBerry ..  ]
+"673
+[; ;pictris.c: 673:     }
+}
+[e :U 369 ]
+"674
+[; ;pictris.c: 674:     for (i=4;i<=snakeLength;i++){
+{
+[e = _i -> -> 4 `i `uc ]
+[e $U 373  ]
+[e :U 370 ]
+{
+"675
+[; ;pictris.c: 675:         if (positions[0].y == positions[i].y && positions[0].x == positions[i].x){
+[e $ ! && == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `i == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 `i 374  ]
+{
+"676
+[; ;pictris.c: 676:             EndOfGame = 1;
+[e = _EndOfGame -> -> 1 `i `a ]
+"677
+[; ;pictris.c: 677:         };
+}
+[e :U 374 ]
+"678
+[; ;pictris.c: 678:     };
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 373 ]
+[e $ <= -> _i `i -> _snakeLength `i 370  ]
+[e :U 371 ]
+}
+"679
+[; ;pictris.c: 679:     SnakeGraph();
+[e ( _SnakeGraph ..  ]
+"680
+[; ;pictris.c: 680: }
+[e :UE 354 ]
+}
+"684
+[; ;pictris.c: 684: void mergeObjects(volatile uint16_t * pSource, volatile uint16_t * pTarget, mode_t mode)
+[v _mergeObjects `(v ~T0 @X0 1 ef3`*Vus`*Vus`E2767 ]
+"685
+[; ;pictris.c: 685: {
+{
+[e :U _mergeObjects ]
+"684
+[; ;pictris.c: 684: void mergeObjects(volatile uint16_t * pSource, volatile uint16_t * pTarget, mode_t mode)
+[v _pSource `*Vus ~T0 @X0 1 r1 ]
+[v _pTarget `*Vus ~T0 @X0 1 r2 ]
+[v _mode `E2767 ~T0 @X0 1 r3 ]
+"685
+[; ;pictris.c: 685: {
+[f ]
+"686
+[; ;pictris.c: 686:     byte i;
+[v _i `uc ~T0 @X0 1 a ]
+"688
+[; ;pictris.c: 688:     switch (mode)
+[e $U 377  ]
+"689
+[; ;pictris.c: 689:     {
+{
+"690
+[; ;pictris.c: 690:     case OVERRIDE:
+[e :U 378 ]
+"691
+[; ;pictris.c: 691:         for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 379  ]
+[e $U 380  ]
+[e :U 379 ]
+"692
+[; ;pictris.c: 692:             pTarget[i] = pSource[i];
+[e = *U + _pTarget * -> _i `ux -> -> # *U _pTarget `ui `ux *U + _pSource * -> _i `ux -> -> # *U _pSource `ui `ux ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 379  ]
+[e :U 380 ]
+}
+"693
+[; ;pictris.c: 693:         break;
+[e $U 376  ]
+"694
+[; ;pictris.c: 694:     case MERGE:
+[e :U 382 ]
+"695
+[; ;pictris.c: 695:         for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 383  ]
+[e $U 384  ]
+[e :U 383 ]
+"696
+[; ;pictris.c: 696:             pTarget[i] |= pSource[i];
+[e =| *U + _pTarget * -> _i `ux -> -> # *U _pTarget `ui `ux -> *U + _pSource * -> _i `ux -> -> # *U _pSource `ui `ux `us ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 383  ]
+[e :U 384 ]
+}
+"697
+[; ;pictris.c: 697:         break;
+[e $U 376  ]
+"698
+[; ;pictris.c: 698:     case INVERT:
+[e :U 386 ]
+"699
+[; ;pictris.c: 699:         for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 387  ]
+[e $U 388  ]
+[e :U 387 ]
+"700
+[; ;pictris.c: 700:             pTarget[i] ^= pSource[i];
+[e =^ *U + _pTarget * -> _i `ux -> -> # *U _pTarget `ui `ux -> *U + _pSource * -> _i `ux -> -> # *U _pSource `ui `ux `us ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 387  ]
+[e :U 388 ]
+}
+"701
+[; ;pictris.c: 701:         break;
+[e $U 376  ]
+"702
+[; ;pictris.c: 702:     }
+}
+[e $U 376  ]
+[e :U 377 ]
+[e [\ -> _mode `ui , $ -> . `E2767 0 `ui 378
+ , $ -> . `E2767 1 `ui 382
+ , $ -> . `E2767 2 `ui 386
+ 376 ]
+[e :U 376 ]
+"703
+[; ;pictris.c: 703: }
+[e :UE 375 ]
+}
+"706
+[; ;pictris.c: 706: void moveObject(volatile uint16_t * pObject, direction_t direction, byte cycles)
+[v _moveObject `(v ~T0 @X0 1 ef3`*Vus`E2761`uc ]
+"707
+[; ;pictris.c: 707: {
+{
+[e :U _moveObject ]
+"706
+[; ;pictris.c: 706: void moveObject(volatile uint16_t * pObject, direction_t direction, byte cycles)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+[v _direction `E2761 ~T0 @X0 1 r2 ]
+[v _cycles `uc ~T0 @X0 1 r3 ]
+"707
+[; ;pictris.c: 707: {
+[f ]
+"708
+[; ;pictris.c: 708:     byte i, c;
+[v _i `uc ~T0 @X0 1 a ]
+[v _c `uc ~T0 @X0 1 a ]
+"710
+[; ;pictris.c: 710:     switch (direction)
+[e $U 392  ]
+"711
+[; ;pictris.c: 711:     {
+{
+"712
+[; ;pictris.c: 712:     case DOWN:
+[e :U 393 ]
+"713
+[; ;pictris.c: 713:         for (c = 0; c < cycles; c++)
+{
+[e = _c -> -> 0 `i `uc ]
+[e $U 397  ]
+[e :U 394 ]
+"714
+[; ;pictris.c: 714:         {
+{
+"715
+[; ;pictris.c: 715:             for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 398  ]
+[e $U 399  ]
+[e :U 398 ]
+"716
+[; ;pictris.c: 716:                 pObject[i] <<= 1;
+[e =<< *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux -> -> 1 `i `us ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 398  ]
+[e :U 399 ]
+}
+"717
+[; ;pictris.c: 717:             OriginY++;
+[e ++ _OriginY -> -> 1 `i `uc ]
+"718
+[; ;pictris.c: 718:         }
+}
+[e ++ _c -> -> 1 `i `uc ]
+[e :U 397 ]
+[e $ < -> _c `i -> _cycles `i 394  ]
+[e :U 395 ]
+}
+"719
+[; ;pictris.c: 719:         break;
+[e $U 391  ]
+"720
+[; ;pictris.c: 720:     case UP:
+[e :U 401 ]
+"721
+[; ;pictris.c: 721:         for (c = 0; c < cycles; c++)
+{
+[e = _c -> -> 0 `i `uc ]
+[e $U 405  ]
+[e :U 402 ]
+"722
+[; ;pictris.c: 722:         {
+{
+"723
+[; ;pictris.c: 723:             for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 406  ]
+[e $U 407  ]
+[e :U 406 ]
+"724
+[; ;pictris.c: 724:                 pObject[i] >>= 1;
+[e =>> *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux -> -> 1 `i `us ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 406  ]
+[e :U 407 ]
+}
+"725
+[; ;pictris.c: 725:             OriginY--;
+[e -- _OriginY -> -> 1 `i `uc ]
+"726
+[; ;pictris.c: 726:         }
+}
+[e ++ _c -> -> 1 `i `uc ]
+[e :U 405 ]
+[e $ < -> _c `i -> _cycles `i 402  ]
+[e :U 403 ]
+}
+"727
+[; ;pictris.c: 727:         break;
+[e $U 391  ]
+"728
+[; ;pictris.c: 728:     case RIGHT:
+[e :U 409 ]
+"729
+[; ;pictris.c: 729:         for (c = 0; c < cycles; c++)
+{
+[e = _c -> -> 0 `i `uc ]
+[e $U 413  ]
+[e :U 410 ]
+"730
+[; ;pictris.c: 730:         {
+{
+"731
+[; ;pictris.c: 731:             for (i = 7; i > 0; i--)
+{
+[e = _i -> -> 7 `i `uc ]
+[e $ > -> _i `i -> 0 `i 414  ]
+[e $U 415  ]
+[e :U 414 ]
+"732
+[; ;pictris.c: 732:                 pObject[i] = pObject[i-1];
+[e = *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux *U + _pObject * -> - -> _i `i -> 1 `i `x -> -> # *U _pObject `i `x ]
+[e -- _i -> -> 1 `i `uc ]
+[e $ > -> _i `i -> 0 `i 414  ]
+[e :U 415 ]
+}
+"733
+[; ;pictris.c: 733:             pObject[0] = 0;
+[e = *U + _pObject * -> -> 0 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
+"734
+[; ;pictris.c: 734:             OriginX++;
+[e ++ _OriginX -> -> 1 `i `uc ]
+"735
+[; ;pictris.c: 735:         }
+}
+[e ++ _c -> -> 1 `i `uc ]
+[e :U 413 ]
+[e $ < -> _c `i -> _cycles `i 410  ]
+[e :U 411 ]
+}
+"736
+[; ;pictris.c: 736:         break;
+[e $U 391  ]
+"737
+[; ;pictris.c: 737:     case LEFT:
+[e :U 417 ]
+"738
+[; ;pictris.c: 738:         for (c = 0; c < cycles; c++)
+{
+[e = _c -> -> 0 `i `uc ]
+[e $U 421  ]
+[e :U 418 ]
+"739
+[; ;pictris.c: 739:         {
+{
+"740
+[; ;pictris.c: 740:             for (i = 0; i < 7; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 7 `i 422  ]
+[e $U 423  ]
+[e :U 422 ]
+"741
+[; ;pictris.c: 741:                 pObject[i] = pObject[i+1];
+[e = *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux *U + _pObject * -> + -> _i `i -> 1 `i `x -> -> # *U _pObject `i `x ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 422  ]
+[e :U 423 ]
+}
+"742
+[; ;pictris.c: 742:             pObject[7] = 0;
+[e = *U + _pObject * -> -> 7 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
+"743
+[; ;pictris.c: 743:             OriginX--;
+[e -- _OriginX -> -> 1 `i `uc ]
+"744
+[; ;pictris.c: 744:         }
+}
+[e ++ _c -> -> 1 `i `uc ]
+[e :U 421 ]
+[e $ < -> _c `i -> _cycles `i 418  ]
+[e :U 419 ]
+}
+"745
+[; ;pictris.c: 745:     }
+}
+[e $U 391  ]
+[e :U 392 ]
+[e [\ -> _direction `ui , $ -> . `E2761 0 `ui 393
+ , $ -> . `E2761 1 `ui 401
+ , $ -> . `E2761 3 `ui 409
+ , $ -> . `E2761 2 `ui 417
+ 391 ]
+[e :U 391 ]
+"746
+[; ;pictris.c: 746: }
+[e :UE 390 ]
+}
+"751
+[; ;pictris.c: 751: _Bool checkForBottom(volatile uint16_t * pObject)
+[v _checkForBottom `(a ~T0 @X0 1 ef1`*Vus ]
+"752
+[; ;pictris.c: 752: {
+{
+[e :U _checkForBottom ]
+"751
+[; ;pictris.c: 751: _Bool checkForBottom(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"752
+[; ;pictris.c: 752: {
+[f ]
+"753
+[; ;pictris.c: 753:     for (byte i = 0; i < 8; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 426  ]
+[e $U 427  ]
+[e :U 426 ]
+"754
+[; ;pictris.c: 754:         if (pObject[i] & (1<<15))
+[e $ ! != & -> *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux `ui -> << -> 1 `i -> 15 `i `ui -> -> 0 `i `ui 429  ]
+"755
+[; ;pictris.c: 755:             return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 425  ]
+[e :U 429 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 426  ]
+[e :U 427 ]
+}
+"756
+[; ;pictris.c: 756:     return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 425  ]
+"757
+[; ;pictris.c: 757: }
+[e :UE 425 ]
+}
+"761
+[; ;pictris.c: 761: _Bool checkForLeftWall(volatile uint16_t * pObject)
+[v _checkForLeftWall `(a ~T0 @X0 1 ef1`*Vus ]
+"762
+[; ;pictris.c: 762: {
+{
+[e :U _checkForLeftWall ]
+"761
+[; ;pictris.c: 761: _Bool checkForLeftWall(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"762
+[; ;pictris.c: 762: {
+[f ]
+"763
+[; ;pictris.c: 763:     return pObject[0] != 0;
+[e ) -> -> != -> *U + _pObject * -> -> 0 `i `x -> -> # *U _pObject `i `x `ui -> -> 0 `i `ui `i `a ]
+[e $UE 430  ]
+"764
+[; ;pictris.c: 764: }
+[e :UE 430 ]
+}
+"768
+[; ;pictris.c: 768: _Bool checkForRightWall(volatile uint16_t * pObject)
+[v _checkForRightWall `(a ~T0 @X0 1 ef1`*Vus ]
+"769
+[; ;pictris.c: 769: {
+{
+[e :U _checkForRightWall ]
+"768
+[; ;pictris.c: 768: _Bool checkForRightWall(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"769
+[; ;pictris.c: 769: {
+[f ]
+"770
+[; ;pictris.c: 770:     return pObject[7] != 0;
+[e ) -> -> != -> *U + _pObject * -> -> 7 `i `x -> -> # *U _pObject `i `x `ui -> -> 0 `i `ui `i `a ]
+[e $UE 431  ]
+"771
+[; ;pictris.c: 771: }
+[e :UE 431 ]
+}
+"775
+[; ;pictris.c: 775: _Bool collisionDetect(volatile uint16_t * pSource, volatile uint16_t * pTarget)
+[v _collisionDetect `(a ~T0 @X0 1 ef2`*Vus`*Vus ]
+"776
+[; ;pictris.c: 776: {
+{
+[e :U _collisionDetect ]
+"775
+[; ;pictris.c: 775: _Bool collisionDetect(volatile uint16_t * pSource, volatile uint16_t * pTarget)
+[v _pSource `*Vus ~T0 @X0 1 r1 ]
+[v _pTarget `*Vus ~T0 @X0 1 r2 ]
+"776
+[; ;pictris.c: 776: {
+[f ]
+"777
+[; ;pictris.c: 777:     for (byte i = 0; i < 8; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 433  ]
+[e $U 434  ]
+[e :U 433 ]
+"778
+[; ;pictris.c: 778:         if (pSource[i] & pTarget[i])
+[e $ ! != & -> *U + _pSource * -> _i `ux -> -> # *U _pSource `ui `ux `ui -> *U + _pTarget * -> _i `ux -> -> # *U _pTarget `ui `ux `ui -> -> 0 `i `ui 436  ]
+"779
+[; ;pictris.c: 779:             return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 432  ]
+[e :U 436 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 433  ]
+[e :U 434 ]
+}
+"780
+[; ;pictris.c: 780:     return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 432  ]
+"781
+[; ;pictris.c: 781: }
+[e :UE 432 ]
+}
+"796
+[; ;pictris.c: 796: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+[v _newRotation `(v ~T0 @X0 1 ef3`*Vus`*us`E2756 ]
+"797
+[; ;pictris.c: 797: {
+{
+[e :U _newRotation ]
+"796
+[; ;pictris.c: 796: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+[v _pSource `*Vus ~T0 @X0 1 r1 ]
+[v _pTarget `*us ~T0 @X0 1 r2 ]
+[v _rotation `E2756 ~T0 @X0 1 r3 ]
+"797
+[; ;pictris.c: 797: {
+[f ]
+"798
+[; ;pictris.c: 798:     int8_t x2, y2;
+[v _x2 `c ~T0 @X0 1 a ]
+[v _y2 `c ~T0 @X0 1 a ]
+"799
+[; ;pictris.c: 799:     byte x1, y1;
+[v _x1 `uc ~T0 @X0 1 a ]
+[v _y1 `uc ~T0 @X0 1 a ]
+"802
+[; ;pictris.c: 802:     if (LimitedRotation == 2)
+[e $ ! == -> _LimitedRotation `i -> 2 `i 438  ]
+"803
+[; ;pictris.c: 803:         memcpy(pTarget, pSource, 16);
+[e ( _memcpy (3 , , -> _pTarget `*v -> _pSource `*Cv -> -> 16 `i `ui ]
+[e $U 439  ]
+"804
+[; ;pictris.c: 804:     else
+[e :U 438 ]
+"805
+[; ;pictris.c: 805:     {
+{
+"807
+[; ;pictris.c: 807:         clearArray(pTarget, 8);
+[e ( _clearArray (2 , -> _pTarget `*Vus -> -> 8 `i `ui ]
+"812
+[; ;pictris.c: 812:         if (LimitedRotation == 1 && IsRotated)
+[e $ ! && == -> _LimitedRotation `i -> 1 `i != -> _IsRotated `i -> 0 `i 440  ]
+"813
+[; ;pictris.c: 813:             rotation = CCW;
+[e = _rotation . `E2756 0 ]
+[e :U 440 ]
+"815
+[; ;pictris.c: 815:         for (x1 = 0; x1 < 8; x1++)
+{
+[e = _x1 -> -> 0 `i `uc ]
+[e $ < -> _x1 `i -> 8 `i 441  ]
+[e $U 442  ]
+[e :U 441 ]
+"816
+[; ;pictris.c: 816:             for (y1 = 0; y1 < 16; y1++)
+{
+[e = _y1 -> -> 0 `i `uc ]
+[e $ < -> _y1 `i -> 16 `i 444  ]
+[e $U 445  ]
+[e :U 444 ]
+"817
+[; ;pictris.c: 817:             {
+{
+"818
+[; ;pictris.c: 818:                 if (pSource[x1] & (1<<y1))
+[e $ ! != & -> *U + _pSource * -> _x1 `ux -> -> # *U _pSource `ui `ux `ui -> << -> 1 `i -> _y1 `i `ui -> -> 0 `i `ui 447  ]
+"819
+[; ;pictris.c: 819:                 {
+{
+"820
+[; ;pictris.c: 820:                     if (rotation == CW)
+[e $ ! == -> _rotation `ui -> . `E2756 1 `ui 448  ]
+"821
+[; ;pictris.c: 821:                     {
+{
+"822
+[; ;pictris.c: 822:                         x2 = OriginX + OriginY - y1;
+[e = _x2 -> - + -> _OriginX `i -> _OriginY `i -> _y1 `i `c ]
+"823
+[; ;pictris.c: 823:                         y2 = x1 + OriginY - OriginX;
+[e = _y2 -> - + -> _x1 `i -> _OriginY `i -> _OriginX `i `c ]
+"824
+[; ;pictris.c: 824:                     }
+}
+[e $U 449  ]
+"825
+[; ;pictris.c: 825:                     else
+[e :U 448 ]
+"826
+[; ;pictris.c: 826:                     {
+{
+"827
+[; ;pictris.c: 827:                         x2 = y1 + OriginX - OriginY;
+[e = _x2 -> - + -> _y1 `i -> _OriginX `i -> _OriginY `i `c ]
+"828
+[; ;pictris.c: 828:                         y2 = OriginX + OriginY - x1;
+[e = _y2 -> - + -> _OriginX `i -> _OriginY `i -> _x1 `i `c ]
+"829
+[; ;pictris.c: 829:                     }
+}
+[e :U 449 ]
+"830
+[; ;pictris.c: 830:                     if (x2 >= 0 && x2 < 8 &&
+[e $ ! && && && >= -> _x2 `i -> 0 `i < -> _x2 `i -> 8 `i >= -> _y2 `i -> 0 `i < -> _y2 `i -> 16 `i 450  ]
+"832
+[; ;pictris.c: 832:                         pTarget[x2] |= (1<<y2);
+[e =| *U + _pTarget * -> _x2 `x -> -> # *U _pTarget `i `x -> << -> 1 `i -> _y2 `i `us ]
+[e :U 450 ]
+"833
+[; ;pictris.c: 833:                 }
+}
+[e :U 447 ]
+"834
+[; ;pictris.c: 834:             }
+}
+[e ++ _y1 -> -> 1 `i `uc ]
+[e $ < -> _y1 `i -> 16 `i 444  ]
+[e :U 445 ]
+}
+[e ++ _x1 -> -> 1 `i `uc ]
+[e $ < -> _x1 `i -> 8 `i 441  ]
+[e :U 442 ]
+}
+"835
+[; ;pictris.c: 835:     }
+}
+[e :U 439 ]
+"836
+[; ;pictris.c: 836: }
+[e :UE 437 ]
+}
+"840
+[; ;pictris.c: 840: byte pixelCount(volatile uint16_t * pSource)
+[v _pixelCount `(uc ~T0 @X0 1 ef1`*Vus ]
+"841
+[; ;pictris.c: 841: {
+{
+[e :U _pixelCount ]
+"840
+[; ;pictris.c: 840: byte pixelCount(volatile uint16_t * pSource)
+[v _pSource `*Vus ~T0 @X0 1 r1 ]
+"841
+[; ;pictris.c: 841: {
+[f ]
+"842
+[; ;pictris.c: 842:     byte r = 0, x, y;
+[v _r `uc ~T0 @X0 1 a ]
+[e = _r -> -> 0 `i `uc ]
+[v _x `uc ~T0 @X0 1 a ]
+[v _y `uc ~T0 @X0 1 a ]
+"844
+[; ;pictris.c: 844:     for (x = 0; x < 8; x++)
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 452  ]
+[e $U 453  ]
+[e :U 452 ]
+"845
+[; ;pictris.c: 845:         for (y = 0; y < 16; y++)
+{
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 16 `i 455  ]
+[e $U 456  ]
+[e :U 455 ]
+"846
+[; ;pictris.c: 846:             if (pSource[x] & (1<<y))
+[e $ ! != & -> *U + _pSource * -> _x `ux -> -> # *U _pSource `ui `ux `ui -> << -> 1 `i -> _y `i `ui -> -> 0 `i `ui 458  ]
+"847
+[; ;pictris.c: 847:                 r++;
+[e ++ _r -> -> 1 `i `uc ]
+[e :U 458 ]
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 16 `i 455  ]
+[e :U 456 ]
+}
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 452  ]
+[e :U 453 ]
+}
+"848
+[; ;pictris.c: 848:     return r;
+[e ) _r ]
+[e $UE 451  ]
+"849
+[; ;pictris.c: 849: }
+[e :UE 451 ]
+}
+"852
+[; ;pictris.c: 852: _Bool moveObjectDown(volatile uint16_t * pObject)
+[v _moveObjectDown `(a ~T0 @X0 1 ef1`*Vus ]
+"853
+[; ;pictris.c: 853: {
+{
+[e :U _moveObjectDown ]
+"852
+[; ;pictris.c: 852: _Bool moveObjectDown(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"853
+[; ;pictris.c: 853: {
+[f ]
+"854
+[; ;pictris.c: 854:     _Bool result = 1;
+[v _result `a ~T0 @X0 1 a ]
+[e = _result -> -> 1 `i `a ]
+"857
+[; ;pictris.c: 857:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"860
+[; ;pictris.c: 860:     if (checkForBottom(pObject))
+[e $ ! != -> ( _checkForBottom (1 _pObject `i -> 0 `i 460  ]
+"861
+[; ;pictris.c: 861:     {
+{
+"863
+[; ;pictris.c: 863:         result = 0;
+[e = _result -> -> 0 `i `a ]
+"865
+[; ;pictris.c: 865:         mergeObjects(pObject, BackgroundData, MERGE);
+[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2767 1 ]
+"867
+[; ;pictris.c: 867:         selectNextObject(pObject);
+[e ( _selectNextObject (1 _pObject ]
+"869
+[; ;pictris.c: 869:         CheckForNewLines = 1;
+[e = _CheckForNewLines -> -> 1 `i `a ]
+"870
+[; ;pictris.c: 870:     }
+}
+[e $U 461  ]
+"871
+[; ;pictris.c: 871:     else
+[e :U 460 ]
+"872
+[; ;pictris.c: 872:     {
+{
+"874
+[; ;pictris.c: 874:         moveObject(pObject, DOWN, 1);
+[e ( _moveObject (3 , , _pObject . `E2761 0 -> -> 1 `i `uc ]
+"876
+[; ;pictris.c: 876:         if (collisionDetect(pObject, BackgroundData))
+[e $ ! != -> ( _collisionDetect (2 , _pObject &U _BackgroundData `i -> 0 `i 462  ]
+"877
+[; ;pictris.c: 877:         {
+{
+"880
+[; ;pictris.c: 880:             result = 0;
+[e = _result -> -> 0 `i `a ]
+"882
+[; ;pictris.c: 882:             moveObject(pObject, UP, 1);
+[e ( _moveObject (3 , , _pObject . `E2761 1 -> -> 1 `i `uc ]
+"884
+[; ;pictris.c: 884:             mergeObjects(pObject, BackgroundData, MERGE);
+[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2767 1 ]
+"886
+[; ;pictris.c: 886:             selectNextObject(pObject);
+[e ( _selectNextObject (1 _pObject ]
+"889
+[; ;pictris.c: 889:             EndOfGame = collisionDetect(pObject, BackgroundData);
+[e = _EndOfGame ( _collisionDetect (2 , _pObject &U _BackgroundData ]
+"891
+[; ;pictris.c: 891:             CheckForNewLines = 1;
+[e = _CheckForNewLines -> -> 1 `i `a ]
+"892
+[; ;pictris.c: 892:         }
+}
+[e :U 462 ]
+"893
+[; ;pictris.c: 893:     }
+}
+[e :U 461 ]
+"894
+[; ;pictris.c: 894:     mS = 0;
+[e = _mS -> -> 0 `i `us ]
+"897
+[; ;pictris.c: 897:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"899
+[; ;pictris.c: 899:     return result;
+[e ) _result ]
+[e $UE 459  ]
+"900
+[; ;pictris.c: 900: }
+[e :UE 459 ]
+}
+"904
+[; ;pictris.c: 904: void checkButtons(void)
+[v _checkButtons `(v ~T0 @X0 1 ef ]
+"905
+[; ;pictris.c: 905: {
+{
+[e :U _checkButtons ]
+[f ]
+"907
+[; ;pictris.c: 907:     if (Left_Debounced)
+[e $ ! != -> _Left_Debounced `i -> 0 `i 464  ]
+"908
+[; ;pictris.c: 908:     {
+{
+"909
+[; ;pictris.c: 909:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"910
+[; ;pictris.c: 910:         Left_Debounced = 0;
+[e = _Left_Debounced -> -> 0 `i `a ]
+"911
+[; ;pictris.c: 911:         Left_Delay = 500;
+[e = _Left_Delay -> -> 500 `i `s ]
+"912
+[; ;pictris.c: 912:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"915
+[; ;pictris.c: 915:     if (tetris == 1){
+[e $ ! == -> _tetris `i -> 1 `i 465  ]
+{
+"916
+[; ;pictris.c: 916:         if (!checkForLeftWall(ObjectData))
+[e $ ! ! != -> ( _checkForLeftWall (1 &U _ObjectData `i -> 0 `i 466  ]
+"917
+[; ;pictris.c: 917:         {
+{
+"920
+[; ;pictris.c: 920:             memcpy(tmpObjectData, ObjectData, 16);
+[e ( _memcpy (3 , , -> &U _tmpObjectData `*v -> &U _ObjectData `*Cv -> -> 16 `i `ui ]
+"922
+[; ;pictris.c: 922:             moveObject(tmpObjectData, LEFT, 1);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2761 2 -> -> 1 `i `uc ]
+"924
+[; ;pictris.c: 924:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 467  ]
+"925
+[; ;pictris.c: 925:             {
+{
+"928
+[; ;pictris.c: 928:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"931
+[; ;pictris.c: 931:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2767 0 ]
+"934
+[; ;pictris.c: 934:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"937
+[; ;pictris.c: 937:                 CheckForNewLines = 1;
+[e = _CheckForNewLines -> -> 1 `i `a ]
+"938
+[; ;pictris.c: 938:             }
+}
+[e :U 467 ]
+"939
+[; ;pictris.c: 939:         }
+}
+[e :U 466 ]
+"940
+[; ;pictris.c: 940:     }
+}
+[e $U 468  ]
+"942
+[; ;pictris.c: 942:     else if (previous_direction != 1){ direction = 3 ;}
+[e :U 465 ]
+[e $ ! != -> _previous_direction `i -> 1 `i 469  ]
+{
+[e = _direction -> -> 3 `i `uc ]
+}
+[e :U 469 ]
+[e :U 468 ]
+"944
+[; ;pictris.c: 944:     }
+}
+[e :U 464 ]
+"947
+[; ;pictris.c: 947:     if (Right_Debounced)
+[e $ ! != -> _Right_Debounced `i -> 0 `i 470  ]
+"948
+[; ;pictris.c: 948:     {
+{
+"949
+[; ;pictris.c: 949:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"950
+[; ;pictris.c: 950:         Right_Debounced = 0;
+[e = _Right_Debounced -> -> 0 `i `a ]
+"951
+[; ;pictris.c: 951:         Right_Delay = 500;
+[e = _Right_Delay -> -> 500 `i `s ]
+"952
+[; ;pictris.c: 952:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"955
+[; ;pictris.c: 955:     if (tetris == 1) {
+[e $ ! == -> _tetris `i -> 1 `i 471  ]
+{
+"956
+[; ;pictris.c: 956:         if (!checkForRightWall(ObjectData))
+[e $ ! ! != -> ( _checkForRightWall (1 &U _ObjectData `i -> 0 `i 472  ]
+"957
+[; ;pictris.c: 957:         {
+{
+"958
+[; ;pictris.c: 958:             mergeObjects(ObjectData, tmpObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , &U _ObjectData -> &U _tmpObjectData `*Vus . `E2767 0 ]
+"959
+[; ;pictris.c: 959:             moveObject(tmpObjectData, RIGHT, 1);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2761 3 -> -> 1 `i `uc ]
+"961
+[; ;pictris.c: 961:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 473  ]
+"962
+[; ;pictris.c: 962:             {
+{
+"964
+[; ;pictris.c: 964:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"966
+[; ;pictris.c: 966:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2767 0 ]
+"968
+[; ;pictris.c: 968:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"970
+[; ;pictris.c: 970:                 CheckForNewLines = 1;
+[e = _CheckForNewLines -> -> 1 `i `a ]
+"971
+[; ;pictris.c: 971:             }
+}
+[e :U 473 ]
+"972
+[; ;pictris.c: 972:         }
+}
+[e :U 472 ]
+"973
+[; ;pictris.c: 973:     }
+}
+[e $U 474  ]
+"975
+[; ;pictris.c: 975:     else if (previous_direction != 3){ direction = 1 ;}
+[e :U 471 ]
+[e $ ! != -> _previous_direction `i -> 3 `i 475  ]
+{
+[e = _direction -> -> 1 `i `uc ]
+}
+[e :U 475 ]
+[e :U 474 ]
+"977
+[; ;pictris.c: 977:     }
+}
+[e :U 470 ]
+"979
+[; ;pictris.c: 979:     if (Rotate_Debounced)
+[e $ ! != -> _Rotate_Debounced `i -> 0 `i 476  ]
+"980
+[; ;pictris.c: 980:     {
+{
+"981
+[; ;pictris.c: 981:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"982
+[; ;pictris.c: 982:         Rotate_Debounced = 0;
+[e = _Rotate_Debounced -> -> 0 `i `a ]
+"983
+[; ;pictris.c: 983:         Rotate_Delay = 500;
+[e = _Rotate_Delay -> -> 500 `i `s ]
+"984
+[; ;pictris.c: 984:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"986
+[; ;pictris.c: 986:     if (tetris == 1 ){
+[e $ ! == -> _tetris `i -> 1 `i 477  ]
+{
+"987
+[; ;pictris.c: 987:         newRotation(ObjectData, tmpObjectData, CW);
+[e ( _newRotation (3 , , &U _ObjectData &U _tmpObjectData . `E2756 1 ]
+"989
+[; ;pictris.c: 989:         if (pixelCount(ObjectData) == pixelCount(tmpObjectData))
+[e $ ! == -> ( _pixelCount (1 &U _ObjectData `i -> ( _pixelCount (1 -> &U _tmpObjectData `*Vus `i 478  ]
+"990
+[; ;pictris.c: 990:         {
+{
+"992
+[; ;pictris.c: 992:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 479  ]
+"993
+[; ;pictris.c: 993:             {
+{
+"997
+[; ;pictris.c: 997:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1000
+[; ;pictris.c: 1000:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2767 0 ]
+"1002
+[; ;pictris.c: 1002:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1004
+[; ;pictris.c: 1004:                 IsRotated = !IsRotated;
+[e = _IsRotated -> -> ! != -> _IsRotated `i -> 0 `i `i `a ]
+"1005
+[; ;pictris.c: 1005:             }
+}
+[e :U 479 ]
+"1006
+[; ;pictris.c: 1006:         }
+}
+[e :U 478 ]
+"1007
+[; ;pictris.c: 1007:     }
+}
+[e $U 480  ]
+"1009
+[; ;pictris.c: 1009:     else if (previous_direction != 2){ direction = 0 ;}
+[e :U 477 ]
+[e $ ! != -> _previous_direction `i -> 2 `i 481  ]
+{
+[e = _direction -> -> 0 `i `uc ]
+}
+[e :U 481 ]
+[e :U 480 ]
+"1011
+[; ;pictris.c: 1011:     }
+}
+[e :U 476 ]
+"1013
+[; ;pictris.c: 1013:     if (Down_Debounced)
+[e $ ! != -> _Down_Debounced `i -> 0 `i 482  ]
+"1014
+[; ;pictris.c: 1014:     {
+{
+"1016
+[; ;pictris.c: 1016:         if (tetris == 1) {
+[e $ ! == -> _tetris `i -> 1 `i 483  ]
+{
+"1017
+[; ;pictris.c: 1017:         while (moveObjectDown(ObjectData))
+[e $U 484  ]
+[e :U 485 ]
+"1018
+[; ;pictris.c: 1018:             continue; }
+[e $U 484  ]
+[e :U 484 ]
+"1017
+[; ;pictris.c: 1017:         while (moveObjectDown(ObjectData))
+[e $ != -> ( _moveObjectDown (1 &U _ObjectData `i -> 0 `i 485  ]
+[e :U 486 ]
+"1018
+[; ;pictris.c: 1018:             continue; }
+}
+[e $U 487  ]
+"1020
+[; ;pictris.c: 1020:         else if (previous_direction != 0){ direction = 2 ;};
+[e :U 483 ]
+[e $ ! != -> _previous_direction `i -> 0 `i 488  ]
+{
+[e = _direction -> -> 2 `i `uc ]
+}
+[e :U 488 ]
+[e :U 487 ]
+"1022
+[; ;pictris.c: 1022:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"1023
+[; ;pictris.c: 1023:         Down_Debounced = 0;
+[e = _Down_Debounced -> -> 0 `i `a ]
+"1024
+[; ;pictris.c: 1024:         Down_Delay = 0x7fff;
+[e = _Down_Delay -> -> 32767 `i `s ]
+"1025
+[; ;pictris.c: 1025:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"1026
+[; ;pictris.c: 1026:     }
+}
+[e :U 482 ]
+"1027
+[; ;pictris.c: 1027: }
+[e :UE 463 ]
+}
+"1030
+[; ;pictris.c: 1030: void removeLine(volatile uint16_t * pObject, byte pY)
+[v _removeLine `(v ~T0 @X0 1 ef2`*Vus`uc ]
+"1031
+[; ;pictris.c: 1031: {
+{
+[e :U _removeLine ]
+"1030
+[; ;pictris.c: 1030: void removeLine(volatile uint16_t * pObject, byte pY)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+[v _pY `uc ~T0 @X0 1 r2 ]
+"1031
+[; ;pictris.c: 1031: {
+[f ]
+"1032
+[; ;pictris.c: 1032:     byte x, y, currentLine;
+[v _x `uc ~T0 @X0 1 a ]
+[v _y `uc ~T0 @X0 1 a ]
+[v _currentLine `uc ~T0 @X0 1 a ]
+"1035
+[; ;pictris.c: 1035:     for (y = pY-1; y < pY; y--)
+{
+[e = _y -> - -> _pY `i -> 1 `i `uc ]
+[e $U 493  ]
+[e :U 490 ]
+"1036
+[; ;pictris.c: 1036:     {
+{
+"1037
+[; ;pictris.c: 1037:         currentLine = y + 1;
+[e = _currentLine -> + -> _y `i -> 1 `i `uc ]
+"1038
+[; ;pictris.c: 1038:         for (x = 0; x < 8; x++)
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 494  ]
+[e $U 495  ]
+[e :U 494 ]
+"1039
+[; ;pictris.c: 1039:             pObject[x] = (pObject[x] & ~(1<<currentLine)) | ((((pObject[x] >> y) & 1)&1)<<currentLine);
+[e = *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux -> | & -> *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux `ui -> ~ << -> 1 `i -> _currentLine `i `ui << & & >> -> *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux `ui -> _y `i -> -> 1 `i `ui -> -> 1 `i `ui -> _currentLine `i `us ]
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 494  ]
+[e :U 495 ]
+}
+"1041
+[; ;pictris.c: 1041:     }
+}
+[e -- _y -> -> 1 `i `uc ]
+[e :U 493 ]
+[e $ < -> _y `i -> _pY `i 490  ]
+[e :U 491 ]
+}
+"1043
+[; ;pictris.c: 1043:     for (x = 0; x < 8; x++)
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 497  ]
+[e $U 498  ]
+[e :U 497 ]
+"1044
+[; ;pictris.c: 1044:         pObject[x] &= ~(1<<0);
+[e =& *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux -> ~ << -> 1 `i -> 0 `i `us ]
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 497  ]
+[e :U 498 ]
+}
+"1045
+[; ;pictris.c: 1045: }
+[e :UE 489 ]
+}
+"1048
+[; ;pictris.c: 1048: void checkForLines(volatile uint16_t * pObject)
+[v _checkForLines `(v ~T0 @X0 1 ef1`*Vus ]
+"1049
+[; ;pictris.c: 1049: {
+{
+[e :U _checkForLines ]
+"1048
+[; ;pictris.c: 1048: void checkForLines(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"1049
+[; ;pictris.c: 1049: {
+[f ]
+"1050
+[; ;pictris.c: 1050:     byte x, y, pixels;
+[v _x `uc ~T0 @X0 1 a ]
+[v _y `uc ~T0 @X0 1 a ]
+[v _pixels `uc ~T0 @X0 1 a ]
+"1052
+[; ;pictris.c: 1052:     for (y = 0; y < 16; y++)
+{
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 16 `i 501  ]
+[e $U 502  ]
+[e :U 501 ]
+"1053
+[; ;pictris.c: 1053:     {
+{
+"1054
+[; ;pictris.c: 1054:         pixels = 0;
+[e = _pixels -> -> 0 `i `uc ]
+"1055
+[; ;pictris.c: 1055:         for (x = 0; x < 8; x++)
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 504  ]
+[e $U 505  ]
+[e :U 504 ]
+"1056
+[; ;pictris.c: 1056:             if (pObject[x] & (1<<y))
+[e $ ! != & -> *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux `ui -> << -> 1 `i -> _y `i `ui -> -> 0 `i `ui 507  ]
+"1057
+[; ;pictris.c: 1057:                 pixels++;
+[e ++ _pixels -> -> 1 `i `uc ]
+[e :U 507 ]
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 504  ]
+[e :U 505 ]
+}
+"1058
+[; ;pictris.c: 1058:         if (pixels == 8)
+[e $ ! == -> _pixels `i -> 8 `i 508  ]
+"1059
+[; ;pictris.c: 1059:         {
+{
+"1060
+[; ;pictris.c: 1060:             removeLine(pObject, y);
+[e ( _removeLine (2 , _pObject _y ]
+"1061
+[; ;pictris.c: 1061:             NumberOfLines++;
+[e ++ _NumberOfLines -> -> 1 `i `uc ]
+"1062
+[; ;pictris.c: 1062:         }
+}
+[e :U 508 ]
+"1063
+[; ;pictris.c: 1063:     }
+}
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 16 `i 501  ]
+[e :U 502 ]
+}
+"1064
+[; ;pictris.c: 1064: }
+[e :UE 500 ]
+}
+"1068
+[; ;pictris.c: 1068: void initialise_TMR0(void)
+[v _initialise_TMR0 `(v ~T0 @X0 1 ef ]
+"1069
+[; ;pictris.c: 1069: {
+{
+[e :U _initialise_TMR0 ]
+[f ]
+"1070
+[; ;pictris.c: 1070:     T0CONbits.T0PS = 0x3;
+[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+"1071
+[; ;pictris.c: 1071:     PSA = 0;
+[e = _PSA -> -> 0 `i `b ]
+"1072
+[; ;pictris.c: 1072:     T0CS = 0;
+[e = _T0CS -> -> 0 `i `b ]
+"1073
+[; ;pictris.c: 1073:     TMR0ON = 1;
+[e = _TMR0ON -> -> 1 `i `b ]
+"1074
+[; ;pictris.c: 1074:     TMR0 = (~125);
+[e = _TMR0 -> ~ -> 125 `i `us ]
+"1075
+[; ;pictris.c: 1075:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"1076
+[; ;pictris.c: 1076:     TMR0IE = 1;
+[e = _TMR0IE -> -> 1 `i `b ]
+"1077
+[; ;pictris.c: 1077:     TMR0ON = 1;
+[e = _TMR0ON -> -> 1 `i `b ]
+"1078
+[; ;pictris.c: 1078: }
+[e :UE 509 ]
+}
+"1080
+[; ;pictris.c: 1080: void initialise_hardware(void)
+[v _initialise_hardware `(v ~T0 @X0 1 ef ]
+"1081
+[; ;pictris.c: 1081: {
+{
+[e :U _initialise_hardware ]
+[f ]
+"1083
+[; ;pictris.c: 1083:     OSCCONbits.IDLEN = 0;
+[e = . . _OSCCONbits 0 4 -> -> 0 `i `uc ]
+"1084
+[; ;pictris.c: 1084:     OSCCONbits.IRCF = 0x7;
+[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
+"1085
+[; ;pictris.c: 1085:     OSCCONbits.SCS = 0x2;
+[e = . . _OSCCONbits 0 0 -> -> 2 `i `uc ]
+"1088
+[; ;pictris.c: 1088:     ADCON1bits.PCFG = 0x0F;
+[e = . . _ADCON1bits 0 0 -> -> 15 `i `uc ]
+"1091
+[; ;pictris.c: 1091:     DDRA = 0x00; PORTA = 0x00;
+[e = _DDRA -> -> 0 `i `uc ]
+[e = _PORTA -> -> 0 `i `uc ]
+"1093
+[; ;pictris.c: 1093:     DDRB = 0xFF; PORTB = 0x00; INTCON2bits.RBPU = 0;
+[e = _DDRB -> -> 255 `i `uc ]
+[e = _PORTB -> -> 0 `i `uc ]
+[e = . . _INTCON2bits 2 1 -> -> 0 `i `uc ]
+"1097
+[; ;pictris.c: 1097:     DDRC = 0x00; PORTC = 0x00;
+[e = _DDRC -> -> 0 `i `uc ]
+[e = _PORTC -> -> 0 `i `uc ]
+"1098
+[; ;pictris.c: 1098:     DDRD = 0x00; PORTD = 0x00;
+[e = _DDRD -> -> 0 `i `uc ]
+[e = _PORTD -> -> 0 `i `uc ]
+"1101
+[; ;pictris.c: 1101:     initialise_TMR0();
+[e ( _initialise_TMR0 ..  ]
+"1103
+[; ;pictris.c: 1103:     IPEN = 0;
+[e = _IPEN -> -> 0 `i `b ]
+"1104
+[; ;pictris.c: 1104:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
+"1105
+[; ;pictris.c: 1105: }
+[e :UE 510 ]
+}
+"1108
+[; ;pictris.c: 1108: void initialise_globals(void)
+[v _initialise_globals `(v ~T0 @X0 1 ef ]
+"1109
+[; ;pictris.c: 1109: {
+{
+[e :U _initialise_globals ]
+[f ]
+"1111
+[; ;pictris.c: 1111:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"1113
+[; ;pictris.c: 1113:     clearArray(BackgroundData, 8);
+[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
+"1117
+[; ;pictris.c: 1117:     OriginX = 0;
+[e = _OriginX -> -> 0 `i `uc ]
+"1118
+[; ;pictris.c: 1118:     OriginY = 0;
+[e = _OriginY -> -> 0 `i `uc ]
+"1120
+[; ;pictris.c: 1120:     NumberOfLines = 0;
+[e = _NumberOfLines -> -> 0 `i `uc ]
+"1122
+[; ;pictris.c: 1122:     DropObject = 0;
+[e = _DropObject -> -> 0 `i `a ]
+"1123
+[; ;pictris.c: 1123:     EndOfGame = 0;
+[e = _EndOfGame -> -> 0 `i `a ]
+"1124
+[; ;pictris.c: 1124:     CheckForNewLines = 0;
+[e = _CheckForNewLines -> -> 0 `i `a ]
+"1126
+[; ;pictris.c: 1126:     mS = 0;
+[e = _mS -> -> 0 `i `us ]
+"1134
+[; ;pictris.c: 1134:     mtxButtons = 1;
+[e = _mtxButtons -> -> 1 `i `a ]
+"1136
+[; ;pictris.c: 1136:     Left_Delay = -1;
+[e = _Left_Delay -> -U -> 1 `i `s ]
+"1137
+[; ;pictris.c: 1137:     Left_Debounced = 0;
+[e = _Left_Debounced -> -> 0 `i `a ]
+"1140
+[; ;pictris.c: 1140:     Right_Delay = -1;
+[e = _Right_Delay -> -U -> 1 `i `s ]
+"1141
+[; ;pictris.c: 1141:     Right_Debounced = 0;
+[e = _Right_Debounced -> -> 0 `i `a ]
+"1144
+[; ;pictris.c: 1144:     Rotate_Delay = -1;
+[e = _Rotate_Delay -> -U -> 1 `i `s ]
+"1145
+[; ;pictris.c: 1145:     Rotate_Debounced = 0;
+[e = _Rotate_Debounced -> -> 0 `i `a ]
+"1148
+[; ;pictris.c: 1148:     Down_Delay = -1;
+[e = _Down_Delay -> -U -> 1 `i `s ]
+"1149
+[; ;pictris.c: 1149:     Down_Debounced = 0;
+[e = _Down_Debounced -> -> 0 `i `a ]
+"1152
+[; ;pictris.c: 1152:     moveSnake = 0;
+[e = _moveSnake -> -> 0 `i `a ]
+"1154
+[; ;pictris.c: 1154:     snakeLength = 3;
+[e = _snakeLength -> -> 3 `i `uc ]
+"1155
+[; ;pictris.c: 1155:     previous_direction = 3;
+[e = _previous_direction -> -> 3 `i `uc ]
+"1156
+[; ;pictris.c: 1156:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"1157
+[; ;pictris.c: 1157:     for (i=0;i<4;i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 512  ]
+[e $U 513  ]
+[e :U 512 ]
+{
+"1158
+[; ;pictris.c: 1158:         positions[i].y = 3;
+[e = . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 -> -> 3 `i `uc ]
+"1159
+[; ;pictris.c: 1159:         positions[i].x = 4-i;
+[e = . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 -> - -> 4 `i -> _i `i `uc ]
+"1160
+[; ;pictris.c: 1160:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 512  ]
+[e :U 513 ]
+}
+"1161
+[; ;pictris.c: 1161:     positions[0].y = 3;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 3 `i `uc ]
+"1162
+[; ;pictris.c: 1162:     positions[0].x = 3;
+[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 3 `i `uc ]
+"1163
+[; ;pictris.c: 1163:     direction = 1;
+[e = _direction -> -> 1 `i `uc ]
+"1164
+[; ;pictris.c: 1164:     CreateBerry();
+[e ( _CreateBerry ..  ]
+"1168
+[; ;pictris.c: 1168: }
+[e :UE 511 ]
+}
+"1172
+[; ;pictris.c: 1172: void splash_screen(void)
+[v _splash_screen `(v ~T0 @X0 1 ef ]
+"1173
+[; ;pictris.c: 1173: {
+{
+[e :U _splash_screen ]
+[f ]
+"1176
+[; ;pictris.c: 1176:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1178
+[; ;pictris.c: 1178:     if (tetris == 1){ memcpy(ObjectData, TETRIS, 16); }
+[e $ ! == -> _tetris `i -> 1 `i 516  ]
+{
+[e ( _memcpy (3 , , -> &U _ObjectData `*v -> &U _TETRIS `*Cv -> -> 16 `i `ui ]
+}
+[e $U 517  ]
+"1179
+[; ;pictris.c: 1179:     else {memcpy(ObjectData,SNAKE,16);}
+[e :U 516 ]
+{
+[e ( _memcpy (3 , , -> &U _ObjectData `*v -> &U _SNAKE `*Cv -> -> 16 `i `ui ]
+}
+[e :U 517 ]
+"1181
+[; ;pictris.c: 1181:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1183
+[; ;pictris.c: 1183:     waitms(3500);
+[e ( _waitms (1 -> -> 3500 `i `ui ]
+"1184
+[; ;pictris.c: 1184: }
+[e :UE 515 ]
+}
+"1187
+[; ;pictris.c: 1187: void choosescreen(void)
+[v _choosescreen `(v ~T0 @X0 1 ef ]
+"1188
+[; ;pictris.c: 1188: {
+{
+[e :U _choosescreen ]
+[f ]
+"1189
+[; ;pictris.c: 1189:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"1192
+[; ;pictris.c: 1192:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1195
+[; ;pictris.c: 1195:     clearArray(tmpObjectData, 8);
+[e ( _clearArray (2 , -> &U _tmpObjectData `*Vus -> -> 8 `i `ui ]
+"1196
+[; ;pictris.c: 1196:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"1197
+[; ;pictris.c: 1197:     clearArray(BackgroundData, 8);
+[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
+"1198
+[; ;pictris.c: 1198:     for (i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 519  ]
+[e $U 520  ]
+[e :U 519 ]
+"1199
+[; ;pictris.c: 1199:     {
+{
+"1200
+[; ;pictris.c: 1200:         ObjectData[i] = choose_screen[i];
+[e = *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux *U + &U _choose_screen * -> _i `ux -> -> # *U &U _choose_screen `ui `ux ]
+"1201
+[; ;pictris.c: 1201:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 519  ]
+[e :U 520 ]
+}
+"1204
+[; ;pictris.c: 1204:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1208
+[; ;pictris.c: 1208:      while (Down_Debounced || Rotate_Debounced)
+[e $U 522  ]
+[e :U 523 ]
+"1209
+[; ;pictris.c: 1209:         continue;
+[e $U 522  ]
+[e :U 522 ]
+"1208
+[; ;pictris.c: 1208:      while (Down_Debounced || Rotate_Debounced)
+[e $ || != -> _Down_Debounced `i -> 0 `i != -> _Rotate_Debounced `i -> 0 `i 523  ]
+[e :U 524 ]
+"1212
+[; ;pictris.c: 1212:     while (!Down_Debounced && !Rotate_Debounced)
+[e $U 525  ]
+[e :U 526 ]
+"1213
+[; ;pictris.c: 1213:         continue;
+[e $U 525  ]
+[e :U 525 ]
+"1212
+[; ;pictris.c: 1212:     while (!Down_Debounced && !Rotate_Debounced)
+[e $ && ! != -> _Down_Debounced `i -> 0 `i ! != -> _Rotate_Debounced `i -> 0 `i 526  ]
+[e :U 527 ]
+"1214
+[; ;pictris.c: 1214:     uint16_t mask[8];
+[v _mask `us ~T0 @X0 -> 8 `i a ]
+"1215
+[; ;pictris.c: 1215:     if(Down_Debounced == 1) { tetris = 0;
+[e $ ! == -> _Down_Debounced `i -> 1 `i 528  ]
+{
+[e = _tetris -> -> 0 `i `a ]
+"1216
+[; ;pictris.c: 1216:     for (i=0;i<8;i++){ mask[i] = 0xFF00; }}
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 529  ]
+[e $U 530  ]
+[e :U 529 ]
+{
+[e = *U + &U _mask * -> _i `ux -> -> # *U &U _mask `ui `ux -> -> 65280 `ui `us ]
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 529  ]
+[e :U 530 ]
+}
+}
+[e $U 532  ]
+"1217
+[; ;pictris.c: 1217:     else {if(Rotate_Debounced == 1) { tetris = 1;
+[e :U 528 ]
+{
+[e $ ! == -> _Rotate_Debounced `i -> 1 `i 533  ]
+{
+[e = _tetris -> -> 1 `i `a ]
+"1218
+[; ;pictris.c: 1218:     for (i=0;i<8;i++){ mask[i] = 0x00FF; }};}
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 534  ]
+[e $U 535  ]
+[e :U 534 ]
+{
+[e = *U + &U _mask * -> _i `ux -> -> # *U &U _mask `ui `ux -> -> 255 `i `us ]
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 534  ]
+[e :U 535 ]
+}
+}
+[e :U 533 ]
+}
+[e :U 532 ]
+"1221
+[; ;pictris.c: 1221:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1222
+[; ;pictris.c: 1222:     mergeObjects(mask, ObjectData, INVERT);
+[e ( _mergeObjects (3 , , -> &U _mask `*Vus &U _ObjectData . `E2767 2 ]
+"1223
+[; ;pictris.c: 1223:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1227
+[; ;pictris.c: 1227:     while (Down_Debounced || Rotate_Debounced)
+[e $U 537  ]
+[e :U 538 ]
+"1228
+[; ;pictris.c: 1228:         continue;
+[e $U 537  ]
+[e :U 537 ]
+"1227
+[; ;pictris.c: 1227:     while (Down_Debounced || Rotate_Debounced)
+[e $ || != -> _Down_Debounced `i -> 0 `i != -> _Rotate_Debounced `i -> 0 `i 538  ]
+[e :U 539 ]
+"1229
+[; ;pictris.c: 1229:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"1230
+[; ;pictris.c: 1230:     Down_Delay = 500;
+[e = _Down_Delay -> -> 500 `i `s ]
+"1231
+[; ;pictris.c: 1231:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"1232
+[; ;pictris.c: 1232: }
+[e :UE 518 ]
+}
+"1235
+[; ;pictris.c: 1235: void getNumber(byte pDigit, uint16_t * pTarget)
+[v _getNumber `(v ~T0 @X0 1 ef2`uc`*us ]
+"1236
+[; ;pictris.c: 1236: {
+{
+[e :U _getNumber ]
+"1235
+[; ;pictris.c: 1235: void getNumber(byte pDigit, uint16_t * pTarget)
+[v _pDigit `uc ~T0 @X0 1 r1 ]
+[v _pTarget `*us ~T0 @X0 1 r2 ]
+"1236
+[; ;pictris.c: 1236: {
+[f ]
+"1237
+[; ;pictris.c: 1237:     memcpy(pTarget, Number[pDigit], 16);
+[e ( _memcpy (3 , , -> _pTarget `*v -> &U *U + &U _Number * -> _pDigit `ux -> * -> # *U &U *U &U _Number `ui -> -> 8 `i `ui `ux `*Cv -> -> 16 `i `ui ]
+"1238
+[; ;pictris.c: 1238: }
+[e :UE 540 ]
+}
+"1240
+[; ;pictris.c: 1240: void show_score(byte score)
+[v _show_score `(v ~T0 @X0 1 ef1`uc ]
+"1241
+[; ;pictris.c: 1241: {
+{
+[e :U _show_score ]
+"1240
+[; ;pictris.c: 1240: void show_score(byte score)
+[v _score `uc ~T0 @X0 1 r1 ]
+"1241
+[; ;pictris.c: 1241: {
+[f ]
+"1242
+[; ;pictris.c: 1242:     byte i, currentNumber;
+[v _i `uc ~T0 @X0 1 a ]
+[v _currentNumber `uc ~T0 @X0 1 a ]
+"1243
+[; ;pictris.c: 1243:     char number[4];
+[v _number `uc ~T0 @X0 -> 4 `i a ]
+"1247
+[; ;pictris.c: 1247:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1250
+[; ;pictris.c: 1250:     clearArray(tmpObjectData, 8);
+[e ( _clearArray (2 , -> &U _tmpObjectData `*Vus -> -> 8 `i `ui ]
+"1251
+[; ;pictris.c: 1251:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"1252
+[; ;pictris.c: 1252:     clearArray(BackgroundData, 8);
+[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
+"1254
+[; ;pictris.c: 1254:     itoa(score, number, 10);
+[e ( _itoa (3 , , -> _score `i &U _number -> 10 `i ]
+"1255
+[; ;pictris.c: 1255:     for (i = 0; i < 3 && number[i]; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 545  ]
+[e :U 542 ]
+"1256
+[; ;pictris.c: 1256:     {
+{
+"1257
+[; ;pictris.c: 1257:         currentNumber = number[i] - '0';
+[e = _currentNumber -> - -> *U + &U _number * -> _i `ux -> -> # *U &U _number `ui `ux `ui -> 48 `ui `uc ]
+"1258
+[; ;pictris.c: 1258:         getNumber(currentNumber, tmpObjectData);
+[e ( _getNumber (2 , _currentNumber &U _tmpObjectData ]
+"1260
+[; ;pictris.c: 1260:         moveObject(tmpObjectData, DOWN, (2-i) * 5);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2761 0 -> * - -> 2 `i -> _i `i -> 5 `i `uc ]
+"1261
+[; ;pictris.c: 1261:         moveObject(tmpObjectData, RIGHT, i);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2761 3 _i ]
+"1263
+[; ;pictris.c: 1263:         mergeObjects(tmpObjectData, ObjectData, MERGE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2767 1 ]
+"1264
+[; ;pictris.c: 1264:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 545 ]
+[e $ && < -> _i `i -> 3 `i != -> *U + &U _number * -> _i `ux -> -> # *U &U _number `ui `ux `i -> 0 `i 542  ]
+[e :U 543 ]
+}
+"1267
+[; ;pictris.c: 1267:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1271
+[; ;pictris.c: 1271:      while (Down_Debounced)
+[e $U 546  ]
+[e :U 547 ]
+"1272
+[; ;pictris.c: 1272:         continue;
+[e $U 546  ]
+[e :U 546 ]
+"1271
+[; ;pictris.c: 1271:      while (Down_Debounced)
+[e $ != -> _Down_Debounced `i -> 0 `i 547  ]
+[e :U 548 ]
+"1275
+[; ;pictris.c: 1275:     while (!Down_Debounced)
+[e $U 549  ]
+[e :U 550 ]
+"1276
+[; ;pictris.c: 1276:         continue;
+[e $U 549  ]
+[e :U 549 ]
+"1275
+[; ;pictris.c: 1275:     while (!Down_Debounced)
+[e $ ! != -> _Down_Debounced `i -> 0 `i 550  ]
+[e :U 551 ]
+"1279
+[; ;pictris.c: 1279:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+[v F2907 `us ~T0 @X0 -> 8 `i s ]
+[i F2907
+:U ..
+"1280
+[; ;pictris.c: 1280:     uint16_t mask[] = {0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff};
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+-> -> 65535 `ui `us
+..
+]
+[v _mask `us ~T0 @X0 -> 8 `i a ]
+[e = _mask F2907 ]
+"1281
+[; ;pictris.c: 1281:     mergeObjects(mask, ObjectData, INVERT);
+[e ( _mergeObjects (3 , , -> &U _mask `*Vus &U _ObjectData . `E2767 2 ]
+"1282
+[; ;pictris.c: 1282:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1286
+[; ;pictris.c: 1286:     while (Down_Debounced)
+[e $U 552  ]
+[e :U 553 ]
+"1287
+[; ;pictris.c: 1287:         continue;
+[e $U 552  ]
+[e :U 552 ]
+"1286
+[; ;pictris.c: 1286:     while (Down_Debounced)
+[e $ != -> _Down_Debounced `i -> 0 `i 553  ]
+[e :U 554 ]
+"1288
+[; ;pictris.c: 1288:     pauseButtons();
+[e ( _pauseButtons ..  ]
+"1289
+[; ;pictris.c: 1289:     Down_Delay = 500;
+[e = _Down_Delay -> -> 500 `i `s ]
+"1290
+[; ;pictris.c: 1290:     resumeButtons();
+[e ( _resumeButtons ..  ]
+"1291
+[; ;pictris.c: 1291: }
+[e :UE 541 ]
+}
+"1293
+[; ;pictris.c: 1293: uint8_t ReadEEByte(uint8_t address)
+[v _ReadEEByte `(uc ~T0 @X0 1 ef1`uc ]
+"1294
+[; ;pictris.c: 1294: {
+{
+[e :U _ReadEEByte ]
+"1293
+[; ;pictris.c: 1293: uint8_t ReadEEByte(uint8_t address)
+[v _address `uc ~T0 @X0 1 r1 ]
+"1294
+[; ;pictris.c: 1294: {
+[f ]
+"1295
+[; ;pictris.c: 1295: EEADR=address;
+[e = _EEADR _address ]
+"1296
+[; ;pictris.c: 1296: EECON1bits.EEPGD=0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+"1297
+[; ;pictris.c: 1297: EECON1bits.CFGS=0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+"1298
+[; ;pictris.c: 1298: EECON1bits.RD=1;
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+"1299
+[; ;pictris.c: 1299: return EEDATA;
+[e ) _EEDATA ]
+[e $UE 555  ]
+"1300
+[; ;pictris.c: 1300: }
+[e :UE 555 ]
+}
+"1303
+[; ;pictris.c: 1303: void WriteEEByte(byte address, byte data)
+[v _WriteEEByte `(v ~T0 @X0 1 ef2`uc`uc ]
+"1304
+[; ;pictris.c: 1304: {
+{
+[e :U _WriteEEByte ]
+"1303
+[; ;pictris.c: 1303: void WriteEEByte(byte address, byte data)
+[v _address `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+"1304
+[; ;pictris.c: 1304: {
+[f ]
+"1305
+[; ;pictris.c: 1305: EECON1bits.WREN=1;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+"1306
+[; ;pictris.c: 1306: EEADR=address;
+[e = _EEADR _address ]
+"1307
+[; ;pictris.c: 1307: EEDATA=data;
+[e = _EEDATA _data ]
+"1308
+[; ;pictris.c: 1308: EECON1bits.EEPGD=0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+"1309
+[; ;pictris.c: 1309: EECON1bits.CFGS=0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+"1310
+[; ;pictris.c: 1310: INTCONbits.GIE=0;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+"1312
+[; ;pictris.c: 1312: EECON2=0x55;
+[e = _EECON2 -> -> 85 `i `uc ]
+"1313
+[; ;pictris.c: 1313: EECON2=0xAA;
+[e = _EECON2 -> -> 170 `i `uc ]
+"1314
+[; ;pictris.c: 1314: EECON1bits.WR=1;
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+"1316
+[; ;pictris.c: 1316: INTCONbits.GIE=1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"1317
+[; ;pictris.c: 1317: while (EECON1bits.WR==1);
+[e $U 557  ]
+[e :U 558 ]
+[e :U 557 ]
+[e $ == -> . . _EECON1bits 0 1 `i -> 1 `i 558  ]
+[e :U 559 ]
+"1318
+[; ;pictris.c: 1318: EECON1bits.WREN=0;
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+"1319
+[; ;pictris.c: 1319: }
+[e :UE 556 ]
+}
+"1324
+[; ;pictris.c: 1324: void readHighScore(uint8_t adress)
+[v _readHighScore `(v ~T0 @X0 1 ef1`uc ]
+"1325
+[; ;pictris.c: 1325: {
+{
+[e :U _readHighScore ]
+"1324
+[; ;pictris.c: 1324: void readHighScore(uint8_t adress)
+[v _adress `uc ~T0 @X0 1 r1 ]
+"1325
+[; ;pictris.c: 1325: {
+[f ]
+"1327
+[; ;pictris.c: 1327:     uint8_t tmpbyte;
+[v _tmpbyte `uc ~T0 @X0 1 a ]
+"1328
+[; ;pictris.c: 1328:     if (tetris == 0)
+[e $ ! == -> _tetris `i -> 0 `i 561  ]
+"1329
+[; ;pictris.c: 1329:     { adress = adress + 10;};
+{
+[e = _adress -> + -> _adress `i -> 10 `i `uc ]
+}
+[e :U 561 ]
+"1331
+[; ;pictris.c: 1331:     tmpbyte = ReadEEByte(adress);
+[e = _tmpbyte ( _ReadEEByte (1 _adress ]
+"1332
+[; ;pictris.c: 1332:     if (tmpbyte == 0){
+[e $ ! == -> _tmpbyte `i -> 0 `i 562  ]
+{
+"1333
+[; ;pictris.c: 1333:        WriteEEByte(adress,0);
+[e ( _WriteEEByte (2 , _adress -> -> 0 `i `uc ]
+"1334
+[; ;pictris.c: 1334:     };
+}
+[e :U 562 ]
+"1335
+[; ;pictris.c: 1335:     if (tmpbyte == 255) {
+[e $ ! == -> _tmpbyte `i -> 255 `i 563  ]
+{
+"1336
+[; ;pictris.c: 1336:         tmpbyte = 0;
+[e = _tmpbyte -> -> 0 `i `uc ]
+"1337
+[; ;pictris.c: 1337:     }
+}
+[e :U 563 ]
+"1338
+[; ;pictris.c: 1338:     LastHighScore = tmpbyte;
+[e = _LastHighScore _tmpbyte ]
+"1340
+[; ;pictris.c: 1340: }
+[e :UE 560 ]
+}
+"1342
+[; ;pictris.c: 1342: void writeHighScore(uint8_t adress)
+[v _writeHighScore `(v ~T0 @X0 1 ef1`uc ]
+"1343
+[; ;pictris.c: 1343: {
+{
+[e :U _writeHighScore ]
+"1342
+[; ;pictris.c: 1342: void writeHighScore(uint8_t adress)
+[v _adress `uc ~T0 @X0 1 r1 ]
+"1343
+[; ;pictris.c: 1343: {
+[f ]
+"1345
+[; ;pictris.c: 1345:     if (tetris == 1){
+[e $ ! == -> _tetris `i -> 1 `i 565  ]
+{
+"1346
+[; ;pictris.c: 1346:     if (NumberOfLines > LastHighScore){
+[e $ ! > -> _NumberOfLines `i -> _LastHighScore `i 566  ]
+{
+"1347
+[; ;pictris.c: 1347:         WriteEEByte(adress,NumberOfLines);
+[e ( _WriteEEByte (2 , _adress _NumberOfLines ]
+"1348
+[; ;pictris.c: 1348:     };
+}
+[e :U 566 ]
+"1349
+[; ;pictris.c: 1349:     }
+}
+[e $U 567  ]
+"1351
+[; ;pictris.c: 1351:     else if (tetris == 0) {
+[e :U 565 ]
+[e $ ! == -> _tetris `i -> 0 `i 568  ]
+{
+"1352
+[; ;pictris.c: 1352:         if (snakeLength > LastHighScore){
+[e $ ! > -> _snakeLength `i -> _LastHighScore `i 569  ]
+{
+"1353
+[; ;pictris.c: 1353:         WriteEEByte(adress,snakeLength);
+[e ( _WriteEEByte (2 , _adress _snakeLength ]
+"1354
+[; ;pictris.c: 1354:         };
+}
+[e :U 569 ]
+"1355
+[; ;pictris.c: 1355:     };
+}
+[e :U 568 ]
+[e :U 567 ]
+"1358
+[; ;pictris.c: 1358: }
+[e :UE 564 ]
+}
+"1361
+[; ;pictris.c: 1361: void mainGameLoop(void)
+[v _mainGameLoop `(v ~T0 @X0 1 ef ]
+"1362
+[; ;pictris.c: 1362: {
+{
+[e :U _mainGameLoop ]
+[f ]
+"1365
+[; ;pictris.c: 1365:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
+"1367
+[; ;pictris.c: 1367:     initialise_globals();
+[e ( _initialise_globals ..  ]
+"1369
+[; ;pictris.c: 1369:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"1371
+[; ;pictris.c: 1371:     clearArray(ObjectData,8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"1372
+[; ;pictris.c: 1372:     clearArray(BackgroundData,8);
+[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
+"1373
+[; ;pictris.c: 1373:     clearArray(tmpObjectData,8);
+[e ( _clearArray (2 , -> &U _tmpObjectData `*Vus -> -> 8 `i `ui ]
+"1375
+[; ;pictris.c: 1375:    if (tetris == 1){
+[e $ ! == -> _tetris `i -> 1 `i 571  ]
+{
+"1378
+[; ;pictris.c: 1378:     selectNextObject(ObjectData);
+[e ( _selectNextObject (1 &U _ObjectData ]
+"1379
+[; ;pictris.c: 1379:      do {
+[e :U 574 ]
+{
+"1381
+[; ;pictris.c: 1381:         if (DropObject)
+[e $ ! != -> _DropObject `i -> 0 `i 575  ]
+"1382
+[; ;pictris.c: 1382:         {
+{
+"1383
+[; ;pictris.c: 1383:             DropObject = 0;
+[e = _DropObject -> -> 0 `i `a ]
+"1384
+[; ;pictris.c: 1384:             moveObjectDown(ObjectData);
+[e ( _moveObjectDown (1 &U _ObjectData ]
+"1385
+[; ;pictris.c: 1385:         }
+}
+[e :U 575 ]
+"1388
+[; ;pictris.c: 1388:         if (CheckForNewLines)
+[e $ ! != -> _CheckForNewLines `i -> 0 `i 576  ]
+"1389
+[; ;pictris.c: 1389:             checkForLines(BackgroundData);
+[e ( _checkForLines (1 &U _BackgroundData ]
+[e :U 576 ]
+"1391
+[; ;pictris.c: 1391:         checkButtons();
+[e ( _checkButtons ..  ]
+"1397
+[; ;pictris.c: 1397:         } while (!EndOfGame);
+}
+[e $ ! != -> _EndOfGame `i -> 0 `i 574  ]
+[e :U 573 ]
+"1398
+[; ;pictris.c: 1398:         writeHighScore(10);
+[e ( _writeHighScore (1 -> -> 10 `i `uc ]
+"1399
+[; ;pictris.c: 1399:         show_score(NumberOfLines);
+[e ( _show_score (1 _NumberOfLines ]
+"1401
+[; ;pictris.c: 1401:     }
+}
+[e $U 577  ]
+"1402
+[; ;pictris.c: 1402:     else {
+[e :U 571 ]
+{
+"1403
+[; ;pictris.c: 1403:        do{
+[e :U 580 ]
+{
+"1404
+[; ;pictris.c: 1404:             if (moveSnake == 1) {
+[e $ ! == -> _moveSnake `i -> 1 `i 581  ]
+{
+"1405
+[; ;pictris.c: 1405:                 moveSnake = 0;
+[e = _moveSnake -> -> 0 `i `a ]
+"1406
+[; ;pictris.c: 1406:                 MoveSnakes();
+[e ( _MoveSnakes ..  ]
+"1407
+[; ;pictris.c: 1407:             };
+}
+[e :U 581 ]
+"1409
+[; ;pictris.c: 1409:             checkButtons();
+[e ( _checkButtons ..  ]
+"1414
+[; ;pictris.c: 1414:             } while(!EndOfGame);
+}
+[e $ ! != -> _EndOfGame `i -> 0 `i 580  ]
+[e :U 579 ]
+"1415
+[; ;pictris.c: 1415:             writeHighScore(20);
+[e ( _writeHighScore (1 -> -> 20 `i `uc ]
+"1416
+[; ;pictris.c: 1416:             show_score(snakeLength);
+[e ( _show_score (1 _snakeLength ]
+"1417
+[; ;pictris.c: 1417:     }
+}
+[e :U 577 ]
+"1421
+[; ;pictris.c: 1421: }
+[e :UE 570 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"1425
+[; ;pictris.c: 1425: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"1426
+[; ;pictris.c: 1426: {
+{
+[e :U _main ]
+[f ]
+"1429
+[; ;pictris.c: 1429:     rnd_initialize(0x77);
+[e ( _rnd_initialize (1 -> -> 119 `i `uc ]
+"1435
+[; ;pictris.c: 1435:     initialise_hardware();
+[e ( _initialise_hardware ..  ]
+"1436
+[; ;pictris.c: 1436:     initialise_globals();
+[e ( _initialise_globals ..  ]
+"1440
+[; ;pictris.c: 1440:     UpdateScreen = 1;
+[e = _UpdateScreen -> -> 1 `i `a ]
+"1444
+[; ;pictris.c: 1444:     choosescreen();
+[e ( _choosescreen ..  ]
+"1446
+[; ;pictris.c: 1446:     splash_screen();
+[e ( _splash_screen ..  ]
+"1449
+[; ;pictris.c: 1449:     readHighScore(10);
+[e ( _readHighScore (1 -> -> 10 `i `uc ]
+"1450
+[; ;pictris.c: 1450:     show_score(LastHighScore);
+[e ( _show_score (1 _LastHighScore ]
+"1452
+[; ;pictris.c: 1452:     for (;;)
+{
+[e :U 583 ]
+"1454
+[; ;pictris.c: 1454:         mainGameLoop();
+[e ( _mainGameLoop ..  ]
+[e $U 583  ]
+[e :U 584 ]
+}
+"1578
+[; ;pictris.c: 1578: }
+[e :UE 582 ]
+}
