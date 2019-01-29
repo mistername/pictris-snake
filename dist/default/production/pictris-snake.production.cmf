@@ -1,0 +1,1596 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$C:\Users\ryan\AppData\Local\Temp\sdi8.o
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 E E 4 1
+reset_vec CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
+$dist/default/production\pictris-snake.production.o
+cinit CODE 0 19C0 19C0 84 1
+intcode_body CODE 0 B14 B14 190 1
+text0 CODE 0 201E 201E 2C 1
+text1 CODE 0 1D54 1D54 56 1
+text2 CODE 0 2152 2152 12 1
+text3 CODE 0 21A0 21A0 8 1
+text4 CODE 0 1F1C 1F1C 36 1
+text5 CODE 0 2174 2174 10 1
+text6 CODE 0 17D2 17D2 C0 1
+text7 CODE 0 1F52 1F52 36 1
+text8 CODE 0 209C 209C 26 1
+text9 CODE 0 F92 F92 14E 1
+text10 CODE 0 1350 1350 10A 1
+text11 CODE 0 1E00 1E00 52 1
+text12 CODE 0 1FF0 1FF0 2E 1
+text13 CODE 0 1A44 1A44 84 1
+text14 CODE 0 2074 2074 28 1
+text15 CODE 0 1702 1702 D0 1
+text16 CODE 0 1AC8 1AC8 80 1
+text17 CODE 0 145A 145A F2 1
+text18 CODE 0 6F2 6F2 242 1
+text19 CODE 0 1C92 1C92 6A 1
+text20 CODE 0 121A 121A 136 1
+text21 CODE 0 162A 162A D8 1
+text22 CODE 0 1892 1892 A8 1
+text23 CODE 0 1DAA 1DAA 56 1
+text24 CODE 0 20C2 20C2 26 1
+text25 CODE 0 1B48 1B48 70 1
+text26 CODE 0 CA4 CA4 184 1
+text27 CODE 0 1CFC 1CFC 58 1
+text28 CODE 0 1F88 1F88 34 1
+text29 CODE 0 2106 2106 1C 1
+text30 CODE 0 2122 2122 18 1
+text31 CODE 0 934 934 1E0 1
+text32 CODE 0 E28 E28 16A 1
+text33 CODE 0 1C26 1C26 6C 1
+text34 CODE 0 213A 213A 18 1
+text35 CODE 0 1E52 1E52 46 1
+text36 CODE 0 204A 204A 2A 1
+text37 CODE 0 1E98 1E98 42 1
+text38 CODE 0 20E8 20E8 1E 1
+text39 CODE 0 10E0 10E0 13A 1
+text40 CODE 0 21A8 21A8 6 1
+text41 CODE 0 21AE 21AE 6 1
+text42 CODE 0 2184 2184 10 1
+text43 CODE 0 2194 2194 C 1
+text44 CODE 0 21B4 21B4 6 1
+text45 CODE 0 154C 154C DE 1
+text46 CODE 0 1FBC 1FBC 34 1
+text48 CODE 0 1BB8 1BB8 6E 1
+text49 CODE 0 1EDA 1EDA 42 1
+idataCOMRAM CODE 0 21BA 21BA 1 1
+cstackCOMRAM COMRAM 1 35 35 2D 1
+cstackBANK0 BANK0 1 A0 A0 17 1
+temp COMRAM 1 63 63 1 1
+bssBANK0 BANK0 1 80 80 20 1
+bssBANK1 BANK1 1 100 100 C8 1
+intcode CODE 0 8 8 6 1
+smallconst SMALLCONST 0 600 600 F2 1
+idataBANK0 CODE 0 2164 2164 10 1
+idataBANK2 CODE 0 193A 193A 85 1
+dataBANK0 BANK0 1 B7 B7 10 1
+dataBANK2 BANK2 1 200 200 85 1
+dataCOMRAM COMRAM 1 62 62 1 1
+bssCOMRAM COMRAM 1 1 1 34 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM C7-FF 1
+RAM 1C8-1FF 1
+RAM 285-5FF 1
+SFR F80-FFF 1
+BANK0 C7-FF 1
+BANK1 1C8-1FF 1
+BANK2 285-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+CONST 4-7 1
+CONST 12-5FF 1
+CONST 19BF-19BF 1
+CONST 21BB-7FFF 1
+STACK 285-5FF 1
+SMALLCONST 19BF-19BF 1
+SMALLCONST 21BB-7FFF 1
+CODE 4-7 1
+CODE 12-5FF 1
+CODE 19BF-19BF 1
+CODE 21BB-7FFF 1
+BIGRAM 64-7F 1
+BIGRAM C7-FF 1
+BIGRAM 1C8-1FF 1
+BIGRAM 285-5FF 1
+COMRAM 64-7F 1
+EEDATA F00000-F000FF 1
+MEDIUMCONST 19BF-19BF 1
+MEDIUMCONST 21BB-7FFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\pictris-snake.production.o
+8 intcode CODE >453:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8 intcode CODE >543:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EDA text49 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EDA text49 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EE2 text49 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EE6 text49 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EE8 text49 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EEE text49 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EF0 text49 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EF0 text49 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1EF4 text49 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1F00 text49 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1F08 text49 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1F0E text49 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1F12 text49 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1F1A text49 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+1BB8 text48 CODE >369:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1BBA text48 CODE >371:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1BC0 text48 CODE >373:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1BCE text48 CODE >374:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1BE0 text48 CODE >375:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1BF8 text48 CODE >376:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C04 text48 CODE >377:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C06 text48 CODE >378:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C06 text48 CODE >380:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C16 text48 CODE >381:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C24 text48 CODE >383:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B14 intcode_body CODE >453:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B26 intcode_body CODE >456:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B2A intcode_body CODE >458:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B2C intcode_body CODE >459:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B34 intcode_body CODE >462:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B3A intcode_body CODE >465:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B4A intcode_body CODE >467:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B52 intcode_body CODE >471:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B52 intcode_body CODE >480:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B58 intcode_body CODE >482:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B76 intcode_body CODE >483:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B94 intcode_body CODE >484:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+BB2 intcode_body CODE >485:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+BD0 intcode_body CODE >486:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+BD0 intcode_body CODE >494:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+BF2 intcode_body CODE >495:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+BF8 intcode_body CODE >497:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C14 intcode_body CODE >498:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C18 intcode_body CODE >499:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C18 intcode_body CODE >508:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C1E intcode_body CODE >512:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C36 intcode_body CODE >513:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C72 intcode_body CODE >515:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C7A intcode_body CODE >517:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C7E intcode_body CODE >522:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C86 intcode_body CODE >525:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C88 intcode_body CODE >526:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C8C intcode_body CODE >530:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C8C intcode_body CODE >531:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C90 intcode_body CODE >533:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+C90 intcode_body CODE >535:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FBC text46 CODE >538:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FBC text46 CODE >541:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FC2 text46 CODE >542:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+154C text45 CODE >689:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+154C text45 CODE >693:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+154E text45 CODE >695:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+154E text45 CODE >696:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+155A text45 CODE >697:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1586 text45 CODE >699:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1586 text45 CODE >700:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1592 text45 CODE >701:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+15C6 text45 CODE >703:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+15C6 text45 CODE >704:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+15D2 text45 CODE >705:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1606 text45 CODE >707:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21B4 text44 CODE >357:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21B4 text44 CODE >359:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21B8 text44 CODE >360:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2194 text43 CODE >425:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2194 text43 CODE >427:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2198 text43 CODE >428:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2184 text42 CODE >433:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2184 text42 CODE >435:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+218A text42 CODE >437:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+218E text42 CODE >438:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21AE text41 CODE >362:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21AE text41 CODE >365:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21B2 text41 CODE >366:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21A8 text40 CODE >444:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21A8 text40 CODE >446:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21AC text40 CODE >447:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10E0 text39 CODE >1192:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10E0 text39 CODE >1197:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10E4 text39 CODE >1200:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10F8 text39 CODE >1201:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+110C text39 CODE >1202:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1120 text39 CODE >1203:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+112C text39 CODE >1205:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1158 text39 CODE >1206:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+115C text39 CODE >1209:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1160 text39 CODE >1213:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+116C text39 CODE >1217:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1178 text39 CODE >1220:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1182 text39 CODE >1221:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11AA text39 CODE >1222:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11B4 text39 CODE >1223:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11DC text39 CODE >1226:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11E0 text39 CODE >1227:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11F8 text39 CODE >1228:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+11FC text39 CODE >1232:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1208 text39 CODE >1234:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+120C text39 CODE >1235:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1214 text39 CODE >1236:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1218 text39 CODE >1237:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20E8 text38 CODE >1073:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20E8 text38 CODE >1075:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20F0 text38 CODE >1076:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20F2 text38 CODE >1077:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20F4 text38 CODE >1078:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20F6 text38 CODE >1079:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20FE text38 CODE >1080:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2100 text38 CODE >1081:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2102 text38 CODE >1082:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2104 text38 CODE >1083:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E98 text37 CODE >1085:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E98 text37 CODE >1088:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E9A text37 CODE >1089:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EA0 text37 CODE >1090:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EA8 text37 CODE >1093:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EB0 text37 CODE >1096:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EB8 text37 CODE >1098:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EC0 text37 CODE >1102:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1EC8 text37 CODE >1103:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1ED0 text37 CODE >1106:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1ED4 text37 CODE >1108:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1ED6 text37 CODE >1109:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1ED8 text37 CODE >1110:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+204A text36 CODE >4:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+204C text36 CODE >9:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2050 text36 CODE >10:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2054 text36 CODE >11:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2054 text36 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+205C text36 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2060 text36 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2068 text36 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+206C text36 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+2070 text36 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+1E52 text35 CODE >8:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+1E52 text35 CODE >11:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+1E84 text35 CODE >12:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+1E94 text35 CODE >13:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+213A text34 CODE >581:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+213C text34 CODE >584:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2142 text34 CODE >585:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+214E text34 CODE >586:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C26 text33 CODE >588:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C26 text33 CODE >592:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C2A text33 CODE >593:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C2A text33 CODE >595:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C2E text33 CODE >596:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C36 text33 CODE >597:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C3E text33 CODE >598:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C44 text33 CODE >600:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C7C text33 CODE >602:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C80 text33 CODE >603:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C80 text33 CODE >604:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C8A text33 CODE >605:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+E28 text32 CODE >608:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+E28 text32 CODE >612:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+E3C text32 CODE >613:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+E42 text32 CODE >614:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+E56 text32 CODE >615:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+EC6 text32 CODE >624:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+ED0 text32 CODE >625:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+EDC text32 CODE >626:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+EE4 text32 CODE >627:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F38 text32 CODE >628:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F38 text32 CODE >629:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F3C text32 CODE >630:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F40 text32 CODE >631:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F54 text32 CODE >632:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F60 text32 CODE >633:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F88 text32 CODE >634:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F8C text32 CODE >635:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F90 text32 CODE >636:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+934 text31 CODE >638:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+934 text31 CODE >641:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+936 text31 CODE >642:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+936 text31 CODE >643:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+93C text31 CODE >644:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+940 text31 CODE >645:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+946 text31 CODE >646:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+94A text31 CODE >649:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+94A text31 CODE >650:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+950 text31 CODE >651:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+954 text31 CODE >652:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+960 text31 CODE >653:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+964 text31 CODE >656:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+964 text31 CODE >657:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+96A text31 CODE >658:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+96E text31 CODE >659:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+97A text31 CODE >660:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+97E text31 CODE >662:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+980 text31 CODE >663:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+980 text31 CODE >664:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+986 text31 CODE >665:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+98A text31 CODE >666:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+990 text31 CODE >667:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+994 text31 CODE >670:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+9BE text31 CODE >671:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+9C4 text31 CODE >672:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+A34 text31 CODE >673:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+A9C text31 CODE >674:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+AA6 text31 CODE >675:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+AB8 text31 CODE >676:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+ABC text31 CODE >677:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+AC0 text31 CODE >678:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+AC0 text31 CODE >679:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+AC6 text31 CODE >680:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B00 text31 CODE >681:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B04 text31 CODE >682:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B04 text31 CODE >683:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B0E text31 CODE >684:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+B12 text31 CODE >685:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2122 text30 CODE >766:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2122 text30 CODE >768:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2106 text29 CODE >773:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2106 text29 CODE >775:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F88 text28 CODE >756:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F88 text28 CODE >758:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F94 text28 CODE >759:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FB0 text28 CODE >760:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FB8 text28 CODE >761:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CFC text27 CODE >780:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CFC text27 CODE >782:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D08 text27 CODE >783:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D48 text27 CODE >784:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D50 text27 CODE >785:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CA4 text26 CODE >711:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CA4 text26 CODE >715:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CA6 text26 CODE >717:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CA6 text26 CODE >718:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CAC text26 CODE >720:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CB8 text26 CODE >721:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CD2 text26 CODE >722:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CD4 text26 CODE >723:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CE0 text26 CODE >725:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CE0 text26 CODE >726:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CE6 text26 CODE >728:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+CF2 text26 CODE >729:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D0E text26 CODE >730:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D10 text26 CODE >731:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D1C text26 CODE >733:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D1C text26 CODE >734:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D22 text26 CODE >736:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D2C text26 CODE >737:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D70 text26 CODE >738:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D80 text26 CODE >739:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D82 text26 CODE >740:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D8E text26 CODE >742:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D8E text26 CODE >743:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+D94 text26 CODE >745:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+DA0 text26 CODE >746:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+DDC text26 CODE >747:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+DF0 text26 CODE >748:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+DF2 text26 CODE >749:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+DFE text26 CODE >750:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B48 text25 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B48 text25 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B4C text25 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B50 text25 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B58 text25 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B5C text25 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B5C text25 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B60 text25 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B68 text25 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B70 text25 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B74 text25 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B76 text25 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B7C text25 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B7E text25 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B7E text25 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B82 text25 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B8E text25 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B96 text25 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1B9C text25 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1BA0 text25 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1BA6 text25 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+1BAE text25 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+20C2 text24 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
+20C2 text24 CODE >37:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
+20CE text24 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
+20D6 text24 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
+20DE text24 CODE >52:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
+1DAA text23 CODE >10:C:\Users\ryan\Documents\GitHub\pictris-snake\memcpy.c
+1DAA text23 CODE >12:C:\Users\ryan\Documents\GitHub\pictris-snake\memcpy.c
+1DBA text23 CODE >14:C:\Users\ryan\Documents\GitHub\pictris-snake\memcpy.c
+1DBC text23 CODE >15:C:\Users\ryan\Documents\GitHub\pictris-snake\memcpy.c
+1DEE text23 CODE >14:C:\Users\ryan\Documents\GitHub\pictris-snake\memcpy.c
+1892 text22 CODE >547:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1892 text22 CODE >556:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1898 text22 CODE >559:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+189C text22 CODE >560:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18A0 text22 CODE >561:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18A0 text22 CODE >563:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18A4 text22 CODE >564:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18A6 text22 CODE >565:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18AE text22 CODE >569:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18E0 text22 CODE >570:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+18FC text22 CODE >571:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+190C text22 CODE >572:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+191C text22 CODE >574:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1920 text22 CODE >575:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1930 text22 CODE >577:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1938 text22 CODE >578:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+162A text21 CODE >857:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+162A text21 CODE >859:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+162E text21 CODE >862:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1632 text21 CODE >865:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1644 text21 CODE >868:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1648 text21 CODE >870:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1660 text21 CODE >872:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+166C text21 CODE >874:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+166E text21 CODE >876:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+166E text21 CODE >879:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1682 text21 CODE >881:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+169C text21 CODE >885:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16A0 text21 CODE >887:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16B4 text21 CODE >889:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16CC text21 CODE >891:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16D8 text21 CODE >894:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16EE text21 CODE >896:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16F2 text21 CODE >897:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16F2 text21 CODE >899:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16FA text21 CODE >902:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+16FE text21 CODE >904:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+121A text20 CODE >801:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+121A text20 CODE >807:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1222 text20 CODE >808:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1240 text20 CODE >809:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1240 text20 CODE >812:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1254 text20 CODE >817:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1260 text20 CODE >818:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1264 text20 CODE >820:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1270 text20 CODE >821:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+127C text20 CODE >823:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12BE text20 CODE >825:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12C4 text20 CODE >827:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12CE text20 CODE >828:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12D6 text20 CODE >830:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12D6 text20 CODE >832:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12E0 text20 CODE >833:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+12EA text20 CODE >835:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1304 text20 CODE >837:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1348 text20 CODE >839:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C92 text19 CODE >845:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C92 text19 CODE >847:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1C96 text19 CODE >849:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CA2 text19 CODE >850:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CAE text19 CODE >851:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CEE text19 CODE >852:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1CF8 text19 CODE >853:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+6F2 text18 CODE >909:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+6F2 text18 CODE >912:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+6F8 text18 CODE >914:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+6FC text18 CODE >915:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+700 text18 CODE >916:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+708 text18 CODE >917:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+70C text18 CODE >920:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+712 text18 CODE >921:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+724 text18 CODE >925:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+740 text18 CODE >927:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+754 text18 CODE >929:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+76E text18 CODE >933:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+772 text18 CODE >936:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+78A text18 CODE >939:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+78E text18 CODE >942:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+792 text18 CODE >945:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+794 text18 CODE >947:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+79E text18 CODE >952:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7A4 text18 CODE >954:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7A8 text18 CODE >955:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7AC text18 CODE >956:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7B4 text18 CODE >957:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7B8 text18 CODE >960:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7BE text18 CODE >961:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7D0 text18 CODE >963:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7E8 text18 CODE >964:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+7FC text18 CODE >966:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+816 text18 CODE >969:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+81A text18 CODE >971:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+832 text18 CODE >973:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+836 text18 CODE >975:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+83A text18 CODE >978:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+83C text18 CODE >980:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+848 text18 CODE >984:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+84E text18 CODE >986:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+852 text18 CODE >987:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+856 text18 CODE >988:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+85E text18 CODE >989:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+862 text18 CODE >991:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+868 text18 CODE >992:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+880 text18 CODE >994:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8A0 text18 CODE >997:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8BA text18 CODE >1002:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8BE text18 CODE >1005:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8D6 text18 CODE >1007:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8DA text18 CODE >1009:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8E8 text18 CODE >1012:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8EA text18 CODE >1014:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8F6 text18 CODE >1018:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+8FC text18 CODE >1021:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+902 text18 CODE >1022:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+916 text18 CODE >1025:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+920 text18 CODE >1027:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+924 text18 CODE >1028:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+928 text18 CODE >1029:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+92E text18 CODE >1030:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+145A text17 CODE >1035:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+145A text17 CODE >1040:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1460 text17 CODE >1042:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1464 text17 CODE >1043:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1470 text17 CODE >1044:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+151A text17 CODE >1046:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1524 text17 CODE >1048:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1530 text17 CODE >1049:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1AC8 text16 CODE >1053:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1AC8 text16 CODE >1057:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1AD4 text16 CODE >1059:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1AD8 text16 CODE >1060:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1AE4 text16 CODE >1061:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B24 text16 CODE >1062:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B2A text16 CODE >1063:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B32 text16 CODE >1065:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B42 text16 CODE >1066:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B44 text16 CODE >1067:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1B44 text16 CODE >1068:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1702 text15 CODE >1113:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1702 text15 CODE >1116:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1716 text15 CODE >1118:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+172A text15 CODE >1122:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+172E text15 CODE >1123:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1732 text15 CODE >1125:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1736 text15 CODE >1127:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+173A text15 CODE >1128:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+173E text15 CODE >1129:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1742 text15 CODE >1131:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+174A text15 CODE >1139:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+174E text15 CODE >1141:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1752 text15 CODE >1142:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1756 text15 CODE >1145:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+175A text15 CODE >1146:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+175E text15 CODE >1149:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1762 text15 CODE >1150:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1766 text15 CODE >1153:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+176A text15 CODE >1154:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+176E text15 CODE >1157:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1772 text15 CODE >1159:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1776 text15 CODE >1160:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+177A text15 CODE >1162:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1786 text15 CODE >1163:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17A2 text15 CODE >1164:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17BA text15 CODE >1165:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17BE text15 CODE >1166:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17C4 text15 CODE >1167:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17C8 text15 CODE >1168:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17CC text15 CODE >1169:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17D0 text15 CODE >1173:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2074 text14 CODE >1240:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2076 text14 CODE >1242:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+209A text14 CODE >1243:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1A44 text13 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A44 text13 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A48 text13 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A4C text13 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A54 text13 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A58 text13 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A58 text13 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A5C text13 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A64 text13 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A68 text13 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A68 text13 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A70 text13 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A78 text13 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A7C text13 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A7E text13 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A84 text13 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A86 text13 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A86 text13 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A8A text13 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A90 text13 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1A9C text13 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AA4 text13 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AA6 text13 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AA6 text13 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AAC text13 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AB0 text13 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1AB6 text13 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1ABE text13 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+1FF0 text12 CODE >294:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FF0 text12 CODE >296:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1FFC text12 CODE >297:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2010 text12 CODE >298:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+201C text12 CODE >299:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E00 text11 CODE >302:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E00 text11 CODE >304:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E08 text11 CODE >305:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E14 text11 CODE >306:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E16 text11 CODE >308:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E32 text11 CODE >309:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E36 text11 CODE >310:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E3C text11 CODE >306:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1E3C text11 CODE >311:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1350 text10 CODE >314:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1350 text10 CODE >316:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1358 text10 CODE >317:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+135C text10 CODE >320:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1364 text10 CODE >322:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1378 text10 CODE >323:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1388 text10 CODE >324:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+138A text10 CODE >325:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+138A text10 CODE >329:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1398 text10 CODE >331:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+139C text10 CODE >332:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+13A4 text10 CODE >336:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+13A6 text10 CODE >338:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+13C2 text10 CODE >339:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+13F6 text10 CODE >340:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1412 text10 CODE >336:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1412 text10 CODE >341:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+141A text10 CODE >344:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1420 text10 CODE >345:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1434 text10 CODE >347:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1444 text10 CODE >350:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F92 text9 CODE >1245:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F96 text9 CODE >1252:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+F9A text9 CODE >1255:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+FAE text9 CODE >1256:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+FC2 text9 CODE >1257:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+FD6 text9 CODE >1259:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+FF0 text9 CODE >1260:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+FF8 text9 CODE >1262:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+100E text9 CODE >1263:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+101C text9 CODE >1265:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+103A text9 CODE >1266:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+104E text9 CODE >1268:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1066 text9 CODE >1269:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1086 text9 CODE >1272:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+108A text9 CODE >1276:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1090 text9 CODE >1280:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1096 text9 CODE >1284:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+109A text9 CODE >1285:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10AC text9 CODE >1286:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10C4 text9 CODE >1287:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10C8 text9 CODE >1291:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10CE text9 CODE >1293:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10D2 text9 CODE >1294:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10DA text9 CODE >1295:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+10DE text9 CODE >1296:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+209C text8 CODE >1308:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+209E text8 CODE >1310:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20A0 text8 CODE >1311:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20A4 text8 CODE >1312:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20A8 text8 CODE >1313:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20AA text8 CODE >1314:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20AC text8 CODE >1315:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20AE text8 CODE >1317:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20B2 text8 CODE >1318:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20B6 text8 CODE >1319:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20B8 text8 CODE >1321:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20BA text8 CODE >1322:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20BE text8 CODE >1323:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+20C0 text8 CODE >1324:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F52 text7 CODE >1347:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F54 text7 CODE >1350:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F5A text7 CODE >1351:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F62 text7 CODE >1352:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F6C text7 CODE >1354:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F6E text7 CODE >1356:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F74 text7 CODE >1357:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F7C text7 CODE >1358:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F86 text7 CODE >1360:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17D2 text6 CODE >1366:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17D2 text6 CODE >1370:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17D6 text6 CODE >1372:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17DA text6 CODE >1374:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17DE text6 CODE >1376:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+17F2 text6 CODE >1377:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1806 text6 CODE >1378:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+181A text6 CODE >1380:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1820 text6 CODE >1383:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+182C text6 CODE >1384:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+182C text6 CODE >1386:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1832 text6 CODE >1388:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1836 text6 CODE >1389:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1842 text6 CODE >1390:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1842 text6 CODE >1393:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1848 text6 CODE >1394:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1854 text6 CODE >1396:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1858 text6 CODE >1402:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+185E text6 CODE >1403:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1864 text6 CODE >1404:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+186A text6 CODE >1406:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+186C text6 CODE >1407:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+186C text6 CODE >1409:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1872 text6 CODE >1410:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1876 text6 CODE >1411:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+187A text6 CODE >1412:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+187A text6 CODE >1414:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+187E text6 CODE >1419:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1884 text6 CODE >1420:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+188A text6 CODE >1421:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2174 text5 CODE >1298:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2176 text5 CODE >1300:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+217A text5 CODE >1301:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+217C text5 CODE >1302:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+217E text5 CODE >1303:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2180 text5 CODE >1304:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F1C text4 CODE >1329:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F1E text4 CODE >1333:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F24 text4 CODE >1334:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F2A text4 CODE >1336:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F32 text4 CODE >1337:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F38 text4 CODE >1338:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F42 text4 CODE >1339:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F42 text4 CODE >1340:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F48 text4 CODE >1341:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F4C text4 CODE >1342:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F4C text4 CODE >1343:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1F50 text4 CODE >1345:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+21A0 text3 CODE >24:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+21A2 text3 CODE >26:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+21A6 text3 CODE >27:C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
+2152 text2 CODE >411:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2152 text2 CODE >413:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+215A text2 CODE >414:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D54 text1 CODE >1177:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D54 text1 CODE >1181:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D58 text1 CODE >1183:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D7C text1 CODE >1184:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D98 text1 CODE >1186:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1D9C text1 CODE >1188:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+1DA8 text1 CODE >1189:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+201E text0 CODE >1430:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+201E text0 CODE >1434:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2024 text0 CODE >1440:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2028 text0 CODE >1441:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+202C text0 CODE >1445:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2030 text0 CODE >1449:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2034 text0 CODE >1451:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2038 text0 CODE >1454:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+203E text0 CODE >1455:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2044 text0 CODE >1457:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+2044 text0 CODE >1459:C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+19C0 cinit CODE >908:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C0 cinit CODE >910:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C0 cinit CODE >913:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C0 cinit CODE >1053:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C2 cinit CODE >1054:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C4 cinit CODE >1055:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C6 cinit CODE >1056:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19C8 cinit CODE >1057:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19CA cinit CODE >1058:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19CC cinit CODE >1059:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19D0 cinit CODE >1060:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19D4 cinit CODE >1061:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19D4 cinit CODE >1062:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19D6 cinit CODE >1063:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19DA cinit CODE >1064:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19DC cinit CODE >1065:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19DE cinit CODE >1066:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19E0 cinit CODE >1070:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19E2 cinit CODE >1071:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19E4 cinit CODE >1072:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19E6 cinit CODE >1073:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19E8 cinit CODE >1074:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19EA cinit CODE >1075:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19EC cinit CODE >1076:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19F0 cinit CODE >1077:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19F4 cinit CODE >1078:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19F4 cinit CODE >1079:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19F6 cinit CODE >1080:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19FA cinit CODE >1081:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19FC cinit CODE >1082:C:\Users\ryan\AppData\Local\Temp\sdi8.
+19FE cinit CODE >1083:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A00 cinit CODE >1087:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A02 cinit CODE >1088:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A04 cinit CODE >1089:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A06 cinit CODE >1090:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A08 cinit CODE >1091:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A0A cinit CODE >1092:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A0C cinit CODE >1093:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A0E cinit CODE >1094:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A12 cinit CODE >1098:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A16 cinit CODE >1099:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A18 cinit CODE >1100:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A18 cinit CODE >1101:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A1A cinit CODE >1102:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A1C cinit CODE >1103:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A1E cinit CODE >1106:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A22 cinit CODE >1107:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A24 cinit CODE >1108:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A24 cinit CODE >1109:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A26 cinit CODE >1110:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A28 cinit CODE >1111:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A2A cinit CODE >1114:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A2E cinit CODE >1115:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A30 cinit CODE >1116:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A30 cinit CODE >1117:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A32 cinit CODE >1118:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A34 cinit CODE >1119:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A36 cinit CODE >1125:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A36 cinit CODE >1127:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A38 cinit CODE >1128:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A3A cinit CODE >1130:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A3C cinit CODE >1131:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A3E cinit CODE >1132:C:\Users\ryan\AppData\Local\Temp\sdi8.
+1A40 cinit CODE >1133:C:\Users\ryan\AppData\Local\Temp\sdi8.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___awdiv@counter 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___lwmod@counter 39 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__LdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\pictris-snake.production.o
+__LdataBANK2 0 0 ABS 0 dataBANK2 dist/default/production\pictris-snake.production.o
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\pictris-snake.production.o
+show_score@currentNumber B1 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+__Hspace_0 30000E 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hspace_1 285 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hspace_2 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__HidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\pictris-snake.production.o
+__HidataBANK2 0 0 ABS 0 idataBANK2 dist/default/production\pictris-snake.production.o
+itoa@i 60 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+itoa@isNegative 5D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_reverse 1E52 0 CODE 0 text11 dist/default/production\pictris-snake.production.o
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production\pictris-snake.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\ryan\AppData\Local\Temp\sdi8.o
+__end_of_ReadEEByte 2184 0 CODE 0 text5 dist/default/production\pictris-snake.production.o
+__size_of_debounceButton 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\pictris-snake.production.o
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_mS 3 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_splash_screen 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_mergeObjects 162A 0 CODE 0 text45 dist/default/production\pictris-snake.production.o
+__Lsmallconst 600 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+moveObject@direction 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_DDRA F92 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_DDRB F93 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_DDRC F94 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_DDRD F95 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_IPEN 7E87 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_T0CS 7EAD 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_TMR0 FD6 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___sp 0 0 STACK 2 stack C:\Users\ryan\AppData\Local\Temp\sdi8.o
+_itoa 1350 0 CODE 0 text10 dist/default/production\pictris-snake.production.o
+_main 201E 0 CODE 0 text0 dist/default/production\pictris-snake.production.o
+_swap 1FF0 0 CODE 0 text12 dist/default/production\pictris-snake.production.o
+_time 1 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+memcpy@dest 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+btemp 63 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+start E 0 CODE 0 init C:\Users\ryan\AppData\Local\Temp\sdi8.o
+__size_of___awdiv 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of___awmod 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of_itoa 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of_main 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of_swap 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of___lbmod 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of___lwmod 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_Number 6D1 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+_pixelCount 1C92 0 CODE 0 text19 dist/default/production\pictris-snake.production.o
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\pictris-snake.production.o
+?___wmul 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_InterruptComplete 5 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_newRotation 1350 0 CODE 0 text20 dist/default/production\pictris-snake.production.o
+clearArray@i 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_initialise_globals 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_selectNextObject 1892 0 CODE 0 text22 dist/default/production\pictris-snake.production.o
+__end_of_moveObjectDown 1702 0 CODE 0 text21 dist/default/production\pictris-snake.production.o
+__LidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\pictris-snake.production.o
+__LidataBANK2 0 0 ABS 0 idataBANK2 dist/default/production\pictris-snake.production.o
+__size_of_moveObject 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hpowerup E 0 CODE 0 powerup dist/default/production\pictris-snake.production.o
+_checkForLeftWall 2122 0 CODE 0 text30 dist/default/production\pictris-snake.production.o
+__end_of_resumeMultiplexing 21AE 0 CODE 0 text40 dist/default/production\pictris-snake.production.o
+__size_of_show_score 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_TETRIS 6F1 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+swap@a 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+swap@b 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+swap@t 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___awmod@sign 4C 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_T0CONbits FD5 0 ABS 0 - dist/default/production\pictris-snake.production.o
+ttemp5 64 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+ttemp6 67 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+ttemp7 6B 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+__end_of_initialise_TMR0 2106 0 CODE 0 text38 dist/default/production\pictris-snake.production.o
+__HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_splash_screen 1DAA 0 CODE 0 text1 dist/default/production\pictris-snake.production.o
+_checkForBottom 1F88 0 CODE 0 text28 dist/default/production\pictris-snake.production.o
+CreateBerry@randomGood 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__accesstop 80 0 ABS 0 - C:\Users\ryan\AppData\Local\Temp\sdi8.o
+intlevel0 0 0 CODE 0 text C:\Users\ryan\AppData\Local\Temp\sdi8.o
+intlevel1 0 0 CODE 0 text C:\Users\ryan\AppData\Local\Temp\sdi8.o
+intlevel2 0 0 CODE 0 text C:\Users\ryan\AppData\Local\Temp\sdi8.o
+intlevel3 0 0 CODE 0 text C:\Users\ryan\AppData\Local\Temp\sdi8.o
+_snakeLength B 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_rnd_get_num 1E98 0 CODE 0 text35 dist/default/production\pictris-snake.production.o
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_initialise_hardware 1EDA 0 CODE 0 text37 dist/default/production\pictris-snake.production.o
+reverse@start 51 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_OSCCONbits FD3 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\pictris-snake.production.o
+wtemp8 64 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+__CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+removeLine@currentLine 55 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_WriteEEByte 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_checkForRightWall 2106 0 CODE 0 text29 dist/default/production\pictris-snake.production.o
+_pauseButtons 21B4 0 CODE 0 text44 dist/default/production\pictris-snake.production.o
+_tmpObjectData 80 0 BANK0 1 bssBANK0 dist/default/production\pictris-snake.production.o
+__Hifardata 0 0 CODE 0 ifardata dist/default/production\pictris-snake.production.o
+reverse@end 53 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+reverse@str 4C 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___awdiv@sign 4C 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production\pictris-snake.production.o
+_moveSnake C 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+pixelCount@r 4E 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+pixelCount@x 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+pixelCount@y 50 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__pidataCOMRAM 21BA 0 CODE 0 idataCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_CreateBerry 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___wmul@multiplicand 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_MoveSnakes 934 0 CODE 0 text31 dist/default/production\pictris-snake.production.o
+_Left_Debounced 34 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_resumeMultiplexing 21A8 0 CODE 0 text40 dist/default/production\pictris-snake.production.o
+show_score@mask A0 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+___awdiv@dividend 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\ryan\AppData\Local\Temp\sdi8.o
+_resumeButtons 21AE 0 CODE 0 text41 dist/default/production\pictris-snake.production.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\ryan\AppData\Local\Temp\sdi8.o
+moveObject@c 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+moveObject@i 50 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_pixelCount 1CFC 0 CODE 0 text19 dist/default/production\pictris-snake.production.o
+_EECON1bits FA6 0 ABS 0 - dist/default/production\pictris-snake.production.o
+rnd_initialize@seed 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\pictris-snake.production.o
+newRotation@x1 5F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+newRotation@x2 5D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+newRotation@y1 60 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+newRotation@y2 5E 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of___wmul 20E8 0 CODE 0 text24 dist/default/production\pictris-snake.production.o
+_DropObject 10 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_EECON2 FA7 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_EEDATA FA8 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\pictris-snake.production.o
+newRotation@pSource 53 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___lbmod@divisor 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+newRotation@pTarget 55 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_initialise_TMR0 20E8 0 CODE 0 text38 dist/default/production\pictris-snake.production.o
+_removeLine 145A 0 CODE 0 text17 dist/default/production\pictris-snake.production.o
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\pictris-snake.production.o
+writeHighScore@adress 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_checkForBottom 1FBC 0 CODE 0 text28 dist/default/production\pictris-snake.production.o
+__Hintcodelo E 0 CODE 0 intcodelo dist/default/production\pictris-snake.production.o
+___awdiv@divisor 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___lwmod@divisor 37 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+moveObject@cycles 4A 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of___awdiv 1AC8 0 CODE 0 text13 dist/default/production\pictris-snake.production.o
+__end_of___awmod 1BB8 0 CODE 0 text25 dist/default/production\pictris-snake.production.o
+rnd_get_num@b 4A 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_pauseButtons 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+getNumber@pDigit 53 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of___lbmod 2074 0 CODE 0 text36 dist/default/production\pictris-snake.production.o
+__end_of___lwmod 1F1C 0 CODE 0 text49 dist/default/production\pictris-snake.production.o
+debounceButton@delay 35 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_selectNextObject 193A 0 CODE 0 text22 dist/default/production\pictris-snake.production.o
+__end_of_checkForLeftWall 213A 0 CODE 0 text30 dist/default/production\pictris-snake.production.o
+selectNextObject@s 58 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_Right_Debounced 33 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_selectNextObject 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+checkForLines@pixels 5F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+MoveSnakes@i 5D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+itoa@bas 59 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+itoa@rem 5E 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+itoa@str 57 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+memcpy@src 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_checkForLeftWall 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_INTCON2bits FF1 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___lwmod@dividend 35 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lintcodelo E 0 CODE 0 intcodelo dist/default/production\pictris-snake.production.o
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+selectNextObject@selection 57 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+readHighScore@tmpbyte 4A 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+start_initialization 19C0 0 CODE 0 cinit dist/default/production\pictris-snake.production.o
+__end_of_pauseButtons 21BA 0 CODE 0 text44 dist/default/production\pictris-snake.production.o
+__size_of_rnd_initialize 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_checkButtons 6F2 0 CODE 0 text18 dist/default/production\pictris-snake.production.o
+__end_of_MoveSnakes B14 0 CODE 0 text31 dist/default/production\pictris-snake.production.o
+_Number 631 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\pictris-snake.production.o
+clearArray@pArray 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+checkForBottom@pObject 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_writeHighScore 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+isr@CurrentX 30 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_direction D 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_ReadEEByte 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___rparam_used 1 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_waitForInterrupt 2194 0 CODE 0 text43 dist/default/production\pictris-snake.production.o
+__end_of_memcpy 1E00 0 CODE 0 text23 dist/default/production\pictris-snake.production.o
+__CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_getNumber 209C 0 CODE 0 text14 dist/default/production\pictris-snake.production.o
+selectNextObject@pTarget 53 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__pcstackBANK0 A0 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+_BackgroundData 90 0 BANK0 1 bssBANK0 dist/default/production\pictris-snake.production.o
+removeLine@pY 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_getNumber 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+removeLine@pObject 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_newRotation 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_TETRIS 6E1 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+SnakeGraph@i 54 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+SnakeGraph@j 53 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_TMR0IE 7F95 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_TMR0ON 7EAF 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_removeLine 154C 0 CODE 0 text17 dist/default/production\pictris-snake.production.o
+_choose_screen 621 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+_ObjectData 18 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+clearArray@size 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_reverse 1E00 0 CODE 0 text11 dist/default/production\pictris-snake.production.o
+checkForRightWall@pObject 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_resumeButtons 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_UpdateScreen 6 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_rnd_get_num 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hbank0 0 0 ABS 0 bank0 dist/default/production\pictris-snake.production.o
+__Hbank1 0 0 ABS 0 bank1 dist/default/production\pictris-snake.production.o
+__Hbank2 0 0 ABS 0 bank2 dist/default/production\pictris-snake.production.o
+__Hbank3 0 0 ABS 0 bank3 dist/default/production\pictris-snake.production.o
+__Hbank4 0 0 ABS 0 bank4 dist/default/production\pictris-snake.production.o
+__Hbank5 0 0 ABS 0 bank5 dist/default/production\pictris-snake.production.o
+_SnakeGraph E28 0 CODE 0 text32 dist/default/production\pictris-snake.production.o
+__Hcinit 0 0 ABS 0 cinit dist/default/production\pictris-snake.production.o
+__Hconst 0 0 CONST 0 const dist/default/production\pictris-snake.production.o
+__Hidata 0 0 CODE 0 idata dist/default/production\pictris-snake.production.o
+__Hidloc 200008 0 IDLOC 0 idloc dist/default/production\pictris-snake.production.o
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\pictris-snake.production.o
+__Hparam 0 0 COMRAM 1 rparam dist/default/production\pictris-snake.production.o
+_readHighScore 1F1C 0 CODE 0 text4 dist/default/production\pictris-snake.production.o
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production\pictris-snake.production.o
+__Hstack 0 0 STACK 2 stack dist/default/production\pictris-snake.production.o
+selectNextObject@rndSelection 55 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Htext0 0 0 ABS 0 text0 dist/default/production\pictris-snake.production.o
+__Htext1 0 0 ABS 0 text1 dist/default/production\pictris-snake.production.o
+__Htext2 0 0 ABS 0 text2 dist/default/production\pictris-snake.production.o
+__Htext3 0 0 ABS 0 text3 dist/default/production\pictris-snake.production.o
+__Htext4 0 0 ABS 0 text4 dist/default/production\pictris-snake.production.o
+__Htext5 0 0 ABS 0 text5 dist/default/production\pictris-snake.production.o
+__Htext6 0 0 ABS 0 text6 dist/default/production\pictris-snake.production.o
+__Htext7 0 0 ABS 0 text7 dist/default/production\pictris-snake.production.o
+__Htext8 0 0 ABS 0 text8 dist/default/production\pictris-snake.production.o
+__Htext9 0 0 ABS 0 text9 dist/default/production\pictris-snake.production.o
+_SnakeYtext 601 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+_getNumber 2074 0 CODE 0 text14 dist/default/production\pictris-snake.production.o
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\pictris-snake.production.o
+__Hbigram 0 0 ABS 0 bigram dist/default/production\pictris-snake.production.o
+__size_of_checkButtons 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__smallconst 600 0 SMALLCONST 0 smallconst C:\Users\ryan\AppData\Local\Temp\sdi8.o
+__size_of_initialise_TMR0 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hcomram 0 0 ABS 0 comram dist/default/production\pictris-snake.production.o
+__Hconfig 30000E 0 CONFIG 0 config dist/default/production\pictris-snake.production.o
+__CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_port_display F82 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_waitms 2164 0 CODE 0 text2 dist/default/production\pictris-snake.production.o
+_EndOfGame 12 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+moveObjectDown@pObject 5A 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lbank0 0 0 ABS 0 bank0 dist/default/production\pictris-snake.production.o
+__Lbank1 0 0 ABS 0 bank1 dist/default/production\pictris-snake.production.o
+__Lbank2 0 0 ABS 0 bank2 dist/default/production\pictris-snake.production.o
+__Lbank3 0 0 ABS 0 bank3 dist/default/production\pictris-snake.production.o
+__Lbank4 0 0 ABS 0 bank4 dist/default/production\pictris-snake.production.o
+__Lbank5 0 0 ABS 0 bank5 dist/default/production\pictris-snake.production.o
+__Lcinit 0 0 ABS 0 cinit dist/default/production\pictris-snake.production.o
+__Lconst 0 0 CONST 0 const dist/default/production\pictris-snake.production.o
+__Lidata 0 0 CODE 0 idata dist/default/production\pictris-snake.production.o
+__Lidloc 200000 0 IDLOC 0 idloc dist/default/production\pictris-snake.production.o
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production\pictris-snake.production.o
+__Lparam 0 0 COMRAM 1 rparam dist/default/production\pictris-snake.production.o
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production\pictris-snake.production.o
+__Lstack 0 0 STACK 2 stack dist/default/production\pictris-snake.production.o
+__Ltext0 0 0 ABS 0 text0 dist/default/production\pictris-snake.production.o
+__Ltext1 0 0 ABS 0 text1 dist/default/production\pictris-snake.production.o
+__Ltext2 0 0 ABS 0 text2 dist/default/production\pictris-snake.production.o
+__Ltext3 0 0 ABS 0 text3 dist/default/production\pictris-snake.production.o
+__Ltext4 0 0 ABS 0 text4 dist/default/production\pictris-snake.production.o
+__Ltext5 0 0 ABS 0 text5 dist/default/production\pictris-snake.production.o
+__Ltext6 0 0 ABS 0 text6 dist/default/production\pictris-snake.production.o
+__Ltext7 0 0 ABS 0 text7 dist/default/production\pictris-snake.production.o
+__Ltext8 0 0 ABS 0 text8 dist/default/production\pictris-snake.production.o
+__Ltext9 0 0 ABS 0 text9 dist/default/production\pictris-snake.production.o
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production\pictris-snake.production.o
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\pictris-snake.production.o
+checkForLines@x 60 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+checkForLines@y 61 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_PORTBbits F81 0 ABS 0 - dist/default/production\pictris-snake.production.o
+waitms@t 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_INTCONbits FF2 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_OSC$INTIO67 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_Left_Delay 2E 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__Habs1 0 0 ABS 0 abs1 dist/default/production\pictris-snake.production.o
+__Hdata 0 0 ABS 0 data dist/default/production\pictris-snake.production.o
+__Hinit 12 0 CODE 0 init dist/default/production\pictris-snake.production.o
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production\pictris-snake.production.o
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production\pictris-snake.production.o
+__Htemp 64 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+__Htext 0 0 ABS 0 text dist/default/production\pictris-snake.production.o
+__Labs1 0 0 ABS 0 abs1 dist/default/production\pictris-snake.production.o
+__Ldata 0 0 ABS 0 data dist/default/production\pictris-snake.production.o
+__Linit E 0 CODE 0 init dist/default/production\pictris-snake.production.o
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production\pictris-snake.production.o
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production\pictris-snake.production.o
+__Ltemp 63 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+__Ltext 0 0 ABS 0 text dist/default/production\pictris-snake.production.o
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+memcpy@d 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+memcpy@n 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+memcpy@s 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+show_score@F2907 B7 0 BANK0 1 dataBANK0 dist/default/production\pictris-snake.production.o
+___wmul 20C2 0 CODE 0 text24 dist/default/production\pictris-snake.production.o
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\pictris-snake.production.o
+int$flags 63 0 COMRAM 1 temp dist/default/production\pictris-snake.production.o
+__end_of_resumeButtons 21B4 0 CODE 0 text41 dist/default/production\pictris-snake.production.o
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\pictris-snake.production.o
+show_score@score B0 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+_debounceButton 1BB8 0 CODE 0 text48 dist/default/production\pictris-snake.production.o
+__end_of_checkButtons 934 0 CODE 0 text18 dist/default/production\pictris-snake.production.o
+_WriteEEByte 209C 0 CODE 0 text8 dist/default/production\pictris-snake.production.o
+__Hintret 0 0 ABS 0 intret dist/default/production\pictris-snake.production.o
+__Hirdata 0 0 CODE 0 irdata dist/default/production\pictris-snake.production.o
+WriteEEByte@address 48 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_GIE 7F97 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_PSA 7EAB 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__S0 30000E 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__S1 285 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__S2 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_isr 8 0 CODE 0 intcode dist/default/production\pictris-snake.production.o
+__size_of_pauseMultiplexing 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_LastHighScore 14 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_genBerry 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_Right_Delay 2C 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_berryX A 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_berryY 9 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_CreateBerry 1C26 0 CODE 0 text33 dist/default/production\pictris-snake.production.o
+__size_of_pixelCount 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_checkForLines 1AC8 0 CODE 0 text16 dist/default/production\pictris-snake.production.o
+reverse@length 4E 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_waitForInterrupt 21A0 0 CODE 0 text43 dist/default/production\pictris-snake.production.o
+__HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\pictris-snake.production.o
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\pictris-snake.production.o
+__size_of_moveObjectDown 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\pictris-snake.production.o
+__end_of_SnakeGraph F92 0 CODE 0 text32 dist/default/production\pictris-snake.production.o
+__end_of_isr CA4 0 CODE 0 intcode_body dist/default/production\pictris-snake.production.o
+__end_of_SnakeYtext 621 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+int_func B14 0 CODE 0 intcode_body dist/default/production\pictris-snake.production.o
+__size_of_waitForInterrupt 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_CCP2MX$PORTC 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_clearArray 1FBC 0 CODE 0 text46 dist/default/production\pictris-snake.production.o
+_Rotate_Debounced 32 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__Lintentry 0 0 ABS 0 intentry dist/default/production\pictris-snake.production.o
+__size_of_resumeMultiplexing 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+collisionDetect@pSource 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Hramtop 600 0 RAM 0 ramtop dist/default/production\pictris-snake.production.o
+collisionDetect@pTarget 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_Down_Debounced 31 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production\pictris-snake.production.o
+_CheckForNewLines 11 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__pdataBANK0 B7 0 BANK0 1 dataBANK0 dist/default/production\pictris-snake.production.o
+__pdataBANK2 200 0 BANK2 1 dataBANK2 dist/default/production\pictris-snake.production.o
+__activetblptr 2 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hstruct 0 0 COMRAM 1 struct dist/default/production\pictris-snake.production.o
+getNumber@pTarget 51 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of___wmul 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\pictris-snake.production.o
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\pictris-snake.production.o
+__end_of_collisionDetect 1D54 0 CODE 0 text27 dist/default/production\pictris-snake.production.o
+__Htext10 0 0 ABS 0 text10 dist/default/production\pictris-snake.production.o
+__Htext11 0 0 ABS 0 text11 dist/default/production\pictris-snake.production.o
+__Htext12 0 0 ABS 0 text12 dist/default/production\pictris-snake.production.o
+__Htext13 0 0 ABS 0 text13 dist/default/production\pictris-snake.production.o
+__Htext14 0 0 ABS 0 text14 dist/default/production\pictris-snake.production.o
+__Htext15 0 0 ABS 0 text15 dist/default/production\pictris-snake.production.o
+__Htext16 0 0 ABS 0 text16 dist/default/production\pictris-snake.production.o
+__Htext17 0 0 ABS 0 text17 dist/default/production\pictris-snake.production.o
+__Htext18 0 0 ABS 0 text18 dist/default/production\pictris-snake.production.o
+__Htext19 0 0 ABS 0 text19 dist/default/production\pictris-snake.production.o
+__Htext20 0 0 ABS 0 text20 dist/default/production\pictris-snake.production.o
+__Htext21 0 0 ABS 0 text21 dist/default/production\pictris-snake.production.o
+__Htext22 0 0 ABS 0 text22 dist/default/production\pictris-snake.production.o
+__Htext23 0 0 ABS 0 text23 dist/default/production\pictris-snake.production.o
+__Htext24 0 0 ABS 0 text24 dist/default/production\pictris-snake.production.o
+__Htext25 0 0 ABS 0 text25 dist/default/production\pictris-snake.production.o
+__Htext26 0 0 ABS 0 text26 dist/default/production\pictris-snake.production.o
+__Htext27 0 0 ABS 0 text27 dist/default/production\pictris-snake.production.o
+__Htext28 0 0 ABS 0 text28 dist/default/production\pictris-snake.production.o
+__Htext29 0 0 ABS 0 text29 dist/default/production\pictris-snake.production.o
+__Htext30 0 0 ABS 0 text30 dist/default/production\pictris-snake.production.o
+__Htext31 0 0 ABS 0 text31 dist/default/production\pictris-snake.production.o
+__Htext32 0 0 ABS 0 text32 dist/default/production\pictris-snake.production.o
+__Htext33 0 0 ABS 0 text33 dist/default/production\pictris-snake.production.o
+__Htext34 0 0 ABS 0 text34 dist/default/production\pictris-snake.production.o
+__Htext35 0 0 ABS 0 text35 dist/default/production\pictris-snake.production.o
+__Htext36 0 0 ABS 0 text36 dist/default/production\pictris-snake.production.o
+__Htext37 0 0 ABS 0 text37 dist/default/production\pictris-snake.production.o
+__Htext38 0 0 ABS 0 text38 dist/default/production\pictris-snake.production.o
+__Htext39 0 0 ABS 0 text39 dist/default/production\pictris-snake.production.o
+__Htext40 0 0 ABS 0 text40 dist/default/production\pictris-snake.production.o
+__Htext41 0 0 ABS 0 text41 dist/default/production\pictris-snake.production.o
+__Htext42 0 0 ABS 0 text42 dist/default/production\pictris-snake.production.o
+__Htext43 0 0 ABS 0 text43 dist/default/production\pictris-snake.production.o
+__Htext44 0 0 ABS 0 text44 dist/default/production\pictris-snake.production.o
+__Htext45 0 0 ABS 0 text45 dist/default/production\pictris-snake.production.o
+__Htext46 0 0 ABS 0 text46 dist/default/production\pictris-snake.production.o
+__Htext48 0 0 ABS 0 text48 dist/default/production\pictris-snake.production.o
+__Htext49 0 0 ABS 0 text49 dist/default/production\pictris-snake.production.o
+_LimitedRotation 16 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+genBerry@size 4C 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+genBerry@temp 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___awmod@counter 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_previous_direction 8 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_debounceButton 1C26 0 CODE 0 text48 dist/default/production\pictris-snake.production.o
+show_score@i B6 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+_memcpy 1DAA 0 CODE 0 text23 dist/default/production\pictris-snake.production.o
+_mtxButtons 17 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_readHighScore 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__ptext10 1350 0 CODE 0 text10 dist/default/production\pictris-snake.production.o
+__ptext11 1E00 0 CODE 0 text11 dist/default/production\pictris-snake.production.o
+__ptext12 1FF0 0 CODE 0 text12 dist/default/production\pictris-snake.production.o
+__ptext13 1A44 0 CODE 0 text13 dist/default/production\pictris-snake.production.o
+__ptext14 2074 0 CODE 0 text14 dist/default/production\pictris-snake.production.o
+__ptext15 1702 0 CODE 0 text15 dist/default/production\pictris-snake.production.o
+__ptext16 1AC8 0 CODE 0 text16 dist/default/production\pictris-snake.production.o
+__ptext17 145A 0 CODE 0 text17 dist/default/production\pictris-snake.production.o
+__ptext18 6F2 0 CODE 0 text18 dist/default/production\pictris-snake.production.o
+__ptext19 1C92 0 CODE 0 text19 dist/default/production\pictris-snake.production.o
+__ptext20 121A 0 CODE 0 text20 dist/default/production\pictris-snake.production.o
+__ptext21 162A 0 CODE 0 text21 dist/default/production\pictris-snake.production.o
+__ptext22 1892 0 CODE 0 text22 dist/default/production\pictris-snake.production.o
+__ptext23 1DAA 0 CODE 0 text23 dist/default/production\pictris-snake.production.o
+__ptext24 20C2 0 CODE 0 text24 dist/default/production\pictris-snake.production.o
+__ptext25 1B48 0 CODE 0 text25 dist/default/production\pictris-snake.production.o
+__ptext26 CA4 0 CODE 0 text26 dist/default/production\pictris-snake.production.o
+__ptext27 1CFC 0 CODE 0 text27 dist/default/production\pictris-snake.production.o
+__ptext28 1F88 0 CODE 0 text28 dist/default/production\pictris-snake.production.o
+__ptext29 2106 0 CODE 0 text29 dist/default/production\pictris-snake.production.o
+__ptext30 2122 0 CODE 0 text30 dist/default/production\pictris-snake.production.o
+__ptext31 934 0 CODE 0 text31 dist/default/production\pictris-snake.production.o
+__ptext32 E28 0 CODE 0 text32 dist/default/production\pictris-snake.production.o
+__ptext33 1C26 0 CODE 0 text33 dist/default/production\pictris-snake.production.o
+__ptext34 213A 0 CODE 0 text34 dist/default/production\pictris-snake.production.o
+__ptext35 1E52 0 CODE 0 text35 dist/default/production\pictris-snake.production.o
+__ptext36 204A 0 CODE 0 text36 dist/default/production\pictris-snake.production.o
+__ptext37 1E98 0 CODE 0 text37 dist/default/production\pictris-snake.production.o
+__ptext38 20E8 0 CODE 0 text38 dist/default/production\pictris-snake.production.o
+__ptext39 10E0 0 CODE 0 text39 dist/default/production\pictris-snake.production.o
+__ptext40 21A8 0 CODE 0 text40 dist/default/production\pictris-snake.production.o
+__ptext41 21AE 0 CODE 0 text41 dist/default/production\pictris-snake.production.o
+__ptext42 2184 0 CODE 0 text42 dist/default/production\pictris-snake.production.o
+__ptext43 2194 0 CODE 0 text43 dist/default/production\pictris-snake.production.o
+__ptext44 21B4 0 CODE 0 text44 dist/default/production\pictris-snake.production.o
+__ptext45 154C 0 CODE 0 text45 dist/default/production\pictris-snake.production.o
+__ptext46 1FBC 0 CODE 0 text46 dist/default/production\pictris-snake.production.o
+__ptext48 1BB8 0 CODE 0 text48 dist/default/production\pictris-snake.production.o
+__ptext49 1EDA 0 CODE 0 text49 dist/default/production\pictris-snake.production.o
+___awdiv 1A44 0 CODE 0 text13 dist/default/production\pictris-snake.production.o
+___awmod 1B48 0 CODE 0 text25 dist/default/production\pictris-snake.production.o
+choosescreen@mask 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___lbmod 204A 0 CODE 0 text36 dist/default/production\pictris-snake.production.o
+__pintcode_body B14 0 CODE 0 intcode_body dist/default/production\pictris-snake.production.o
+___lwmod 1EDA 0 CODE 0 text49 dist/default/production\pictris-snake.production.o
+_genBerry 213A 0 CODE 0 text34 dist/default/production\pictris-snake.production.o
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\pictris-snake.production.o
+__Lbigram 0 0 ABS 0 bigram dist/default/production\pictris-snake.production.o
+__CFG_BORV$3 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Lcomram 0 0 ABS 0 comram dist/default/production\pictris-snake.production.o
+__Lconfig 300000 0 CONFIG 0 config dist/default/production\pictris-snake.production.o
+__size_of_MoveSnakes 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___wmul@multiplier 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_genBerry 2152 0 CODE 0 text34 dist/default/production\pictris-snake.production.o
+__end_of_choose_screen 631 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+__end_of_initialise_globals 17D2 0 CODE 0 text15 dist/default/production\pictris-snake.production.o
+_moveObject CA4 0 CODE 0 text26 dist/default/production\pictris-snake.production.o
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production\pictris-snake.production.o
+_shapes 200 0 BANK2 1 dataBANK2 dist/default/production\pictris-snake.production.o
+_Rotate_Delay 2A 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production\pictris-snake.production.o
+_tetris 7 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_show_score F92 0 CODE 0 text9 dist/default/production\pictris-snake.production.o
+_mainGameLoop 17D2 0 CODE 0 text6 dist/default/production\pictris-snake.production.o
+__size_of_checkForBottom 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+stackhi 5FF 0 ABS 0 - C:\Users\ryan\AppData\Local\Temp\sdi8.o
+stacklo 285 0 ABS 0 - C:\Users\ryan\AppData\Local\Temp\sdi8.o
+_positions 100 0 BANK1 1 bssBANK1 dist/default/production\pictris-snake.production.o
+__Lintcode 8 0 CODE 0 intcode dist/default/production\pictris-snake.production.o
+debounceButton@button 3B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_clearArray 1FF0 0 CODE 0 text46 dist/default/production\pictris-snake.production.o
+__size_of_removeLine 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_readHighScore 1F52 0 CODE 0 text4 dist/default/production\pictris-snake.production.o
+__Lintret 0 0 ABS 0 intret dist/default/production\pictris-snake.production.o
+__Lirdata 0 0 CODE 0 irdata dist/default/production\pictris-snake.production.o
+collisionDetect@i 4F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_ADCON1bits FC1 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_waitms 2152 0 CODE 0 text2 dist/default/production\pictris-snake.production.o
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_newRotation 121A 0 CODE 0 text20 dist/default/production\pictris-snake.production.o
+_collisionDetect 1CFC 0 CODE 0 text27 dist/default/production\pictris-snake.production.o
+selectNextObject@counter 56 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lspace_0 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Lspace_1 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Lspace_2 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_memcpy 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\pictris-snake.production.o
+__end_of_pauseMultiplexing 2194 0 CODE 0 text42 dist/default/production\pictris-snake.production.o
+__size_of_checkForLines 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\pictris-snake.production.o
+end_of_initialization 1A36 0 CODE 0 cinit dist/default/production\pictris-snake.production.o
+checkForLeftWall@pObject 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+WriteEEByte@data 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\pictris-snake.production.o
+__Hintentry 0 0 ABS 0 intentry dist/default/production\pictris-snake.production.o
+_initialise_globals 1702 0 CODE 0 text15 dist/default/production\pictris-snake.production.o
+_rnd_get_num 1E52 0 CODE 0 text35 dist/default/production\pictris-snake.production.o
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__size_of_checkForRightWall 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___awdiv@quotient 4D 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+?___awdiv 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+?___awmod 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+?___lwmod 35 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+isr@xmask 46 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+isr@ymask 44 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\pictris-snake.production.o
+checkForLines@pObject 58 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_IsRotated 13 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\pictris-snake.production.o
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\pictris-snake.production.o
+___awmod@dividend 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lramtop 600 0 RAM 0 ramtop dist/default/production\pictris-snake.production.o
+_rnd_initialize 21A0 0 CODE 0 text3 dist/default/production\pictris-snake.production.o
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production\pictris-snake.production.o
+__pcinit 19C0 0 CODE 0 cinit dist/default/production\pictris-snake.production.o
+mergeObjects@mode 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_mainGameLoop 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_Down_Delay 28 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__ptext0 201E 0 CODE 0 text0 dist/default/production\pictris-snake.production.o
+__ptext1 1D54 0 CODE 0 text1 dist/default/production\pictris-snake.production.o
+__ptext2 2152 0 CODE 0 text2 dist/default/production\pictris-snake.production.o
+__ptext3 21A0 0 CODE 0 text3 dist/default/production\pictris-snake.production.o
+__ptext4 1F1C 0 CODE 0 text4 dist/default/production\pictris-snake.production.o
+__ptext5 2174 0 CODE 0 text5 dist/default/production\pictris-snake.production.o
+__ptext6 17D2 0 CODE 0 text6 dist/default/production\pictris-snake.production.o
+__ptext7 1F52 0 CODE 0 text7 dist/default/production\pictris-snake.production.o
+__ptext8 209C 0 CODE 0 text8 dist/default/production\pictris-snake.production.o
+__ptext9 F92 0 CODE 0 text9 dist/default/production\pictris-snake.production.o
+mergeObjects@pSource 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lstruct 0 0 COMRAM 1 struct dist/default/production\pictris-snake.production.o
+mergeObjects@pTarget 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Ltext10 0 0 ABS 0 text10 dist/default/production\pictris-snake.production.o
+__Ltext11 0 0 ABS 0 text11 dist/default/production\pictris-snake.production.o
+__Ltext12 0 0 ABS 0 text12 dist/default/production\pictris-snake.production.o
+__Ltext13 0 0 ABS 0 text13 dist/default/production\pictris-snake.production.o
+__Ltext14 0 0 ABS 0 text14 dist/default/production\pictris-snake.production.o
+__Ltext15 0 0 ABS 0 text15 dist/default/production\pictris-snake.production.o
+__Ltext16 0 0 ABS 0 text16 dist/default/production\pictris-snake.production.o
+__Ltext17 0 0 ABS 0 text17 dist/default/production\pictris-snake.production.o
+__Ltext18 0 0 ABS 0 text18 dist/default/production\pictris-snake.production.o
+__Ltext19 0 0 ABS 0 text19 dist/default/production\pictris-snake.production.o
+__Ltext20 0 0 ABS 0 text20 dist/default/production\pictris-snake.production.o
+__Ltext21 0 0 ABS 0 text21 dist/default/production\pictris-snake.production.o
+__Ltext22 0 0 ABS 0 text22 dist/default/production\pictris-snake.production.o
+__Ltext23 0 0 ABS 0 text23 dist/default/production\pictris-snake.production.o
+__Ltext24 0 0 ABS 0 text24 dist/default/production\pictris-snake.production.o
+__Ltext25 0 0 ABS 0 text25 dist/default/production\pictris-snake.production.o
+__Ltext26 0 0 ABS 0 text26 dist/default/production\pictris-snake.production.o
+__Ltext27 0 0 ABS 0 text27 dist/default/production\pictris-snake.production.o
+__Ltext28 0 0 ABS 0 text28 dist/default/production\pictris-snake.production.o
+__Ltext29 0 0 ABS 0 text29 dist/default/production\pictris-snake.production.o
+__Ltext30 0 0 ABS 0 text30 dist/default/production\pictris-snake.production.o
+__Ltext31 0 0 ABS 0 text31 dist/default/production\pictris-snake.production.o
+__Ltext32 0 0 ABS 0 text32 dist/default/production\pictris-snake.production.o
+__Ltext33 0 0 ABS 0 text33 dist/default/production\pictris-snake.production.o
+__Ltext34 0 0 ABS 0 text34 dist/default/production\pictris-snake.production.o
+__Ltext35 0 0 ABS 0 text35 dist/default/production\pictris-snake.production.o
+__Ltext36 0 0 ABS 0 text36 dist/default/production\pictris-snake.production.o
+__Ltext37 0 0 ABS 0 text37 dist/default/production\pictris-snake.production.o
+__Ltext38 0 0 ABS 0 text38 dist/default/production\pictris-snake.production.o
+__Ltext39 0 0 ABS 0 text39 dist/default/production\pictris-snake.production.o
+__Ltext40 0 0 ABS 0 text40 dist/default/production\pictris-snake.production.o
+__Ltext41 0 0 ABS 0 text41 dist/default/production\pictris-snake.production.o
+__Ltext42 0 0 ABS 0 text42 dist/default/production\pictris-snake.production.o
+__Ltext43 0 0 ABS 0 text43 dist/default/production\pictris-snake.production.o
+__Ltext44 0 0 ABS 0 text44 dist/default/production\pictris-snake.production.o
+__Ltext45 0 0 ABS 0 text45 dist/default/production\pictris-snake.production.o
+__Ltext46 0 0 ABS 0 text46 dist/default/production\pictris-snake.production.o
+__Ltext48 0 0 ABS 0 text48 dist/default/production\pictris-snake.production.o
+__Ltext49 0 0 ABS 0 text49 dist/default/production\pictris-snake.production.o
+_writeHighScore 1F52 0 CODE 0 text7 dist/default/production\pictris-snake.production.o
+__end_of_moveObject E28 0 CODE 0 text26 dist/default/production\pictris-snake.production.o
+__ramtop 600 0 RAM 0 ramtop C:\Users\ryan\AppData\Local\Temp\sdi8.o
+checkForBottom@i 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_NumberOfLines 15 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_waitms 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___lbmod@dividend 48 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_checkForLines 1B48 0 CODE 0 text16 dist/default/production\pictris-snake.production.o
+__Lpowerup E 0 CODE 0 powerup dist/default/production\pictris-snake.production.o
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\pictris-snake.production.o
+__end_of_show_score 10E0 0 CODE 0 text9 dist/default/production\pictris-snake.production.o
+__psmallconst 600 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\pictris-snake.production.o
+_choosescreen 10E0 0 CODE 0 text39 dist/default/production\pictris-snake.production.o
+__size_of_initialise_hardware 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+readHighScore@adress 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___param_bank 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WDT$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_mainGameLoop 1892 0 CODE 0 text6 dist/default/production\pictris-snake.production.o
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\pictris-snake.production.o
+__end_of__initialization 1A36 0 CODE 0 cinit dist/default/production\pictris-snake.production.o
+__size_of_reverse 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+___awmod@divisor 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WRT1$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WRT2$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WRT3$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WRTB$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production\pictris-snake.production.o
+__CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_splash_screen 1D54 0 CODE 0 text1 dist/default/production\pictris-snake.production.o
+moveObject@pObject 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_SnakeGraph 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+mergeObjects@i 4E 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__pidataBANK0 2164 0 CODE 0 idataBANK0 dist/default/production\pictris-snake.production.o
+__pidataBANK2 193A 0 CODE 0 idataBANK2 dist/default/production\pictris-snake.production.o
+moveObjectDown@result 5C 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production\pictris-snake.production.o
+show_score@number B2 0 BANK0 1 cstackBANK0 dist/default/production\pictris-snake.production.o
+debounceButton@debounced 37 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+itoa@value 55 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_WriteEEByte 20C2 0 CODE 0 text8 dist/default/production\pictris-snake.production.o
+__pcstackCOMRAM 35 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_collisionDetect 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__end_of_rnd_initialize 21A8 0 CODE 0 text3 dist/default/production\pictris-snake.production.o
+_mergeObjects 154C 0 CODE 0 text45 dist/default/production\pictris-snake.production.o
+_ReadEEByte 2174 0 CODE 0 text5 dist/default/production\pictris-snake.production.o
+__CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+pixelCount@pSource 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+___lbmod@rem 4A 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_writeHighScore 1F88 0 CODE 0 text7 dist/default/production\pictris-snake.production.o
+_pauseMultiplexing 2184 0 CODE 0 text42 dist/default/production\pictris-snake.production.o
+__end_of_itoa 145A 0 CODE 0 text10 dist/default/production\pictris-snake.production.o
+__end_of_main 204A 0 CODE 0 text0 dist/default/production\pictris-snake.production.o
+__end_of_swap 201E 0 CODE 0 text12 dist/default/production\pictris-snake.production.o
+__pintcode 8 0 CODE 0 intcode dist/default/production\pictris-snake.production.o
+__end_of_CreateBerry 1C92 0 CODE 0 text33 dist/default/production\pictris-snake.production.o
+__end_of_SNAKE 6E1 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+_EEADR FA9 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_PORTA F80 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_PORTB F81 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_PORTC F82 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_PORTD F83 0 ABS 0 - dist/default/production\pictris-snake.production.o
+_SNAKE 6D1 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+__size_of_choosescreen 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__HRAM 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hbss 0 0 RAM 1 bss dist/default/production\pictris-snake.production.o
+__Hram 0 0 ABS 0 ram dist/default/production\pictris-snake.production.o
+__Hsfr 0 0 ABS 0 sfr dist/default/production\pictris-snake.production.o
+__LRAM 1 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Lbss 0 0 RAM 1 bss dist/default/production\pictris-snake.production.o
+__Lram 0 0 ABS 0 ram dist/default/production\pictris-snake.production.o
+__Lsfr 0 0 ABS 0 sfr dist/default/production\pictris-snake.production.o
+__CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__lfsr 62 0 COMRAM 1 dataCOMRAM dist/default/production\pictris-snake.production.o
+__CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_CPB$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+initialise_globals@i 51 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+CreateBerry@i 50 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_initialise_hardware 1E98 0 CODE 0 text37 dist/default/production\pictris-snake.production.o
+__size_of_isr 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__HdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\pictris-snake.production.o
+__HdataBANK2 0 0 ABS 0 dataBANK2 dist/default/production\pictris-snake.production.o
+ReadEEByte@address 47 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__initialization 19C0 0 CODE 0 cinit dist/default/production\pictris-snake.production.o
+__pbssBANK0 80 0 BANK0 1 bssBANK0 dist/default/production\pictris-snake.production.o
+__pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production\pictris-snake.production.o
+__pdataCOMRAM 62 0 COMRAM 1 dataCOMRAM dist/default/production\pictris-snake.production.o
+__end_of_checkForRightWall 2122 0 CODE 0 text29 dist/default/production\pictris-snake.production.o
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production\pictris-snake.production.o
+___wmul@product 51 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__Hsmallconst 6F2 0 SMALLCONST 0 smallconst dist/default/production\pictris-snake.production.o
+newRotation@rotation 57 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_OriginX F 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+_OriginY E 0 COMRAM 1 bssCOMRAM dist/default/production\pictris-snake.production.o
+__Lifardata 0 0 CODE 0 ifardata dist/default/production\pictris-snake.production.o
+removeLine@x 57 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+removeLine@y 56 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+_moveObjectDown 162A 0 CODE 0 text21 dist/default/production\pictris-snake.production.o
+__end_of_choosescreen 121A 0 CODE 0 text39 dist/default/production\pictris-snake.production.o
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\pictris-snake.production.o
+___lbmod@counter 49 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_mergeObjects 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+__Hintcode E 0 CODE 0 intcode dist/default/production\pictris-snake.production.o
+_itoa$422 5B 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+__size_of_clearArray 0 0 ABS 0 - dist/default/production\pictris-snake.production.o
+choosescreen@i 5F 0 COMRAM 1 cstackCOMRAM dist/default/production\pictris-snake.production.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 19C0 19C0 7FB 1
+idloc 0 200000 200000 8 1
+text18 0 6F2 6F2 12CD 1
+reset_vec 0 0 0 4 1
+bssBANK0 1 80 80 47 1
+bssBANK1 1 100 100 C8 1
+intcode 0 8 8 A 1
+smallconst 0 600 600 F2 1
+dataBANK2 1 200 200 85 1
+bssCOMRAM 1 1 1 63 1
+config 0 300000 300000 E 1

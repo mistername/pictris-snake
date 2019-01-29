@@ -40,7 +40,6 @@
 #undef customRandom
 
 #define snake
-
 #define highscore
 
 typedef uint8_t byte;
@@ -167,7 +166,7 @@ volatile
 volatile
         bool Left_Debounced, Right_Debounced, Rotate_Debounced, Down_Debounced;
 
-#  define DEBOUNCE_DELAY   20       // 10 ms
+#  define DEBOUNCE_DELAY   20       // 20 ms
 #  define REPETITION_DELAY 500      // 500 ms
 #endif
 
@@ -190,7 +189,6 @@ byte OriginX, OriginY;
 
 // TMR0 variables
 volatile uint16_t mS;                    // mS register
-//volatile byte     CurrentX;
 
 
 #ifdef ENABLE_PICTRIS
@@ -209,14 +207,14 @@ const uint16_t TETRIS[] =
 
 const uint16_t SNAKE[] =
 {
-    0xFB97,
-    0xA955,
-    0xAB9D,
-    0x0000,
-    0x03DF,
-    0xB881,
-    0x035F,
-    0x0000, 
+    0xFB97, // ***** ***  * ***,
+    0xA955, // * * *  * * * * *,
+    0xAB9D, // * * * ***  *** *,
+    0x0000, //                 ,
+    0x03DF, //       **** *****,
+    0xB881, // * ***   *      *,
+    0x035F, //       ** * *****,
+    0x0000, //
 };
 
 
@@ -229,14 +227,14 @@ typedef enum {
 #ifdef snake
 const uint16_t choose_screen[] =
 {
-    0xFFFF,
-    0x8181,
-    0xBD81,
-    0x858D,
-    0x8599,
-    0xAD81,
-    0x8181,
-    0xFFFF,
+    0xFFFF, // ****************,
+    0x8181, // *      **      *,
+    0xBD81, // * **** **      *,
+    0x858D, // *    * **   ** *,
+    0x8599, // *    * **  **  *,
+    0xAD81, // * * ** **      *,
+    0x8181, // *      **      *,
+    0xFFFF, // ****************
 };
 #endif
 
@@ -253,21 +251,25 @@ typedef enum {
     INVERT
 } mode_t;
 
-#ifdef snake
+#ifdef snake 
+// for every bit 1 turned on rest off i.e. 1000000000000000 = SnakeYtext[0]
 const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
 
+//for array positions for snake for each piece of the snake an x and y value.
 struct position{
     uint8_t x;
     uint8_t y;
 };
-uint8_t direction;
-bool moveSnake;
-struct position positions[100];
-uint8_t snakeLength;
+uint8_t direction; //for direction of the snake 0=down 1=right 2=up 3=left
+bool moveSnake; //trigger to move the snake
+struct position positions[100]; //array for every snake length (max length equals 100)
+uint8_t snakeLength; //Length of snake;
+//position of berry on screen
 uint8_t berryX;
 uint8_t berryY;
-uint8_t previous_direction;
+uint8_t previous_direction; //previous direction so as to not go back the same way
 #endif
+//game choosing variable
 bool tetris;
 
 #ifdef customRandom
@@ -351,18 +353,19 @@ char * itoa(int value, char * str, int bas)
 }
 
 #ifdef ENABLE_DEBOUNCE
+//clears trigger for checking buttons in interrupt
 void pauseButtons()
 {
-    //while (!mtxButtons)
-    //    continue;
     mtxButtons = false;
 }
-
+//fills trigger for checking buttons in interrupt
 void resumeButtons()
 {
+    
     mtxButtons = true;
 }
 
+//makes button unuseable for DEBOUNCE_DELAY in ms
 void debounceButton(volatile bool button, volatile int16_t *delay, volatile bool *debounced)
 {
     if (button == 0) // Button pressed
@@ -404,6 +407,7 @@ void goSleep(void)
 
 #ifdef ENABLE_INTWAIT
 volatile unsigned time;
+// wait for time in ms
 void waitms(unsigned t)
 {
     time = t;
@@ -458,7 +462,7 @@ void __interrupt() isr(void)
         time--;             // variable for waitms()
 #endif
         
-        if (++mS >= 1000)
+        if (++mS >= 1600)
         {
             mS = 0;
 #ifdef ENABLE_SWDT
@@ -485,9 +489,10 @@ void __interrupt() isr(void)
 #ifdef ENABLE_PICTRIS
         // Event Handler - Object Drop
         // Once every 800mS, a flag is set to initiate the next object drop.
+        // Once every 200mS, a flag is set to initiate the next snake move.
         // This is one of few classic features of tetris
-        if (tetris == true){
-        DropObject |= mS == 800;}
+        if (tetris == true && mS % 800 == 0){
+        DropObject = true;}
 #ifdef snake
         else if(mS % 200 == 0 ){
         moveSnake = true;

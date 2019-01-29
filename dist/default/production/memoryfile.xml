@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\PICtris.X.production.hex">
+  <executable name="dist/default/production\pictris-snake.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>7108</used>
-      <free>25660</free>
+      <used>7112</used>
+      <free>25656</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

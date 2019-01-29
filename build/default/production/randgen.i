@@ -97,7 +97,8 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-# 17 "./randgen.h" 2
+# 16 "./randgen.h" 2
+
 
 
 
@@ -107,7 +108,8 @@ typedef uint32_t uint_fast32_t;
 
 uint8_t rnd_get_num(void);
 void rnd_initialize(uint8_t seed);
-# 2 "randgen.c" 2
+# 1 "randgen.c" 2
+
 
 
 

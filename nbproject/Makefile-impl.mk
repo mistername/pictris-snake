@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=PICtris.X
+PROJECTNAME=pictris-snake
 
 # Active Configuration
 DEFAULTCONF=default

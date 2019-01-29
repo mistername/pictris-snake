@@ -12,11 +12,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>memcpy.c</itemPath>
       <itemPath>pictris.c</itemPath>
-      <itemPath>memmove.c</itemPath>
       <itemPath>randgen.c</itemPath>
       <itemPath>randgen.h</itemPath>
+      <itemPath>memcpy.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -24,6 +23,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

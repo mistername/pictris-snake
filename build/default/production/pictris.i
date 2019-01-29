@@ -4683,9 +4683,9 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 uint8_t rnd_get_num(void);
 void rnd_initialize(uint8_t seed);
 # 28 "pictris.c" 2
-# 46 "pictris.c"
+# 45 "pictris.c"
 typedef uint8_t byte;
-# 58 "pictris.c"
+# 57 "pictris.c"
 # 1 "./shapes.h" 1
 
 
@@ -4755,7 +4755,7 @@ struct shape
       0x0000,
       0x0000}, 4, 1, 1},
 };
-# 58 "pictris.c" 2
+# 57 "pictris.c" 2
 
 # 1 "./numbers.h" 1
 
@@ -4844,7 +4844,7 @@ const uint16_t Number[10][8] = {
      0x0000,
      0x0000},
 };
-# 59 "pictris.c" 2
+# 58 "pictris.c" 2
 
 
 
@@ -4905,11 +4905,11 @@ const uint16_t Number[10][8] = {
 
 
 #pragma config EBTRB = OFF
-# 128 "pictris.c"
+# 127 "pictris.c"
 volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
 uint16_t tmpObjectData[8];
-# 163 "pictris.c"
+# 162 "pictris.c"
 volatile _Bool mtxButtons;
 
 volatile
@@ -4940,7 +4940,6 @@ byte OriginX, OriginY;
 
 
 volatile uint16_t mS;
-
 
 
 
@@ -5004,7 +5003,9 @@ typedef enum {
 } mode_t;
 
 
+
 const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
+
 
 struct position{
     uint8_t x;
@@ -5014,15 +5015,17 @@ uint8_t direction;
 _Bool moveSnake;
 struct position positions[100];
 uint8_t snakeLength;
+
 uint8_t berryX;
 uint8_t berryY;
 uint8_t previous_direction;
 
+
 _Bool tetris;
-# 282 "pictris.c"
+# 284 "pictris.c"
   extern volatile unsigned short port_display __attribute__((address(0xF82)));
   __asm("port_display equ 0F82h");
-# 292 "pictris.c"
+# 294 "pictris.c"
 void swap(char* a, char* b)
 {
     char t = *a;
@@ -5085,17 +5088,18 @@ char * itoa(int value, char * str, int bas)
 }
 
 
+
 void pauseButtons()
 {
-
-
     mtxButtons = 0;
 }
 
 void resumeButtons()
 {
+
     mtxButtons = 1;
 }
+
 
 void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
 {
@@ -5112,8 +5116,9 @@ void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bo
         *debounced = 0;
     }
 }
-# 406 "pictris.c"
+# 409 "pictris.c"
 volatile unsigned time;
+
 void waitms(unsigned t)
 {
     time = t;
@@ -5168,14 +5173,14 @@ void __attribute__((picinterrupt(""))) isr(void)
         time--;
 
 
-        if (++mS >= 1000)
+        if (++mS >= 1600)
         {
             mS = 0;
 
 
 
         }
-# 476 "pictris.c"
+# 480 "pictris.c"
         if (mtxButtons)
         {
             debounceButton(PORTBbits.RB0, &Left_Delay, &Left_Debounced );
@@ -5189,13 +5194,14 @@ void __attribute__((picinterrupt(""))) isr(void)
 
 
 
-        if (tetris == 1){
-        DropObject |= mS == 800;}
+
+        if (tetris == 1 && mS % 800 == 0){
+        DropObject = 1;}
 
         else if(mS % 200 == 0 ){
         moveSnake = 1;
         }
-# 503 "pictris.c"
+# 508 "pictris.c"
         if (UpdateScreen)
         {
             static byte CurrentX = 0;
@@ -5304,7 +5310,7 @@ void SnakeGraph()
     for(i=0;i<=snakeLength;i++){
         j = positions[i].x;
         tmpObjectData[j] = (SnakeYtext[positions[i].y] | tmpObjectData[j]);
-# 619 "pictris.c"
+# 624 "pictris.c"
     }
     for(i=0;i<8;i++){
         if (berryX == i){
@@ -5468,7 +5474,7 @@ _Bool collisionDetect(volatile uint16_t * pSource, volatile uint16_t * pTarget)
             return 1;
     return 0;
 }
-# 796 "pictris.c"
+# 801 "pictris.c"
 void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
 {
     int8_t x2, y2;
@@ -6128,5 +6134,5 @@ void main(void)
     for (;;)
 
         mainGameLoop();
-# 1578 "pictris.c"
+# 1583 "pictris.c"
 }
