@@ -17,3 +17,12 @@ void *memcpy(void *dest, const void *src, size_t n)
     return dest;
 }
 
+volatile void *memcpyvol(volatile void *dest, volatile const void *src, size_t n)
+{
+    char *d = (char*)dest, *s = (char*)src;
+
+    while(n--)
+        *d++ = *s++;
+
+    return dest;
+}

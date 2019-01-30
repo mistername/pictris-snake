@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=pictris.c randgen.c memcpy.c
+SOURCEFILES_QUOTED_IF_SPACED=pictris.c randgen.c memcpy.c EEPROM.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pictris.p1 ${OBJECTDIR}/randgen.p1 ${OBJECTDIR}/memcpy.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/pictris.p1.d ${OBJECTDIR}/randgen.p1.d ${OBJECTDIR}/memcpy.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pictris.p1 ${OBJECTDIR}/randgen.p1 ${OBJECTDIR}/memcpy.p1 ${OBJECTDIR}/EEPROM.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/pictris.p1.d ${OBJECTDIR}/randgen.p1.d ${OBJECTDIR}/memcpy.p1.d ${OBJECTDIR}/EEPROM.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/pictris.p1 ${OBJECTDIR}/randgen.p1 ${OBJECTDIR}/memcpy.p1
+OBJECTFILES=${OBJECTDIR}/pictris.p1 ${OBJECTDIR}/randgen.p1 ${OBJECTDIR}/memcpy.p1 ${OBJECTDIR}/EEPROM.p1
 
 # Source Files
-SOURCEFILES=pictris.c randgen.c memcpy.c
+SOURCEFILES=pictris.c randgen.c memcpy.c EEPROM.c
 
 
 CFLAGS=
@@ -117,6 +117,14 @@ ${OBJECTDIR}/memcpy.p1: memcpy.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/memcpy.d ${OBJECTDIR}/memcpy.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/memcpy.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/EEPROM.p1: EEPROM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EEPROM.p1.d 
+	@${RM} ${OBJECTDIR}/EEPROM.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/EEPROM.p1 EEPROM.c 
+	@-${MV} ${OBJECTDIR}/EEPROM.d ${OBJECTDIR}/EEPROM.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/pictris.p1: pictris.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -141,6 +149,14 @@ ${OBJECTDIR}/memcpy.p1: memcpy.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/memcpy.p1 memcpy.c 
 	@-${MV} ${OBJECTDIR}/memcpy.d ${OBJECTDIR}/memcpy.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/memcpy.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/EEPROM.p1: EEPROM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EEPROM.p1.d 
+	@${RM} ${OBJECTDIR}/EEPROM.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/EEPROM.p1 EEPROM.c 
+	@-${MV} ${OBJECTDIR}/EEPROM.d ${OBJECTDIR}/EEPROM.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

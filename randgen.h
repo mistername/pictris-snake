@@ -12,6 +12,7 @@
 #define RANDWIKI
 #undef  RANDBYTE
 #undef  RANDGEN
+#define RANDGENPLUS
 
 #include <stdint.h>
 
@@ -21,8 +22,9 @@
 #elif defined RANDGEN
 #endif
 
+void add_counter(uint8_t);
 RND_NUM_T   rnd_get_num(void);
-void        rnd_initialize(RND_NUM_T  seed);
+void        rnd_initialize(void);
 
 #endif	/* __RANDGEN_H__ */
 

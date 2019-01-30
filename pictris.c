@@ -22,10 +22,9 @@
 #include <stddef.h>
 #include <stdint.h>     // - for uint8_t/uint16_t/int16_t
 #include <stdbool.h>    // - for bool/true/false
-#include <string.h>     // - for memcpy()/memmove()
 #include <limits.h>     // - for SHRT_MAX
-
-#include "randgen.h"
+#include "randgen.h"    //for randomnumber
+#include "memcpy.h"     //for memcpy() and memcpyvol())
 
 /// Software configuration
 #undef ENABLE_SWDT
@@ -41,6 +40,7 @@
 
 #define snake
 #define highscore
+#define RANDOM2
 
 typedef uint8_t byte;
 
@@ -56,6 +56,7 @@ typedef uint8_t byte;
 
 #include "shapes.h"
 #include "numbers.h"
+#include "EEPROM.h"
 
 
 #ifdef SDCC // Configuration bits
@@ -180,6 +181,8 @@ bool IsRotated;
 bool EndOfGame;
 bool CheckForNewLines;
 
+uint8_t countblocks;
+
 volatile bool DropObject;
 #endif
 byte OriginX, OriginY;
@@ -237,6 +240,9 @@ const uint16_t choose_screen[] =
     0xFFFF, // ****************
 };
 #endif
+#ifdef RANDOM2
+uint8_t randomobjects[8];
+#endif
 
 typedef enum {
     DOWN,
@@ -261,7 +267,7 @@ struct position{
     uint8_t y;
 };
 uint8_t direction; //for direction of the snake 0=down 1=right 2=up 3=left
-bool moveSnake; //trigger to move the snake
+volatile bool moveSnake; //trigger to move the snake
 struct position positions[100]; //array for every snake length (max length equals 100)
 uint8_t snakeLength; //Length of snake;
 //position of berry on screen
@@ -546,17 +552,44 @@ void clearArray(volatile uint16_t *pArray, size_t size)
 // select a random object based on the number of objects defined
 void selectNextObject(volatile uint16_t *pTarget)
 {
+#ifdef RANDOM2
     byte rndSelection, counter, selection;
     struct shape * s;
-
+    bool check[NUMBER_OF_SHAPES];
+    if(countblocks == 7){
+        countblocks = 0;
     // create a random number from 1-255
+    for(counter=0; counter<NUMBER_OF_SHAPES;counter++){ 
+        randomobjects[counter] = 255;
+        check[counter] = false;
+    }
+    for(counter=0; counter<NUMBER_OF_SHAPES;counter++){
+        bool fill = false;
+        do {
+        rndSelection = rnd_get_num();
+        rndSelection = rndSelection % NUMBER_OF_SHAPES;
+        if (check[rndSelection] == false) {
+            randomobjects[counter] = rndSelection;
+            check[rndSelection] = true;
+            true;
+            fill = true;
+        }
+        } while (!fill);
+    }
+    }
+    add_counter(7);
+    s = &shapes[randomobjects[countblocks]];
+    countblocks++;
+            
+    
+#else
 #ifdef customRandom
     rndSelection = rnd_get_namm(buttonPressed);
 #else
     rndSelection = rnd_get_num();
+    add_counter(1);
 #endif
     // make a selection based on the random number created
-    counter = 0;
     selection = 0;
     do
     {
@@ -567,7 +600,8 @@ void selectNextObject(volatile uint16_t *pTarget)
 
     // initalise object variables
     s = &shapes[selection % NUMBER_OF_SHAPES];
-    memcpy(pTarget, s->graphic, 16); // 16 = ARRAY_SIZE(s->graphic));
+#endif
+    memcpyvol(pTarget, s->graphic, 16); // 16 = ARRAY_SIZE(s->graphic));
     OriginX = s->x;
     OriginY = s->y;
 #ifdef ENABLE_PICTRIS
@@ -582,6 +616,7 @@ uint8_t genBerry(uint8_t size)
 {
     uint8_t temp;
     temp = rnd_get_num();
+    add_counter(1);
     temp = temp % size;
     return temp;
 }
@@ -613,14 +648,6 @@ void SnakeGraph()
     for(i=0;i<=snakeLength;i++){
         j = positions[i].x;
         tmpObjectData[j] = (SnakeYtext[positions[i].y] | tmpObjectData[j]);
-        
-        
-        
-        //for(j=0;j<8;j++){
-        //    if (positions[i].x == j) {
-        //        ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
-        //    }
-        //}
     }
     for(i=0;i<8;i++){
         if (berryX == i){
@@ -805,7 +832,7 @@ void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rot
 
     // check to see if rotations are disabled for current object
     if (LimitedRotation == 2)
-        memcpy(pTarget, pSource, 16); // 16 = ARRAY_SIZE(pSource) = 8 * sizeof uint16_t
+        memcpyvol(pTarget, pSource, 16); // 16 = ARRAY_SIZE(pSource) = 8 * sizeof uint16_t
     else
     {
         // clear the target array
@@ -922,7 +949,7 @@ void checkButtons(void)
         {
             // move the object to a temporary buffer
             //mergeObjects(ObjectData, tmpObjectData, OVERRIDE);
-            memcpy(tmpObjectData, ObjectData, 16);
+            memcpyvol(tmpObjectData, ObjectData, 16);
             // Decrement the x axis
             moveObject(tmpObjectData, LEFT, 1);
             // ensure no collisions with background
@@ -1119,17 +1146,37 @@ void initialise_globals(void)
 #endif
 
 #ifdef ENABLE_PICTRIS
+    if (tetris == true){
     OriginX          = 0;
     OriginY          = 0;   
     //CurrentX         = 0;
     NumberOfLines    = 0;
     // initialise events
     DropObject       = false;
-    EndOfGame        = false;
     CheckForNewLines = false;
+    randomobjects[7] = 255;
+    countblocks = 7;
+    }
+#endif
+#ifdef snake
+    else{
+    moveSnake = false;
+    snakeLength = 3;
+    previous_direction = 3;
+    uint8_t i;
+    for (i=0;i<4;i++){
+        positions[i].y = 3;
+        positions[i].x = 4-i;
+    }
+    positions[0].y = 3;
+    positions[0].x = 3;
+    direction = 1;  
+    CreateBerry();
+    }
+#endif
+    EndOfGame        = false;
     //
     mS               = 0;
-#endif
 #ifdef ENABLE_SWDT
     sWDT             = 0;
 #endif
@@ -1153,23 +1200,6 @@ void initialise_globals(void)
     Down_Delay       = -1;
     Down_Debounced   = false;
 #endif
-#ifdef snake
-    moveSnake = false;
-    
-    snakeLength = 3;
-    previous_direction = 3;
-    uint8_t i;
-    for (i=0;i<4;i++){
-        positions[i].y = 3;
-        positions[i].x = 4-i;
-    }
-    positions[0].y = 3;
-    positions[0].x = 3;
-    direction = 1;  
-    CreateBerry();
-#else
-    tetris = true;
-#endif
 }
 
 #ifdef ENABLE_PICTRIS
@@ -1180,8 +1210,8 @@ void splash_screen(void)
     // semaphore - shared variables are about to be accessed
     pauseMultiplexing();
 #endif
-    if (tetris == true){ memcpy(ObjectData, TETRIS, 16); } // 16 = ARRAY_SIZE(TETRIS));
-    else {memcpy(ObjectData,SNAKE,16);}
+    if (tetris == true){ memcpyvol(ObjectData, TETRIS, 16); } // 16 = ARRAY_SIZE(TETRIS));
+    else {memcpyvol(ObjectData,SNAKE,16);}
 #ifdef ENABLE_MUXDISPLAY
     resumeMultiplexing();
 #endif
@@ -1294,35 +1324,6 @@ void show_score(byte score)
     Down_Delay = REPETITION_DELAY;
     resumeButtons();
 }
-#ifdef highscore
-uint8_t ReadEEByte(uint8_t address)
-{
-EEADR=address; // load address of EEPROM to read
-EECON1bits.EEPGD=0; // access EEPROM data memory
-EECON1bits.CFGS=0; // do not access configuration registers
-EECON1bits.RD=1; // initiate read
-return EEDATA; // return EEPROM byte
-}
-
-// Write Byte to internal EEPROM
-void WriteEEByte(byte address, byte data)
-{
-EECON1bits.WREN=1; // allow EEPROM writes
-EEADR=address; // load address of write to EEPROM
-EEDATA=data; // load data to write to EEPROM
-EECON1bits.EEPGD=0;// access EEPROM data memory
-EECON1bits.CFGS=0; // do not access configuration registers
-INTCONbits.GIE=0; // disable interrupts for critical EEPROM write sequence
-//===============//
-EECON2=0x55;
-EECON2=0xAA;
-EECON1bits.WR=1;
-//==============//
-INTCONbits.GIE=1; // enable interrupts, critical sequence complete
-while (EECON1bits.WR==1); // wait for write to complete
-EECON1bits.WREN=0; // do not allow EEPROM writes
-}
-#endif
 
 #ifdef ENABLE_PICTRIS
 // TODO: Implement the EE routines
@@ -1431,7 +1432,7 @@ void main(void)
 { 
 #ifdef ENABLE_PICTRIS
     // seed randgen module
-    rnd_initialize(0x77);
+    rnd_initialize();
 #ifdef RANDGEN
     rnd_set_max(NUMBER_OF_SHAPES);
 #endif
@@ -1474,6 +1475,7 @@ void main(void)
     {
 #ifndef ENABLE_TEST_SHAPE
         rndSelection = rnd_get_num();
+        add_counter(1);
 
         // make a selection based on the random number created
         counter = 0;
