@@ -11,40 +11,32 @@ uint8_t lower_8bits;
 uint8_t upper_8bits;
 volatile uint8_t counter;
 
-void add_counter(uint8_t add)
-{
-    counter += add;
-}
+//void add_counter(uint8_t add)
+//{
+//    counter += add;
+//}
 uint8_t rnd_get_num(void)
 {
     /* taps: 8 6 5 4; feedback polynomial: x^8 + x^6 + x^5 + x^4 + 1 */
     unsigned b  = ((_lfsr >> 0) ^ (_lfsr >> 1) ^ (_lfsr >> 3) ^ (_lfsr >> 12) ) & 1;
     _lfsr =  (_lfsr >> 1) | (b << 15);
-    if (counter >= 50){
-    lower_8bits = _lfsr & 0xff;
-    WriteEEByte(UINT8_MAX, lower_8bits);
-    upper_8bits = (_lfsr >> 8) & 0xff;
-    WriteEEByte(UINT8_MAX-1, upper_8bits);
-    counter = 0;
-    }
+    //if (counter >= 1){
+    //lower_8bits = _lfsr & 0xff;
+    //WriteEEByte(UINT8_MAX, lower_8bits);
+    //upper_8bits = (_lfsr >> 8) & 0xff;
+    //WriteEEByte(UINT8_MAX-1, upper_8bits);
+    //counter = 0;
+    //}
     return _lfsr;
 }
-/*
-uint8_t rnd_get_namm(int feedback)
-{
-    //taps: 8 6 5 4; feedback polynomial: x^8 + x^6 + x^5 + x^4 + 1
-    unsigned b  = ((_lfsr >> 0) ^ (_lfsr >> 2) ^ (_lfsr >> 3) ^ (_lfsr >> 4) ) & feedback;
-    _lfsr =  (_lfsr >> 1) | (b << 7);
-    return _lfsr;
-} 
-*/
 
 
-void rnd_initialize(void)
+void rnd_initialize(uint8_t input)
 {
-    lower_8bits = ReadEEByte(UINT8_MAX);
-    upper_8bits = ReadEEByte(UINT8_MAX-1);
-    _lfsr = (upper_8bits << 8) | lower_8bits;
+    //lower_8bits = ReadEEByte(UINT8_MAX);
+    //upper_8bits = ReadEEByte(UINT8_MAX-1);
+    //_lfsr = (upper_8bits << 8) | lower_8bits;
+    _lfsr = input;
 }
 #else
 uint8_t _lfsr = -1;

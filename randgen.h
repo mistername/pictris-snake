@@ -22,9 +22,9 @@
 #elif defined RANDGEN
 #endif
 
-void add_counter(uint8_t);
+//void add_counter(uint8_t);
 RND_NUM_T   rnd_get_num(void);
-void        rnd_initialize(void);
+void        rnd_initialize(uint8_t);
 
 #endif	/* __RANDGEN_H__ */
 
