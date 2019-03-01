@@ -14,6 +14,7 @@
 
 volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
+volatile uint16_t Screen_Data[8];
 uint16_t tmpObjectData[8];
 volatile bool EndOfGame;
 
@@ -45,14 +46,13 @@ uint8_t OriginX, OriginY;
 volatile bool game = false;
 
 void tetris_screen(void){
-memcpyvol(ObjectData, TETRIS, 16);
+set_screen(TETRIS);
 }
 // Drop the object by one Y increment. Return FALSE if failed.
 bool moveObjectDown(volatile uint16_t * pObject)
 {
     bool result = true;
     // Semaphore, to protect shared variables
-    pauseMultiplexing();
     // check for a collision with the bottom of the screen
     if (checkForBottom(pObject))
     {
@@ -90,7 +90,6 @@ bool moveObjectDown(volatile uint16_t * pObject)
     }
     set_mS(0); // reset the timer because of the moveDown()
     // resume multiplexing, shared resources are done with
-    resumeMultiplexing();
     return result;
 }
 
@@ -353,29 +352,45 @@ void initialise_tetris(void) {
     countblocks = 7;
     game = true;
 }
+bool tetris_buttons(void)
+{
+    bool returnbool = false;
+    if(checkLeft(true)){ tetris_button_left(); returnbool = true; }
+    if(checkRight(true)){ tetris_button_right(); returnbool = true; }
+    if(checkUp(true)){ tetris_button_up(); returnbool = true; }
+    if(checkDown(true)){ tetris_button_down(); returnbool = true; }
+    return returnbool;
+}
 
 void tetris_main(void) {
+    initialise_tetris();
     uint8_t LastHighScore = readHighScore(0);
     show_score(LastHighScore);
-    EndOfGame        = false;
-    // select an object and place it in ObjectData
+    EndOfGame = false;
     selectNextObject(ObjectData);
+    set_screen(ObjectData);
      do {
-        // check if drop object flag has been set (invoked occurs by the interrupt "TimerObjectDrop")
+        bool newScreen;
+        newScreen = tetris_buttons() || newScreen;
         if (DropObject)
         {
             DropObject = false;
             moveObjectDown(ObjectData);
+            newScreen = newScreen || true;
         }
-
-        // check for completed lines. any routine that moves an object should enable this flag.
         if (CheckForNewLines)
-            checkForLines(BackgroundData);
-        // scan buttons and action as necessary
-        checkButtons();
-    // loop forever, or until the EndOfGame event is set true
-        } while (!EndOfGame);
-        writeHighScore(0, LastHighScore, NumberOfLines);
-        show_score(NumberOfLines);
+        {  
+            checkForLines(BackgroundData);  
+            newScreen = newScreen || true; 
+        }
+        if (newScreen)
+        {
+            mergeObjects(BackgroundData, Screen_Data, OVERRIDE);
+            mergeObjects(ObjectData, Screen_Data, MERGE);
+            set_screen(Screen_Data);
+            newScreen = false;
+        }
+    } while (!EndOfGame);
+    writeHighScore(0, LastHighScore, NumberOfLines);
 }
 

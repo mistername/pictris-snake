@@ -6,7 +6,15 @@
                    projectFiles="true">
       <itemPath>EEPROM.h</itemPath>
       <itemPath>randgen.h</itemPath>
-      <itemPath>memcpy.h</itemPath>
+      <itemPath>shapes.h</itemPath>
+      <itemPath>numbers.h</itemPath>
+      <itemPath>config.h</itemPath>
+      <itemPath>tetris.h</itemPath>
+      <itemPath>snake.h</itemPath>
+      <itemPath>shared_logic.h</itemPath>
+      <itemPath>screen.h</itemPath>
+      <itemPath>buttons.h</itemPath>
+      <itemPath>interrupt.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerFiles"
                    displayName="Linker Files"
@@ -17,8 +25,13 @@
                    projectFiles="true">
       <itemPath>pictris.c</itemPath>
       <itemPath>randgen.c</itemPath>
-      <itemPath>memcpy.c</itemPath>
       <itemPath>EEPROM.c</itemPath>
+      <itemPath>tetris.c</itemPath>
+      <itemPath>snake.c</itemPath>
+      <itemPath>shared_logic.c</itemPath>
+      <itemPath>buttons.c</itemPath>
+      <itemPath>screen.c</itemPath>
+      <itemPath>interrupt.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -39,7 +52,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.00</languageToolchainVersion>
+        <languageToolchainVersion>2.05</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -226,7 +239,7 @@
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
-        <property key="programoptions.testmodeentrymethod" value="VPPFirst"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>

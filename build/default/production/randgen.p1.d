@@ -1,3 +1,4 @@
 build/default/production/randgen.p1:  \
 randgen.c  \
-randgen.h 
+randgen.h  \
+EEPROM.h 

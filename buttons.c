@@ -8,7 +8,7 @@
 
 
 volatile int16_t Left_Delay,     Right_Delay,     Rotate_Delay,     Down_Delay;
-volatile bool Left_Debounced, Right_Debounced, Rotate_Debounced, Down_Debounced;
+volatile bool Rotate_Debounced, Left_Debounced, Right_Debounced, Down_Debounced;
 volatile bool mtxButtons;
 
 void start_button(void){
@@ -31,7 +31,7 @@ void start_button(void){
     mtxButtons       = true;
 }
 
-#  define DEBOUNCE_DELAY   20       // 20 ms
+#  define DEBOUNCE_DELAY   50       // 20 ms
 #  define REPETITION_DELAY 500      // 500 ms
 
 #  define Left   PORTBbits.RB0
@@ -50,20 +50,40 @@ void resumeButtons()
     mtxButtons = true;
 }
 
-bool checkLeft(void){
-    return Left_Debounced;
+bool checkLeft(bool reset){
+    if (Left_Debounced)
+    {
+        Left_Delay = REPETITION_DELAY;
+        Left_Debounced = !reset;
+        return true;
+    } else return false;
 }
 
-bool checkRight(void){
-    return Right_Debounced;
+bool checkRight(bool reset){
+    if (Right_Debounced)
+    {
+        Right_Delay = REPETITION_DELAY;
+        Right_Debounced = !reset;
+        return true;
+    } else return false;
 }
 
-bool checkUp(void){
-    return Rotate_Debounced;
+bool checkUp(bool reset){
+    if (Rotate_Debounced)
+    {
+        Rotate_Delay = REPETITION_DELAY;
+        Rotate_Debounced = !reset;
+        return true;
+    } else return false;
 }
 
-bool checkDown(void){
-    return Down_Debounced;
+bool checkDown(bool reset){
+    if (Down_Debounced)
+    {
+        Down_Delay = REPETITION_DELAY;
+        Down_Debounced = !reset;
+        return true;
+    } else return false;
 }
 
 
@@ -83,8 +103,9 @@ void debounceButton(volatile bool button, volatile int16_t *delay, volatile bool
         *debounced = false;
     }
 }
-
-void Debounce_check()
+// Check the state of each button. Because this routine is called often, the chances of missing a button press
+// are very unlikely. 
+void checkButtons(void)
 {
     if (mtxButtons) // Is already claimed by the mainGameLoop()
     {
@@ -92,52 +113,5 @@ void Debounce_check()
         debounceButton(Right,  &Right_Delay,  &Right_Debounced );
         debounceButton(Rotate, &Rotate_Delay, &Rotate_Debounced);
         debounceButton(Down,   &Down_Delay,   &Down_Debounced  );
-    }
-}
-
-// Check the state of each button. Because this routine is called often, the chances of missing a button press
-// are very unlikely. 
-void checkButtons(void)
-{
-    // check if left button pressed
-    if (Left_Debounced)
-    {
-    pauseButtons();
-        Left_Debounced = false;
-        Left_Delay = REPETITION_DELAY; // repetition delay
-    resumeButtons();
-    if (!tetris_button_left()){snake_button_left();}
-    }
-    // check if the right button is pressed
-    // NOTE: THESE COMMENTS ARE MUCH THE SAME AS ABOVE, excluded for that reason
-    if (Right_Debounced)
-    {
-    pauseButtons();
-        Right_Debounced = false;
-        Right_Delay = REPETITION_DELAY;
-    resumeButtons();
-//        Right_Delay = DEBOUNCE_DELAY;
-        // ensure not already on the right wall
-    if (!tetris_button_right()){snake_button_right();} 
-    }
-    // check if rotate button is pressed 
-    if (Rotate_Debounced)
-    {
-    pauseButtons();
-        Rotate_Debounced = false;
-        Rotate_Delay = REPETITION_DELAY;
-    resumeButtons();
-        // new rotation method, named accordingly, more info there
-    if (!tetris_button_up()){snake_button_up();} 
-    }
-    // check if down is pressed
-    if (Down_Debounced)
-    {
-        // move the current object straight to the bottom 
-    if (!tetris_button_down()){snake_button_down();}
-    pauseButtons();
-        Down_Debounced = false;
-        Down_Delay = SHRT_MAX; // I see you in 33 seconds
-    resumeButtons();
     }
 }

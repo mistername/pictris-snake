@@ -58,7 +58,7 @@ uint8_t LastHighScore;
 
 
 //game choosing variable
-bool tetris;
+volatile bool tetris;
 
 
 #define TMR0_RELOAD (~125)
@@ -121,10 +121,8 @@ void initialise_globals(void)
 // Changes global var ObjectData
 void splash_screen(void)
 {
-    pauseMultiplexing();
-    if (tetris == true){ tetris_screen(); } // 16 = ARRAY_SIZE(TETRIS));
+    if (true){ tetris_screen(); } // 16 = ARRAY_SIZE(TETRIS));
     else {snake_screen();}
-    resumeMultiplexing();
     waitms(3500);
 }
 // this is the main game loop for Tetris
@@ -137,7 +135,7 @@ void mainGameLoop(void)
     clearArray(ObjectData,8);
     clearArray(BackgroundData,8);
     clearArray(tmpObjectData,8);
-   if (tetris == true){ 
+    if (true){
        tetris_main();
     }
     else {
@@ -147,10 +145,7 @@ void mainGameLoop(void)
 
 // main program start
 void main(void)
-{ 
-    // seed randgen module
-    rnd_initialize(1);
-    
+{
     // initialise screen and variables
     initialise_hardware();
     initialise_globals();
@@ -159,7 +154,7 @@ void main(void)
 
     // enable screen multiplexing & other timer functions
     // display the flash screen
-    choosescreen(); 
+    choosescreen();
     
     splash_screen();
 

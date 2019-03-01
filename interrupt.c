@@ -33,11 +33,11 @@ void Interrupt(void) {
         {
             set_mS(0);
         }
-        Debounce_check();
         if (get_mS() % 800 == 0 && tetris_timer())
             ;
         if(get_mS() % 200 == 0 && snake_timer())
             ;
+        checkButtons();
         screen_update();
         InterruptComplete = true;
 }

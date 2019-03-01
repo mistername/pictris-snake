@@ -5,7 +5,6 @@
 #include "randgen.h"
 #include "shared_logic.h"
 #include "screen.h"
-#include "globals.h"
 #include "buttons.h"
 
 volatile bool game = false;
@@ -95,12 +94,11 @@ void SnakeGraph(void)
             tmpObjectData[i] = SnakeYtext[berryY] | tmpObjectData[i];
         }
     }
-    pauseMultiplexing();
     clearArray(ObjectData, 8);
-    for(i=0;i<8;i++){
+    for(i=8;i!=0;i++){
         ObjectData[i] = tmpObjectData[i];
     }
-    resumeMultiplexing();
+    set_screen(ObjectData);
 }
 
 void MoveSnakes()
@@ -179,14 +177,13 @@ void snake_main(void){
     uint8_t LastHighScore = readHighScore(1);
     show_score(LastHighScore);
     EndOfGameSnake        = false;
-       do{
-            if (moveSnake == true) {
-                moveSnake = false;
-                MoveSnakes();
-            };
-            
-            checkButtons();
-            } while(!EndOfGameSnake);
-            writeHighScore(1, LastHighScore, snakeLength);
-            show_score(snakeLength);
+    do{
+        if (moveSnake == true) 
+        {
+            moveSnake = false;
+            MoveSnakes();
+        };
+    } while(!EndOfGameSnake);
+    writeHighScore(1, LastHighScore, snakeLength);
+    show_score(snakeLength);
 }

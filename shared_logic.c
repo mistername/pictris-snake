@@ -241,10 +241,10 @@ void show_score(uint8_t score)
     set_screen(Numberscreen);
     resumeMultiplexing();
 
-     while (checkDown())
+     while (checkDown(false))
         continue;
  
-    while (!checkDown())
+    while (!checkDown(false))
         continue;
 
     uint16_t mask[] = {0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff};
@@ -254,7 +254,7 @@ void show_score(uint8_t score)
     set_screen(Numberscreen);
     resumeMultiplexing();
 
-    while (checkDown())
+    while (checkDown(false))
         continue;
     pauseButtons();
     //Down_Delay = 500;

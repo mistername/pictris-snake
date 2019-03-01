@@ -1,4 +1,4 @@
-# 1 "pictris.c"
+# 1 "snake.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "pictris.c" 2
-# 14 "pictris.c"
+# 1 "snake.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4516,16 +4515,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 14 "pictris.c" 2
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 1 3
-# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 140 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ptrdiff_t;
-# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 2 3
-# 16 "pictris.c" 2
+# 1 "snake.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
@@ -4610,19 +4600,27 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 155 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
-# 17 "pictris.c" 2
+# 2 "snake.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdbool.h" 1 3
-# 18 "pictris.c" 2
+# 3 "snake.c" 2
 
 
 # 1 "./randgen.h" 1
 # 26 "./randgen.h"
 uint8_t rnd_get_num(void);
 void rnd_initialize(uint8_t);
-# 20 "pictris.c" 2
+# 5 "snake.c" 2
 
 # 1 "./shared_logic.h" 1
+# 19 "./shared_logic.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 1 3
+# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 140 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ptrdiff_t;
+# 19 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stddef.h" 2 3
+# 19 "./shared_logic.h" 2
 # 28 "./shared_logic.h"
 typedef enum {
     OVERRIDE,
@@ -4667,271 +4665,22 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
-# 21 "pictris.c" 2
+# 6 "snake.c" 2
 
-# 1 "./config.h" 1
-
-
-
-
-
-#pragma config OSC = INTIO67
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
-
-
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
-# 22 "pictris.c" 2
-
-# 1 "./shapes.h" 1
-
-
-
-
-struct shape
-{
-    uint16_t graphic[8];
-    uint8_t x, y;
-    uint8_t limitedRotation;
-} shapes[] =
-{
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0003,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0001,
-      0x0001,
-      0x0001,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 1},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0003,
-      0x0001,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0001,
-      0x0003,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0003,
-      0x0003,
-      0x0000,
-      0x0000,
-      0x0000}, 3, 1, 2},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0002,
-      0x0003,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 1, 1},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0003,
-      0x0002,
-      0x0000,
-      0x0000}, 4, 1, 1},
-};
-# 23 "pictris.c" 2
-
-# 1 "./numbers.h" 1
-
-
-
-
-const uint16_t Number[10][8] = {
-    {0x001e,
-     0x0012,
-     0x0012,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x0004,
-     0x000c,
-     0x0004,
-     0x0004,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x001e,
-     0x0010,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x000e,
-     0x0002,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x0012,
-     0x0012,
-     0x001e,
-     0x0002,
-     0x0002,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0010,
-     0x001e,
-     0x0002,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0010,
-     0x001e,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x0004,
-     0x0008,
-     0x0010,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0012,
-     0x001e,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0012,
-     0x001e,
-     0x0002,
-     0x0002,
-     0x0000,
-     0x0000,
-     0x0000},
-};
-# 24 "pictris.c" 2
-
-# 1 "./EEPROM.h" 1
-# 18 "./EEPROM.h"
-uint8_t ReadEEByte(uint8_t);
-void WriteEEByte(uint8_t, uint8_t);
-# 25 "pictris.c" 2
-
-# 1 "./tetris.h" 1
-# 35 "./tetris.h"
-_Bool tetris_button_left(void);
-_Bool tetris_button_right(void);
-_Bool tetris_button_up(void);
-_Bool tetris_button_down(void);
-void tetris_screen(void);
-void selectNextObject(volatile uint16_t *);
-_Bool checkForBottom(volatile uint16_t *);
-void checkForLines(volatile uint16_t *);
-_Bool tetris_timer(void);
-void initialise_tetris(void);
-void tetris_main(void);
-# 26 "pictris.c" 2
-
-# 1 "./snake.h" 1
+# 1 "./screen.h" 1
 
 
 
 
 
 
-
-void snake_button_left(void);
-void snake_button_up(void);
-void snake_button_right(void);
-void snake_button_down(void);
-void snake_screen(void);
-uint8_t genBerry(uint8_t);
-void CreateBerry(void);
-void SnakeGraph(void);
-void MoveSnakes();
-_Bool snake_timer(void);
-void inistialize_snake(void);
-void snake_main(void);
-# 27 "pictris.c" 2
+void set_screen(volatile uint16_t *newData);
+_Bool choosescreen(void);
+void pauseMultiplexing(void);
+void resumeMultiplexing(void);
+void screen_update(void);
+void initialise_screen(void);
+# 7 "snake.c" 2
 
 # 1 "./buttons.h" 1
 
@@ -4950,149 +4699,186 @@ void pauseButtons(void);
 void resumeButtons(void);
 void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
-# 28 "pictris.c" 2
-
-# 1 "./screen.h" 1
+# 8 "snake.c" 2
 
 
+volatile _Bool game = 0;
 
-
-
-
-void set_screen(volatile uint16_t *newData);
-_Bool choosescreen(void);
-void pauseMultiplexing(void);
-void resumeMultiplexing(void);
-void screen_update(void);
-void initialise_screen(void);
-# 29 "pictris.c" 2
-
-# 1 "./interrupt.h" 1
-
-
-
-
-
-
-void Interrupt(void);
-void waitms(unsigned);
-void waitForInterrupt(void);
-# 30 "pictris.c" 2
-# 51 "pictris.c"
 volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
 uint16_t tmpObjectData[8];
 
-
-uint8_t LastHighScore;
-
-
-
-
-volatile _Bool tetris;
-
-
-
-
-void __attribute__((picinterrupt(("")))) isr(void)
+const uint16_t SNAKE[] =
 {
-    if (INTCONbits.TMR0IF)
+    0xFB97,
+    0xA955,
+    0xAB9D,
+    0x0000,
+    0x03DF,
+    0xB881,
+    0x035F,
+    0x0000,
+};
+
+void snake_screen(void){
+    memcpyvol(ObjectData,SNAKE,16);
+}
+
+
+const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
+
+
+struct position{
+    uint8_t x;
+    uint8_t y;
+};
+uint8_t direction;
+volatile _Bool moveSnake;
+struct position positions[128];
+uint8_t snakeLength;
+
+uint8_t berryX;
+uint8_t berryY;
+uint8_t previous_direction;
+volatile _Bool EndOfGameSnake;
+
+void snake_button_left(void){if (previous_direction != 1){ direction = 3 ;}}
+void snake_button_up(void){if (previous_direction != 2){ direction = 0 ;}}
+void snake_button_right(void){if (previous_direction != 3){ direction = 1 ;}}
+void snake_button_down(void){if (previous_direction != 0){ direction = 2 ;};}
+
+uint8_t genBerry(uint8_t size)
+{
+    uint8_t temp;
+    temp = rnd_get_num();
+
+    temp = temp % size;
+    return temp;
+}
+void CreateBerry(void)
+{
+    _Bool randomGood;
+    uint8_t i;
+    randomGood = 1;
+    do
     {
-        INTCONbits.TMR0IF = 0;
-        TMR0 = (~125);
-        Interrupt();
+        randomGood = 0;
+        berryX = genBerry(8);
+        berryY = genBerry(16);
+        for(i=0;i<snakeLength;i++)
+        {
+            if (berryX == positions[i].x && berryY == positions[i].y)
+            {
+                randomGood = 1;
+            }
+        }
+    } while (randomGood == 1);
+}
+
+void SnakeGraph(void)
+{
+    uint8_t i;
+    uint8_t j;
+    clearArray(tmpObjectData, 8);
+    for(i=0;i<=snakeLength;i++){
+        j = positions[i].x;
+        tmpObjectData[j] = (SnakeYtext[positions[i].y] | tmpObjectData[j]);
     }
-}
-
-
-void initialise_TMR0(void)
-{
-    T0CONbits.T0PS = 0x3;
-    PSA = 0;
-    T0CS = 0;
-    TMR0ON = 1;
-    TMR0 = (~125);
-    INTCONbits.TMR0IF = 0;
-    TMR0IE = 1;
-    TMR0ON = 1;
-}
-
-void initialise_hardware(void)
-{
-
-    OSCCONbits.IDLEN = 0;
-    OSCCONbits.IRCF = 0x7;
-    OSCCONbits.SCS = 0x2;
-
-
-    ADCON1bits.PCFG = 0x0F;
-
-
-    DDRA = 0x00; PORTA = 0x00;
-    DDRB = 0xFF; PORTB = 0x00; INTCON2bits.RBPU = 0;
-    DDRC = 0x00; PORTC = 0x00;
-    DDRD = 0x00; PORTD = 0x00;
-
-    initialise_TMR0();
-
-    IPEN = 0;
-    GIE = 1;
-}
-
-
-void initialise_globals(void)
-{
-
+    for(i=0;i<8;i++){
+        if (berryX == i){
+            tmpObjectData[i] = SnakeYtext[berryY] | tmpObjectData[i];
+        }
+    }
     clearArray(ObjectData, 8);
-    clearArray(BackgroundData, 8);
-    set_mS(0);
-
-}
-
-
-void splash_screen(void)
-{
-    if (1){ tetris_screen(); }
-    else {snake_screen();}
-    waitms(3500);
-}
-
-void mainGameLoop(void)
-{
-
-    pauseMultiplexing();
-    initialise_globals();
-    resumeMultiplexing();
-    clearArray(ObjectData,8);
-    clearArray(BackgroundData,8);
-    clearArray(tmpObjectData,8);
-    if (1){
-       tetris_main();
+    for(i=8;i!=0;i++){
+        ObjectData[i] = tmpObjectData[i];
     }
-    else {
-       snake_main();
-    }
+    set_screen(ObjectData);
 }
 
-
-void main(void)
+void MoveSnakes()
 {
+    uint8_t i;
+    switch (direction){
+        case 0:
+            positions[0].y = positions[0].y - 1;
+            previous_direction = 0;
+            if (positions[0].y >= 200){
+                positions[0].y = 15;
+            };
+            break;
+        case 1:
+            positions[0].x = positions[0].x + 1;
+            previous_direction = 1;
+            if (positions[0].x > 7 & positions[0].x < 200){
+                positions[0].x = 0;
+            };
+            break;
+        case 2:
+            positions[0].y = positions[0].y + 1;
+            previous_direction = 2;
+            if (positions[0].y > 15 & positions[0].y < 200) {
+                positions[0].y = 0;
+            };
+            break;
+        case 3:
+            positions[0].x = positions[0].x - 1;
+            previous_direction = 3;
+            if (positions[0].x >= 200){
+                positions[0].x = 7;
+            };
+            break;
+    };
+    for (i=0;i<=snakeLength;i++){
+        positions[(snakeLength - i)+1].y = positions[snakeLength-i].y;
+        positions[(snakeLength - i)+1].x = positions[snakeLength-i].x;
+    }
+    if (positions[0].y == berryY && positions[0].x == berryX){
+        snakeLength = snakeLength + 1;
+        CreateBerry();
+    }
+    for (i=4;i<=snakeLength;i++){
+        if (positions[0].y == positions[i].y && positions[0].x == positions[i].x){
+            EndOfGameSnake = 1;
+        };
+    };
+    SnakeGraph();
+}
 
-    initialise_hardware();
-    initialise_globals();
-    start_button();
-    initialise_screen();
+_Bool snake_timer(void){
+    if (game){
+    moveSnake = 1;
+    }
+    return game;
+}
 
+void inistialize_snake(void) {
+    moveSnake = 0;
+    snakeLength = 3;
+    previous_direction = 3;
+    uint8_t i;
+    for (i=0;i<4;i++){
+        positions[i].y = 3;
+        positions[i].x = 4-i;
+    }
+    positions[0].y = 3;
+    positions[0].x = 3;
+    direction = 1;
+    CreateBerry();
+    game = 1;
+}
 
-
-    choosescreen();
-
-    splash_screen();
-
-
-    rnd_initialize(get_mS());
-
-    for (;;)
-
-        mainGameLoop();
+void snake_main(void){
+    uint8_t LastHighScore = readHighScore(1);
+    show_score(LastHighScore);
+    EndOfGameSnake = 0;
+    do{
+        if (moveSnake == 1)
+        {
+            moveSnake = 0;
+            MoveSnakes();
+        };
+    } while(!EndOfGameSnake);
+    writeHighScore(1, LastHighScore, snakeLength);
+    show_score(snakeLength);
 }

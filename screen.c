@@ -24,13 +24,6 @@ const uint16_t choose_screen[] =
 volatile bool UpdateScreen;
 volatile uint16_t ScreenData[8];
 
-void set_screen(uint16_t newData[]){
-    int i;
-    clearArray(ScreenData, 8);
-    for(i=0;i<8;i++){
-        ScreenData[i] = newData[i];
-    }
-}
 void initialise_screen(void){
     UpdateScreen = true;
 }
@@ -52,41 +45,41 @@ void resumeMultiplexing(void)
     UpdateScreen = true;
 }
 
-void choosescreen(void)
+void set_screen(volatile uint16_t newData[])
 {
-    uint8_t i;
-    // semaphore - shared variables are about to be accessed
     pauseMultiplexing();
-    // clear all graphic buffers
-    clearArray(ScreenData,  8);
-    for (i = 0; i < 8; i++)
-    {
-        ScreenData[i] = choose_screen[i];
+    clearArray(ScreenData, 8);
+    int i;
+    for(i=0;i<8;i++){
+        ScreenData[i] = newData[i];
     }
-
     resumeMultiplexing();
-    
+}
+
+bool choosescreen(void)
+{
+    bool tetris;
+    int i;
+    set_screen(choose_screen);
     // wait for "down" button to be depressed; should be, but let's check
-     while (checkDown() || checkUp())
+     while (checkDown(false) || checkUp(false))
         continue;
  
     // wait for button to be pressed
-    while (!checkDown() && !checkUp())
+    while (!checkDown(false) && !checkUp(false))
         continue;
     uint16_t mask[8];
-    if(checkDown() == true) { for (i=0;i<8;i++){ mask[i] = 0xFF00; }}
-    else {if(checkUp() == true) { for (i=0;i<8;i++){ mask[i] = 0x00FF; }};}
+    if(checkDown(false) == true) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = true;}
+    else {if(checkUp(false) == true) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = false; };}
 
     pauseMultiplexing();
     mergeObjects(mask, ScreenData, INVERT);
     resumeMultiplexing();
 
     // wait for button to be released
-    while (checkDown() || checkUp())
-        continue;
-    pauseButtons();
-    //Down_Delay = 500;
-    resumeButtons();
+    while (checkDown(false) || checkUp(false))
+    {   continue;   }
+    return tetris;
 }
 
 
@@ -102,7 +95,7 @@ void screen_update(void)
 
             port_display = 0;
             
-            PORTA        = xmask;
+            PORTA = xmask;
             
             port_display = ~ymask;
 
