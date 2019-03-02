@@ -11,8 +11,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "9
 [; ;./buttons.h: 9: _Bool checkUp(_Bool);
 [v _checkUp `(a ~T0 @X0 0 ef1`a ]
-"76 screen.c
-[; ;screen.c: 76:     mergeObjects(mask, ScreenData, INVERT);
+"87 screen.c
+[; ;screen.c: 87:     mergeObjects(mask, ScreenData, INVERT);
 [c E2561 0 1 2 .. ]
 [n E2561 . OVERRIDE MERGE INVERT  ]
 "55 ./shared_logic.h
@@ -519,14 +519,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 284 ]
 }
 "48
-[; ;screen.c: 48: void set_screen(volatile uint16_t newData[])
+[; ;screen.c: 48: void set_screen(volatile uint16_t *newData)
 [v _set_screen `(v ~T0 @X0 1 ef1`*Vus ]
 "49
 [; ;screen.c: 49: {
 {
 [e :U _set_screen ]
 "48
-[; ;screen.c: 48: void set_screen(volatile uint16_t newData[])
+[; ;screen.c: 48: void set_screen(volatile uint16_t *newData)
 [v _newData `*Vus ~T0 @X0 1 r1 ]
 "49
 [; ;screen.c: 49: {
@@ -566,170 +566,217 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 285 ]
 }
 "59
-[; ;screen.c: 59: _Bool choosescreen(void)
-[v _choosescreen `(a ~T0 @X0 1 ef ]
+[; ;screen.c: 59: void set_splashscreen(const uint16_t *newData)
+[v _set_splashscreen `(v ~T0 @X0 1 ef1`*Cus ]
 "60
 [; ;screen.c: 60: {
 {
-[e :U _choosescreen ]
+[e :U _set_splashscreen ]
+"59
+[; ;screen.c: 59: void set_splashscreen(const uint16_t *newData)
+[v _newData `*Cus ~T0 @X0 1 r1 ]
+"60
+[; ;screen.c: 60: {
 [f ]
 "61
-[; ;screen.c: 61:     _Bool tetris;
-[v _tetris `a ~T0 @X0 1 a ]
+[; ;screen.c: 61:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
 "62
-[; ;screen.c: 62:     int i;
-[v _i `i ~T0 @X0 1 a ]
+[; ;screen.c: 62:     clearArray(ScreenData, 8);
+[e ( _clearArray (2 , &U _ScreenData -> -> 8 `i `ui ]
 "63
-[; ;screen.c: 63:     set_screen(choose_screen);
-[e ( _set_screen (1 -> &U _choose_screen `*Vus ]
-"65
-[; ;screen.c: 65:      while (checkDown(0) || checkUp(0))
-[e $U 290  ]
-[e :U 291 ]
-"66
-[; ;screen.c: 66:         continue;
-[e $U 290  ]
+[; ;screen.c: 63:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"64
+[; ;screen.c: 64:     for(i=0;i<8;i++){
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 8 `i 290  ]
+[e $U 291  ]
 [e :U 290 ]
+{
 "65
-[; ;screen.c: 65:      while (checkDown(0) || checkUp(0))
-[e $ || != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 291  ]
-[e :U 292 ]
-"69
-[; ;screen.c: 69:     while (!checkDown(0) && !checkUp(0))
-[e $U 293  ]
-[e :U 294 ]
+[; ;screen.c: 65:         ScreenData[i] = newData[i];
+[e = *U + &U _ScreenData * -> -> _i `ui `ux -> -> # *U &U _ScreenData `ui `ux *U + _newData * -> _i `x -> -> # *U _newData `i `x ]
+"66
+[; ;screen.c: 66:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 8 `i 290  ]
+[e :U 291 ]
+}
+"67
+[; ;screen.c: 67:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"68
+[; ;screen.c: 68: }
+[e :UE 289 ]
+}
 "70
-[; ;screen.c: 70:         continue;
-[e $U 293  ]
-[e :U 293 ]
-"69
-[; ;screen.c: 69:     while (!checkDown(0) && !checkUp(0))
-[e $ && ! != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i ! != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 294  ]
-[e :U 295 ]
+[; ;screen.c: 70: _Bool choosescreen(void)
+[v _choosescreen `(a ~T0 @X0 1 ef ]
 "71
-[; ;screen.c: 71:     uint16_t mask[8];
-[v _mask `us ~T0 @X0 -> 8 `i a ]
+[; ;screen.c: 71: {
+{
+[e :U _choosescreen ]
+[f ]
 "72
-[; ;screen.c: 72:     if(checkDown(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = 1;}
-[e $ ! == -> ( _checkDown (1 -> -> 0 `i `a `i -> 1 `i 296  ]
+[; ;screen.c: 72:     _Bool tetris;
+[v _tetris `a ~T0 @X0 1 a ]
+"73
+[; ;screen.c: 73:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"74
+[; ;screen.c: 74:     set_splashscreen(choose_screen);
+[e ( _set_splashscreen (1 &U _choose_screen ]
+"76
+[; ;screen.c: 76:      while (checkDown(0) || checkUp(0))
+[e $U 294  ]
+[e :U 295 ]
+"77
+[; ;screen.c: 77:         continue;
+[e $U 294  ]
+[e :U 294 ]
+"76
+[; ;screen.c: 76:      while (checkDown(0) || checkUp(0))
+[e $ || != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 295  ]
+[e :U 296 ]
+"80
+[; ;screen.c: 80:     while (!checkDown(0) && !checkUp(0))
+[e $U 297  ]
+[e :U 298 ]
+"81
+[; ;screen.c: 81:         continue;
+[e $U 297  ]
+[e :U 297 ]
+"80
+[; ;screen.c: 80:     while (!checkDown(0) && !checkUp(0))
+[e $ && ! != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i ! != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 298  ]
+[e :U 299 ]
+"82
+[; ;screen.c: 82:     uint16_t mask[8];
+[v _mask `us ~T0 @X0 -> 8 `i a ]
+"83
+[; ;screen.c: 83:     if(checkDown(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = 0;}
+[e $ ! == -> ( _checkDown (1 -> -> 0 `i `a `i -> 1 `i 300  ]
 {
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 297  ]
-[e $U 298  ]
-[e :U 297 ]
+[e $ < _i -> 8 `i 301  ]
+[e $U 302  ]
+[e :U 301 ]
 {
 [e = *U + &U _mask * -> -> _i `ui `ux -> -> # *U &U _mask `ui `ux -> -> 65280 `ui `us ]
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 297  ]
-[e :U 298 ]
+[e $ < _i -> 8 `i 301  ]
+[e :U 302 ]
 }
-[e = _tetris -> -> 1 `i `a ]
+[e = _tetris -> -> 0 `i `a ]
 }
-[e $U 300  ]
-"73
-[; ;screen.c: 73:     else {if(checkUp(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = 0; };}
-[e :U 296 ]
+[e $U 304  ]
+"84
+[; ;screen.c: 84:     else {if(checkUp(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = 1; };}
+[e :U 300 ]
 {
-[e $ ! == -> ( _checkUp (1 -> -> 0 `i `a `i -> 1 `i 301  ]
+[e $ ! == -> ( _checkUp (1 -> -> 0 `i `a `i -> 1 `i 305  ]
 {
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 302  ]
-[e $U 303  ]
-[e :U 302 ]
+[e $ < _i -> 8 `i 306  ]
+[e $U 307  ]
+[e :U 306 ]
 {
 [e = *U + &U _mask * -> -> _i `ui `ux -> -> # *U &U _mask `ui `ux -> -> 255 `i `us ]
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 302  ]
-[e :U 303 ]
+[e $ < _i -> 8 `i 306  ]
+[e :U 307 ]
 }
-[e = _tetris -> -> 0 `i `a ]
-}
-[e :U 301 ]
-}
-[e :U 300 ]
-"75
-[; ;screen.c: 75:     pauseMultiplexing();
-[e ( _pauseMultiplexing ..  ]
-"76
-[; ;screen.c: 76:     mergeObjects(mask, ScreenData, INVERT);
-[e ( _mergeObjects (3 , , -> &U _mask `*Vus &U _ScreenData . `E2561 2 ]
-"77
-[; ;screen.c: 77:     resumeMultiplexing();
-[e ( _resumeMultiplexing ..  ]
-"80
-[; ;screen.c: 80:     while (checkDown(0) || checkUp(0))
-[e $U 305  ]
-[e :U 306 ]
-"81
-[; ;screen.c: 81:     { continue; }
-{
-[e $U 305  ]
+[e = _tetris -> -> 1 `i `a ]
 }
 [e :U 305 ]
-"80
-[; ;screen.c: 80:     while (checkDown(0) || checkUp(0))
-[e $ || != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 306  ]
-[e :U 307 ]
-"82
-[; ;screen.c: 82:     return tetris;
-[e ) _tetris ]
-[e $UE 289  ]
-"83
-[; ;screen.c: 83: }
-[e :UE 289 ]
 }
+[e :U 304 ]
+"86
+[; ;screen.c: 86:     pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
 "87
-[; ;screen.c: 87: void screen_update(void)
-[v _screen_update `(v ~T0 @X0 1 ef ]
+[; ;screen.c: 87:     mergeObjects(mask, ScreenData, INVERT);
+[e ( _mergeObjects (3 , , -> &U _mask `*Vus &U _ScreenData . `E2561 2 ]
 "88
-[; ;screen.c: 88: {
+[; ;screen.c: 88:     resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"91
+[; ;screen.c: 91:     while (checkDown(0) || checkUp(0))
+[e $U 309  ]
+[e :U 310 ]
+"92
+[; ;screen.c: 92:     { continue; }
+{
+[e $U 309  ]
+}
+[e :U 309 ]
+"91
+[; ;screen.c: 91:     while (checkDown(0) || checkUp(0))
+[e $ || != -> ( _checkDown (1 -> -> 0 `i `a `i -> 0 `i != -> ( _checkUp (1 -> -> 0 `i `a `i -> 0 `i 310  ]
+[e :U 311 ]
+"93
+[; ;screen.c: 93:     return tetris;
+[e ) _tetris ]
+[e $UE 293  ]
+"94
+[; ;screen.c: 94: }
+[e :UE 293 ]
+}
+"98
+[; ;screen.c: 98: void screen_update(void)
+[v _screen_update `(v ~T0 @X0 1 ef ]
+"99
+[; ;screen.c: 99: {
 {
 [e :U _screen_update ]
 [f ]
-"89
-[; ;screen.c: 89:     if (UpdateScreen)
-[e $ ! != -> _UpdateScreen `i -> 0 `i 309  ]
-"90
-[; ;screen.c: 90:         {
+"100
+[; ;screen.c: 100:     if (UpdateScreen)
+[e $ ! != -> _UpdateScreen `i -> 0 `i 313  ]
+"101
+[; ;screen.c: 101:         {
 {
-"91
-[; ;screen.c: 91:             static uint8_t CurrentX = 0;
-[v F2683 `uc ~T0 @X0 1 s CurrentX ]
-[i F2683
+"102
+[; ;screen.c: 102:             static uint8_t CurrentX = 0;
+[v F2684 `uc ~T0 @X0 1 s CurrentX ]
+[i F2684
 -> -> 0 `i `uc
 ]
-"93
-[; ;screen.c: 93:             uint8_t xmask = 1 << CurrentX;
-[v _xmask `uc ~T0 @X0 1 a ]
-[e = _xmask -> << -> 1 `i -> F2683 `i `uc ]
-"94
-[; ;screen.c: 94:             uint16_t ymask = ScreenData[CurrentX];
-[v _ymask `us ~T0 @X0 1 a ]
-[e = _ymask *U + &U _ScreenData * -> F2683 `ux -> -> # *U &U _ScreenData `ui `ux ]
-"96
-[; ;screen.c: 96:             port_display = 0;
-[e = _port_display -> -> 0 `i `us ]
-"98
-[; ;screen.c: 98:             PORTA = xmask;
-[e = _PORTA _xmask ]
-"100
-[; ;screen.c: 100:             port_display = ~ymask;
-[e = _port_display -> ~ -> _ymask `ui `us ]
-"103
-[; ;screen.c: 103:             CurrentX++;
-[e ++ F2683 -> -> 1 `i `uc ]
 "104
-[; ;screen.c: 104:             CurrentX &= 0x07;
-[e =& F2683 -> -> 7 `i `uc ]
-"106
-[; ;screen.c: 106:         }
-}
-[e :U 309 ]
+[; ;screen.c: 104:             uint8_t xmask = 1 << CurrentX;
+[v _xmask `uc ~T0 @X0 1 a ]
+[e = _xmask -> << -> 1 `i -> F2684 `i `uc ]
+"105
+[; ;screen.c: 105:             uint16_t ymask = ScreenData[CurrentX];
+[v _ymask `us ~T0 @X0 1 a ]
+[e = _ymask *U + &U _ScreenData * -> F2684 `ux -> -> # *U &U _ScreenData `ui `ux ]
 "107
-[; ;screen.c: 107: }
-[e :UE 308 ]
+[; ;screen.c: 107:             port_display = 0;
+[e = _port_display -> -> 0 `i `us ]
+"109
+[; ;screen.c: 109:             PORTA = xmask;
+[e = _PORTA _xmask ]
+"111
+[; ;screen.c: 111:             port_display = ~ymask;
+[e = _port_display -> ~ -> _ymask `ui `us ]
+"114
+[; ;screen.c: 114:             CurrentX++;
+[e ++ F2684 -> -> 1 `i `uc ]
+"115
+[; ;screen.c: 115:             CurrentX &= 0x07;
+[e =& F2684 -> -> 7 `i `uc ]
+"117
+[; ;screen.c: 117:         }
+}
+[e :U 313 ]
+"118
+[; ;screen.c: 118: }
+[e :UE 312 ]
 }

@@ -11,7 +11,8 @@ volatile bool game = false;
 
 volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
-uint16_t tmpObjectData[8];
+
+volatile bool EndOfGame;
 
 const uint16_t SNAKE[] =
 {
@@ -26,7 +27,8 @@ const uint16_t SNAKE[] =
 };
 
 void snake_screen(void){
-    memcpyvol(ObjectData,SNAKE,16);
+    set_splashscreen(SNAKE);
+    waitms(3500);
 }
 
 // for every bit 1 turned on rest off i.e. 1000000000000000 = SnakeYtext[0]
@@ -39,13 +41,13 @@ struct position{
 };
 uint8_t direction; //for direction of the snake 0=down 1=right 2=up 3=left
 volatile bool moveSnake; //trigger to move the snake
-struct position positions[128]; //array for every snake length (max length equals 100)
+struct position positions[128]; //array for every snake length (max length equals 128)
 uint8_t snakeLength; //Length of snake;
 //position of berry on screen
 uint8_t berryX;
 uint8_t berryY;
 uint8_t previous_direction; //previous direction so as to not go back the same way
-volatile bool EndOfGameSnake;
+volatile bool EndOfGame;
 
 void snake_button_left(void){if (previous_direction != 1){ direction = 3 ;}}
 void snake_button_up(void){if (previous_direction != 2){ direction = 0 ;}}
@@ -56,7 +58,6 @@ uint8_t genBerry(uint8_t size)
 {
     uint8_t temp;
     temp = rnd_get_num();
-    //add_counter(1);
     temp = temp % size;
     return temp;
 }
@@ -84,19 +85,15 @@ void SnakeGraph(void)
 {
     uint8_t i;
     uint8_t j;
-    clearArray(tmpObjectData, 8);
+    clearArray(ObjectData, 8);
     for(i=0;i<=snakeLength;i++){
         j = positions[i].x;
-        tmpObjectData[j] = (SnakeYtext[positions[i].y] | tmpObjectData[j]);
+        ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
     }
     for(i=0;i<8;i++){
         if (berryX == i){
-            tmpObjectData[i] = SnakeYtext[berryY] | tmpObjectData[i];
+            ObjectData[i] = SnakeYtext[berryY] | ObjectData[i];
         }
-    }
-    clearArray(ObjectData, 8);
-    for(i=8;i!=0;i++){
-        ObjectData[i] = tmpObjectData[i];
     }
     set_screen(ObjectData);
 }
@@ -144,7 +141,7 @@ void MoveSnakes()
     }
     for (i=4;i<=snakeLength;i++){
         if (positions[0].y == positions[i].y && positions[0].x == positions[i].x){
-            EndOfGameSnake = 1;
+            EndOfGame = true;
         };
     };
     SnakeGraph();
@@ -173,17 +170,28 @@ void inistialize_snake(void) {
     game = true;
 }
 
+void snake_buttons(void)
+{
+    if(checkLeft(true)){ snake_button_left(); }
+    if(checkRight(true)){ snake_button_right(); }
+    if(checkUp(true)){ snake_button_up(); }
+    if(checkDown(true)){ snake_button_down(); }
+}
+
 void snake_main(void){
+    inistialize_snake();
+    snake_screen();
     uint8_t LastHighScore = readHighScore(1);
     show_score(LastHighScore);
-    EndOfGameSnake        = false;
+    EndOfGame = false;
     do{
+        snake_buttons();
         if (moveSnake == true) 
         {
             moveSnake = false;
             MoveSnakes();
         };
-    } while(!EndOfGameSnake);
+    } while(!EndOfGame);
     writeHighScore(1, LastHighScore, snakeLength);
     show_score(snakeLength);
 }

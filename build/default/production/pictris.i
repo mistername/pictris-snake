@@ -4667,6 +4667,7 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 # 21 "pictris.c" 2
 
 # 1 "./config.h" 1
@@ -4948,7 +4949,6 @@ _Bool checkDown(_Bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
 # 28 "pictris.c" 2
 
@@ -4960,10 +4960,11 @@ void checkButtons(void);
 
 
 void set_screen(volatile uint16_t *newData);
+void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
+void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
-void screen_update(void);
 void initialise_screen(void);
 # 29 "pictris.c" 2
 
@@ -4978,12 +4979,7 @@ void Interrupt(void);
 void waitms(unsigned);
 void waitForInterrupt(void);
 # 30 "pictris.c" 2
-# 51 "pictris.c"
-volatile uint16_t ObjectData[8];
-volatile uint16_t BackgroundData[8];
-uint16_t tmpObjectData[8];
-
-
+# 49 "pictris.c"
 uint8_t LastHighScore;
 
 
@@ -5042,20 +5038,9 @@ void initialise_hardware(void)
 
 void initialise_globals(void)
 {
-
-    clearArray(ObjectData, 8);
-    clearArray(BackgroundData, 8);
     set_mS(0);
-
 }
 
-
-void splash_screen(void)
-{
-    if (1){ tetris_screen(); }
-    else {snake_screen();}
-    waitms(3500);
-}
 
 void mainGameLoop(void)
 {
@@ -5063,10 +5048,7 @@ void mainGameLoop(void)
     pauseMultiplexing();
     initialise_globals();
     resumeMultiplexing();
-    clearArray(ObjectData,8);
-    clearArray(BackgroundData,8);
-    clearArray(tmpObjectData,8);
-    if (1){
+    if (tetris){
        tetris_main();
     }
     else {
@@ -5085,9 +5067,7 @@ void main(void)
 
 
 
-    choosescreen();
-
-    splash_screen();
+    tetris = choosescreen();
 
 
     rnd_initialize(get_mS());

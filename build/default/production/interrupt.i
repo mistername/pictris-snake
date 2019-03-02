@@ -4664,6 +4664,7 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 # 10 "interrupt.c" 2
 
 # 1 "./buttons.h" 1
@@ -4681,7 +4682,6 @@ _Bool checkDown(_Bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
 # 11 "interrupt.c" 2
 
@@ -4693,10 +4693,11 @@ void checkButtons(void);
 
 
 void set_screen(volatile uint16_t *newData);
+void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
+void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
-void screen_update(void);
 void initialise_screen(void);
 # 12 "interrupt.c" 2
 

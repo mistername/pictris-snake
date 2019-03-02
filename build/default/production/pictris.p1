@@ -140,26 +140,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7411
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7411: extern volatile __bit GIE __attribute__((address(0x7F97)));
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
-"54 ./shared_logic.h
-[; ;./shared_logic.h: 54: void clearArray(volatile uint16_t *, size_t );
-[v _clearArray `(v ~T0 @X0 0 ef2`*Vus`ui ]
-"68
+"68 ./shared_logic.h
 [; ;./shared_logic.h: 68: void set_mS(uint16_t);
 [v _set_mS `(v ~T0 @X0 0 ef1`us ]
-"39 ./tetris.h
-[; ;./tetris.h: 39: void tetris_screen(void);
-[v _tetris_screen `(v ~T0 @X0 0 ef ]
-"12 ./snake.h
-[; ;./snake.h: 12: void snake_screen(void);
-[v _snake_screen `(v ~T0 @X0 0 ef ]
-"8 ./interrupt.h
-[; ;./interrupt.h: 8: void waitms(unsigned);
-[v _waitms `(v ~T0 @X0 0 ef1`ui ]
-"9 ./screen.h
-[; ;./screen.h: 9: void pauseMultiplexing(void);
+"11 ./screen.h
+[; ;./screen.h: 11: void pauseMultiplexing(void);
 [v _pauseMultiplexing `(v ~T0 @X0 0 ef ]
-"10
-[; ;./screen.h: 10: void resumeMultiplexing(void);
+"12
+[; ;./screen.h: 12: void resumeMultiplexing(void);
 [v _resumeMultiplexing `(v ~T0 @X0 0 ef ]
 "45 ./tetris.h
 [; ;./tetris.h: 45: void tetris_main(void);
@@ -171,11 +159,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./buttons.h
 [; ;./buttons.h: 12: void start_button(void);
 [v _start_button `(v ~T0 @X0 0 ef ]
-"12 ./screen.h
-[; ;./screen.h: 12: void initialise_screen(void);
+"13 ./screen.h
+[; ;./screen.h: 13: void initialise_screen(void);
 [v _initialise_screen `(v ~T0 @X0 0 ef ]
-"8
-[; ;./screen.h: 8: _Bool choosescreen(void);
+"9
+[; ;./screen.h: 9: _Bool choosescreen(void);
 [v _choosescreen `(a ~T0 @X0 0 ef ]
 "27 ./randgen.h
 [; ;./randgen.h: 27: void rnd_initialize(uint8_t);
@@ -775,10 +763,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v F2658 `Cus ~T0 @X0 -> 8 `i t ]
+[v F2660 `Cus ~T0 @X0 -> 8 `i t ]
 "5 ./numbers.h
 [; ;./numbers.h: 5: const uint16_t Number[10][8] = {
-[v _Number `F2658 ~T0 @X0 -> 10 `i e ]
+[v _Number `F2660 ~T0 @X0 -> 10 `i e ]
 [i _Number
 :U ..
 :U ..
@@ -883,282 +871,226 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"51 pictris.c
-[; ;pictris.c: 51: volatile uint16_t ObjectData[8];
-[v _ObjectData `Vus ~T0 @X0 -> 8 `i e ]
-"52
-[; ;pictris.c: 52: volatile uint16_t BackgroundData[8];
-[v _BackgroundData `Vus ~T0 @X0 -> 8 `i e ]
-"53
-[; ;pictris.c: 53: uint16_t tmpObjectData[8];
-[v _tmpObjectData `us ~T0 @X0 -> 8 `i e ]
-"56
-[; ;pictris.c: 56: uint8_t LastHighScore;
+"49 pictris.c
+[; ;pictris.c: 49: uint8_t LastHighScore;
 [v _LastHighScore `uc ~T0 @X0 1 e ]
-"61
-[; ;pictris.c: 61: volatile _Bool tetris;
+"54
+[; ;pictris.c: 54: volatile _Bool tetris;
 [v _tetris `Va ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"66
-[; ;pictris.c: 66: void __attribute__((picinterrupt(("")))) isr(void)
+"59
+[; ;pictris.c: 59: void __attribute__((picinterrupt(("")))) isr(void)
 [v _isr `(v ~T41 @X0 1 ef ]
-"67
-[; ;pictris.c: 67: {
+"60
+[; ;pictris.c: 60: {
 {
 [e :U _isr ]
 [f ]
-"68
-[; ;pictris.c: 68:     if (INTCONbits.TMR0IF)
+"61
+[; ;pictris.c: 61:     if (INTCONbits.TMR0IF)
 [e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 283  ]
-"69
-[; ;pictris.c: 69:     {
+"62
+[; ;pictris.c: 62:     {
 {
-"70
-[; ;pictris.c: 70:         INTCONbits.TMR0IF = 0;
+"63
+[; ;pictris.c: 63:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"71
-[; ;pictris.c: 71:         TMR0 = (~125);
+"64
+[; ;pictris.c: 64:         TMR0 = (~125);
 [e = _TMR0 -> ~ -> 125 `i `us ]
-"72
-[; ;pictris.c: 72:         Interrupt();
+"65
+[; ;pictris.c: 65:         Interrupt();
 [e ( _Interrupt ..  ]
-"73
-[; ;pictris.c: 73:     }
+"66
+[; ;pictris.c: 66:     }
 }
 [e :U 283 ]
-"74
-[; ;pictris.c: 74: }
+"67
+[; ;pictris.c: 67: }
 [e :UE 282 ]
 }
-"77
-[; ;pictris.c: 77: void initialise_TMR0(void)
+"70
+[; ;pictris.c: 70: void initialise_TMR0(void)
 [v _initialise_TMR0 `(v ~T0 @X0 1 ef ]
-"78
-[; ;pictris.c: 78: {
+"71
+[; ;pictris.c: 71: {
 {
 [e :U _initialise_TMR0 ]
 [f ]
-"79
-[; ;pictris.c: 79:     T0CONbits.T0PS = 0x3;
+"72
+[; ;pictris.c: 72:     T0CONbits.T0PS = 0x3;
 [e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
-"80
-[; ;pictris.c: 80:     PSA = 0;
+"73
+[; ;pictris.c: 73:     PSA = 0;
 [e = _PSA -> -> 0 `i `b ]
-"81
-[; ;pictris.c: 81:     T0CS = 0;
+"74
+[; ;pictris.c: 74:     T0CS = 0;
 [e = _T0CS -> -> 0 `i `b ]
-"82
-[; ;pictris.c: 82:     TMR0ON = 1;
+"75
+[; ;pictris.c: 75:     TMR0ON = 1;
 [e = _TMR0ON -> -> 1 `i `b ]
-"83
-[; ;pictris.c: 83:     TMR0 = (~125);
+"76
+[; ;pictris.c: 76:     TMR0 = (~125);
 [e = _TMR0 -> ~ -> 125 `i `us ]
-"84
-[; ;pictris.c: 84:     INTCONbits.TMR0IF = 0;
+"77
+[; ;pictris.c: 77:     INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"85
-[; ;pictris.c: 85:     TMR0IE = 1;
+"78
+[; ;pictris.c: 78:     TMR0IE = 1;
 [e = _TMR0IE -> -> 1 `i `b ]
-"86
-[; ;pictris.c: 86:     TMR0ON = 1;
+"79
+[; ;pictris.c: 79:     TMR0ON = 1;
 [e = _TMR0ON -> -> 1 `i `b ]
-"87
-[; ;pictris.c: 87: }
+"80
+[; ;pictris.c: 80: }
 [e :UE 284 ]
 }
-"89
-[; ;pictris.c: 89: void initialise_hardware(void)
+"82
+[; ;pictris.c: 82: void initialise_hardware(void)
 [v _initialise_hardware `(v ~T0 @X0 1 ef ]
-"90
-[; ;pictris.c: 90: {
+"83
+[; ;pictris.c: 83: {
 {
 [e :U _initialise_hardware ]
 [f ]
-"92
-[; ;pictris.c: 92:     OSCCONbits.IDLEN = 0;
+"85
+[; ;pictris.c: 85:     OSCCONbits.IDLEN = 0;
 [e = . . _OSCCONbits 0 4 -> -> 0 `i `uc ]
-"93
-[; ;pictris.c: 93:     OSCCONbits.IRCF = 0x7;
+"86
+[; ;pictris.c: 86:     OSCCONbits.IRCF = 0x7;
 [e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-"94
-[; ;pictris.c: 94:     OSCCONbits.SCS = 0x2;
+"87
+[; ;pictris.c: 87:     OSCCONbits.SCS = 0x2;
 [e = . . _OSCCONbits 0 0 -> -> 2 `i `uc ]
-"97
-[; ;pictris.c: 97:     ADCON1bits.PCFG = 0x0F;
+"90
+[; ;pictris.c: 90:     ADCON1bits.PCFG = 0x0F;
 [e = . . _ADCON1bits 0 0 -> -> 15 `i `uc ]
-"100
-[; ;pictris.c: 100:     DDRA = 0x00; PORTA = 0x00;
+"93
+[; ;pictris.c: 93:     DDRA = 0x00; PORTA = 0x00;
 [e = _DDRA -> -> 0 `i `uc ]
 [e = _PORTA -> -> 0 `i `uc ]
-"101
-[; ;pictris.c: 101:     DDRB = 0xFF; PORTB = 0x00; INTCON2bits.RBPU = 0;
+"94
+[; ;pictris.c: 94:     DDRB = 0xFF; PORTB = 0x00; INTCON2bits.RBPU = 0;
 [e = _DDRB -> -> 255 `i `uc ]
 [e = _PORTB -> -> 0 `i `uc ]
 [e = . . _INTCON2bits 2 1 -> -> 0 `i `uc ]
-"102
-[; ;pictris.c: 102:     DDRC = 0x00; PORTC = 0x00;
+"95
+[; ;pictris.c: 95:     DDRC = 0x00; PORTC = 0x00;
 [e = _DDRC -> -> 0 `i `uc ]
 [e = _PORTC -> -> 0 `i `uc ]
-"103
-[; ;pictris.c: 103:     DDRD = 0x00; PORTD = 0x00;
+"96
+[; ;pictris.c: 96:     DDRD = 0x00; PORTD = 0x00;
 [e = _DDRD -> -> 0 `i `uc ]
 [e = _PORTD -> -> 0 `i `uc ]
-"105
-[; ;pictris.c: 105:     initialise_TMR0();
+"98
+[; ;pictris.c: 98:     initialise_TMR0();
 [e ( _initialise_TMR0 ..  ]
-"107
-[; ;pictris.c: 107:     IPEN = 0;
+"100
+[; ;pictris.c: 100:     IPEN = 0;
 [e = _IPEN -> -> 0 `i `b ]
-"108
-[; ;pictris.c: 108:     GIE = 1;
+"101
+[; ;pictris.c: 101:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"109
-[; ;pictris.c: 109: }
+"102
+[; ;pictris.c: 102: }
 [e :UE 285 ]
 }
-"112
-[; ;pictris.c: 112: void initialise_globals(void)
+"105
+[; ;pictris.c: 105: void initialise_globals(void)
 [v _initialise_globals `(v ~T0 @X0 1 ef ]
-"113
-[; ;pictris.c: 113: {
+"106
+[; ;pictris.c: 106: {
 {
 [e :U _initialise_globals ]
 [f ]
-"115
-[; ;pictris.c: 115:     clearArray(ObjectData, 8);
-[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
-"116
-[; ;pictris.c: 116:     clearArray(BackgroundData, 8);
-[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
-"117
-[; ;pictris.c: 117:     set_mS(0);
+"107
+[; ;pictris.c: 107:     set_mS(0);
 [e ( _set_mS (1 -> -> 0 `i `us ]
-"119
-[; ;pictris.c: 119: }
+"108
+[; ;pictris.c: 108: }
 [e :UE 286 ]
 }
-"122
-[; ;pictris.c: 122: void splash_screen(void)
-[v _splash_screen `(v ~T0 @X0 1 ef ]
-"123
-[; ;pictris.c: 123: {
-{
-[e :U _splash_screen ]
-[f ]
-"124
-[; ;pictris.c: 124:     if (1){ tetris_screen(); }
-[e $ ! != -> 1 `i -> 0 `i 288  ]
-{
-[e ( _tetris_screen ..  ]
-}
-[e $U 289  ]
-"125
-[; ;pictris.c: 125:     else {snake_screen();}
-[e :U 288 ]
-{
-[e ( _snake_screen ..  ]
-}
-[e :U 289 ]
-"126
-[; ;pictris.c: 126:     waitms(3500);
-[e ( _waitms (1 -> -> 3500 `i `ui ]
-"127
-[; ;pictris.c: 127: }
-[e :UE 287 ]
-}
-"129
-[; ;pictris.c: 129: void mainGameLoop(void)
+"111
+[; ;pictris.c: 111: void mainGameLoop(void)
 [v _mainGameLoop `(v ~T0 @X0 1 ef ]
-"130
-[; ;pictris.c: 130: {
+"112
+[; ;pictris.c: 112: {
 {
 [e :U _mainGameLoop ]
 [f ]
-"132
-[; ;pictris.c: 132:     pauseMultiplexing();
+"114
+[; ;pictris.c: 114:     pauseMultiplexing();
 [e ( _pauseMultiplexing ..  ]
-"133
-[; ;pictris.c: 133:     initialise_globals();
+"115
+[; ;pictris.c: 115:     initialise_globals();
 [e ( _initialise_globals ..  ]
-"134
-[; ;pictris.c: 134:     resumeMultiplexing();
+"116
+[; ;pictris.c: 116:     resumeMultiplexing();
 [e ( _resumeMultiplexing ..  ]
-"135
-[; ;pictris.c: 135:     clearArray(ObjectData,8);
-[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
-"136
-[; ;pictris.c: 136:     clearArray(BackgroundData,8);
-[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
-"137
-[; ;pictris.c: 137:     clearArray(tmpObjectData,8);
-[e ( _clearArray (2 , -> &U _tmpObjectData `*Vus -> -> 8 `i `ui ]
-"138
-[; ;pictris.c: 138:     if (1){
-[e $ ! != -> 1 `i -> 0 `i 291  ]
+"117
+[; ;pictris.c: 117:     if (tetris){
+[e $ ! != -> _tetris `i -> 0 `i 288  ]
 {
-"139
-[; ;pictris.c: 139:        tetris_main();
+"118
+[; ;pictris.c: 118:        tetris_main();
 [e ( _tetris_main ..  ]
-"140
-[; ;pictris.c: 140:     }
+"119
+[; ;pictris.c: 119:     }
 }
-[e $U 292  ]
-"141
-[; ;pictris.c: 141:     else {
-[e :U 291 ]
+[e $U 289  ]
+"120
+[; ;pictris.c: 120:     else {
+[e :U 288 ]
 {
-"142
-[; ;pictris.c: 142:        snake_main();
+"121
+[; ;pictris.c: 121:        snake_main();
 [e ( _snake_main ..  ]
-"143
-[; ;pictris.c: 143:     }
+"122
+[; ;pictris.c: 122:     }
 }
-[e :U 292 ]
-"144
-[; ;pictris.c: 144: }
-[e :UE 290 ]
+[e :U 289 ]
+"123
+[; ;pictris.c: 123: }
+[e :UE 287 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"147
-[; ;pictris.c: 147: void main(void)
+"126
+[; ;pictris.c: 126: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"148
-[; ;pictris.c: 148: {
+"127
+[; ;pictris.c: 127: {
 {
 [e :U _main ]
 [f ]
-"150
-[; ;pictris.c: 150:     initialise_hardware();
+"129
+[; ;pictris.c: 129:     initialise_hardware();
 [e ( _initialise_hardware ..  ]
-"151
-[; ;pictris.c: 151:     initialise_globals();
+"130
+[; ;pictris.c: 130:     initialise_globals();
 [e ( _initialise_globals ..  ]
-"152
-[; ;pictris.c: 152:     start_button();
+"131
+[; ;pictris.c: 131:     start_button();
 [e ( _start_button ..  ]
-"153
-[; ;pictris.c: 153:     initialise_screen();
+"132
+[; ;pictris.c: 132:     initialise_screen();
 [e ( _initialise_screen ..  ]
-"157
-[; ;pictris.c: 157:     choosescreen();
-[e ( _choosescreen ..  ]
-"159
-[; ;pictris.c: 159:     splash_screen();
-[e ( _splash_screen ..  ]
-"162
-[; ;pictris.c: 162:     rnd_initialize(get_mS());
+"136
+[; ;pictris.c: 136:     tetris = choosescreen();
+[e = _tetris ( _choosescreen ..  ]
+"139
+[; ;pictris.c: 139:     rnd_initialize(get_mS());
 [e ( _rnd_initialize (1 -> ( _get_mS ..  `uc ]
-"164
-[; ;pictris.c: 164:     for (;;)
+"141
+[; ;pictris.c: 141:     for (;;)
 {
-[e :U 294 ]
-"166
-[; ;pictris.c: 166:         mainGameLoop();
+[e :U 291 ]
+"143
+[; ;pictris.c: 143:         mainGameLoop();
 [e ( _mainGameLoop ..  ]
-[e $U 294  ]
-[e :U 295 ]
+[e $U 291  ]
+[e :U 292 ]
 }
-"167
-[; ;pictris.c: 167: }
-[e :UE 293 ]
+"144
+[; ;pictris.c: 144: }
+[e :UE 290 ]
 }

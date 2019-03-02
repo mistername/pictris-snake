@@ -4659,6 +4659,7 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 # 6 "shared_logic.c" 2
 
 # 1 "./EEPROM.h" 1
@@ -4764,10 +4765,11 @@ const uint16_t Number[10][8] = {
 
 
 void set_screen(volatile uint16_t *newData);
+void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
+void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
-void screen_update(void);
 void initialise_screen(void);
 # 9 "shared_logic.c" 2
 
@@ -4786,7 +4788,6 @@ _Bool checkDown(_Bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
 # 10 "shared_logic.c" 2
 

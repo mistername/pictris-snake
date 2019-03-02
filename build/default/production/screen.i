@@ -4670,6 +4670,7 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 # 5 "screen.c" 2
 
 # 1 "./buttons.h" 1
@@ -4687,7 +4688,6 @@ _Bool checkDown(_Bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
 # 6 "screen.c" 2
 
@@ -4732,7 +4732,18 @@ void resumeMultiplexing(void)
     UpdateScreen = 1;
 }
 
-void set_screen(volatile uint16_t newData[])
+void set_screen(volatile uint16_t *newData)
+{
+    pauseMultiplexing();
+    clearArray(ScreenData, 8);
+    int i;
+    for(i=0;i<8;i++){
+        ScreenData[i] = newData[i];
+    }
+    resumeMultiplexing();
+}
+
+void set_splashscreen(const uint16_t *newData)
 {
     pauseMultiplexing();
     clearArray(ScreenData, 8);
@@ -4747,7 +4758,7 @@ _Bool choosescreen(void)
 {
     _Bool tetris;
     int i;
-    set_screen(choose_screen);
+    set_splashscreen(choose_screen);
 
      while (checkDown(0) || checkUp(0))
         continue;
@@ -4756,8 +4767,8 @@ _Bool choosescreen(void)
     while (!checkDown(0) && !checkUp(0))
         continue;
     uint16_t mask[8];
-    if(checkDown(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = 1;}
-    else {if(checkUp(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = 0; };}
+    if(checkDown(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = 0;}
+    else {if(checkUp(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = 1; };}
 
     pauseMultiplexing();
     mergeObjects(mask, ScreenData, INVERT);

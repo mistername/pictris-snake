@@ -45,7 +45,18 @@ void resumeMultiplexing(void)
     UpdateScreen = true;
 }
 
-void set_screen(volatile uint16_t newData[])
+void set_screen(volatile uint16_t *newData)
+{
+    pauseMultiplexing();
+    clearArray(ScreenData, 8);
+    int i;
+    for(i=0;i<8;i++){
+        ScreenData[i] = newData[i];
+    }
+    resumeMultiplexing();
+}
+
+void set_splashscreen(const uint16_t *newData)
 {
     pauseMultiplexing();
     clearArray(ScreenData, 8);
@@ -60,7 +71,7 @@ bool choosescreen(void)
 {
     bool tetris;
     int i;
-    set_screen(choose_screen);
+    set_splashscreen(choose_screen);
     // wait for "down" button to be depressed; should be, but let's check
      while (checkDown(false) || checkUp(false))
         continue;
@@ -69,8 +80,8 @@ bool choosescreen(void)
     while (!checkDown(false) && !checkUp(false))
         continue;
     uint16_t mask[8];
-    if(checkDown(false) == true) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = true;}
-    else {if(checkUp(false) == true) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = false; };}
+    if(checkDown(false) == true) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = false;}
+    else {if(checkUp(false) == true) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = true; };}
 
     pauseMultiplexing();
     mergeObjects(mask, ScreenData, INVERT);

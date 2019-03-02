@@ -3,39 +3,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./shapes.h: 6: {
 [s S281 `us -> 8 `i `uc 1 `uc 1 `uc 1 ]
 [n S281 shape graphic x y limitedRotation ]
-"7 ./screen.h
-[; ;./screen.h: 7: void set_screen(volatile uint16_t *newData);
-[v _set_screen `(v ~T0 @X0 0 ef1`*Vus ]
+"8 ./screen.h
+[; ;./screen.h: 8: void set_splashscreen(const uint16_t *newData);
+[v _set_splashscreen `(v ~T0 @X0 0 ef1`*Cus ]
+"71 ./shared_logic.h
+[; ;./shared_logic.h: 71: void waitms(unsigned);
+[v _waitms `(v ~T0 @X0 0 ef1`ui ]
 "41 ./tetris.h
 [; ;./tetris.h: 41: _Bool checkForBottom(volatile uint16_t *);
 [v _checkForBottom `(a ~T0 @X0 0 ef1`*Vus ]
-"62 tetris.c
-[; ;tetris.c: 62:         mergeObjects(pObject, BackgroundData, MERGE);
-[c E2573 0 1 2 .. ]
-[n E2573 . OVERRIDE MERGE INVERT  ]
+"64 tetris.c
+[; ;tetris.c: 64:         mergeObjects(pObject, BackgroundData, MERGE);
+[c E2575 0 1 2 .. ]
+[n E2575 . OVERRIDE MERGE INVERT  ]
 "55 ./shared_logic.h
 [; ;./shared_logic.h: 55: void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-[v _mergeObjects `(v ~T0 @X0 0 ef3`*Vus`*Vus`E2573 ]
+[v _mergeObjects `(v ~T0 @X0 0 ef3`*Vus`*Vus`E2575 ]
 "40 ./tetris.h
 [; ;./tetris.h: 40: void selectNextObject(volatile uint16_t *);
 [v _selectNextObject `(v ~T0 @X0 0 ef1`*Vus ]
-"71 tetris.c
-[; ;tetris.c: 71:         moveObject(pObject, DOWN, 1);
-[c E2578 0 1 2 3 .. ]
-[n E2578 . DOWN UP LEFT RIGHT  ]
+"73 tetris.c
+[; ;tetris.c: 73:         moveObject(pObject, DOWN, 1);
+[c E2580 0 1 2 3 .. ]
+[n E2580 . DOWN UP LEFT RIGHT  ]
 "56 ./shared_logic.h
 [; ;./shared_logic.h: 56: void moveObject(volatile uint16_t * , direction_t, uint8_t );
-[v _moveObject `(v ~T0 @X0 0 ef3`*Vus`E2578`uc ]
+[v _moveObject `(v ~T0 @X0 0 ef3`*Vus`E2580`uc ]
 "59
 [; ;./shared_logic.h: 59: _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
 [v _collisionDetect `(a ~T0 @X0 0 ef2`*Vus`*Vus ]
 "68
 [; ;./shared_logic.h: 68: void set_mS(uint16_t);
 [v _set_mS `(v ~T0 @X0 0 ef1`us ]
-"153 tetris.c
-[; ;tetris.c: 153: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
-[c E2584 0 1 .. ]
-[n E2584 . CCW CW  ]
+"155 tetris.c
+[; ;tetris.c: 155: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+[c E2586 0 1 .. ]
+[n E2586 . CCW CW  ]
 "50 ./shared_logic.h
 [; ;./shared_logic.h: 50: volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
 [v _memcpyvol `(*Vv ~T0 @X0 0 ef3`*Vv`*CVv`ui ]
@@ -51,11 +54,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "57
 [; ;./shared_logic.h: 57: _Bool checkForLeftWall(volatile uint16_t * );
 [v _checkForLeftWall `(a ~T0 @X0 0 ef1`*Vus ]
-"9 ./screen.h
-[; ;./screen.h: 9: void pauseMultiplexing(void);
+"11 ./screen.h
+[; ;./screen.h: 11: void pauseMultiplexing(void);
 [v _pauseMultiplexing `(v ~T0 @X0 0 ef ]
-"10
-[; ;./screen.h: 10: void resumeMultiplexing(void);
+"12
+[; ;./screen.h: 12: void resumeMultiplexing(void);
 [v _resumeMultiplexing `(v ~T0 @X0 0 ef ]
 "58 ./shared_logic.h
 [; ;./shared_logic.h: 58: _Bool checkForRightWall(volatile uint16_t * );
@@ -81,7 +84,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "66
 [; ;./shared_logic.h: 66: void show_score(uint8_t);
 [v _show_score `(v ~T0 @X0 0 ef1`uc ]
-"65
+"7 ./screen.h
+[; ;./screen.h: 7: void set_screen(volatile uint16_t *newData);
+[v _set_screen `(v ~T0 @X0 0 ef1`*Vus ]
+"65 ./shared_logic.h
 [; ;./shared_logic.h: 65: void writeHighScore(uint8_t , uint8_t , uint8_t );
 [v _writeHighScore `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
@@ -688,11 +694,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18
 [; ;tetris.c: 18: uint16_t tmpObjectData[8];
 [v _tmpObjectData `us ~T0 @X0 -> 8 `i e ]
-"19
-[; ;tetris.c: 19: volatile _Bool EndOfGame;
-[v _EndOfGame `Va ~T0 @X0 1 e ]
-"21
-[; ;tetris.c: 21: const uint16_t TETRIS[] =
+"20
+[; ;tetris.c: 20: const uint16_t TETRIS[] =
 [v _TETRIS `Cus ~T0 @X0 -> 8 `i e ]
 [i _TETRIS
 :U ..
@@ -706,27 +709,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `us
 ..
 ]
-"33
-[; ;tetris.c: 33: uint8_t randomobjects[8];
+"32
+[; ;tetris.c: 32: uint8_t randomobjects[8];
 [v _randomobjects `uc ~T0 @X0 -> 8 `i e ]
-"35
-[; ;tetris.c: 35: uint8_t LimitedRotation;
+"34
+[; ;tetris.c: 34: uint8_t LimitedRotation;
 [v _LimitedRotation `uc ~T0 @X0 1 e ]
-"36
-[; ;tetris.c: 36: uint8_t NumberOfLines;
+"35
+[; ;tetris.c: 35: uint8_t NumberOfLines;
 [v _NumberOfLines `uc ~T0 @X0 1 e ]
-"38
-[; ;tetris.c: 38: _Bool IsRotated;
+"37
+[; ;tetris.c: 37: _Bool IsRotated;
 [v _IsRotated `a ~T0 @X0 1 e ]
-"40
-[; ;tetris.c: 40: _Bool CheckForNewLines;
+"39
+[; ;tetris.c: 39: _Bool CheckForNewLines;
 [v _CheckForNewLines `a ~T0 @X0 1 e ]
-"42
-[; ;tetris.c: 42: uint8_t countblocks;
+"41
+[; ;tetris.c: 41: uint8_t countblocks;
 [v _countblocks `uc ~T0 @X0 1 e ]
-"44
-[; ;tetris.c: 44: volatile _Bool DropObject;
+"43
+[; ;tetris.c: 43: volatile _Bool DropObject;
 [v _DropObject `Va ~T0 @X0 1 e ]
+"44
+[; ;tetris.c: 44: volatile _Bool EndOfGame;
+[v _EndOfGame `Va ~T0 @X0 1 e ]
 "45
 [; ;tetris.c: 45: uint8_t OriginX, OriginY;
 [v _OriginX `uc ~T0 @X0 1 e ]
@@ -738,426 +744,431 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `a
 ]
 "48
-[; ;tetris.c: 48: void tetris_screen(void){
+[; ;tetris.c: 48: void tetris_screen(void)
 [v _tetris_screen `(v ~T0 @X0 1 ef ]
+"49
+[; ;tetris.c: 49: {
 {
 [e :U _tetris_screen ]
 [f ]
-"49
-[; ;tetris.c: 49: set_screen(TETRIS);
-[e ( _set_screen (1 -> &U _TETRIS `*Vus ]
 "50
-[; ;tetris.c: 50: }
+[; ;tetris.c: 50:     set_splashscreen(TETRIS);
+[e ( _set_splashscreen (1 &U _TETRIS ]
+"51
+[; ;tetris.c: 51:     waitms(3500);
+[e ( _waitms (1 -> -> 3500 `i `ui ]
+"52
+[; ;tetris.c: 52: }
 [e :UE 282 ]
 }
-"52
-[; ;tetris.c: 52: _Bool moveObjectDown(volatile uint16_t * pObject)
+"54
+[; ;tetris.c: 54: _Bool moveObjectDown(volatile uint16_t * pObject)
 [v _moveObjectDown `(a ~T0 @X0 1 ef1`*Vus ]
-"53
-[; ;tetris.c: 53: {
+"55
+[; ;tetris.c: 55: {
 {
 [e :U _moveObjectDown ]
-"52
-[; ;tetris.c: 52: _Bool moveObjectDown(volatile uint16_t * pObject)
-[v _pObject `*Vus ~T0 @X0 1 r1 ]
-"53
-[; ;tetris.c: 53: {
-[f ]
 "54
-[; ;tetris.c: 54:     _Bool result = 1;
+[; ;tetris.c: 54: _Bool moveObjectDown(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"55
+[; ;tetris.c: 55: {
+[f ]
+"56
+[; ;tetris.c: 56:     _Bool result = 1;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 1 `i `a ]
-"57
-[; ;tetris.c: 57:     if (checkForBottom(pObject))
+"59
+[; ;tetris.c: 59:     if (checkForBottom(pObject))
 [e $ ! != -> ( _checkForBottom (1 _pObject `i -> 0 `i 284  ]
-"58
-[; ;tetris.c: 58:     {
-{
 "60
-[; ;tetris.c: 60:         result = 0;
-[e = _result -> -> 0 `i `a ]
+[; ;tetris.c: 60:     {
+{
 "62
-[; ;tetris.c: 62:         mergeObjects(pObject, BackgroundData, MERGE);
-[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2573 1 ]
+[; ;tetris.c: 62:         result = 0;
+[e = _result -> -> 0 `i `a ]
 "64
-[; ;tetris.c: 64:         selectNextObject(pObject);
-[e ( _selectNextObject (1 _pObject ]
+[; ;tetris.c: 64:         mergeObjects(pObject, BackgroundData, MERGE);
+[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2575 1 ]
 "66
-[; ;tetris.c: 66:         CheckForNewLines = 1;
+[; ;tetris.c: 66:         selectNextObject(pObject);
+[e ( _selectNextObject (1 _pObject ]
+"68
+[; ;tetris.c: 68:         CheckForNewLines = 1;
 [e = _CheckForNewLines -> -> 1 `i `a ]
-"67
-[; ;tetris.c: 67:     }
+"69
+[; ;tetris.c: 69:     }
 }
 [e $U 285  ]
-"68
-[; ;tetris.c: 68:     else
+"70
+[; ;tetris.c: 70:     else
 [e :U 284 ]
-"69
-[; ;tetris.c: 69:     {
-{
 "71
-[; ;tetris.c: 71:         moveObject(pObject, DOWN, 1);
-[e ( _moveObject (3 , , _pObject . `E2578 0 -> -> 1 `i `uc ]
-"73
-[; ;tetris.c: 73:         if (collisionDetect(pObject, BackgroundData))
-[e $ ! != -> ( _collisionDetect (2 , _pObject &U _BackgroundData `i -> 0 `i 286  ]
-"74
-[; ;tetris.c: 74:         {
+[; ;tetris.c: 71:     {
 {
-"77
-[; ;tetris.c: 77:             result = 0;
-[e = _result -> -> 0 `i `a ]
+"73
+[; ;tetris.c: 73:         moveObject(pObject, DOWN, 1);
+[e ( _moveObject (3 , , _pObject . `E2580 0 -> -> 1 `i `uc ]
+"75
+[; ;tetris.c: 75:         if (collisionDetect(pObject, BackgroundData))
+[e $ ! != -> ( _collisionDetect (2 , _pObject &U _BackgroundData `i -> 0 `i 286  ]
+"76
+[; ;tetris.c: 76:         {
+{
 "79
-[; ;tetris.c: 79:             moveObject(pObject, UP, 1);
-[e ( _moveObject (3 , , _pObject . `E2578 1 -> -> 1 `i `uc ]
+[; ;tetris.c: 79:             result = 0;
+[e = _result -> -> 0 `i `a ]
 "81
-[; ;tetris.c: 81:             mergeObjects(pObject, BackgroundData, MERGE);
-[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2573 1 ]
+[; ;tetris.c: 81:             moveObject(pObject, UP, 1);
+[e ( _moveObject (3 , , _pObject . `E2580 1 -> -> 1 `i `uc ]
 "83
-[; ;tetris.c: 83:             selectNextObject(pObject);
+[; ;tetris.c: 83:             mergeObjects(pObject, BackgroundData, MERGE);
+[e ( _mergeObjects (3 , , _pObject &U _BackgroundData . `E2575 1 ]
+"85
+[; ;tetris.c: 85:             selectNextObject(pObject);
 [e ( _selectNextObject (1 _pObject ]
-"86
-[; ;tetris.c: 86:             EndOfGame = collisionDetect(pObject, BackgroundData);
-[e = _EndOfGame ( _collisionDetect (2 , _pObject &U _BackgroundData ]
 "88
-[; ;tetris.c: 88:             CheckForNewLines = 1;
+[; ;tetris.c: 88:             EndOfGame = collisionDetect(pObject, BackgroundData);
+[e = _EndOfGame ( _collisionDetect (2 , _pObject &U _BackgroundData ]
+"90
+[; ;tetris.c: 90:             CheckForNewLines = 1;
 [e = _CheckForNewLines -> -> 1 `i `a ]
-"89
-[; ;tetris.c: 89:         }
+"91
+[; ;tetris.c: 91:         }
 }
 [e :U 286 ]
-"90
-[; ;tetris.c: 90:     }
+"92
+[; ;tetris.c: 92:     }
 }
 [e :U 285 ]
-"91
-[; ;tetris.c: 91:     set_mS(0);
-[e ( _set_mS (1 -> -> 0 `i `us ]
 "93
-[; ;tetris.c: 93:     return result;
+[; ;tetris.c: 93:     set_mS(0);
+[e ( _set_mS (1 -> -> 0 `i `us ]
+"95
+[; ;tetris.c: 95:     return result;
 [e ) _result ]
 [e $UE 283  ]
-"94
-[; ;tetris.c: 94: }
+"96
+[; ;tetris.c: 96: }
 [e :UE 283 ]
 }
-"98
-[; ;tetris.c: 98: void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycles)
-[v _moveObject `(v ~T0 @X0 1 ef3`*Vus`E2578`uc ]
-"99
-[; ;tetris.c: 99: {
+"100
+[; ;tetris.c: 100: void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycles)
+[v _moveObject `(v ~T0 @X0 1 ef3`*Vus`E2580`uc ]
+"101
+[; ;tetris.c: 101: {
 {
 [e :U _moveObject ]
-"98
-[; ;tetris.c: 98: void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycles)
-[v _pObject `*Vus ~T0 @X0 1 r1 ]
-[v _direction `E2578 ~T0 @X0 1 r2 ]
-[v _cycles `uc ~T0 @X0 1 r3 ]
-"99
-[; ;tetris.c: 99: {
-[f ]
 "100
-[; ;tetris.c: 100:     uint8_t i, c;
+[; ;tetris.c: 100: void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycles)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+[v _direction `E2580 ~T0 @X0 1 r2 ]
+[v _cycles `uc ~T0 @X0 1 r3 ]
+"101
+[; ;tetris.c: 101: {
+[f ]
+"102
+[; ;tetris.c: 102:     uint8_t i, c;
 [v _i `uc ~T0 @X0 1 a ]
 [v _c `uc ~T0 @X0 1 a ]
-"102
-[; ;tetris.c: 102:     switch (direction)
-[e $U 289  ]
-"103
-[; ;tetris.c: 103:     {
-{
 "104
-[; ;tetris.c: 104:     case DOWN:
-[e :U 290 ]
+[; ;tetris.c: 104:     switch (direction)
+[e $U 289  ]
 "105
-[; ;tetris.c: 105:         for (c = 0; c < cycles; c++)
+[; ;tetris.c: 105:     {
+{
+"106
+[; ;tetris.c: 106:     case DOWN:
+[e :U 290 ]
+"107
+[; ;tetris.c: 107:         for (c = 0; c < cycles; c++)
 {
 [e = _c -> -> 0 `i `uc ]
 [e $U 294  ]
 [e :U 291 ]
-"106
-[; ;tetris.c: 106:         {
+"108
+[; ;tetris.c: 108:         {
 {
-"107
-[; ;tetris.c: 107:             for (i = 0; i < 8; i++)
+"109
+[; ;tetris.c: 109:             for (i = 0; i < 8; i++)
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 295  ]
 [e $U 296  ]
 [e :U 295 ]
-"108
-[; ;tetris.c: 108:                 pObject[i] <<= 1;
+"110
+[; ;tetris.c: 110:                 pObject[i] <<= 1;
 [e =<< *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux -> -> 1 `i `us ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 295  ]
 [e :U 296 ]
 }
-"109
-[; ;tetris.c: 109:             OriginY++;
+"111
+[; ;tetris.c: 111:             OriginY++;
 [e ++ _OriginY -> -> 1 `i `uc ]
-"110
-[; ;tetris.c: 110:         }
+"112
+[; ;tetris.c: 112:         }
 }
 [e ++ _c -> -> 1 `i `uc ]
 [e :U 294 ]
 [e $ < -> _c `i -> _cycles `i 291  ]
 [e :U 292 ]
 }
-"111
-[; ;tetris.c: 111:         break;
-[e $U 288  ]
-"112
-[; ;tetris.c: 112:     case UP:
-[e :U 298 ]
 "113
-[; ;tetris.c: 113:         for (c = 0; c < cycles; c++)
+[; ;tetris.c: 113:         break;
+[e $U 288  ]
+"114
+[; ;tetris.c: 114:     case UP:
+[e :U 298 ]
+"115
+[; ;tetris.c: 115:         for (c = 0; c < cycles; c++)
 {
 [e = _c -> -> 0 `i `uc ]
 [e $U 302  ]
 [e :U 299 ]
-"114
-[; ;tetris.c: 114:         {
+"116
+[; ;tetris.c: 116:         {
 {
-"115
-[; ;tetris.c: 115:             for (i = 0; i < 8; i++)
+"117
+[; ;tetris.c: 117:             for (i = 0; i < 8; i++)
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 303  ]
 [e $U 304  ]
 [e :U 303 ]
-"116
-[; ;tetris.c: 116:                 pObject[i] >>= 1;
+"118
+[; ;tetris.c: 118:                 pObject[i] >>= 1;
 [e =>> *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux -> -> 1 `i `us ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 303  ]
 [e :U 304 ]
 }
-"117
-[; ;tetris.c: 117:             OriginY--;
+"119
+[; ;tetris.c: 119:             OriginY--;
 [e -- _OriginY -> -> 1 `i `uc ]
-"118
-[; ;tetris.c: 118:         }
+"120
+[; ;tetris.c: 120:         }
 }
 [e ++ _c -> -> 1 `i `uc ]
 [e :U 302 ]
 [e $ < -> _c `i -> _cycles `i 299  ]
 [e :U 300 ]
 }
-"119
-[; ;tetris.c: 119:         break;
-[e $U 288  ]
-"120
-[; ;tetris.c: 120:     case RIGHT:
-[e :U 306 ]
 "121
-[; ;tetris.c: 121:         for (c = 0; c < cycles; c++)
+[; ;tetris.c: 121:         break;
+[e $U 288  ]
+"122
+[; ;tetris.c: 122:     case RIGHT:
+[e :U 306 ]
+"123
+[; ;tetris.c: 123:         for (c = 0; c < cycles; c++)
 {
 [e = _c -> -> 0 `i `uc ]
 [e $U 310  ]
 [e :U 307 ]
-"122
-[; ;tetris.c: 122:         {
+"124
+[; ;tetris.c: 124:         {
 {
-"123
-[; ;tetris.c: 123:             for (i = 7; i > 0; i--)
+"125
+[; ;tetris.c: 125:             for (i = 7; i > 0; i--)
 {
 [e = _i -> -> 7 `i `uc ]
 [e $ > -> _i `i -> 0 `i 311  ]
 [e $U 312  ]
 [e :U 311 ]
-"124
-[; ;tetris.c: 124:                 pObject[i] = pObject[i-1];
+"126
+[; ;tetris.c: 126:                 pObject[i] = pObject[i-1];
 [e = *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux *U + _pObject * -> - -> _i `i -> 1 `i `x -> -> # *U _pObject `i `x ]
 [e -- _i -> -> 1 `i `uc ]
 [e $ > -> _i `i -> 0 `i 311  ]
 [e :U 312 ]
 }
-"125
-[; ;tetris.c: 125:             pObject[0] = 0;
-[e = *U + _pObject * -> -> 0 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
-"126
-[; ;tetris.c: 126:             OriginX++;
-[e ++ _OriginX -> -> 1 `i `uc ]
 "127
-[; ;tetris.c: 127:         }
+[; ;tetris.c: 127:             pObject[0] = 0;
+[e = *U + _pObject * -> -> 0 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
+"128
+[; ;tetris.c: 128:             OriginX++;
+[e ++ _OriginX -> -> 1 `i `uc ]
+"129
+[; ;tetris.c: 129:         }
 }
 [e ++ _c -> -> 1 `i `uc ]
 [e :U 310 ]
 [e $ < -> _c `i -> _cycles `i 307  ]
 [e :U 308 ]
 }
-"128
-[; ;tetris.c: 128:         break;
-[e $U 288  ]
-"129
-[; ;tetris.c: 129:     case LEFT:
-[e :U 314 ]
 "130
-[; ;tetris.c: 130:         for (c = 0; c < cycles; c++)
+[; ;tetris.c: 130:         break;
+[e $U 288  ]
+"131
+[; ;tetris.c: 131:     case LEFT:
+[e :U 314 ]
+"132
+[; ;tetris.c: 132:         for (c = 0; c < cycles; c++)
 {
 [e = _c -> -> 0 `i `uc ]
 [e $U 318  ]
 [e :U 315 ]
-"131
-[; ;tetris.c: 131:         {
+"133
+[; ;tetris.c: 133:         {
 {
-"132
-[; ;tetris.c: 132:             for (i = 0; i < 7; i++)
+"134
+[; ;tetris.c: 134:             for (i = 0; i < 7; i++)
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 7 `i 319  ]
 [e $U 320  ]
 [e :U 319 ]
-"133
-[; ;tetris.c: 133:                 pObject[i] = pObject[i+1];
+"135
+[; ;tetris.c: 135:                 pObject[i] = pObject[i+1];
 [e = *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux *U + _pObject * -> + -> _i `i -> 1 `i `x -> -> # *U _pObject `i `x ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 7 `i 319  ]
 [e :U 320 ]
 }
-"134
-[; ;tetris.c: 134:             pObject[7] = 0;
-[e = *U + _pObject * -> -> 7 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
-"135
-[; ;tetris.c: 135:             OriginX--;
-[e -- _OriginX -> -> 1 `i `uc ]
 "136
-[; ;tetris.c: 136:         }
+[; ;tetris.c: 136:             pObject[7] = 0;
+[e = *U + _pObject * -> -> 7 `i `x -> -> # *U _pObject `i `x -> -> 0 `i `us ]
+"137
+[; ;tetris.c: 137:             OriginX--;
+[e -- _OriginX -> -> 1 `i `uc ]
+"138
+[; ;tetris.c: 138:         }
 }
 [e ++ _c -> -> 1 `i `uc ]
 [e :U 318 ]
 [e $ < -> _c `i -> _cycles `i 315  ]
 [e :U 316 ]
 }
-"137
-[; ;tetris.c: 137:     }
+"139
+[; ;tetris.c: 139:     }
 }
 [e $U 288  ]
 [e :U 289 ]
-[e [\ -> _direction `ui , $ -> . `E2578 0 `ui 290
- , $ -> . `E2578 1 `ui 298
- , $ -> . `E2578 3 `ui 306
- , $ -> . `E2578 2 `ui 314
+[e [\ -> _direction `ui , $ -> . `E2580 0 `ui 290
+ , $ -> . `E2580 1 `ui 298
+ , $ -> . `E2580 3 `ui 306
+ , $ -> . `E2580 2 `ui 314
  288 ]
 [e :U 288 ]
-"138
-[; ;tetris.c: 138: }
+"140
+[; ;tetris.c: 140: }
 [e :UE 287 ]
 }
-"153
-[; ;tetris.c: 153: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
-[v _newRotation `(v ~T0 @X0 1 ef3`*Vus`*us`E2584 ]
-"154
-[; ;tetris.c: 154: {
+"155
+[; ;tetris.c: 155: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+[v _newRotation `(v ~T0 @X0 1 ef3`*Vus`*us`E2586 ]
+"156
+[; ;tetris.c: 156: {
 {
 [e :U _newRotation ]
-"153
-[; ;tetris.c: 153: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+"155
+[; ;tetris.c: 155: void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
 [v _pSource `*Vus ~T0 @X0 1 r1 ]
 [v _pTarget `*us ~T0 @X0 1 r2 ]
-[v _rotation `E2584 ~T0 @X0 1 r3 ]
-"154
-[; ;tetris.c: 154: {
+[v _rotation `E2586 ~T0 @X0 1 r3 ]
+"156
+[; ;tetris.c: 156: {
 [f ]
-"155
-[; ;tetris.c: 155:     int8_t x2, y2;
+"157
+[; ;tetris.c: 157:     int8_t x2, y2;
 [v _x2 `c ~T0 @X0 1 a ]
 [v _y2 `c ~T0 @X0 1 a ]
-"156
-[; ;tetris.c: 156:     uint8_t x1, y1;
+"158
+[; ;tetris.c: 158:     uint8_t x1, y1;
 [v _x1 `uc ~T0 @X0 1 a ]
 [v _y1 `uc ~T0 @X0 1 a ]
-"159
-[; ;tetris.c: 159:     if (LimitedRotation == 2)
+"161
+[; ;tetris.c: 161:     if (LimitedRotation == 2)
 [e $ ! == -> _LimitedRotation `i -> 2 `i 323  ]
-"160
-[; ;tetris.c: 160:         memcpyvol(pTarget, pSource, 16);
+"162
+[; ;tetris.c: 162:         memcpyvol(pTarget, pSource, 16);
 [e ( _memcpyvol (3 , , -> _pTarget `*Vv -> _pSource `*CVv -> -> 16 `i `ui ]
 [e $U 324  ]
-"161
-[; ;tetris.c: 161:     else
+"163
+[; ;tetris.c: 163:     else
 [e :U 323 ]
-"162
-[; ;tetris.c: 162:     {
-{
 "164
-[; ;tetris.c: 164:         clearArray(pTarget, 8);
+[; ;tetris.c: 164:     {
+{
+"166
+[; ;tetris.c: 166:         clearArray(pTarget, 8);
 [e ( _clearArray (2 , -> _pTarget `*Vus -> -> 8 `i `ui ]
-"169
-[; ;tetris.c: 169:         if (LimitedRotation == 1 && IsRotated)
+"171
+[; ;tetris.c: 171:         if (LimitedRotation == 1 && IsRotated)
 [e $ ! && == -> _LimitedRotation `i -> 1 `i != -> _IsRotated `i -> 0 `i 325  ]
-"170
-[; ;tetris.c: 170:             rotation = CCW;
-[e = _rotation . `E2584 0 ]
-[e :U 325 ]
 "172
-[; ;tetris.c: 172:         for (x1 = 0; x1 < 8; x1++)
+[; ;tetris.c: 172:             rotation = CCW;
+[e = _rotation . `E2586 0 ]
+[e :U 325 ]
+"174
+[; ;tetris.c: 174:         for (x1 = 0; x1 < 8; x1++)
 {
 [e = _x1 -> -> 0 `i `uc ]
 [e $ < -> _x1 `i -> 8 `i 326  ]
 [e $U 327  ]
 [e :U 326 ]
-"173
-[; ;tetris.c: 173:             for (y1 = 0; y1 < 16; y1++)
+"175
+[; ;tetris.c: 175:             for (y1 = 0; y1 < 16; y1++)
 {
 [e = _y1 -> -> 0 `i `uc ]
 [e $ < -> _y1 `i -> 16 `i 329  ]
 [e $U 330  ]
 [e :U 329 ]
-"174
-[; ;tetris.c: 174:             {
-{
-"175
-[; ;tetris.c: 175:                 if (pSource[x1] & (1<<y1))
-[e $ ! != & -> *U + _pSource * -> _x1 `ux -> -> # *U _pSource `ui `ux `ui -> << -> 1 `i -> _y1 `i `ui -> -> 0 `i `ui 332  ]
 "176
-[; ;tetris.c: 176:                 {
+[; ;tetris.c: 176:             {
 {
 "177
-[; ;tetris.c: 177:                     if (rotation == CW)
-[e $ ! == -> _rotation `ui -> . `E2584 1 `ui 333  ]
+[; ;tetris.c: 177:                 if (pSource[x1] & (1<<y1))
+[e $ ! != & -> *U + _pSource * -> _x1 `ux -> -> # *U _pSource `ui `ux `ui -> << -> 1 `i -> _y1 `i `ui -> -> 0 `i `ui 332  ]
 "178
-[; ;tetris.c: 178:                     {
+[; ;tetris.c: 178:                 {
 {
 "179
-[; ;tetris.c: 179:                         x2 = OriginX + OriginY - y1;
-[e = _x2 -> - + -> _OriginX `i -> _OriginY `i -> _y1 `i `c ]
+[; ;tetris.c: 179:                     if (rotation == CW)
+[e $ ! == -> _rotation `ui -> . `E2586 1 `ui 333  ]
 "180
-[; ;tetris.c: 180:                         y2 = x1 + OriginY - OriginX;
-[e = _y2 -> - + -> _x1 `i -> _OriginY `i -> _OriginX `i `c ]
+[; ;tetris.c: 180:                     {
+{
 "181
-[; ;tetris.c: 181:                     }
+[; ;tetris.c: 181:                         x2 = OriginX + OriginY - y1;
+[e = _x2 -> - + -> _OriginX `i -> _OriginY `i -> _y1 `i `c ]
+"182
+[; ;tetris.c: 182:                         y2 = x1 + OriginY - OriginX;
+[e = _y2 -> - + -> _x1 `i -> _OriginY `i -> _OriginX `i `c ]
+"183
+[; ;tetris.c: 183:                     }
 }
 [e $U 334  ]
-"182
-[; ;tetris.c: 182:                     else
-[e :U 333 ]
-"183
-[; ;tetris.c: 183:                     {
-{
 "184
-[; ;tetris.c: 184:                         x2 = y1 + OriginX - OriginY;
-[e = _x2 -> - + -> _y1 `i -> _OriginX `i -> _OriginY `i `c ]
+[; ;tetris.c: 184:                     else
+[e :U 333 ]
 "185
-[; ;tetris.c: 185:                         y2 = OriginX + OriginY - x1;
-[e = _y2 -> - + -> _OriginX `i -> _OriginY `i -> _x1 `i `c ]
+[; ;tetris.c: 185:                     {
+{
 "186
-[; ;tetris.c: 186:                     }
+[; ;tetris.c: 186:                         x2 = y1 + OriginX - OriginY;
+[e = _x2 -> - + -> _y1 `i -> _OriginX `i -> _OriginY `i `c ]
+"187
+[; ;tetris.c: 187:                         y2 = OriginX + OriginY - x1;
+[e = _y2 -> - + -> _OriginX `i -> _OriginY `i -> _x1 `i `c ]
+"188
+[; ;tetris.c: 188:                     }
 }
 [e :U 334 ]
-"187
-[; ;tetris.c: 187:                     if (x2 >= 0 && x2 < 8 &&
-[e $ ! && && && >= -> _x2 `i -> 0 `i < -> _x2 `i -> 8 `i >= -> _y2 `i -> 0 `i < -> _y2 `i -> 16 `i 335  ]
 "189
-[; ;tetris.c: 189:                         pTarget[x2] |= (1<<y2);
+[; ;tetris.c: 189:                     if (x2 >= 0 && x2 < 8 &&
+[e $ ! && && && >= -> _x2 `i -> 0 `i < -> _x2 `i -> 8 `i >= -> _y2 `i -> 0 `i < -> _y2 `i -> 16 `i 335  ]
+"191
+[; ;tetris.c: 191:                         pTarget[x2] |= (1<<y2);
 [e =| *U + _pTarget * -> _x2 `x -> -> # *U _pTarget `i `x -> << -> 1 `i -> _y2 `i `us ]
 [e :U 335 ]
-"190
-[; ;tetris.c: 190:                 }
+"192
+[; ;tetris.c: 192:                 }
 }
 [e :U 332 ]
-"191
-[; ;tetris.c: 191:             }
+"193
+[; ;tetris.c: 193:             }
 }
 [e ++ _y1 -> -> 1 `i `uc ]
 [e $ < -> _y1 `i -> 16 `i 329  ]
@@ -1167,175 +1178,175 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _x1 `i -> 8 `i 326  ]
 [e :U 327 ]
 }
-"192
-[; ;tetris.c: 192:     }
+"194
+[; ;tetris.c: 194:     }
 }
 [e :U 324 ]
-"193
-[; ;tetris.c: 193: }
+"195
+[; ;tetris.c: 195: }
 [e :UE 322 ]
 }
-"195
-[; ;tetris.c: 195: void selectNextObject(volatile uint16_t *pTarget)
+"197
+[; ;tetris.c: 197: void selectNextObject(volatile uint16_t *pTarget)
 [v _selectNextObject `(v ~T0 @X0 1 ef1`*Vus ]
-"196
-[; ;tetris.c: 196: {
+"198
+[; ;tetris.c: 198: {
 {
 [e :U _selectNextObject ]
-"195
-[; ;tetris.c: 195: void selectNextObject(volatile uint16_t *pTarget)
-[v _pTarget `*Vus ~T0 @X0 1 r1 ]
-"196
-[; ;tetris.c: 196: {
-[f ]
 "197
-[; ;tetris.c: 197:     uint8_t rndSelection, counter, selection;
+[; ;tetris.c: 197: void selectNextObject(volatile uint16_t *pTarget)
+[v _pTarget `*Vus ~T0 @X0 1 r1 ]
+"198
+[; ;tetris.c: 198: {
+[f ]
+"199
+[; ;tetris.c: 199:     uint8_t rndSelection, counter, selection;
 [v _rndSelection `uc ~T0 @X0 1 a ]
 [v _counter `uc ~T0 @X0 1 a ]
 [v _selection `uc ~T0 @X0 1 a ]
-"198
-[; ;tetris.c: 198:     struct shape * s;
-[v _s `*S281 ~T0 @X0 1 a ]
-"199
-[; ;tetris.c: 199:     _Bool check[7];
-[v _check `a ~T0 @X0 -> 7 `i a ]
 "200
-[; ;tetris.c: 200:     if(countblocks == 7){
+[; ;tetris.c: 200:     struct shape * s;
+[v _s `*S281 ~T0 @X0 1 a ]
+"201
+[; ;tetris.c: 201:     _Bool check[7];
+[v _check `a ~T0 @X0 -> 7 `i a ]
+"202
+[; ;tetris.c: 202:     if(countblocks == 7){
 [e $ ! == -> _countblocks `i -> 7 `i 337  ]
 {
-"201
-[; ;tetris.c: 201:         countblocks = 0;
-[e = _countblocks -> -> 0 `i `uc ]
 "203
-[; ;tetris.c: 203:         for(counter=0; counter<7;counter++){
+[; ;tetris.c: 203:         countblocks = 0;
+[e = _countblocks -> -> 0 `i `uc ]
+"205
+[; ;tetris.c: 205:         for(counter=0; counter<7;counter++){
 {
 [e = _counter -> -> 0 `i `uc ]
 [e $ < -> _counter `i -> 7 `i 338  ]
 [e $U 339  ]
 [e :U 338 ]
 {
-"204
-[; ;tetris.c: 204:             randomobjects[counter] = 255;
-[e = *U + &U _randomobjects * -> _counter `ux -> -> # *U &U _randomobjects `ui `ux -> -> 255 `i `uc ]
-"205
-[; ;tetris.c: 205:             check[counter] = 0;
-[e = *U + &U _check * -> _counter `ux -> -> # *U &U _check `ui `ux -> -> 0 `i `a ]
 "206
-[; ;tetris.c: 206:         }
+[; ;tetris.c: 206:             randomobjects[counter] = 255;
+[e = *U + &U _randomobjects * -> _counter `ux -> -> # *U &U _randomobjects `ui `ux -> -> 255 `i `uc ]
+"207
+[; ;tetris.c: 207:             check[counter] = 0;
+[e = *U + &U _check * -> _counter `ux -> -> # *U &U _check `ui `ux -> -> 0 `i `a ]
+"208
+[; ;tetris.c: 208:         }
 }
 [e ++ _counter -> -> 1 `i `uc ]
 [e $ < -> _counter `i -> 7 `i 338  ]
 [e :U 339 ]
 }
-"207
-[; ;tetris.c: 207:         for(counter=0; counter<7;counter++){
+"209
+[; ;tetris.c: 209:         for(counter=0; counter<7;counter++){
 {
 [e = _counter -> -> 0 `i `uc ]
 [e $ < -> _counter `i -> 7 `i 341  ]
 [e $U 342  ]
 [e :U 341 ]
 {
-"208
-[; ;tetris.c: 208:             _Bool fill = 0;
+"210
+[; ;tetris.c: 210:             _Bool fill = 0;
 [v _fill `a ~T0 @X0 1 a ]
 [e = _fill -> -> 0 `i `a ]
-"209
-[; ;tetris.c: 209:             do {
+"211
+[; ;tetris.c: 211:             do {
 [e :U 346 ]
 {
-"210
-[; ;tetris.c: 210:                 rndSelection = rnd_get_num();
-[e = _rndSelection ( _rnd_get_num ..  ]
-"211
-[; ;tetris.c: 211:                 rndSelection = rndSelection % 7;
-[e = _rndSelection -> % -> _rndSelection `i -> 7 `i `uc ]
 "212
-[; ;tetris.c: 212:                 if (check[rndSelection] == 0) {
+[; ;tetris.c: 212:                 rndSelection = rnd_get_num();
+[e = _rndSelection ( _rnd_get_num ..  ]
+"213
+[; ;tetris.c: 213:                 rndSelection = rndSelection % 7;
+[e = _rndSelection -> % -> _rndSelection `i -> 7 `i `uc ]
+"214
+[; ;tetris.c: 214:                 if (check[rndSelection] == 0) {
 [e $ ! == -> *U + &U _check * -> _rndSelection `ux -> -> # *U &U _check `ui `ux `i -> 0 `i 347  ]
 {
-"213
-[; ;tetris.c: 213:                     randomobjects[counter] = rndSelection;
-[e = *U + &U _randomobjects * -> _counter `ux -> -> # *U &U _randomobjects `ui `ux _rndSelection ]
-"214
-[; ;tetris.c: 214:                     check[rndSelection] = 1;
-[e = *U + &U _check * -> _rndSelection `ux -> -> # *U &U _check `ui `ux -> -> 1 `i `a ]
 "215
-[; ;tetris.c: 215:                     fill = 1;
-[e = _fill -> -> 1 `i `a ]
+[; ;tetris.c: 215:                     randomobjects[counter] = rndSelection;
+[e = *U + &U _randomobjects * -> _counter `ux -> -> # *U &U _randomobjects `ui `ux _rndSelection ]
 "216
-[; ;tetris.c: 216:                 }
+[; ;tetris.c: 216:                     check[rndSelection] = 1;
+[e = *U + &U _check * -> _rndSelection `ux -> -> # *U &U _check `ui `ux -> -> 1 `i `a ]
+"217
+[; ;tetris.c: 217:                     fill = 1;
+[e = _fill -> -> 1 `i `a ]
+"218
+[; ;tetris.c: 218:                 }
 }
 [e :U 347 ]
-"217
-[; ;tetris.c: 217:             } while (!fill);
+"219
+[; ;tetris.c: 219:             } while (!fill);
 }
 [e $ ! != -> _fill `i -> 0 `i 346  ]
 [e :U 345 ]
-"218
-[; ;tetris.c: 218:         }
+"220
+[; ;tetris.c: 220:         }
 }
 [e ++ _counter -> -> 1 `i `uc ]
 [e $ < -> _counter `i -> 7 `i 341  ]
 [e :U 342 ]
 }
-"219
-[; ;tetris.c: 219:     }
+"221
+[; ;tetris.c: 221:     }
 }
 [e :U 337 ]
-"220
-[; ;tetris.c: 220:     s = &shapes[randomobjects[countblocks]];
+"222
+[; ;tetris.c: 222:     s = &shapes[randomobjects[countblocks]];
 [e = _s &U *U + &U _shapes * -> *U + &U _randomobjects * -> _countblocks `ux -> -> # *U &U _randomobjects `ui `ux `ux -> -> # *U &U _shapes `ui `ux ]
-"221
-[; ;tetris.c: 221:     countblocks++;
-[e ++ _countblocks -> -> 1 `i `uc ]
 "223
-[; ;tetris.c: 223:     memcpyvol(pTarget, s->graphic, 16);
-[e ( _memcpyvol (3 , , -> _pTarget `*Vv -> &U . *U _s 0 `*CVv -> -> 16 `i `ui ]
-"224
-[; ;tetris.c: 224:     OriginX = s->x;
-[e = _OriginX . *U _s 1 ]
+[; ;tetris.c: 223:     countblocks++;
+[e ++ _countblocks -> -> 1 `i `uc ]
 "225
-[; ;tetris.c: 225:     OriginY = s->y;
-[e = _OriginY . *U _s 2 ]
+[; ;tetris.c: 225:     memcpyvol(pTarget, s->graphic, 16);
+[e ( _memcpyvol (3 , , -> _pTarget `*Vv -> &U . *U _s 0 `*CVv -> -> 16 `i `ui ]
 "226
-[; ;tetris.c: 226:     IsRotated = 0;
-[e = _IsRotated -> -> 0 `i `a ]
+[; ;tetris.c: 226:     OriginX = s->x;
+[e = _OriginX . *U _s 1 ]
 "227
-[; ;tetris.c: 227:     LimitedRotation = s->limitedRotation;
-[e = _LimitedRotation . *U _s 3 ]
+[; ;tetris.c: 227:     OriginY = s->y;
+[e = _OriginY . *U _s 2 ]
 "228
-[; ;tetris.c: 228:     set_mS(0);
-[e ( _set_mS (1 -> -> 0 `i `us ]
+[; ;tetris.c: 228:     IsRotated = 0;
+[e = _IsRotated -> -> 0 `i `a ]
 "229
-[; ;tetris.c: 229: }
+[; ;tetris.c: 229:     LimitedRotation = s->limitedRotation;
+[e = _LimitedRotation . *U _s 3 ]
+"230
+[; ;tetris.c: 230:     set_mS(0);
+[e ( _set_mS (1 -> -> 0 `i `us ]
+"231
+[; ;tetris.c: 231: }
 [e :UE 336 ]
 }
-"231
-[; ;tetris.c: 231: _Bool checkForBottom(volatile uint16_t * pObject)
+"233
+[; ;tetris.c: 233: _Bool checkForBottom(volatile uint16_t * pObject)
 [v _checkForBottom `(a ~T0 @X0 1 ef1`*Vus ]
-"232
-[; ;tetris.c: 232: {
+"234
+[; ;tetris.c: 234: {
 {
 [e :U _checkForBottom ]
-"231
-[; ;tetris.c: 231: _Bool checkForBottom(volatile uint16_t * pObject)
-[v _pObject `*Vus ~T0 @X0 1 r1 ]
-"232
-[; ;tetris.c: 232: {
-[f ]
 "233
-[; ;tetris.c: 233:     for (uint8_t i = 0; i < 8; i++)
+[; ;tetris.c: 233: _Bool checkForBottom(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"234
+[; ;tetris.c: 234: {
+[f ]
+"235
+[; ;tetris.c: 235:     for (uint8_t i = 0; i < 8; i++)
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 349  ]
 [e $U 350  ]
 [e :U 349 ]
-"234
-[; ;tetris.c: 234:         if (pObject[i] & (1<<15))
+"236
+[; ;tetris.c: 236:         if (pObject[i] & (1<<15))
 [e $ ! != & -> *U + _pObject * -> _i `ux -> -> # *U _pObject `ui `ux `ui -> << -> 1 `i -> 15 `i `ui -> -> 0 `i `ui 352  ]
-"235
-[; ;tetris.c: 235:             return 1;
+"237
+[; ;tetris.c: 237:             return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 348  ]
 [e :U 352 ]
@@ -1343,521 +1354,536 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 8 `i 349  ]
 [e :U 350 ]
 }
-"236
-[; ;tetris.c: 236:     return 0;
+"238
+[; ;tetris.c: 238:     return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 348  ]
-"237
-[; ;tetris.c: 237: }
+"239
+[; ;tetris.c: 239: }
 [e :UE 348 ]
 }
-"240
-[; ;tetris.c: 240: void checkForLines(volatile uint16_t * pObject)
+"242
+[; ;tetris.c: 242: void checkForLines(volatile uint16_t * pObject)
 [v _checkForLines `(v ~T0 @X0 1 ef1`*Vus ]
-"241
-[; ;tetris.c: 241: {
+"243
+[; ;tetris.c: 243: {
 {
 [e :U _checkForLines ]
-"240
-[; ;tetris.c: 240: void checkForLines(volatile uint16_t * pObject)
-[v _pObject `*Vus ~T0 @X0 1 r1 ]
-"241
-[; ;tetris.c: 241: {
-[f ]
 "242
-[; ;tetris.c: 242:     uint8_t x, y, pixels;
+[; ;tetris.c: 242: void checkForLines(volatile uint16_t * pObject)
+[v _pObject `*Vus ~T0 @X0 1 r1 ]
+"243
+[; ;tetris.c: 243: {
+[f ]
+"244
+[; ;tetris.c: 244:     uint8_t x, y, pixels;
 [v _x `uc ~T0 @X0 1 a ]
 [v _y `uc ~T0 @X0 1 a ]
 [v _pixels `uc ~T0 @X0 1 a ]
-"244
-[; ;tetris.c: 244:     for (y = 0; y < 16; y++)
+"246
+[; ;tetris.c: 246:     for (y = 0; y < 16; y++)
 {
 [e = _y -> -> 0 `i `uc ]
 [e $ < -> _y `i -> 16 `i 354  ]
 [e $U 355  ]
 [e :U 354 ]
-"245
-[; ;tetris.c: 245:     {
-{
-"246
-[; ;tetris.c: 246:         pixels = 0;
-[e = _pixels -> -> 0 `i `uc ]
 "247
-[; ;tetris.c: 247:         for (x = 0; x < 8; x++)
+[; ;tetris.c: 247:     {
+{
+"248
+[; ;tetris.c: 248:         pixels = 0;
+[e = _pixels -> -> 0 `i `uc ]
+"249
+[; ;tetris.c: 249:         for (x = 0; x < 8; x++)
 {
 [e = _x -> -> 0 `i `uc ]
 [e $ < -> _x `i -> 8 `i 357  ]
 [e $U 358  ]
 [e :U 357 ]
-"248
-[; ;tetris.c: 248:             if (pObject[x] & (1<<y))
+"250
+[; ;tetris.c: 250:             if (pObject[x] & (1<<y))
 [e $ ! != & -> *U + _pObject * -> _x `ux -> -> # *U _pObject `ui `ux `ui -> << -> 1 `i -> _y `i `ui -> -> 0 `i `ui 360  ]
-"249
-[; ;tetris.c: 249:                 pixels++;
+"251
+[; ;tetris.c: 251:                 pixels++;
 [e ++ _pixels -> -> 1 `i `uc ]
 [e :U 360 ]
 [e ++ _x -> -> 1 `i `uc ]
 [e $ < -> _x `i -> 8 `i 357  ]
 [e :U 358 ]
 }
-"250
-[; ;tetris.c: 250:         if (pixels == 8)
-[e $ ! == -> _pixels `i -> 8 `i 361  ]
-"251
-[; ;tetris.c: 251:         {
-{
 "252
-[; ;tetris.c: 252:             removeLine(pObject, y);
-[e ( _removeLine (2 , _pObject _y ]
+[; ;tetris.c: 252:         if (pixels == 8)
+[e $ ! == -> _pixels `i -> 8 `i 361  ]
 "253
-[; ;tetris.c: 253:             NumberOfLines++;
-[e ++ _NumberOfLines -> -> 1 `i `uc ]
+[; ;tetris.c: 253:         {
+{
 "254
-[; ;tetris.c: 254:         }
+[; ;tetris.c: 254:             removeLine(pObject, y);
+[e ( _removeLine (2 , _pObject _y ]
+"255
+[; ;tetris.c: 255:             NumberOfLines++;
+[e ++ _NumberOfLines -> -> 1 `i `uc ]
+"256
+[; ;tetris.c: 256:         }
 }
 [e :U 361 ]
-"255
-[; ;tetris.c: 255:     }
+"257
+[; ;tetris.c: 257:     }
 }
 [e ++ _y -> -> 1 `i `uc ]
 [e $ < -> _y `i -> 16 `i 354  ]
 [e :U 355 ]
 }
-"256
-[; ;tetris.c: 256: }
+"258
+[; ;tetris.c: 258: }
 [e :UE 353 ]
 }
-"258
-[; ;tetris.c: 258: _Bool tetris_button_left(void) {
+"260
+[; ;tetris.c: 260: _Bool tetris_button_left(void) {
 [v _tetris_button_left `(a ~T0 @X0 1 ef ]
 {
 [e :U _tetris_button_left ]
 [f ]
-"259
-[; ;tetris.c: 259:     if (game)
-[e $ ! != -> _game `i -> 0 `i 363  ]
-"260
-[; ;tetris.c: 260:     {
-{
 "261
-[; ;tetris.c: 261:         if (!checkForLeftWall(ObjectData))
-[e $ ! ! != -> ( _checkForLeftWall (1 &U _ObjectData `i -> 0 `i 364  ]
+[; ;tetris.c: 261:     if (game)
+[e $ ! != -> _game `i -> 0 `i 363  ]
 "262
-[; ;tetris.c: 262:         {
+[; ;tetris.c: 262:     {
 {
-"265
-[; ;tetris.c: 265:             memcpyvol(tmpObjectData, ObjectData, 16);
-[e ( _memcpyvol (3 , , -> &U _tmpObjectData `*Vv -> &U _ObjectData `*CVv -> -> 16 `i `ui ]
+"263
+[; ;tetris.c: 263:         if (!checkForLeftWall(ObjectData))
+[e $ ! ! != -> ( _checkForLeftWall (1 &U _ObjectData `i -> 0 `i 364  ]
+"264
+[; ;tetris.c: 264:         {
+{
 "267
-[; ;tetris.c: 267:             moveObject(tmpObjectData, LEFT, 1);
-[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2578 2 -> -> 1 `i `uc ]
+[; ;tetris.c: 267:             memcpyvol(tmpObjectData, ObjectData, 16);
+[e ( _memcpyvol (3 , , -> &U _tmpObjectData `*Vv -> &U _ObjectData `*CVv -> -> 16 `i `ui ]
 "269
-[; ;tetris.c: 269:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[; ;tetris.c: 269:             moveObject(tmpObjectData, LEFT, 1);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2580 2 -> -> 1 `i `uc ]
+"271
+[; ;tetris.c: 271:             if (!collisionDetect(tmpObjectData, BackgroundData))
 [e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 365  ]
-"270
-[; ;tetris.c: 270:             {
-{
 "272
-[; ;tetris.c: 272:                 pauseMultiplexing();
-[e ( _pauseMultiplexing ..  ]
+[; ;tetris.c: 272:             {
+{
 "274
-[; ;tetris.c: 274:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2573 0 ]
+[; ;tetris.c: 274:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
 "276
-[; ;tetris.c: 276:                 resumeMultiplexing();
-[e ( _resumeMultiplexing ..  ]
+[; ;tetris.c: 276:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2575 0 ]
 "278
-[; ;tetris.c: 278:                 CheckForNewLines = 1;
+[; ;tetris.c: 278:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"280
+[; ;tetris.c: 280:                 CheckForNewLines = 1;
 [e = _CheckForNewLines -> -> 1 `i `a ]
-"279
-[; ;tetris.c: 279:             }
+"281
+[; ;tetris.c: 281:             }
 }
 [e :U 365 ]
-"280
-[; ;tetris.c: 280:         }
+"282
+[; ;tetris.c: 282:         }
 }
 [e :U 364 ]
-"281
-[; ;tetris.c: 281:     }
+"283
+[; ;tetris.c: 283:     }
 }
 [e :U 363 ]
-"282
-[; ;tetris.c: 282:     return game;
+"284
+[; ;tetris.c: 284:     return game;
 [e ) _game ]
 [e $UE 362  ]
-"283
-[; ;tetris.c: 283: }
+"285
+[; ;tetris.c: 285: }
 [e :UE 362 ]
 }
-"285
-[; ;tetris.c: 285: _Bool tetris_button_right(void){
+"287
+[; ;tetris.c: 287: _Bool tetris_button_right(void){
 [v _tetris_button_right `(a ~T0 @X0 1 ef ]
 {
 [e :U _tetris_button_right ]
 [f ]
-"286
-[; ;tetris.c: 286:     if (game)
-[e $ ! != -> _game `i -> 0 `i 367  ]
-"287
-[; ;tetris.c: 287:     {
-{
 "288
-[; ;tetris.c: 288:         if (!checkForRightWall(ObjectData))
-[e $ ! ! != -> ( _checkForRightWall (1 &U _ObjectData `i -> 0 `i 368  ]
+[; ;tetris.c: 288:     if (game)
+[e $ ! != -> _game `i -> 0 `i 367  ]
 "289
-[; ;tetris.c: 289:         {
+[; ;tetris.c: 289:     {
 {
 "290
-[; ;tetris.c: 290:             mergeObjects(ObjectData, tmpObjectData, OVERRIDE);
-[e ( _mergeObjects (3 , , &U _ObjectData -> &U _tmpObjectData `*Vus . `E2573 0 ]
+[; ;tetris.c: 290:         if (!checkForRightWall(ObjectData))
+[e $ ! ! != -> ( _checkForRightWall (1 &U _ObjectData `i -> 0 `i 368  ]
 "291
-[; ;tetris.c: 291:             moveObject(tmpObjectData, RIGHT, 1);
-[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2578 3 -> -> 1 `i `uc ]
-"293
-[; ;tetris.c: 293:             if (!collisionDetect(tmpObjectData, BackgroundData))
-[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 369  ]
-"294
-[; ;tetris.c: 294:             {
+[; ;tetris.c: 291:         {
 {
+"292
+[; ;tetris.c: 292:             mergeObjects(ObjectData, tmpObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , &U _ObjectData -> &U _tmpObjectData `*Vus . `E2575 0 ]
+"293
+[; ;tetris.c: 293:             moveObject(tmpObjectData, RIGHT, 1);
+[e ( _moveObject (3 , , -> &U _tmpObjectData `*Vus . `E2580 3 -> -> 1 `i `uc ]
 "295
-[; ;tetris.c: 295:                 pauseMultiplexing();
-[e ( _pauseMultiplexing ..  ]
+[; ;tetris.c: 295:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 369  ]
 "296
-[; ;tetris.c: 296:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2573 0 ]
+[; ;tetris.c: 296:             {
+{
 "297
-[; ;tetris.c: 297:                 resumeMultiplexing();
-[e ( _resumeMultiplexing ..  ]
+[; ;tetris.c: 297:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
 "298
-[; ;tetris.c: 298:                 CheckForNewLines = 1;
-[e = _CheckForNewLines -> -> 1 `i `a ]
+[; ;tetris.c: 298:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2575 0 ]
 "299
-[; ;tetris.c: 299:             }
+[; ;tetris.c: 299:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"300
+[; ;tetris.c: 300:                 CheckForNewLines = 1;
+[e = _CheckForNewLines -> -> 1 `i `a ]
+"301
+[; ;tetris.c: 301:             }
 }
 [e :U 369 ]
-"300
-[; ;tetris.c: 300:         }
+"302
+[; ;tetris.c: 302:         }
 }
 [e :U 368 ]
-"301
-[; ;tetris.c: 301:     }
+"303
+[; ;tetris.c: 303:     }
 }
 [e :U 367 ]
-"302
-[; ;tetris.c: 302:     return game;
+"304
+[; ;tetris.c: 304:     return game;
 [e ) _game ]
 [e $UE 366  ]
-"303
-[; ;tetris.c: 303: }
+"305
+[; ;tetris.c: 305: }
 [e :UE 366 ]
 }
-"305
-[; ;tetris.c: 305: _Bool tetris_button_up(void){
+"307
+[; ;tetris.c: 307: _Bool tetris_button_up(void){
 [v _tetris_button_up `(a ~T0 @X0 1 ef ]
 {
 [e :U _tetris_button_up ]
 [f ]
-"306
-[; ;tetris.c: 306:     if (game)
-[e $ ! != -> _game `i -> 0 `i 371  ]
-"307
-[; ;tetris.c: 307:     {
-{
 "308
-[; ;tetris.c: 308:         newRotation(ObjectData, tmpObjectData, CW);
-[e ( _newRotation (3 , , &U _ObjectData &U _tmpObjectData . `E2584 1 ]
+[; ;tetris.c: 308:     if (game)
+[e $ ! != -> _game `i -> 0 `i 371  ]
+"309
+[; ;tetris.c: 309:     {
+{
 "310
-[; ;tetris.c: 310:         if (pixelCount(ObjectData) == pixelCount(tmpObjectData))
+[; ;tetris.c: 310:         newRotation(ObjectData, tmpObjectData, CW);
+[e ( _newRotation (3 , , &U _ObjectData &U _tmpObjectData . `E2586 1 ]
+"312
+[; ;tetris.c: 312:         if (pixelCount(ObjectData) == pixelCount(tmpObjectData))
 [e $ ! == -> ( _pixelCount (1 &U _ObjectData `i -> ( _pixelCount (1 -> &U _tmpObjectData `*Vus `i 372  ]
-"311
-[; ;tetris.c: 311:         {
-{
 "313
-[; ;tetris.c: 313:             if (!collisionDetect(tmpObjectData, BackgroundData))
-[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 373  ]
-"314
-[; ;tetris.c: 314:             {
+[; ;tetris.c: 313:         {
 {
-"317
-[; ;tetris.c: 317:                 pauseMultiplexing();
-[e ( _pauseMultiplexing ..  ]
+"315
+[; ;tetris.c: 315:             if (!collisionDetect(tmpObjectData, BackgroundData))
+[e $ ! ! != -> ( _collisionDetect (2 , -> &U _tmpObjectData `*Vus &U _BackgroundData `i -> 0 `i 373  ]
+"316
+[; ;tetris.c: 316:             {
+{
 "319
-[; ;tetris.c: 319:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2573 0 ]
-"320
-[; ;tetris.c: 320:                 resumeMultiplexing();
-[e ( _resumeMultiplexing ..  ]
+[; ;tetris.c: 319:                 pauseMultiplexing();
+[e ( _pauseMultiplexing ..  ]
 "321
-[; ;tetris.c: 321:                 IsRotated = !IsRotated;
-[e = _IsRotated -> -> ! != -> _IsRotated `i -> 0 `i `i `a ]
+[; ;tetris.c: 321:                 mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
+[e ( _mergeObjects (3 , , -> &U _tmpObjectData `*Vus &U _ObjectData . `E2575 0 ]
 "322
-[; ;tetris.c: 322:             }
+[; ;tetris.c: 322:                 resumeMultiplexing();
+[e ( _resumeMultiplexing ..  ]
+"323
+[; ;tetris.c: 323:                 IsRotated = !IsRotated;
+[e = _IsRotated -> -> ! != -> _IsRotated `i -> 0 `i `i `a ]
+"324
+[; ;tetris.c: 324:             }
 }
 [e :U 373 ]
-"323
-[; ;tetris.c: 323:         }
+"325
+[; ;tetris.c: 325:         }
 }
 [e :U 372 ]
-"324
-[; ;tetris.c: 324:     }
+"326
+[; ;tetris.c: 326:     }
 }
 [e :U 371 ]
-"325
-[; ;tetris.c: 325:     return game;
+"327
+[; ;tetris.c: 327:     return game;
 [e ) _game ]
 [e $UE 370  ]
-"326
-[; ;tetris.c: 326: }
+"328
+[; ;tetris.c: 328: }
 [e :UE 370 ]
 }
-"328
-[; ;tetris.c: 328: _Bool tetris_button_down(void) {
+"330
+[; ;tetris.c: 330: _Bool tetris_button_down(void) {
 [v _tetris_button_down `(a ~T0 @X0 1 ef ]
 {
 [e :U _tetris_button_down ]
 [f ]
-"329
-[; ;tetris.c: 329:     if (game)
-[e $ ! != -> _game `i -> 0 `i 375  ]
-"330
-[; ;tetris.c: 330:     {
-{
 "331
-[; ;tetris.c: 331:     while (moveObjectDown(ObjectData))
+[; ;tetris.c: 331:     if (game)
+[e $ ! != -> _game `i -> 0 `i 375  ]
+"332
+[; ;tetris.c: 332:     {
+{
+"333
+[; ;tetris.c: 333:     while (moveObjectDown(ObjectData))
 [e $U 376  ]
 [e :U 377 ]
-"332
-[; ;tetris.c: 332:             continue;
+"334
+[; ;tetris.c: 334:             continue;
 [e $U 376  ]
 [e :U 376 ]
-"331
-[; ;tetris.c: 331:     while (moveObjectDown(ObjectData))
+"333
+[; ;tetris.c: 333:     while (moveObjectDown(ObjectData))
 [e $ != -> ( _moveObjectDown (1 &U _ObjectData `i -> 0 `i 377  ]
 [e :U 378 ]
-"333
-[; ;tetris.c: 333:     }
+"335
+[; ;tetris.c: 335:     }
 }
 [e :U 375 ]
-"334
-[; ;tetris.c: 334:     return game;
+"336
+[; ;tetris.c: 336:     return game;
 [e ) _game ]
 [e $UE 374  ]
-"335
-[; ;tetris.c: 335: }
+"337
+[; ;tetris.c: 337: }
 [e :UE 374 ]
 }
-"336
-[; ;tetris.c: 336: _Bool tetris_timer(void){
+"338
+[; ;tetris.c: 338: _Bool tetris_timer(void){
 [v _tetris_timer `(a ~T0 @X0 1 ef ]
 {
 [e :U _tetris_timer ]
 [f ]
-"337
-[; ;tetris.c: 337:     if (game) {
+"339
+[; ;tetris.c: 339:     if (game) {
 [e $ ! != -> _game `i -> 0 `i 380  ]
 {
-"338
-[; ;tetris.c: 338:     DropObject = 1;
+"340
+[; ;tetris.c: 340:     DropObject = 1;
 [e = _DropObject -> -> 1 `i `a ]
-"339
-[; ;tetris.c: 339:     }
+"341
+[; ;tetris.c: 341:     }
 }
 [e :U 380 ]
-"340
-[; ;tetris.c: 340:     return game;
+"342
+[; ;tetris.c: 342:     return game;
 [e ) _game ]
 [e $UE 379  ]
-"341
-[; ;tetris.c: 341: }
+"343
+[; ;tetris.c: 343: }
 [e :UE 379 ]
 }
-"343
-[; ;tetris.c: 343: void initialise_tetris(void) {
+"345
+[; ;tetris.c: 345: void initialise_tetris(void) {
 [v _initialise_tetris `(v ~T0 @X0 1 ef ]
 {
 [e :U _initialise_tetris ]
 [f ]
-"344
-[; ;tetris.c: 344:     OriginX = 0;
+"346
+[; ;tetris.c: 346:     OriginX = 0;
 [e = _OriginX -> -> 0 `i `uc ]
-"345
-[; ;tetris.c: 345:     OriginY = 0;
-[e = _OriginY -> -> 0 `i `uc ]
 "347
-[; ;tetris.c: 347:     NumberOfLines = 0;
-[e = _NumberOfLines -> -> 0 `i `uc ]
+[; ;tetris.c: 347:     OriginY = 0;
+[e = _OriginY -> -> 0 `i `uc ]
 "349
-[; ;tetris.c: 349:     DropObject = 0;
-[e = _DropObject -> -> 0 `i `a ]
-"350
-[; ;tetris.c: 350:     CheckForNewLines = 0;
-[e = _CheckForNewLines -> -> 0 `i `a ]
+[; ;tetris.c: 349:     NumberOfLines = 0;
+[e = _NumberOfLines -> -> 0 `i `uc ]
 "351
-[; ;tetris.c: 351:     randomobjects[7] = 255;
-[e = *U + &U _randomobjects * -> -> -> 7 `i `ui `ux -> -> # *U &U _randomobjects `ui `ux -> -> 255 `i `uc ]
+[; ;tetris.c: 351:     DropObject = 0;
+[e = _DropObject -> -> 0 `i `a ]
 "352
-[; ;tetris.c: 352:     countblocks = 7;
-[e = _countblocks -> -> 7 `i `uc ]
+[; ;tetris.c: 352:     CheckForNewLines = 0;
+[e = _CheckForNewLines -> -> 0 `i `a ]
 "353
-[; ;tetris.c: 353:     game = 1;
-[e = _game -> -> 1 `i `a ]
+[; ;tetris.c: 353:     randomobjects[7] = 255;
+[e = *U + &U _randomobjects * -> -> -> 7 `i `ui `ux -> -> # *U &U _randomobjects `ui `ux -> -> 255 `i `uc ]
 "354
-[; ;tetris.c: 354: }
+[; ;tetris.c: 354:     countblocks = 7;
+[e = _countblocks -> -> 7 `i `uc ]
+"355
+[; ;tetris.c: 355:     game = 1;
+[e = _game -> -> 1 `i `a ]
+"356
+[; ;tetris.c: 356:     EndOfGame = 0;
+[e = _EndOfGame -> -> 0 `i `a ]
+"357
+[; ;tetris.c: 357:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
+"358
+[; ;tetris.c: 358:     clearArray(BackgroundData, 8);
+[e ( _clearArray (2 , &U _BackgroundData -> -> 8 `i `ui ]
+"359
+[; ;tetris.c: 359:     clearArray(Screen_Data, 8);
+[e ( _clearArray (2 , &U _Screen_Data -> -> 8 `i `ui ]
+"360
+[; ;tetris.c: 360: }
 [e :UE 381 ]
 }
-"355
-[; ;tetris.c: 355: _Bool tetris_buttons(void)
+"361
+[; ;tetris.c: 361: _Bool tetris_buttons(void)
 [v _tetris_buttons `(a ~T0 @X0 1 ef ]
-"356
-[; ;tetris.c: 356: {
+"362
+[; ;tetris.c: 362: {
 {
 [e :U _tetris_buttons ]
 [f ]
-"357
-[; ;tetris.c: 357:     _Bool returnbool = 0;
+"363
+[; ;tetris.c: 363:     _Bool returnbool = 0;
 [v _returnbool `a ~T0 @X0 1 a ]
 [e = _returnbool -> -> 0 `i `a ]
-"358
-[; ;tetris.c: 358:     if(checkLeft(1)){ tetris_button_left(); returnbool = 1; }
+"364
+[; ;tetris.c: 364:     if(checkLeft(1)){ tetris_button_left(); returnbool = 1; }
 [e $ ! != -> ( _checkLeft (1 -> -> 1 `i `a `i -> 0 `i 383  ]
 {
 [e ( _tetris_button_left ..  ]
 [e = _returnbool -> -> 1 `i `a ]
 }
 [e :U 383 ]
-"359
-[; ;tetris.c: 359:     if(checkRight(1)){ tetris_button_right(); returnbool = 1; }
+"365
+[; ;tetris.c: 365:     if(checkRight(1)){ tetris_button_right(); returnbool = 1; }
 [e $ ! != -> ( _checkRight (1 -> -> 1 `i `a `i -> 0 `i 384  ]
 {
 [e ( _tetris_button_right ..  ]
 [e = _returnbool -> -> 1 `i `a ]
 }
 [e :U 384 ]
-"360
-[; ;tetris.c: 360:     if(checkUp(1)){ tetris_button_up(); returnbool = 1; }
+"366
+[; ;tetris.c: 366:     if(checkUp(1)){ tetris_button_up(); returnbool = 1; }
 [e $ ! != -> ( _checkUp (1 -> -> 1 `i `a `i -> 0 `i 385  ]
 {
 [e ( _tetris_button_up ..  ]
 [e = _returnbool -> -> 1 `i `a ]
 }
 [e :U 385 ]
-"361
-[; ;tetris.c: 361:     if(checkDown(1)){ tetris_button_down(); returnbool = 1; }
+"367
+[; ;tetris.c: 367:     if(checkDown(1)){ tetris_button_down(); returnbool = 1; }
 [e $ ! != -> ( _checkDown (1 -> -> 1 `i `a `i -> 0 `i 386  ]
 {
 [e ( _tetris_button_down ..  ]
 [e = _returnbool -> -> 1 `i `a ]
 }
 [e :U 386 ]
-"362
-[; ;tetris.c: 362:     return returnbool;
+"368
+[; ;tetris.c: 368:     return returnbool;
 [e ) _returnbool ]
 [e $UE 382  ]
-"363
-[; ;tetris.c: 363: }
+"369
+[; ;tetris.c: 369: }
 [e :UE 382 ]
 }
-"365
-[; ;tetris.c: 365: void tetris_main(void) {
+"371
+[; ;tetris.c: 371: void tetris_main(void) {
 [v _tetris_main `(v ~T0 @X0 1 ef ]
 {
 [e :U _tetris_main ]
 [f ]
-"366
-[; ;tetris.c: 366:     initialise_tetris();
+"372
+[; ;tetris.c: 372:     initialise_tetris();
 [e ( _initialise_tetris ..  ]
-"367
-[; ;tetris.c: 367:     uint8_t LastHighScore = readHighScore(0);
+"373
+[; ;tetris.c: 373:     tetris_screen();
+[e ( _tetris_screen ..  ]
+"374
+[; ;tetris.c: 374:     uint8_t LastHighScore = readHighScore(0);
 [v _LastHighScore `uc ~T0 @X0 1 a ]
 [e = _LastHighScore ( _readHighScore (1 -> -> 0 `i `uc ]
-"368
-[; ;tetris.c: 368:     show_score(LastHighScore);
+"375
+[; ;tetris.c: 375:     show_score(LastHighScore);
 [e ( _show_score (1 _LastHighScore ]
-"369
-[; ;tetris.c: 369:     EndOfGame = 0;
-[e = _EndOfGame -> -> 0 `i `a ]
-"370
-[; ;tetris.c: 370:     selectNextObject(ObjectData);
+"376
+[; ;tetris.c: 376:     selectNextObject(ObjectData);
 [e ( _selectNextObject (1 &U _ObjectData ]
-"371
-[; ;tetris.c: 371:     set_screen(ObjectData);
+"377
+[; ;tetris.c: 377:     set_screen(ObjectData);
 [e ( _set_screen (1 &U _ObjectData ]
-"372
-[; ;tetris.c: 372:      do {
+"378
+[; ;tetris.c: 378:      do {
 [e :U 390 ]
 {
-"373
-[; ;tetris.c: 373:         _Bool newScreen;
-[v _newScreen `a ~T0 @X0 1 a ]
-"374
-[; ;tetris.c: 374:         newScreen = tetris_buttons() || newScreen;
-[e = _newScreen -> -> || != -> ( _tetris_buttons ..  `i -> 0 `i != -> _newScreen `i -> 0 `i `i `a ]
-"375
-[; ;tetris.c: 375:         if (DropObject)
-[e $ ! != -> _DropObject `i -> 0 `i 391  ]
-"376
-[; ;tetris.c: 376:         {
-{
-"377
-[; ;tetris.c: 377:             DropObject = 0;
-[e = _DropObject -> -> 0 `i `a ]
-"378
-[; ;tetris.c: 378:             moveObjectDown(ObjectData);
-[e ( _moveObjectDown (1 &U _ObjectData ]
 "379
-[; ;tetris.c: 379:             newScreen = newScreen || 1;
-[e = _newScreen -> -> || != -> _newScreen `i -> 0 `i != -> 1 `i -> 0 `i `i `a ]
+[; ;tetris.c: 379:         _Bool newScreen;
+[v _newScreen `a ~T0 @X0 1 a ]
 "380
-[; ;tetris.c: 380:         }
-}
-[e :U 391 ]
+[; ;tetris.c: 380:         newScreen = tetris_buttons() || newScreen;
+[e = _newScreen -> -> || != -> ( _tetris_buttons ..  `i -> 0 `i != -> _newScreen `i -> 0 `i `i `a ]
 "381
-[; ;tetris.c: 381:         if (CheckForNewLines)
-[e $ ! != -> _CheckForNewLines `i -> 0 `i 392  ]
+[; ;tetris.c: 381:         if (DropObject)
+[e $ ! != -> _DropObject `i -> 0 `i 391  ]
 "382
 [; ;tetris.c: 382:         {
 {
 "383
-[; ;tetris.c: 383:             checkForLines(BackgroundData);
-[e ( _checkForLines (1 &U _BackgroundData ]
+[; ;tetris.c: 383:             DropObject = 0;
+[e = _DropObject -> -> 0 `i `a ]
 "384
-[; ;tetris.c: 384:             newScreen = newScreen || 1;
-[e = _newScreen -> -> || != -> _newScreen `i -> 0 `i != -> 1 `i -> 0 `i `i `a ]
+[; ;tetris.c: 384:             moveObjectDown(ObjectData);
+[e ( _moveObjectDown (1 &U _ObjectData ]
 "385
-[; ;tetris.c: 385:         }
+[; ;tetris.c: 385:             newScreen = newScreen || 1;
+[e = _newScreen -> -> || != -> _newScreen `i -> 0 `i != -> 1 `i -> 0 `i `i `a ]
+"386
+[; ;tetris.c: 386:         }
+}
+[e :U 391 ]
+"387
+[; ;tetris.c: 387:         if (CheckForNewLines)
+[e $ ! != -> _CheckForNewLines `i -> 0 `i 392  ]
+"388
+[; ;tetris.c: 388:         {
+{
+"389
+[; ;tetris.c: 389:             checkForLines(BackgroundData);
+[e ( _checkForLines (1 &U _BackgroundData ]
+"390
+[; ;tetris.c: 390:             newScreen = newScreen || 1;
+[e = _newScreen -> -> || != -> _newScreen `i -> 0 `i != -> 1 `i -> 0 `i `i `a ]
+"391
+[; ;tetris.c: 391:         }
 }
 [e :U 392 ]
-"386
-[; ;tetris.c: 386:         if (newScreen)
-[e $ ! != -> _newScreen `i -> 0 `i 393  ]
-"387
-[; ;tetris.c: 387:         {
-{
-"388
-[; ;tetris.c: 388:             mergeObjects(BackgroundData, Screen_Data, OVERRIDE);
-[e ( _mergeObjects (3 , , &U _BackgroundData &U _Screen_Data . `E2573 0 ]
-"389
-[; ;tetris.c: 389:             mergeObjects(ObjectData, Screen_Data, MERGE);
-[e ( _mergeObjects (3 , , &U _ObjectData &U _Screen_Data . `E2573 1 ]
-"390
-[; ;tetris.c: 390:             set_screen(Screen_Data);
-[e ( _set_screen (1 &U _Screen_Data ]
-"391
-[; ;tetris.c: 391:             newScreen = 0;
-[e = _newScreen -> -> 0 `i `a ]
 "392
-[; ;tetris.c: 392:         }
+[; ;tetris.c: 392:         if (newScreen)
+[e $ ! != -> _newScreen `i -> 0 `i 393  ]
+"393
+[; ;tetris.c: 393:         {
+{
+"394
+[; ;tetris.c: 394:             mergeObjects(BackgroundData, Screen_Data, OVERRIDE);
+[e ( _mergeObjects (3 , , &U _BackgroundData &U _Screen_Data . `E2575 0 ]
+"395
+[; ;tetris.c: 395:             mergeObjects(ObjectData, Screen_Data, MERGE);
+[e ( _mergeObjects (3 , , &U _ObjectData &U _Screen_Data . `E2575 1 ]
+"396
+[; ;tetris.c: 396:             set_screen(Screen_Data);
+[e ( _set_screen (1 &U _Screen_Data ]
+"397
+[; ;tetris.c: 397:             newScreen = 0;
+[e = _newScreen -> -> 0 `i `a ]
+"398
+[; ;tetris.c: 398:         }
 }
 [e :U 393 ]
-"393
-[; ;tetris.c: 393:     } while (!EndOfGame);
+"399
+[; ;tetris.c: 399:     } while (!EndOfGame);
 }
 [e $ ! != -> _EndOfGame `i -> 0 `i 390  ]
 [e :U 389 ]
-"394
-[; ;tetris.c: 394:     writeHighScore(0, LastHighScore, NumberOfLines);
+"400
+[; ;tetris.c: 400:     writeHighScore(0, LastHighScore, NumberOfLines);
 [e ( _writeHighScore (3 , , -> -> 0 `i `uc _LastHighScore _NumberOfLines ]
-"395
-[; ;tetris.c: 395: }
+"401
+[; ;tetris.c: 401:     show_score(NumberOfLines);
+[e ( _show_score (1 _NumberOfLines ]
+"402
+[; ;tetris.c: 402: }
 [e :UE 387 ]
 }

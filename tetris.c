@@ -16,7 +16,6 @@ volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
 volatile uint16_t Screen_Data[8];
 uint16_t tmpObjectData[8];
-volatile bool EndOfGame;
 
 const uint16_t TETRIS[] = 
 {
@@ -42,11 +41,14 @@ bool CheckForNewLines;
 uint8_t countblocks;
 
 volatile bool DropObject;
+volatile bool EndOfGame;
 uint8_t OriginX, OriginY;
 volatile bool game = false;
 
-void tetris_screen(void){
-set_screen(TETRIS);
+void tetris_screen(void)
+{
+    set_splashscreen(TETRIS);
+    waitms(3500);
 }
 // Drop the object by one Y increment. Return FALSE if failed.
 bool moveObjectDown(volatile uint16_t * pObject)
@@ -351,6 +353,10 @@ void initialise_tetris(void) {
     randomobjects[7] = 255;
     countblocks = 7;
     game = true;
+    EndOfGame = false;
+    clearArray(ObjectData, 8);
+    clearArray(BackgroundData, 8);
+    clearArray(Screen_Data, 8);
 }
 bool tetris_buttons(void)
 {
@@ -364,9 +370,9 @@ bool tetris_buttons(void)
 
 void tetris_main(void) {
     initialise_tetris();
+    tetris_screen();
     uint8_t LastHighScore = readHighScore(0);
     show_score(LastHighScore);
-    EndOfGame = false;
     selectNextObject(ObjectData);
     set_screen(ObjectData);
      do {
@@ -392,5 +398,6 @@ void tetris_main(void) {
         }
     } while (!EndOfGame);
     writeHighScore(0, LastHighScore, NumberOfLines);
+    show_score(NumberOfLines);
 }
 

@@ -4752,10 +4752,11 @@ void rnd_initialize(uint8_t);
 
 
 void set_screen(volatile uint16_t *newData);
+void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
+void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
-void screen_update(void);
 void initialise_screen(void);
 # 8 "tetris.c" 2
 
@@ -4812,6 +4813,7 @@ void removeLine(volatile uint16_t * , uint8_t );
 void set_mS(uint16_t);
 void add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 # 9 "tetris.c" 2
 
 # 1 "./tetris.h" 1
@@ -4844,7 +4846,6 @@ _Bool checkDown(_Bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile _Bool , volatile int16_t *, volatile _Bool *);
 void checkButtons(void);
 # 11 "tetris.c" 2
 
@@ -4855,7 +4856,6 @@ volatile uint16_t ObjectData[8];
 volatile uint16_t BackgroundData[8];
 volatile uint16_t Screen_Data[8];
 uint16_t tmpObjectData[8];
-volatile _Bool EndOfGame;
 
 const uint16_t TETRIS[] =
 {
@@ -4881,11 +4881,14 @@ _Bool CheckForNewLines;
 uint8_t countblocks;
 
 volatile _Bool DropObject;
+volatile _Bool EndOfGame;
 uint8_t OriginX, OriginY;
 volatile _Bool game = 0;
 
-void tetris_screen(void){
-set_screen(TETRIS);
+void tetris_screen(void)
+{
+    set_splashscreen(TETRIS);
+    waitms(3500);
 }
 
 _Bool moveObjectDown(volatile uint16_t * pObject)
@@ -4975,7 +4978,7 @@ void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycl
         }
     }
 }
-# 153 "tetris.c"
+# 155 "tetris.c"
 void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
 {
     int8_t x2, y2;
@@ -5177,6 +5180,10 @@ void initialise_tetris(void) {
     randomobjects[7] = 255;
     countblocks = 7;
     game = 1;
+    EndOfGame = 0;
+    clearArray(ObjectData, 8);
+    clearArray(BackgroundData, 8);
+    clearArray(Screen_Data, 8);
 }
 _Bool tetris_buttons(void)
 {
@@ -5190,9 +5197,9 @@ _Bool tetris_buttons(void)
 
 void tetris_main(void) {
     initialise_tetris();
+    tetris_screen();
     uint8_t LastHighScore = readHighScore(0);
     show_score(LastHighScore);
-    EndOfGame = 0;
     selectNextObject(ObjectData);
     set_screen(ObjectData);
      do {
@@ -5218,4 +5225,5 @@ void tetris_main(void) {
         }
     } while (!EndOfGame);
     writeHighScore(0, LastHighScore, NumberOfLines);
+    show_score(NumberOfLines);
 }

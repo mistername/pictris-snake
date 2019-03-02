@@ -12,6 +12,5 @@ bool checkDown(bool);
 void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
-void debounceButton(volatile bool , volatile int16_t *, volatile bool *);
 void checkButtons(void);
 #endif	/* XC_HEADER_TEMPLATE_H */

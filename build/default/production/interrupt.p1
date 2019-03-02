@@ -14,11 +14,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./snake.h
 [; ;./snake.h: 17: _Bool snake_timer(void);
 [v _snake_timer `(a ~T0 @X0 0 ef ]
-"16 ./buttons.h
-[; ;./buttons.h: 16: void checkButtons(void);
+"15 ./buttons.h
+[; ;./buttons.h: 15: void checkButtons(void);
 [v _checkButtons `(v ~T0 @X0 0 ef ]
-"11 ./screen.h
-[; ;./screen.h: 11: void screen_update(void);
+"10 ./screen.h
+[; ;./screen.h: 10: void screen_update(void);
 [v _screen_update `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 54: __asm("PORTA equ 0F80h");

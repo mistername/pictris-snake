@@ -5,9 +5,10 @@
 
 #include <xc.h>
 void set_screen(volatile uint16_t *newData);
+void set_splashscreen(const uint16_t *newData);
 bool choosescreen(void);
+void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
-void screen_update(void);
 void initialise_screen(void);
 #endif

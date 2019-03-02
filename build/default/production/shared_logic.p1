@@ -16,14 +16,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56 ./shared_logic.h
 [; ;./shared_logic.h: 56: void moveObject(volatile uint16_t * , direction_t, uint8_t );
 [v _moveObject `(v ~T0 @X0 0 ef3`*Vus`E2562`uc ]
-"9 ./screen.h
-[; ;./screen.h: 9: void pauseMultiplexing(void);
+"11 ./screen.h
+[; ;./screen.h: 11: void pauseMultiplexing(void);
 [v _pauseMultiplexing `(v ~T0 @X0 0 ef ]
 "7
 [; ;./screen.h: 7: void set_screen(volatile uint16_t *newData);
 [v _set_screen `(v ~T0 @X0 0 ef1`*Vus ]
-"10
-[; ;./screen.h: 10: void resumeMultiplexing(void);
+"12
+[; ;./screen.h: 12: void resumeMultiplexing(void);
 [v _resumeMultiplexing `(v ~T0 @X0 0 ef ]
 "10 ./buttons.h
 [; ;./buttons.h: 10: _Bool checkDown(_Bool);
@@ -448,10 +448,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v F2654 `Cus ~T0 @X0 -> 8 `i t ]
+[v F2656 `Cus ~T0 @X0 -> 8 `i t ]
 "5 ./numbers.h
 [; ;./numbers.h: 5: const uint16_t Number[10][8] = {
-[v _Number `F2654 ~T0 @X0 -> 10 `i e ]
+[v _Number `F2656 ~T0 @X0 -> 10 `i e ]
 [i _Number
 :U ..
 :U ..

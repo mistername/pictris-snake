@@ -3,21 +3,21 @@
 [d edition pro ]
 [d chip 18F4520 ]
 [d frameptr 4065 ]
-"62 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
-[e E2573 . `uc
+"64 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+[e E2575 . `uc
 OVERRIDE 0
 MERGE 1
 INVERT 2
 ]
-"71
-[e E2578 . `uc
+"73
+[e E2580 . `uc
 DOWN 0
 UP 1
 LEFT 2
 RIGHT 3
 ]
-"153
-[e E2584 . `uc
+"155
+[e E2586 . `uc
 CCW 0
 CW 1
 ]
@@ -34,7 +34,7 @@ UP 1
 LEFT 2
 RIGHT 3
 ]
-"76 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
+"87 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
 [e E2561 . `uc
 OVERRIDE 0
 MERGE 1
@@ -102,19 +102,17 @@ INVERT 2
 [v _Interrupt Interrupt `(v  1 e 1 0 ]
 "45
 [v _waitForInterrupt waitForInterrupt `(v  1 e 1 0 ]
-"66 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"59 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _isr isr `IIH(v  1 e 1 0 ]
-"77
+"70
 [v _initialise_TMR0 initialise_TMR0 `(v  1 e 1 0 ]
-"89
+"82
 [v _initialise_hardware initialise_hardware `(v  1 e 1 0 ]
-"112
+"105
 [v _initialise_globals initialise_globals `(v  1 e 1 0 ]
-"122
-[v _splash_screen splash_screen `(v  1 e 1 0 ]
-"129
+"111
 [v _mainGameLoop mainGameLoop `(v  1 e 1 0 ]
-"147
+"126
 [v _main main `(v  1 e 1 0 ]
 "18 C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
 [v _rnd_get_num rnd_get_num `(uc  1 e 1 0 ]
@@ -129,8 +127,10 @@ INVERT 2
 "48
 [v _set_screen set_screen `(v  1 e 1 0 ]
 "59
+[v _set_splashscreen set_splashscreen `(v  1 e 1 0 ]
+"70
 [v _choosescreen choosescreen `(a  1 e 1 0 ]
-"87
+"98
 [v _screen_update screen_update `(v  1 e 1 0 ]
 "15 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _set_mS set_mS `(v  1 e 1 0 ]
@@ -172,49 +172,61 @@ INVERT 2
 [v _writeHighScore writeHighScore `(v  1 e 1 0 ]
 "221
 [v _show_score show_score `(v  1 e 1 0 ]
-"28 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+"29 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
 [v _snake_screen snake_screen `(v  1 e 1 0 ]
+"52
+[v _snake_button_left snake_button_left `(v  1 e 1 0 ]
+"53
+[v _snake_button_up snake_button_up `(v  1 e 1 0 ]
+"54
+[v _snake_button_right snake_button_right `(v  1 e 1 0 ]
 "55
+[v _snake_button_down snake_button_down `(v  1 e 1 0 ]
+"57
 [v _genBerry genBerry `(uc  1 e 1 0 ]
-"63
+"64
 [v _CreateBerry CreateBerry `(v  1 e 1 0 ]
-"83
+"84
 [v _SnakeGraph SnakeGraph `(v  1 e 1 0 ]
-"104
+"101
 [v _MoveSnakes MoveSnakes `(v  1 e 1 0 ]
-"153
+"150
 [v _snake_timer snake_timer `(a  1 e 1 0 ]
-"176
+"157
+[v _inistialize_snake inistialize_snake `(v  1 e 1 0 ]
+"173
+[v _snake_buttons snake_buttons `(v  1 e 1 0 ]
+"181
 [v _snake_main snake_main `(v  1 e 1 0 ]
 "48 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_screen tetris_screen `(v  1 e 1 0 ]
-"52
+"54
 [v _moveObjectDown moveObjectDown `(a  1 e 1 0 ]
-"98
+"100
 [v _moveObject moveObject `(v  1 e 1 0 ]
-"153
+"155
 [v _newRotation newRotation `(v  1 e 1 0 ]
-"195
+"197
 [v _selectNextObject selectNextObject `(v  1 e 1 0 ]
-"231
+"233
 [v _checkForBottom checkForBottom `(a  1 e 1 0 ]
-"240
+"242
 [v _checkForLines checkForLines `(v  1 e 1 0 ]
-"258
+"260
 [v _tetris_button_left tetris_button_left `(a  1 e 1 0 ]
-"285
+"287
 [v _tetris_button_right tetris_button_right `(a  1 e 1 0 ]
-"305
+"307
 [v _tetris_button_up tetris_button_up `(a  1 e 1 0 ]
-"328
+"330
 [v _tetris_button_down tetris_button_down `(a  1 e 1 0 ]
-"336
+"338
 [v _tetris_timer tetris_timer `(a  1 e 1 0 ]
-"343
+"345
 [v _initialise_tetris initialise_tetris `(v  1 e 1 0 ]
-"355
+"361
 [v _tetris_buttons tetris_buttons `(a  1 e 1 0 ]
-"365
+"371
 [v _tetris_main tetris_main `(v  1 e 1 0 ]
 "5 C:\Users\ryan\Documents\GitHub\pictris-snake/numbers.h
 [v _Number Number `C[10][8]us  1 e 160 0 ]
@@ -237,7 +249,7 @@ INVERT 2
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "271
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S809 . 1 `uc 1 RB0 1 0 :1:0 
+[s S814 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -247,7 +259,7 @@ INVERT 2
 `uc 1 RB7 1 0 :1:7 
 ]
 "315
-[s S818 . 1 `uc 1 INT0 1 0 :1:0 
+[s S823 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -256,7 +268,7 @@ INVERT 2
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S827 . 1 `uc 1 AN12 1 0 :1:0 
+[s S832 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -265,13 +277,13 @@ INVERT 2
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S836 . 1 `uc 1 FLT0 1 0 :1:0 
+[s S841 . 1 `uc 1 FLT0 1 0 :1:0 
 ]
-[s S838 . 1 `uc 1 . 1 0 :3:0 
+[s S843 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S841 . 1 `S809 1 . 1 0 `S818 1 . 1 0 `S827 1 . 1 0 `S836 1 . 1 0 `S838 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES841  1 e 1 @3969 ]
+[u S846 . 1 `S814 1 . 1 0 `S823 1 . 1 0 `S832 1 . 1 0 `S841 1 . 1 0 `S843 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES846  1 e 1 @3969 ]
 "450
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "632
@@ -284,7 +296,7 @@ INVERT 2
 [v _DDRC DDRC `VEuc  1 e 1 @3988 ]
 "2148
 [v _DDRD DDRD `VEuc  1 e 1 @3989 ]
-[s S356 . 1 `uc 1 RD 1 0 :1:0 
+[s S332 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -294,11 +306,11 @@ INVERT 2
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "3044
-[s S365 . 1 `uc 1 . 1 0 :6:0 
+[s S341 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S368 . 1 `S356 1 . 1 0 `S365 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES368  1 e 1 @4006 ]
+[u S344 . 1 `S332 1 . 1 0 `S341 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES344  1 e 1 @4006 ]
 "3089
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "3096
@@ -418,7 +430,7 @@ INVERT 2
 [v _InterruptComplete InterruptComplete `VEa  1 e 1 0 ]
 "17
 [v _time time `VEui  1 e 2 0 ]
-"61 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"54 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _tetris tetris `VEa  1 e 1 0 ]
 "9 C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
 [v __lfsr _lfsr `us  1 e 2 0 ]
@@ -440,82 +452,59 @@ INVERT 2
 [v _ObjectData ObjectData `VE[8]us  1 e 16 0 ]
 "13
 [v _BackgroundData BackgroundData `VE[8]us  1 e 16 0 ]
-"14
-[v _tmpObjectData tmpObjectData `[8]us  1 e 16 0 ]
-"16
+"17
 [v _SNAKE SNAKE `C[8]us  1 e 16 0 ]
-"33
+"35
 [v _SnakeYtext SnakeYtext `C[16]us  1 e 32 0 ]
-"40
-[v _direction direction `uc  1 e 1 0 ]
-"41
-[v _moveSnake moveSnake `VEa  1 e 1 0 ]
-[s S640 position 2 `uc 1 x 1 0 `uc 1 y 1 1 ]
 "42
-[v _positions positions `[128]S640  1 e 256 0 ]
+[v _direction direction `uc  1 e 1 0 ]
 "43
-[v _snakeLength snakeLength `uc  1 e 1 0 ]
+[v _moveSnake moveSnake `VEa  1 e 1 0 ]
+[s S633 position 2 `uc 1 x 1 0 `uc 1 y 1 1 ]
+"44
+[v _positions positions `[128]S633  1 e 256 0 ]
 "45
-[v _berryX berryX `uc  1 e 1 0 ]
-"46
-[v _berryY berryY `uc  1 e 1 0 ]
+[v _snakeLength snakeLength `uc  1 e 1 0 ]
 "47
-[v _previous_direction previous_direction `uc  1 e 1 0 ]
+[v _berryX berryX `uc  1 e 1 0 ]
 "48
-[v _EndOfGameSnake EndOfGameSnake `VEa  1 e 1 0 ]
+[v _berryY berryY `uc  1 e 1 0 ]
+"49
+[v _previous_direction previous_direction `uc  1 e 1 0 ]
+"50
+[v _EndOfGame EndOfGame `VEa  1 e 1 0 ]
 "17 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _Screen_Data Screen_Data `VE[8]us  1 e 16 0 ]
-"19
-[v _EndOfGame EndOfGame `VEa  1 e 1 0 ]
-"21
+"18
+[v _tmpObjectData tmpObjectData `[8]us  1 e 16 0 ]
+"20
 [v _TETRIS TETRIS `C[8]us  1 e 16 0 ]
-"33
+"32
 [v _randomobjects randomobjects `[8]uc  1 e 8 0 ]
-"35
+"34
 [v _LimitedRotation LimitedRotation `uc  1 e 1 0 ]
-"36
+"35
 [v _NumberOfLines NumberOfLines `uc  1 e 1 0 ]
-"38
+"37
 [v _IsRotated IsRotated `a  1 e 1 0 ]
-"40
+"39
 [v _CheckForNewLines CheckForNewLines `a  1 e 1 0 ]
-"42
+"41
 [v _countblocks countblocks `uc  1 e 1 0 ]
-"44
+"43
 [v _DropObject DropObject `VEa  1 e 1 0 ]
 "45
 [v _OriginX OriginX `uc  1 e 1 0 ]
 [v _OriginY OriginY `uc  1 e 1 0 ]
-"147 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"126 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _main main `(v  1 e 1 0 ]
 {
-"167
+"144
 } 0
 "14 C:\Users\ryan\Documents\GitHub\pictris-snake\buttons.c
 [v _start_button start_button `(v  1 e 1 0 ]
 {
 "32
-} 0
-"122 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
-[v _splash_screen splash_screen `(v  1 e 1 0 ]
-{
-"127
-} 0
-"19 C:\Users\ryan\Documents\GitHub\pictris-snake\interrupt.c
-[v _waitms waitms `(v  1 e 1 0 ]
-{
-[v waitms@t t `ui  1 p 2 11 ]
-"24
-} 0
-"48 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
-[v _tetris_screen tetris_screen `(v  1 e 1 0 ]
-{
-"50
-} 0
-"28 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
-[v _snake_screen snake_screen `(v  1 e 1 0 ]
-{
-"30
 } 0
 "34 C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
 [v _rnd_initialize rnd_initialize `(v  1 e 1 0 ]
@@ -526,31 +515,36 @@ INVERT 2
 [v rnd_initialize@input input `uc  1 a 1 11 ]
 "40
 } 0
-"129 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"111 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _mainGameLoop mainGameLoop `(v  1 e 1 0 ]
 {
-"144
+"123
 } 0
-"365 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"371 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_main tetris_main `(v  1 e 1 0 ]
 {
-"373
+"379
 [v tetris_main@newScreen newScreen `a  1 a 1 50 ]
-"367
+"374
 [v tetris_main@LastHighScore LastHighScore `uc  1 a 1 49 ]
-"395
+"402
 } 0
-"355
+"48
+[v _tetris_screen tetris_screen `(v  1 e 1 0 ]
+{
+"52
+} 0
+"361
 [v _tetris_buttons tetris_buttons `(a  1 e 1 0 ]
 {
-"357
-[v tetris_buttons@returnbool returnbool `a  1 a 1 39 ]
 "363
+[v tetris_buttons@returnbool returnbool `a  1 a 1 39 ]
+"369
 } 0
-"305
+"307
 [v _tetris_button_up tetris_button_up `(a  1 e 1 0 ]
 {
-"326
+"328
 } 0
 "166 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _pixelCount pixelCount `(uc  1 e 1 0 ]
@@ -563,20 +557,20 @@ INVERT 2
 [v pixelCount@pSource pSource `*.39VEus  1 p 2 11 ]
 "175
 } 0
-"153 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"155 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _newRotation newRotation `(v  1 e 1 0 ]
 {
-"156
+"158
 [v newRotation@y1 y1 `uc  1 a 1 36 ]
 [v newRotation@x1 x1 `uc  1 a 1 35 ]
-"155
+"157
 [v newRotation@y2 y2 `c  1 a 1 34 ]
 [v newRotation@x2 x2 `c  1 a 1 33 ]
-"153
+"155
 [v newRotation@pSource pSource `*.39VEus  1 p 2 21 ]
 [v newRotation@pTarget pTarget `*.39us  1 p 2 23 ]
-[v newRotation@rotation rotation `E2584  1 p 1 25 ]
-"193
+[v newRotation@rotation rotation `E2586  1 p 1 25 ]
+"195
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -588,10 +582,10 @@ INVERT 2
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 13 ]
 "53
 } 0
-"285 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"287 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_button_right tetris_button_right `(a  1 e 1 0 ]
 {
-"303
+"305
 } 0
 "149 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _checkForRightWall checkForRightWall `(a  1 e 1 0 ]
@@ -599,10 +593,10 @@ INVERT 2
 [v checkForRightWall@pObject pObject `*.39VEus  1 p 2 11 ]
 "152
 } 0
-"258 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"260 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_button_left tetris_button_left `(a  1 e 1 0 ]
 {
-"283
+"285
 } 0
 "141 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _checkForLeftWall checkForLeftWall `(a  1 e 1 0 ]
@@ -610,46 +604,46 @@ INVERT 2
 [v checkForLeftWall@pObject pObject `*.39VEus  1 p 2 11 ]
 "144
 } 0
-"328 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"330 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_button_down tetris_button_down `(a  1 e 1 0 ]
 {
-"335
+"337
 } 0
-"52
+"54
 [v _moveObjectDown moveObjectDown `(a  1 e 1 0 ]
 {
-"54
+"56
 [v moveObjectDown@result result `a  1 a 1 38 ]
-"52
+"54
 [v moveObjectDown@pObject pObject `*.39VEus  1 p 2 36 ]
-"94
+"96
 } 0
-"195
+"197
 [v _selectNextObject selectNextObject `(v  1 e 1 0 ]
 {
-"208
+"210
 [v selectNextObject@fill fill `a  1 a 1 31 ]
-"199
+"201
 [v selectNextObject@check check `[7]a  1 a 7 24 ]
 [s S24 shape 19 `[8]us 1 graphic 16 0 `uc 1 x 1 16 `uc 1 y 1 17 `uc 1 limitedRotation 1 18 ]
-"198
+"200
 [v selectNextObject@s s `*.39S24  1 a 2 32 ]
-"197
+"199
 [v selectNextObject@counter counter `uc  1 a 1 35 ]
 [v selectNextObject@rndSelection rndSelection `uc  1 a 1 34 ]
-"195
+"197
 [v selectNextObject@pTarget pTarget `*.39VEus  1 p 2 21 ]
-"229
+"231
 } 0
 "36 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _memcpyvol memcpyvol `(*.39VEv  1 e 2 0 ]
 {
 "38
-[v memcpyvol@s s `*.35uc  1 a 2 19 ]
+[v memcpyvol@s s `*.39uc  1 a 2 19 ]
 [v memcpyvol@d d `*.39uc  1 a 2 17 ]
 "36
 [v memcpyvol@dest dest `*.39VEv  1 p 2 11 ]
-[v memcpyvol@src src `*.35CVEv  1 p 2 13 ]
+[v memcpyvol@src src `*.39CVEv  1 p 2 13 ]
 [v memcpyvol@n n `ui  1 p 2 15 ]
 "44
 } 0
@@ -663,14 +657,92 @@ INVERT 2
 [v collisionDetect@pTarget pTarget `*.39VEus  1 p 2 13 ]
 "162
 } 0
-"231 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"233 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _checkForBottom checkForBottom `(a  1 e 1 0 ]
 {
-"233
+"235
 [v checkForBottom@i i `uc  1 a 1 17 ]
-"231
+"233
 [v checkForBottom@pObject pObject `*.39VEus  1 p 2 11 ]
-"237
+"239
+} 0
+"345
+[v _initialise_tetris initialise_tetris `(v  1 e 1 0 ]
+{
+"360
+} 0
+"242
+[v _checkForLines checkForLines `(v  1 e 1 0 ]
+{
+"244
+[v checkForLines@y y `uc  1 a 1 45 ]
+[v checkForLines@x x `uc  1 a 1 44 ]
+[v checkForLines@pixels pixels `uc  1 a 1 43 ]
+"242
+[v checkForLines@pObject pObject `*.39VEus  1 p 2 34 ]
+"258
+} 0
+"178 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
+[v _removeLine removeLine `(v  1 e 1 0 ]
+{
+"180
+[v removeLine@x x `uc  1 a 1 33 ]
+[v removeLine@y y `uc  1 a 1 32 ]
+[v removeLine@currentLine currentLine `uc  1 a 1 31 ]
+"178
+[v removeLine@pObject pObject `*.39VEus  1 p 2 11 ]
+[v removeLine@pY pY `uc  1 p 1 13 ]
+"193
+} 0
+"181 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+[v _snake_main snake_main `(v  1 e 1 0 ]
+{
+"184
+[v snake_main@LastHighScore LastHighScore `uc  1 a 1 38 ]
+"197
+} 0
+"214 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
+[v _writeHighScore writeHighScore `(v  1 e 1 0 ]
+{
+[v writeHighScore@adress adress `uc  1 a 1 wreg ]
+[v writeHighScore@adress adress `uc  1 a 1 wreg ]
+[v writeHighScore@highscore highscore `uc  1 p 1 13 ]
+[v writeHighScore@scored scored `uc  1 p 1 14 ]
+"216
+[v writeHighScore@adress adress `uc  1 a 1 15 ]
+"219
+} 0
+"29 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+[v _snake_screen snake_screen `(v  1 e 1 0 ]
+{
+"32
+} 0
+"19 C:\Users\ryan\Documents\GitHub\pictris-snake\interrupt.c
+[v _waitms waitms `(v  1 e 1 0 ]
+{
+[v waitms@t t `ui  1 p 2 11 ]
+"24
+} 0
+"173 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+[v _snake_buttons snake_buttons `(v  1 e 1 0 ]
+{
+"179
+} 0
+"53
+[v _snake_button_up snake_button_up `(v  1 e 1 0 ]
+{
+} 0
+"54
+[v _snake_button_right snake_button_right `(v  1 e 1 0 ]
+{
+} 0
+"52
+[v _snake_button_left snake_button_left `(v  1 e 1 0 ]
+{
+} 0
+"55
+[v _snake_button_down snake_button_down `(v  1 e 1 0 ]
+{
 } 0
 "62 C:\Users\ryan\Documents\GitHub\pictris-snake\buttons.c
 [v _checkRight checkRight `(a  1 e 1 0 ]
@@ -688,53 +760,7 @@ INVERT 2
 [v checkLeft@reset reset `a  1 a 1 11 ]
 "60
 } 0
-"343 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
-[v _initialise_tetris initialise_tetris `(v  1 e 1 0 ]
-{
-"354
-} 0
-"240
-[v _checkForLines checkForLines `(v  1 e 1 0 ]
-{
-"242
-[v checkForLines@y y `uc  1 a 1 45 ]
-[v checkForLines@x x `uc  1 a 1 44 ]
-[v checkForLines@pixels pixels `uc  1 a 1 43 ]
-"240
-[v checkForLines@pObject pObject `*.39VEus  1 p 2 34 ]
-"256
-} 0
-"178 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
-[v _removeLine removeLine `(v  1 e 1 0 ]
-{
-"180
-[v removeLine@x x `uc  1 a 1 33 ]
-[v removeLine@y y `uc  1 a 1 32 ]
-[v removeLine@currentLine currentLine `uc  1 a 1 31 ]
-"178
-[v removeLine@pObject pObject `*.39VEus  1 p 2 11 ]
-[v removeLine@pY pY `uc  1 p 1 13 ]
-"193
-} 0
-"176 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
-[v _snake_main snake_main `(v  1 e 1 0 ]
-{
-"177
-[v snake_main@LastHighScore LastHighScore `uc  1 a 1 40 ]
-"189
-} 0
-"214 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
-[v _writeHighScore writeHighScore `(v  1 e 1 0 ]
-{
-[v writeHighScore@adress adress `uc  1 a 1 wreg ]
-[v writeHighScore@adress adress `uc  1 a 1 wreg ]
-[v writeHighScore@highscore highscore `uc  1 p 1 13 ]
-[v writeHighScore@scored scored `uc  1 p 1 14 ]
-"216
-[v writeHighScore@adress adress `uc  1 a 1 15 ]
-"219
-} 0
-"221
+"221 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _show_score show_score `(v  1 e 1 0 ]
 {
 [v show_score@score score `uc  1 a 1 wreg ]
@@ -767,17 +793,17 @@ INVERT 2
 {
 "46
 } 0
-"98 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"100 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _moveObject moveObject `(v  1 e 1 0 ]
 {
-"100
+"102
 [v moveObject@i i `uc  1 a 1 22 ]
 [v moveObject@c c `uc  1 a 1 21 ]
-"98
+"100
 [v moveObject@pObject pObject `*.39VEus  1 p 2 11 ]
-[v moveObject@direction direction `E2578  1 p 1 13 ]
+[v moveObject@direction direction `E2580  1 p 1 13 ]
 [v moveObject@cycles cycles `uc  1 p 1 14 ]
-"138
+"140
 } 0
 "68 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _itoa itoa `(*.39uc  1 e 2 0 ]
@@ -893,42 +919,58 @@ INVERT 2
 [v ReadEEByte@address address `uc  1 a 1 11 ]
 "11
 } 0
-"104 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+"157 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+[v _inistialize_snake inistialize_snake `(v  1 e 1 0 ]
+{
+"161
+[v inistialize_snake@i i `uc  1 a 1 22 ]
+"171
+} 0
+"101
 [v _MoveSnakes MoveSnakes `(v  1 e 1 0 ]
 {
-"106
-[v MoveSnakes@i i `uc  1 a 1 39 ]
-"151
+"103
+[v MoveSnakes@i i `uc  1 a 1 33 ]
+"148
 } 0
-"83
+"84
 [v _SnakeGraph SnakeGraph `(v  1 e 1 0 ]
 {
-"85
-[v SnakeGraph@i i `uc  1 a 1 34 ]
 "86
-[v SnakeGraph@j j `uc  1 a 1 33 ]
-"102
+[v SnakeGraph@i i `uc  1 a 1 28 ]
+"87
+[v SnakeGraph@j j `uc  1 a 1 27 ]
+"99
 } 0
-"63
+"48 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
+[v _set_screen set_screen `(v  1 e 1 0 ]
+{
+"52
+[v set_screen@i i `i  1 a 2 20 ]
+"48
+[v set_screen@newData newData `*.39VEus  1 p 2 18 ]
+"57
+} 0
+"64 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
 [v _CreateBerry CreateBerry `(v  1 e 1 0 ]
 {
-"66
+"67
 [v CreateBerry@i i `uc  1 a 1 21 ]
-"65
+"66
 [v CreateBerry@randomGood randomGood `a  1 a 1 20 ]
-"81
+"82
 } 0
-"55
+"57
 [v _genBerry genBerry `(uc  1 e 1 0 ]
 {
 [v genBerry@size size `uc  1 a 1 wreg ]
-"57
+"59
 [v genBerry@temp temp `uc  1 a 1 18 ]
-"55
+"57
 [v genBerry@size size `uc  1 a 1 wreg ]
-"58
+"60
 [v genBerry@size size `uc  1 a 1 17 ]
-"62
+"63
 } 0
 "18 C:\Users\ryan\Documents\GitHub\pictris-snake\randgen.c
 [v _rnd_get_num rnd_get_num `(uc  1 e 1 0 ]
@@ -952,10 +994,10 @@ INVERT 2
 [v ___lbmod@dividend dividend `uc  1 a 1 12 ]
 "18
 } 0
-"112 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"105 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _initialise_globals initialise_globals `(v  1 e 1 0 ]
 {
-"119
+"108
 } 0
 "15 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _set_mS set_mS `(v  1 e 1 0 ]
@@ -968,38 +1010,40 @@ INVERT 2
 {
 "29
 } 0
-"89 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"82 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _initialise_hardware initialise_hardware `(v  1 e 1 0 ]
 {
-"109
+"102
 } 0
-"77
+"70
 [v _initialise_TMR0 initialise_TMR0 `(v  1 e 1 0 ]
 {
-"87
+"80
 } 0
 "23 C:\Users\ryan\Documents\GitHub\pictris-snake\shared_logic.c
 [v _get_mS get_mS `(us  1 e 2 0 ]
 {
 "25
 } 0
-"59 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
+"70 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
 [v _choosescreen choosescreen `(a  1 e 1 0 ]
 {
-"71
-[v choosescreen@mask mask `[8]us  1 a 16 28 ]
-"62
-[v choosescreen@i i `i  1 a 2 45 ]
-"83
+"82
+[v choosescreen@mask mask `[8]us  1 a 16 26 ]
+"73
+[v choosescreen@i i `i  1 a 2 43 ]
+"72
+[v choosescreen@tetris tetris `a  1 a 1 42 ]
+"94
 } 0
-"48
-[v _set_screen set_screen `(v  1 e 1 0 ]
+"59
+[v _set_splashscreen set_splashscreen `(v  1 e 1 0 ]
 {
-"52
-[v set_screen@i i `i  1 a 2 26 ]
-"48
-[v set_screen@newData newData `*.35VEus  1 p 2 18 ]
-"57
+"63
+[v set_splashscreen@i i `i  1 a 2 24 ]
+"59
+[v set_splashscreen@newData newData `*.25Cus  1 p 2 18 ]
+"68
 } 0
 "43
 [v _resumeMultiplexing resumeMultiplexing `(v  1 e 1 0 ]
@@ -1053,10 +1097,10 @@ INVERT 2
 [v checkDown@reset reset `a  1 a 1 11 ]
 "87
 } 0
-"66 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
+"59 C:\Users\ryan\Documents\GitHub\pictris-snake\pictris.c
 [v _isr isr `IIH(v  1 e 1 0 ]
 {
-"74
+"67
 } 0
 "27 C:\Users\ryan\Documents\GitHub\pictris-snake\interrupt.c
 [v _Interrupt Interrupt `(v  1 e 1 0 ]
@@ -1074,26 +1118,26 @@ INVERT 2
 {
 "25
 } 0
-"336 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
+"338 C:\Users\ryan\Documents\GitHub\pictris-snake\tetris.c
 [v _tetris_timer tetris_timer `(a  1 e 1 0 ]
 {
-"341
+"343
 } 0
-"153 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
+"150 C:\Users\ryan\Documents\GitHub\pictris-snake\snake.c
 [v _snake_timer snake_timer `(a  1 e 1 0 ]
 {
-"158
+"155
 } 0
-"87 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
+"98 C:\Users\ryan\Documents\GitHub\pictris-snake\screen.c
 [v _screen_update screen_update `(v  1 e 1 0 ]
 {
-"94
+"105
 [v screen_update@ymask ymask `us  1 a 2 2 ]
-"93
+"104
 [v screen_update@xmask xmask `uc  1 a 1 4 ]
-"91
+"102
 [v screen_update@CurrentX CurrentX `uc  1 s 1 CurrentX ]
-"107
+"118
 } 0
 "108 C:\Users\ryan\Documents\GitHub\pictris-snake\buttons.c
 [v _checkButtons checkButtons `(v  1 e 1 0 ]
