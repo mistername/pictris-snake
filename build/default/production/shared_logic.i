@@ -4634,32 +4634,27 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 _Bool checkForLeftWall(volatile uint16_t * );
 _Bool checkForRightWall(volatile uint16_t * );
 _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
 # 6 "shared_logic.c" 2
 
 # 1 "./EEPROM.h" 1
@@ -4764,7 +4759,7 @@ const uint16_t Number[10][8] = {
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
@@ -4795,37 +4790,46 @@ void checkButtons(void);
 
 
 volatile uint16_t mS;
-void set_mS(uint16_t amount){
+
+void set_mS(uint16_t amount)
+{
     mS = amount;
 }
 
-void add_mS(uint16_t amount){
+uint16_t add_mS(uint16_t amount)
+{
     mS = mS + amount;
-}
-
-uint16_t get_mS(void){
     return mS;
 }
+
+uint16_t get_mS(void)
+{
+    return mS;
+}
+
 void *memcpy(void *dest, const void *src, size_t n)
 {
-    char *d = (char*)dest, *s = (char*)src;
+    char *d = (char*) dest, *s = (char*) src;
 
     while(n--)
+    {
         *d++ = *s++;
+    }
 
     return dest;
 }
 
-volatile void *memcpyvol(volatile void *dest, volatile const void *src, size_t n)
+volatile void *memcpyvol(volatile void *dest, const void *src, size_t n)
 {
-    char *d = (char*)dest, *s = (char*)src;
+    char *d = (char*) dest, *s = (char*) src;
 
     while(n--)
+    {
         *d++ = *s++;
+    }
 
     return dest;
 }
-
 
 
 void swap(char* a, char* b)
@@ -4839,10 +4843,10 @@ void swap(char* a, char* b)
 void reverse(char str[], int length)
 {
     int start = 0;
-    int end = length -1;
-    while (start < end)
+    int end = length - 1;
+    while(start < end)
     {
-        swap(str+start, str+end);
+        swap(str + start, str + end);
         start++;
         end--;
     }
@@ -4854,7 +4858,7 @@ char * itoa(int value, char * str, int bas)
     _Bool isNegative = 0;
 
 
-    if (value == 0)
+    if(value == 0)
     {
         str[i++] = '0';
         str[i] = '\0';
@@ -4863,23 +4867,25 @@ char * itoa(int value, char * str, int bas)
 
 
 
-    if (value < 0 && bas == 10)
+    if(value < 0 && bas == 10)
     {
         isNegative = 1;
         value = -value;
     }
 
 
-    while (value != 0)
+    while(value != 0)
     {
         int rem = value % bas;
-        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
-        value = value/bas;
+        str[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+        value = value / bas;
     }
 
 
-    if (isNegative)
+    if(isNegative)
+    {
         str[i++] = '-';
+    }
 
     str[i] = '\0';
 
@@ -4890,33 +4896,41 @@ char * itoa(int value, char * str, int bas)
 }
 
 
+
 void clearArray(volatile uint16_t *pArray, size_t size)
 {
-    uint8_t i;
-    for (i = 0; i < size; i++)
-        pArray[i] = 0;
+    while(size--)
+    {
+        pArray[size] = 0;
+    }
 }
 
 void mergeObjects(volatile uint16_t * pSource, volatile uint16_t * pTarget, mode_t mode)
 {
-    uint8_t i;
-
-    switch (mode)
+    uint8_t i = 8;
+    switch(mode)
     {
-    case OVERRIDE:
-        for (i = 0; i < 8; i++)
-            pTarget[i] = pSource[i];
-        break;
-    case MERGE:
-        for (i = 0; i < 8; i++)
-            pTarget[i] |= pSource[i];
-        break;
-    case INVERT:
-        for (i = 0; i < 8; i++)
-            pTarget[i] ^= pSource[i];
-        break;
+        case OVERRIDE:
+            while(i--)
+            {
+                pTarget[i] = pSource[i];
+            }
+            break;
+        case MERGE:
+            while(i--)
+            {
+                pTarget[i] |= pSource[i];
+            }
+            break;
+        case INVERT:
+            while(i--)
+            {
+                pTarget[i] ^= pSource[i];
+            }
+            break;
     }
 }
+
 
 
 
@@ -4929,6 +4943,7 @@ _Bool checkForLeftWall(volatile uint16_t * pObject)
 
 
 
+
 _Bool checkForRightWall(volatile uint16_t * pObject)
 {
     return pObject[7] != 0;
@@ -4936,45 +4951,62 @@ _Bool checkForRightWall(volatile uint16_t * pObject)
 
 
 
+
 _Bool collisionDetect(volatile uint16_t * pSource, volatile uint16_t * pTarget)
 {
-    for (uint8_t i = 0; i < 8; i++)
-        if (pSource[i] & pTarget[i])
+    uint8_t i = 8;
+    while(i--)
+    {
+        if(pSource[i] & pTarget[i])
             return 1;
+    }
     return 0;
 }
 
 
 
+
 uint8_t pixelCount(volatile uint16_t * pSource)
 {
-    uint8_t r = 0, x, y;
-
-    for (x = 0; x < 8; x++)
-        for (y = 0; y < 16; y++)
-            if (pSource[x] & (1<<y))
+    uint8_t r = 0;
+    uint8_t x = 8;
+    while(x--)
+    {
+        uint8_t y = 16;
+        while(y--)
+        {
+            if(pSource[x] & (1<<y))
+            {
                 r++;
+            }
+        }
+    }
     return r;
 }
 
 
+
 void removeLine(volatile uint16_t * pObject, uint8_t pY)
 {
-    uint8_t x, y, currentLine;
+    uint8_t y, currentLine;
 
 
-    for (y = pY-1; y < pY; y--)
+    for(y = pY - 1; y < pY; y--)
     {
         currentLine = y + 1;
-        for (x = 0; x < 8; x++)
+        uint8_t x = 8;
+        while(x--)
+        {
             pObject[x] = (pObject[x] & ~(1<<currentLine)) | ((((pObject[x] >> y) & 1)&1)<<currentLine);
-
+        }
     }
 
-    for (x = 0; x < 8; x++)
+    uint8_t x = 8;
+    while(x--)
+    {
         pObject[x] &= ~(1<<0);
+    }
 }
-
 
 void getNumber(uint8_t pDigit, uint16_t * pTarget)
 {
@@ -4983,63 +5015,104 @@ void getNumber(uint8_t pDigit, uint16_t * pTarget)
 
 uint8_t readHighScore(uint8_t adress)
 {
-    uint8_t tmpbyte;
-    tmpbyte = ReadEEByte(adress);
-    if (tmpbyte == 255) {
+    uint8_t tmpbyte = ReadEEByte(adress);;
+    if(tmpbyte == 255)
+    {
         tmpbyte = 0;
     }
-    if (tmpbyte == 0){
-       WriteEEByte(adress,0);
+    if(tmpbyte == 0)
+    {
+        WriteEEByte(adress, 0);
     };
     return tmpbyte;
 }
 
 void writeHighScore(uint8_t adress, uint8_t highscore, uint8_t scored)
 {
-    if (scored > highscore){
-        WriteEEByte(adress,scored);
+    if(scored > highscore)
+    {
+        WriteEEByte(adress, scored);
     };
 }
 
+void moveObject(uint16_t * pObject, direction_t direction, uint8_t cycles)
+{
+    uint8_t i, c;
+
+    switch(direction)
+    {
+        case DOWN:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 8; i++)
+                    pObject[i] <<= 1;
+            }
+            break;
+        case UP:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 8; i++)
+                    pObject[i] >>= 1;
+            }
+            break;
+        case RIGHT:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 7; i > 0; i--)
+                    pObject[i] = pObject[i - 1];
+                pObject[0] = 0;
+            }
+            break;
+        case LEFT:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 7; i++)
+                    pObject[i] = pObject[i + 1];
+                pObject[7] = 0;
+            }
+    }
+}
 void show_score(uint8_t score)
 {
-    uint16_t tmpObjectData[8];
     uint16_t Numberscreen[8];
-    uint8_t i, currentNumber;
-    char number[4];
-
-    clearArray(tmpObjectData, 8);
     clearArray(Numberscreen, 8);
-
-    itoa(score, number, 10);
-    for (i = 0; i < 3 && number[i]; i++)
     {
-        currentNumber = number[i] - '0';
-        getNumber(currentNumber, tmpObjectData);
-        moveObject(tmpObjectData, DOWN, (2-i) * 5);
-        moveObject(tmpObjectData, RIGHT, i);
-        mergeObjects(tmpObjectData, Numberscreen, MERGE);
+        char number[4];
+        itoa(score, number, 10);
+        for(uint8_t i = 0; i < 3 && number[i]; i++)
+        {
+            uint8_t currentNumber = number[i] - '0';
+            uint16_t tmpObjectData[8];
+            getNumber(currentNumber, tmpObjectData);
+            moveObject(tmpObjectData, DOWN, (2 - i) * 5);
+            moveObject(tmpObjectData, RIGHT, i);
+            mergeObjects(tmpObjectData, Numberscreen, MERGE);
+        }
     }
     pauseMultiplexing();
     set_screen(Numberscreen);
     resumeMultiplexing();
 
-     while (checkDown(0))
+    while(checkDown(0))
+    {
         continue;
+    }
 
-    while (!checkDown(0))
+    while(!checkDown(0))
+    {
         continue;
+    }
 
-    uint16_t mask[] = {0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff};
-    mergeObjects(mask, Numberscreen, INVERT);
-
+    {
+        uint16_t mask[] = {0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff};
+        mergeObjects(mask, Numberscreen, INVERT);
+    }
     pauseMultiplexing();
     set_screen(Numberscreen);
     resumeMultiplexing();
 
-    while (checkDown(0))
+    while(checkDown(0))
         continue;
     pauseButtons();
-
     resumeButtons();
 }

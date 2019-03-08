@@ -16,5 +16,5 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 uint8_t ReadEEByte(uint8_t);
-void    WriteEEByte(uint8_t, uint8_t);
+void WriteEEByte(uint8_t, uint8_t);
 #endif

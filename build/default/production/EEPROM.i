@@ -4604,6 +4604,7 @@ typedef uint32_t uint_fast32_t;
 # 155 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
 # 3 "EEPROM.c" 2
 
+
 uint8_t ReadEEByte(uint8_t address)
 {
 EEADR=address;
@@ -4616,22 +4617,22 @@ return EEDATA;
 
 void WriteEEByte(uint8_t address, uint8_t data)
 {
-do{
-    EECON1bits.WRERR = 0;
-EECON1bits.WREN=1;
-EEADR=address;
-EEDATA=data;
-EECON1bits.EEPGD=0;
-EECON1bits.CFGS=0;
-waitForInterrupt();
-INTCONbits.GIE=0;
+    do{
+        EECON1bits.WRERR = 0;
+        EECON1bits.WREN=1;
+        EEADR=address;
+        EEDATA=data;
+        EECON1bits.EEPGD=0;
+        EECON1bits.CFGS=0;
+        waitForInterrupt();
+        INTCONbits.GIE=0;
 
-EECON2=0x55;
-EECON2=0xAA;
-EECON1bits.WR=1;
+        EECON2=0x55;
+        EECON2=0xAA;
+        EECON1bits.WR=1;
 
-INTCONbits.GIE=1;
-while (EECON1bits.WR==1);
-} while (EECON1bits.WRERR == 1);
-EECON1bits.WREN=0;
+        INTCONbits.GIE=1;
+        while (EECON1bits.WR==1);
+    } while (EECON1bits.WRERR == 1);
+    EECON1bits.WREN=0;
 }

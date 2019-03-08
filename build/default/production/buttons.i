@@ -4618,7 +4618,7 @@ typedef uint32_t uint_fast32_t;
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
@@ -4627,69 +4627,29 @@ void resumeMultiplexing(void);
 void initialise_screen(void);
 # 5 "buttons.c" 2
 
-# 1 "./tetris.h" 1
-# 35 "./tetris.h"
-_Bool tetris_button_left(void);
-_Bool tetris_button_right(void);
-_Bool tetris_button_up(void);
-_Bool tetris_button_down(void);
-void tetris_screen(void);
-void selectNextObject(volatile uint16_t *);
-_Bool checkForBottom(volatile uint16_t *);
-void checkForLines(volatile uint16_t *);
-_Bool tetris_timer(void);
-void initialise_tetris(void);
-void tetris_main(void);
-# 6 "buttons.c" 2
-
-# 1 "./snake.h" 1
-
-
-
-
-
-
-
-void snake_button_left(void);
-void snake_button_up(void);
-void snake_button_right(void);
-void snake_button_down(void);
-void snake_screen(void);
-uint8_t genBerry(uint8_t);
-void CreateBerry(void);
-void SnakeGraph(void);
-void MoveSnakes();
-_Bool snake_timer(void);
-void inistialize_snake(void);
-void snake_main(void);
-# 7 "buttons.c" 2
-
 
 
 volatile int16_t Left_Delay, Right_Delay, Rotate_Delay, Down_Delay;
 volatile _Bool Rotate_Debounced, Left_Debounced, Right_Debounced, Down_Debounced;
 volatile _Bool mtxButtons;
 
-void start_button(void){
-
+void start_button(void)
+{
     Left_Delay = -1;
     Left_Debounced = 0;
-
 
     Right_Delay = -1;
     Right_Debounced = 0;
 
-
     Rotate_Delay = -1;
     Rotate_Debounced = 0;
 
-
-
-    Down_Delay = 500;
+    Down_Delay = -1;
     Down_Debounced = 0;
+
     mtxButtons = 1;
 }
-# 43 "buttons.c"
+# 38 "buttons.c"
 void pauseButtons()
 {
     mtxButtons = 0;
@@ -4700,7 +4660,8 @@ void resumeButtons()
     mtxButtons = 1;
 }
 
-_Bool checkLeft(_Bool reset){
+_Bool checkLeft(_Bool reset)
+{
     if (Left_Debounced)
     {
         Left_Delay = 500;
@@ -4709,7 +4670,8 @@ _Bool checkLeft(_Bool reset){
     } else return 0;
 }
 
-_Bool checkRight(_Bool reset){
+_Bool checkRight(_Bool reset)
+{
     if (Right_Debounced)
     {
         Right_Delay = 500;
@@ -4718,7 +4680,8 @@ _Bool checkRight(_Bool reset){
     } else return 0;
 }
 
-_Bool checkUp(_Bool reset){
+_Bool checkUp(_Bool reset)
+{
     if (Rotate_Debounced)
     {
         Rotate_Delay = 500;
@@ -4727,7 +4690,8 @@ _Bool checkUp(_Bool reset){
     } else return 0;
 }
 
-_Bool checkDown(_Bool reset){
+_Bool checkDown(_Bool reset)
+{
     if (Down_Debounced)
     {
         Down_Delay = 500;
@@ -4742,10 +4706,8 @@ void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bo
 {
     if (button == 0)
     {
-        if (*delay < 0)
-            *delay = 50;
-        else if ((*delay)-- == 0)
-            *debounced = 1;
+        if (*delay < 0){ *delay = 50; }
+        else if ((*delay)-- == 0){ *debounced = 1; }
     }
     else
     {

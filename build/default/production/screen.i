@@ -4612,7 +4612,7 @@ typedef uint32_t uint_fast32_t;
 
 
 
-void Interrupt(void);
+void Interrupt(_Bool);
 void waitms(unsigned);
 void waitForInterrupt(void);
 # 4 "screen.c" 2
@@ -4645,32 +4645,27 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 _Bool checkForLeftWall(volatile uint16_t * );
 _Bool checkForRightWall(volatile uint16_t * );
 _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
 # 5 "screen.c" 2
 
 # 1 "./buttons.h" 1
@@ -4691,115 +4686,126 @@ void resumeButtons(void);
 void checkButtons(void);
 # 6 "screen.c" 2
 
+# 1 "./gamesconfig.h" 1
 
 
-extern volatile unsigned short port_display __attribute__((address(0xF82)));
-__asm("port_display equ 0F82h");
 
-const uint16_t choose_screen[] =
-{
-    0xFFFF,
-    0x8181,
-    0xBD81,
-    0x858D,
-    0x8599,
-    0xAD81,
-    0x8181,
-    0xFFFF,
-};
 
+
+
+
+
+void tetris_timer(void);
+void tetris_main(void);
+# 19 "./gamesconfig.h"
+void snake_timer(void);
+void snake_main(void);
+# 7 "screen.c" 2
+
+
+volatile uint16_t port_display __attribute__((address(0xF82)));
 volatile _Bool UpdateScreen;
 volatile uint16_t ScreenData[8];
 
-void initialise_screen(void){
+void initialise_screen(void)
+{
     UpdateScreen = 1;
 }
 
-
-
 void pauseMultiplexing(void)
 {
-    if (UpdateScreen)
+    if(UpdateScreen)
     {
         waitForInterrupt();
         UpdateScreen = 0;
     }
 }
 
-
 void resumeMultiplexing(void)
 {
     UpdateScreen = 1;
 }
 
-void set_screen(volatile uint16_t *newData)
+void set_screen(uint16_t *newData)
 {
     pauseMultiplexing();
-    clearArray(ScreenData, 8);
-    int i;
-    for(i=0;i<8;i++){
-        ScreenData[i] = newData[i];
-    }
+    memcpyvol(ScreenData, newData, 16);
     resumeMultiplexing();
 }
 
 void set_splashscreen(const uint16_t *newData)
 {
     pauseMultiplexing();
-    clearArray(ScreenData, 8);
-    int i;
-    for(i=0;i<8;i++){
-        ScreenData[i] = newData[i];
-    }
+    memcpyvol(ScreenData, newData, 16);
     resumeMultiplexing();
 }
 
 _Bool choosescreen(void)
 {
-    _Bool tetris;
-    int i;
-    set_splashscreen(choose_screen);
+    {
+        uint16_t choosescreen[8]; {const uint16_t choosescreen1[] = {0x00FF,0x0081,0x0081,0x008D,0x0099,0x0081,0x0081,0x00FF,};; const uint16_t choosescreen2[] = {0xFF00,0x8100,0xBD00,0x8500,0x8500,0xAD00,0x8100,0xFF00,};; {uint8_t i; for(i=0;i<8;i++){choosescreen[i] = choosescreen1[i] | choosescreen2[i];}}};
+        set_splashscreen(choosescreen);
+    }
 
-     while (checkDown(0) || checkUp(0))
+    while(checkDown(0) || checkUp(0))
+    {
         continue;
+    }
 
-
-    while (!checkDown(0) && !checkUp(0))
+    while(!checkDown(0) && !checkUp(0))
+    {
         continue;
-    uint16_t mask[8];
-    if(checkDown(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0xFF00; } tetris = 0;}
-    else {if(checkUp(0) == 1) { for (i=0;i<8;i++){ mask[i] = 0x00FF; } tetris = 1; };}
+    }
+    _Bool game;
+    {
+        uint16_t mask[8];
+        if(checkDown(0) == 1)
+        {
+            for(int i = 0; i < 8; i++)
+            {
+                mask[i] = 0xFF00;
+            }
+            game = 0;
+        }
+        else
+        {
+            if(checkUp(0) == 1)
+            {
+                for(int i = 0; i < 8; i++)
+                {
+                    mask[i] = 0x00FF;
+                }
+                game = 1;
+            };
+        }
+        pauseMultiplexing();
+        mergeObjects(mask, ScreenData, INVERT);
+        resumeMultiplexing();
+    }
 
-    pauseMultiplexing();
-    mergeObjects(mask, ScreenData, INVERT);
-    resumeMultiplexing();
 
-
-    while (checkDown(0) || checkUp(0))
-    { continue; }
-    return tetris;
+    while(checkDown(0) || checkUp(0))
+    {
+        continue;
+    }
+    return game;
 }
-
-
 
 void screen_update(void)
 {
-    if (UpdateScreen)
-        {
-            static uint8_t CurrentX = 0;
+    if(UpdateScreen)
+    {
+        static uint8_t CurrentX = 0;
 
-            uint8_t xmask = 1 << CurrentX;
-            uint16_t ymask = ScreenData[CurrentX];
-
-            port_display = 0;
-
-            PORTA = xmask;
-
-            port_display = ~ymask;
+        uint8_t xmask = 1 << CurrentX;
+        uint16_t ymask = ScreenData[CurrentX];
+        port_display = ~0;
+        PORTA = xmask;
+        port_display = ~ymask;
 
 
-            CurrentX++;
-            CurrentX &= 0x07;
+        CurrentX++;
+        CurrentX &= 0x07;
 
-        }
+    }
 }

@@ -4616,7 +4616,8 @@ struct shape
     uint16_t graphic[8];
     uint8_t x, y;
     uint8_t limitedRotation;
-} shapes[] =
+}
+shapes[] =
 {
     {{0x0000,
       0x0000,
@@ -4739,8 +4740,10 @@ struct shape
 # 6 "tetris.c" 2
 
 # 1 "./randgen.h" 1
-# 26 "./randgen.h"
-uint8_t rnd_get_num(void);
+
+
+
+uint16_t rnd_get_num(void);
 void rnd_initialize(uint8_t);
 # 7 "tetris.c" 2
 
@@ -4751,7 +4754,7 @@ void rnd_initialize(uint8_t);
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
@@ -4788,48 +4791,28 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 _Bool checkForLeftWall(volatile uint16_t * );
 _Bool checkForRightWall(volatile uint16_t * );
 _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
 # 9 "tetris.c" 2
-
-# 1 "./tetris.h" 1
-# 35 "./tetris.h"
-_Bool tetris_button_left(void);
-_Bool tetris_button_right(void);
-_Bool tetris_button_up(void);
-_Bool tetris_button_down(void);
-void tetris_screen(void);
-void selectNextObject(volatile uint16_t *);
-_Bool checkForBottom(volatile uint16_t *);
-void checkForLines(volatile uint16_t *);
-_Bool tetris_timer(void);
-void initialise_tetris(void);
-void tetris_main(void);
-# 10 "tetris.c" 2
 
 # 1 "./buttons.h" 1
 
@@ -4847,43 +4830,31 @@ void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
 void checkButtons(void);
-# 11 "tetris.c" 2
+# 10 "tetris.c" 2
 
 
 
-
-volatile uint16_t ObjectData[8];
-volatile uint16_t BackgroundData[8];
-volatile uint16_t Screen_Data[8];
-uint16_t tmpObjectData[8];
-
-const uint16_t TETRIS[] =
+struct tetris
 {
-    0x8841,
-    0xFBDF,
-    0x8841,
-    0x0000,
-    0x9BDF,
-    0xA955,
-    0xCA91,
-    0x0000,
+    struct shape currentblock;
+    _Bool IsRotated;
+    uint8_t countblocks;
+    uint8_t randomobjects[7];
 };
 
-uint8_t randomobjects[8];
 
-uint8_t LimitedRotation;
-uint8_t NumberOfLines;
-
-_Bool IsRotated;
-
-_Bool CheckForNewLines;
-
-uint8_t countblocks;
+const uint16_t TETRIS[] = {
+                           0x8841,
+                           0xFBDF,
+                           0x8841,
+                           0x0000,
+                           0x9BDF,
+                           0xA955,
+                           0xCA91,
+                           0x0000,
+};
 
 volatile _Bool DropObject;
-volatile _Bool EndOfGame;
-uint8_t OriginX, OriginY;
-volatile _Bool game = 0;
 
 void tetris_screen(void)
 {
@@ -4891,102 +4862,158 @@ void tetris_screen(void)
     waitms(3500);
 }
 
-_Bool moveObjectDown(volatile uint16_t * pObject)
+void selectNextObject(struct tetris *tetris)
 {
+    struct shape *s;
+    if (tetris->countblocks == 7)
+    {
+        _Bool check[7];
+        tetris->countblocks = 0;
+        {
+        uint8_t counter = 7;
+        while(counter--)
+        {
+            tetris->randomobjects[counter] = 255;
+            check[counter] = 0;
+        }
+        }
+        {
+        uint8_t counter = 7;
+        while(counter--)
+        {
+            _Bool fill = 0;
+            do
+            {
+                uint8_t rndSelection = rnd_get_num();
+                rndSelection = rndSelection % 7;
+                if(check[rndSelection] == 0)
+                {
+                    tetris->randomobjects[counter] = rndSelection;
+                    check[rndSelection] = 1;
+                    fill = 1;
+                }
+            }
+            while(!fill);
+        }
+        }
+    }
+    s = &shapes[tetris->randomobjects[tetris->countblocks]];
+    struct shape *NewBlock = &tetris->currentblock;
+    memcpyvol(NewBlock->graphic, s->graphic, 16);
+    NewBlock->x = s->x;
+    NewBlock->y = s->y;
+    tetris->IsRotated = 0;
+    NewBlock->limitedRotation = s->limitedRotation;
+    set_mS(0);
+    tetris->countblocks++;
+}
+
+_Bool checkForBottom(volatile uint16_t * pObject)
+{
+    for(uint8_t i = 0; i < 8; i++)
+        if(pObject[i] & (1<<15))
+            return 1;
+    return 0;
+}
+
+
+
+
+void moveObjecttetris(struct shape *tetrisblock, direction_t direction, uint8_t cycles)
+{
+    uint8_t i, c;
+
+    switch(direction)
+    {
+        case DOWN:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 8; i++) {tetrisblock->graphic[i] <<= 1; }
+                tetrisblock->y = tetrisblock->y + 1;
+            }
+            break;
+        case UP:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 8; i++) {tetrisblock->graphic[i] >>= 1; }
+                tetrisblock->y = tetrisblock->y - 1;
+            }
+            break;
+        case RIGHT:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 7; i > 0; i--) {tetrisblock->graphic[i] = tetrisblock->graphic[i - 1]; }
+                tetrisblock->graphic[0] = 0;
+                tetrisblock->x = tetrisblock->x + 1;
+            }
+            break;
+        case LEFT:
+            for(c = 0; c < cycles; c++)
+            {
+                for(i = 0; i < 7; i++) {tetrisblock->graphic[i] = tetrisblock->graphic[i + 1];}
+                tetrisblock->graphic[7] = 0;
+                tetrisblock->x = tetrisblock->x - 1;
+            }
+    }
+}
+
+
+
+_Bool moveObjectDown(struct tetris *tetris, uint16_t *BackgroundData, _Bool *CheckForNewLines, _Bool *EndOfGame)
+{
+    struct shape *tetrisblock = &tetris->currentblock;
     _Bool result = 1;
 
 
-    if (checkForBottom(pObject))
+    if(checkForBottom(tetrisblock->graphic))
     {
 
         result = 0;
 
-        mergeObjects(pObject, BackgroundData, MERGE);
+        mergeObjects(tetrisblock->graphic, BackgroundData, MERGE);
 
-        selectNextObject(pObject);
+        selectNextObject(tetris);
 
-        CheckForNewLines = 1;
+        *CheckForNewLines = 1;
     }
     else
     {
 
-        moveObject(pObject, DOWN, 1);
+        moveObjecttetris(tetrisblock, DOWN, 1);
 
-        if (collisionDetect(pObject, BackgroundData))
+        if(collisionDetect(tetrisblock->graphic, BackgroundData))
         {
 
 
             result = 0;
 
-            moveObject(pObject, UP, 1);
+            moveObjecttetris(tetrisblock, UP, 1);
 
-            mergeObjects(pObject, BackgroundData, MERGE);
+            mergeObjects(tetrisblock->graphic, BackgroundData, MERGE);
 
-            selectNextObject(pObject);
+            selectNextObject(tetris);
 
 
-            EndOfGame = collisionDetect(pObject, BackgroundData);
+            *EndOfGame = collisionDetect(tetrisblock->graphic, BackgroundData);
 
-            CheckForNewLines = 1;
+            *CheckForNewLines = 1;
         }
     }
     set_mS(0);
 
     return result;
 }
-
-
-
-void moveObject(volatile uint16_t * pObject, direction_t direction, uint8_t cycles)
-{
-    uint8_t i, c;
-
-    switch (direction)
-    {
-    case DOWN:
-        for (c = 0; c < cycles; c++)
-        {
-            for (i = 0; i < 8; i++)
-                pObject[i] <<= 1;
-            OriginY++;
-        }
-        break;
-    case UP:
-        for (c = 0; c < cycles; c++)
-        {
-            for (i = 0; i < 8; i++)
-                pObject[i] >>= 1;
-            OriginY--;
-        }
-        break;
-    case RIGHT:
-        for (c = 0; c < cycles; c++)
-        {
-            for (i = 7; i > 0; i--)
-                pObject[i] = pObject[i-1];
-            pObject[0] = 0;
-            OriginX++;
-        }
-        break;
-    case LEFT:
-        for (c = 0; c < cycles; c++)
-        {
-            for (i = 0; i < 7; i++)
-                pObject[i] = pObject[i+1];
-            pObject[7] = 0;
-            OriginX--;
-        }
-    }
-}
-# 155 "tetris.c"
-void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rotation)
+# 196 "tetris.c"
+void newRotation(struct tetris *tetris, uint16_t * pTarget, rotation_t *rotation)
 {
     int8_t x2, y2;
     uint8_t x1, y1;
+    struct shape *tetrisblock = &tetris->currentblock;
 
-
-    if (LimitedRotation == 2)
-        memcpyvol(pTarget, pSource, 16);
+    if(tetrisblock->limitedRotation == 2)
+    {
+        memcpyvol(pTarget, tetrisblock->graphic, 16);
+    }
     else
     {
 
@@ -4995,235 +5022,216 @@ void newRotation(volatile uint16_t * pSource, uint16_t * pTarget, rotation_t rot
 
 
 
-        if (LimitedRotation == 1 && IsRotated)
-            rotation = CCW;
+        if(tetrisblock->limitedRotation == 1 && tetris->IsRotated)
+        {
+            *rotation = CCW;
+        }
 
-        for (x1 = 0; x1 < 8; x1++)
-            for (y1 = 0; y1 < 16; y1++)
+        for(x1 = 0; x1 < 8; x1++)
+        {
+            for(y1 = 0; y1 < 16; y1++)
             {
-                if (pSource[x1] & (1<<y1))
+                if(tetrisblock->graphic[x1] & (1<<y1))
                 {
-                    if (rotation == CW)
+                    if(*rotation == CW)
                     {
-                        x2 = OriginX + OriginY - y1;
-                        y2 = x1 + OriginY - OriginX;
+                        x2 = tetrisblock->x + tetrisblock->y - y1;
+                        y2 = x1 + tetrisblock->y - tetrisblock->x;
                     }
                     else
                     {
-                        x2 = y1 + OriginX - OriginY;
-                        y2 = OriginX + OriginY - x1;
+                        x2 = y1 + tetrisblock->x - tetrisblock->y;
+                        y2 = tetrisblock->x + tetrisblock->y - x1;
                     }
-                    if (x2 >= 0 && x2 < 8 &&
-                        y2 >= 0 && y2 < 16)
+                    if(x2 >= 0 && x2 < 8 && y2 >= 0 && y2 < 16)
                         pTarget[x2] |= (1<<y2);
                 }
             }
-    }
-}
-
-void selectNextObject(volatile uint16_t *pTarget)
-{
-    uint8_t rndSelection, counter, selection;
-    struct shape * s;
-    _Bool check[7];
-    if(countblocks == 7){
-        countblocks = 0;
-
-        for(counter=0; counter<7;counter++){
-            randomobjects[counter] = 255;
-            check[counter] = 0;
-        }
-        for(counter=0; counter<7;counter++){
-            _Bool fill = 0;
-            do {
-                rndSelection = rnd_get_num();
-                rndSelection = rndSelection % 7;
-                if (check[rndSelection] == 0) {
-                    randomobjects[counter] = rndSelection;
-                    check[rndSelection] = 1;
-                    fill = 1;
-                }
-            } while (!fill);
         }
     }
-    s = &shapes[randomobjects[countblocks]];
-    countblocks++;
-
-    memcpyvol(pTarget, s->graphic, 16);
-    OriginX = s->x;
-    OriginY = s->y;
-    IsRotated = 0;
-    LimitedRotation = s->limitedRotation;
-    set_mS(0);
-}
-
-_Bool checkForBottom(volatile uint16_t * pObject)
-{
-    for (uint8_t i = 0; i < 8; i++)
-        if (pObject[i] & (1<<15))
-            return 1;
-    return 0;
 }
 
 
-void checkForLines(volatile uint16_t * pObject)
+
+uint8_t checkForLines(uint16_t * pObject)
 {
     uint8_t x, y, pixels;
-
-    for (y = 0; y < 16; y++)
+    uint8_t NumberOfLines = 0;
+    for(y = 0; y < 16; y++)
     {
         pixels = 0;
-        for (x = 0; x < 8; x++)
-            if (pObject[x] & (1<<y))
+        for(x = 0; x < 8; x++)
+            if(pObject[x] & (1<<y))
                 pixels++;
-        if (pixels == 8)
+        if(pixels == 8)
         {
             removeLine(pObject, y);
             NumberOfLines++;
         }
     }
+    return NumberOfLines;
 }
 
-_Bool tetris_button_left(void) {
-    if (game)
+_Bool tetris_button_left(struct shape *tetrisblock, uint16_t *BackgroundData)
+{
+    if(!checkForLeftWall(tetrisblock->graphic))
     {
-        if (!checkForLeftWall(ObjectData))
+        uint16_t tmpObjectData[8];
+
+
+
+        memcpyvol(tmpObjectData, tetrisblock->graphic, 16);
+
+        moveObject(tmpObjectData, LEFT, 1);
+
+        if(!collisionDetect(tmpObjectData, BackgroundData))
+        {
+            pauseMultiplexing();
+            mergeObjects(tmpObjectData, tetrisblock->graphic, OVERRIDE);
+            resumeMultiplexing();
+            tetrisblock->x--;
+            return 1;
+        }
+    }
+    return 0;
+
+}
+
+_Bool tetris_button_right(struct shape *tetrisblock, uint16_t *BackgroundData)
+{
+    if(!checkForRightWall(tetrisblock->graphic))
+    {
+        uint16_t tmpObjectData[8];
+
+        mergeObjects(tetrisblock->graphic, tmpObjectData, OVERRIDE);
+        moveObject(tmpObjectData, RIGHT, 1);
+
+        if(!collisionDetect(tmpObjectData, BackgroundData))
+        {
+            pauseMultiplexing();
+            mergeObjects(tmpObjectData, tetrisblock->graphic, OVERRIDE);
+            resumeMultiplexing();
+            tetrisblock->x++;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void tetris_button_up(struct tetris *tetris, uint16_t *BackgroundData, rotation_t *rotation)
+{
+    uint16_t tmpObjectData[8];
+    clearArray(tmpObjectData, 8);
+
+    newRotation(tetris, tmpObjectData, rotation);
+
+    {
+    struct shape *tetrisblock = &tetris->currentblock;
+
+    if(pixelCount(tetrisblock->graphic) == pixelCount(tmpObjectData))
+    {
+
+        if(!collisionDetect(tmpObjectData, BackgroundData))
         {
 
 
-            memcpyvol(tmpObjectData, ObjectData, 16);
 
-            moveObject(tmpObjectData, LEFT, 1);
-
-            if (!collisionDetect(tmpObjectData, BackgroundData))
-            {
-
-                pauseMultiplexing();
-
-                mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-
-                resumeMultiplexing();
-
-                CheckForNewLines = 1;
-            }
+            mergeObjects(tmpObjectData, tetrisblock->graphic, OVERRIDE);
+            tetris->IsRotated = ~tetris->IsRotated;
         }
     }
-    return game;
-}
-
-_Bool tetris_button_right(void){
-    if (game)
-    {
-        if (!checkForRightWall(ObjectData))
-        {
-            mergeObjects(ObjectData, tmpObjectData, OVERRIDE);
-            moveObject(tmpObjectData, RIGHT, 1);
-
-            if (!collisionDetect(tmpObjectData, BackgroundData))
-            {
-                pauseMultiplexing();
-                mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-                resumeMultiplexing();
-                CheckForNewLines = 1;
-            }
-        }
     }
-    return game;
 }
 
-_Bool tetris_button_up(void){
-    if (game)
+void tetris_button_down(struct tetris *tetris, uint16_t *BackgroundData, _Bool *CheckForNewLines, _Bool *EndOfGame)
+{
+    while(moveObjectDown(tetris, BackgroundData, CheckForNewLines, EndOfGame))
     {
-        newRotation(ObjectData, tmpObjectData, CW);
-
-        if (pixelCount(ObjectData) == pixelCount(tmpObjectData))
-        {
-
-            if (!collisionDetect(tmpObjectData, BackgroundData))
-            {
-
-
-                pauseMultiplexing();
-
-                mergeObjects(tmpObjectData, ObjectData, OVERRIDE);
-                resumeMultiplexing();
-                IsRotated = !IsRotated;
-            }
-        }
+        continue;
     }
-    return game;
 }
 
-_Bool tetris_button_down(void) {
-    if (game)
-    {
-    while (moveObjectDown(ObjectData))
-            continue;
-    }
-    return game;
-}
-_Bool tetris_timer(void){
-    if (game) {
+void tetris_timer(void)
+{
     DropObject = 1;
-    }
-    return game;
 }
 
-void initialise_tetris(void) {
-    OriginX = 0;
-    OriginY = 0;
-
-    NumberOfLines = 0;
-
-    DropObject = 0;
-    CheckForNewLines = 0;
-    randomobjects[7] = 255;
-    countblocks = 7;
-    game = 1;
-    EndOfGame = 0;
-    clearArray(ObjectData, 8);
-    clearArray(BackgroundData, 8);
-    clearArray(Screen_Data, 8);
-}
-_Bool tetris_buttons(void)
+_Bool tetris_buttons(struct tetris *tetris, uint16_t *BackgroundData, _Bool *CheckForNewLines, _Bool *EndOfGame, rotation_t *rotation)
 {
     _Bool returnbool = 0;
-    if(checkLeft(1)){ tetris_button_left(); returnbool = 1; }
-    if(checkRight(1)){ tetris_button_right(); returnbool = 1; }
-    if(checkUp(1)){ tetris_button_up(); returnbool = 1; }
-    if(checkDown(1)){ tetris_button_down(); returnbool = 1; }
+    if(checkLeft(1))
+    {
+        *CheckForNewLines = tetris_button_left(&tetris->currentblock, BackgroundData);
+        returnbool = 1;
+    }
+    if(checkRight(1))
+    {
+        *CheckForNewLines = tetris_button_right(&tetris->currentblock, BackgroundData);
+        returnbool = 1;
+    }
+    if(checkUp(1))
+    {
+        tetris_button_up(tetris, BackgroundData, rotation);
+        returnbool = 1;
+    }
+    if(checkDown(1))
+    {
+        tetris_button_down(tetris, BackgroundData, CheckForNewLines, EndOfGame);
+        returnbool = 1;
+    }
     return returnbool;
 }
 
-void tetris_main(void) {
-    initialise_tetris();
+void tetris_main(void)
+{
+    uint16_t BackgroundData[8];
+    clearArray(BackgroundData, 8);
+
     tetris_screen();
     uint8_t LastHighScore = readHighScore(0);
     show_score(LastHighScore);
-    selectNextObject(ObjectData);
-    set_screen(ObjectData);
-     do {
+
+    struct tetris tetris;
+    clearArray(tetris.currentblock.graphic, 8);
+
+    tetris.countblocks = 7;
+
+    uint8_t NumberOfLines = 0;
+
+    _Bool CheckForNewLines = 0;
+
+    selectNextObject(&tetris);
+    set_screen(tetris.currentblock.graphic);
+
+    rotation_t rotation;
+
+    _Bool EndOfGame = 0;
+    DropObject = 0;
+    do
+    {
         _Bool newScreen;
-        newScreen = tetris_buttons() || newScreen;
-        if (DropObject)
+        newScreen = tetris_buttons(&tetris, BackgroundData, &CheckForNewLines, &EndOfGame, &rotation) || newScreen;
+        if(DropObject)
         {
             DropObject = 0;
-            moveObjectDown(ObjectData);
-            newScreen = newScreen || 1;
+            moveObjectDown(&tetris, BackgroundData, &CheckForNewLines, &EndOfGame);
+            newScreen = 1;
         }
-        if (CheckForNewLines)
+        if(CheckForNewLines)
         {
-            checkForLines(BackgroundData);
-            newScreen = newScreen || 1;
+            NumberOfLines = NumberOfLines + checkForLines(BackgroundData);
+            newScreen = 1;
         }
-        if (newScreen)
+        if(newScreen)
         {
+            uint16_t Screen_Data[8];
             mergeObjects(BackgroundData, Screen_Data, OVERRIDE);
-            mergeObjects(ObjectData, Screen_Data, MERGE);
+            mergeObjects(tetris.currentblock.graphic, Screen_Data, MERGE);
             set_screen(Screen_Data);
             newScreen = 0;
         }
-    } while (!EndOfGame);
+    }
+    while(!EndOfGame);
     writeHighScore(0, LastHighScore, NumberOfLines);
     show_score(NumberOfLines);
 }

@@ -440,320 +440,346 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 buttons.c
-[; ;buttons.c: 10: volatile int16_t Left_Delay, Right_Delay, Rotate_Delay, Down_Delay;
+"8 buttons.c
+[; ;buttons.c: 8: volatile int16_t Left_Delay, Right_Delay, Rotate_Delay, Down_Delay;
 [v _Left_Delay `Vs ~T0 @X0 1 e ]
 [v _Right_Delay `Vs ~T0 @X0 1 e ]
 [v _Rotate_Delay `Vs ~T0 @X0 1 e ]
 [v _Down_Delay `Vs ~T0 @X0 1 e ]
-"11
-[; ;buttons.c: 11: volatile _Bool Rotate_Debounced, Left_Debounced, Right_Debounced, Down_Debounced;
+"9
+[; ;buttons.c: 9: volatile _Bool Rotate_Debounced, Left_Debounced, Right_Debounced, Down_Debounced;
 [v _Rotate_Debounced `Va ~T0 @X0 1 e ]
 [v _Left_Debounced `Va ~T0 @X0 1 e ]
 [v _Right_Debounced `Va ~T0 @X0 1 e ]
 [v _Down_Debounced `Va ~T0 @X0 1 e ]
-"12
-[; ;buttons.c: 12: volatile _Bool mtxButtons;
+"10
+[; ;buttons.c: 10: volatile _Bool mtxButtons;
 [v _mtxButtons `Va ~T0 @X0 1 e ]
-"14
-[; ;buttons.c: 14: void start_button(void){
+"12
+[; ;buttons.c: 12: void start_button(void)
 [v _start_button `(v ~T0 @X0 1 ef ]
+"13
+[; ;buttons.c: 13: {
 {
 [e :U _start_button ]
 [f ]
-"16
-[; ;buttons.c: 16:     Left_Delay = -1;
+"14
+[; ;buttons.c: 14:     Left_Delay = -1;
 [e = _Left_Delay -> -U -> 1 `i `s ]
-"17
-[; ;buttons.c: 17:     Left_Debounced = 0;
+"15
+[; ;buttons.c: 15:     Left_Debounced = 0;
 [e = _Left_Debounced -> -> 0 `i `a ]
-"20
-[; ;buttons.c: 20:     Right_Delay = -1;
+"17
+[; ;buttons.c: 17:     Right_Delay = -1;
 [e = _Right_Delay -> -U -> 1 `i `s ]
-"21
-[; ;buttons.c: 21:     Right_Debounced = 0;
+"18
+[; ;buttons.c: 18:     Right_Debounced = 0;
 [e = _Right_Debounced -> -> 0 `i `a ]
-"24
-[; ;buttons.c: 24:     Rotate_Delay = -1;
+"20
+[; ;buttons.c: 20:     Rotate_Delay = -1;
 [e = _Rotate_Delay -> -U -> 1 `i `s ]
-"25
-[; ;buttons.c: 25:     Rotate_Debounced = 0;
+"21
+[; ;buttons.c: 21:     Rotate_Debounced = 0;
 [e = _Rotate_Debounced -> -> 0 `i `a ]
-"29
-[; ;buttons.c: 29:     Down_Delay = 500;
-[e = _Down_Delay -> -> 500 `i `s ]
-"30
-[; ;buttons.c: 30:     Down_Debounced = 0;
+"23
+[; ;buttons.c: 23:     Down_Delay = -1;
+[e = _Down_Delay -> -U -> 1 `i `s ]
+"24
+[; ;buttons.c: 24:     Down_Debounced = 0;
 [e = _Down_Debounced -> -> 0 `i `a ]
-"31
-[; ;buttons.c: 31:     mtxButtons = 1;
+"26
+[; ;buttons.c: 26:     mtxButtons = 1;
 [e = _mtxButtons -> -> 1 `i `a ]
-"32
-[; ;buttons.c: 32: }
+"27
+[; ;buttons.c: 27: }
 [e :UE 281 ]
 }
-"43
-[; ;buttons.c: 43: void pauseButtons()
+"38
+[; ;buttons.c: 38: void pauseButtons()
 [v _pauseButtons `(v ~T0 @X0 1 ef ]
-"44
-[; ;buttons.c: 44: {
+"39
+[; ;buttons.c: 39: {
 {
 [e :U _pauseButtons ]
 [f ]
-"45
-[; ;buttons.c: 45:     mtxButtons = 0;
+"40
+[; ;buttons.c: 40:     mtxButtons = 0;
 [e = _mtxButtons -> -> 0 `i `a ]
-"46
-[; ;buttons.c: 46: }
+"41
+[; ;buttons.c: 41: }
 [e :UE 282 ]
 }
-"48
-[; ;buttons.c: 48: void resumeButtons()
+"43
+[; ;buttons.c: 43: void resumeButtons()
 [v _resumeButtons `(v ~T0 @X0 1 ef ]
-"49
-[; ;buttons.c: 49: {
+"44
+[; ;buttons.c: 44: {
 {
 [e :U _resumeButtons ]
 [f ]
-"50
-[; ;buttons.c: 50:     mtxButtons = 1;
+"45
+[; ;buttons.c: 45:     mtxButtons = 1;
 [e = _mtxButtons -> -> 1 `i `a ]
-"51
-[; ;buttons.c: 51: }
+"46
+[; ;buttons.c: 46: }
 [e :UE 283 ]
 }
-"53
-[; ;buttons.c: 53: _Bool checkLeft(_Bool reset){
+"48
+[; ;buttons.c: 48: _Bool checkLeft(_Bool reset)
 [v _checkLeft `(a ~T0 @X0 1 ef1`a ]
+"49
+[; ;buttons.c: 49: {
 {
 [e :U _checkLeft ]
+"48
+[; ;buttons.c: 48: _Bool checkLeft(_Bool reset)
 [v _reset `a ~T0 @X0 1 r1 ]
+"49
+[; ;buttons.c: 49: {
 [f ]
-"54
-[; ;buttons.c: 54:     if (Left_Debounced)
+"50
+[; ;buttons.c: 50:     if (Left_Debounced)
 [e $ ! != -> _Left_Debounced `i -> 0 `i 285  ]
-"55
-[; ;buttons.c: 55:     {
+"51
+[; ;buttons.c: 51:     {
 {
-"56
-[; ;buttons.c: 56:         Left_Delay = 500;
+"52
+[; ;buttons.c: 52:         Left_Delay = 500;
 [e = _Left_Delay -> -> 500 `i `s ]
-"57
-[; ;buttons.c: 57:         Left_Debounced = !reset;
+"53
+[; ;buttons.c: 53:         Left_Debounced = !reset;
 [e = _Left_Debounced -> -> ! != -> _reset `i -> 0 `i `i `a ]
-"58
-[; ;buttons.c: 58:         return 1;
+"54
+[; ;buttons.c: 54:         return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 284  ]
-"59
-[; ;buttons.c: 59:     } else return 0;
+"55
+[; ;buttons.c: 55:     } else return 0;
 }
 [e $U 286  ]
 [e :U 285 ]
 [e ) -> -> 0 `i `a ]
 [e $UE 284  ]
 [e :U 286 ]
-"60
-[; ;buttons.c: 60: }
+"56
+[; ;buttons.c: 56: }
 [e :UE 284 ]
 }
-"62
-[; ;buttons.c: 62: _Bool checkRight(_Bool reset){
+"58
+[; ;buttons.c: 58: _Bool checkRight(_Bool reset)
 [v _checkRight `(a ~T0 @X0 1 ef1`a ]
+"59
+[; ;buttons.c: 59: {
 {
 [e :U _checkRight ]
+"58
+[; ;buttons.c: 58: _Bool checkRight(_Bool reset)
 [v _reset `a ~T0 @X0 1 r1 ]
+"59
+[; ;buttons.c: 59: {
 [f ]
-"63
-[; ;buttons.c: 63:     if (Right_Debounced)
+"60
+[; ;buttons.c: 60:     if (Right_Debounced)
 [e $ ! != -> _Right_Debounced `i -> 0 `i 288  ]
-"64
-[; ;buttons.c: 64:     {
+"61
+[; ;buttons.c: 61:     {
 {
-"65
-[; ;buttons.c: 65:         Right_Delay = 500;
+"62
+[; ;buttons.c: 62:         Right_Delay = 500;
 [e = _Right_Delay -> -> 500 `i `s ]
-"66
-[; ;buttons.c: 66:         Right_Debounced = !reset;
+"63
+[; ;buttons.c: 63:         Right_Debounced = !reset;
 [e = _Right_Debounced -> -> ! != -> _reset `i -> 0 `i `i `a ]
-"67
-[; ;buttons.c: 67:         return 1;
+"64
+[; ;buttons.c: 64:         return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 287  ]
-"68
-[; ;buttons.c: 68:     } else return 0;
+"65
+[; ;buttons.c: 65:     } else return 0;
 }
 [e $U 289  ]
 [e :U 288 ]
 [e ) -> -> 0 `i `a ]
 [e $UE 287  ]
 [e :U 289 ]
-"69
-[; ;buttons.c: 69: }
+"66
+[; ;buttons.c: 66: }
 [e :UE 287 ]
 }
-"71
-[; ;buttons.c: 71: _Bool checkUp(_Bool reset){
+"68
+[; ;buttons.c: 68: _Bool checkUp(_Bool reset)
 [v _checkUp `(a ~T0 @X0 1 ef1`a ]
+"69
+[; ;buttons.c: 69: {
 {
 [e :U _checkUp ]
+"68
+[; ;buttons.c: 68: _Bool checkUp(_Bool reset)
 [v _reset `a ~T0 @X0 1 r1 ]
+"69
+[; ;buttons.c: 69: {
 [f ]
-"72
-[; ;buttons.c: 72:     if (Rotate_Debounced)
+"70
+[; ;buttons.c: 70:     if (Rotate_Debounced)
 [e $ ! != -> _Rotate_Debounced `i -> 0 `i 291  ]
-"73
-[; ;buttons.c: 73:     {
+"71
+[; ;buttons.c: 71:     {
 {
-"74
-[; ;buttons.c: 74:         Rotate_Delay = 500;
+"72
+[; ;buttons.c: 72:         Rotate_Delay = 500;
 [e = _Rotate_Delay -> -> 500 `i `s ]
-"75
-[; ;buttons.c: 75:         Rotate_Debounced = !reset;
+"73
+[; ;buttons.c: 73:         Rotate_Debounced = !reset;
 [e = _Rotate_Debounced -> -> ! != -> _reset `i -> 0 `i `i `a ]
-"76
-[; ;buttons.c: 76:         return 1;
+"74
+[; ;buttons.c: 74:         return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 290  ]
-"77
-[; ;buttons.c: 77:     } else return 0;
+"75
+[; ;buttons.c: 75:     } else return 0;
 }
 [e $U 292  ]
 [e :U 291 ]
 [e ) -> -> 0 `i `a ]
 [e $UE 290  ]
 [e :U 292 ]
-"78
-[; ;buttons.c: 78: }
+"76
+[; ;buttons.c: 76: }
 [e :UE 290 ]
 }
-"80
-[; ;buttons.c: 80: _Bool checkDown(_Bool reset){
+"78
+[; ;buttons.c: 78: _Bool checkDown(_Bool reset)
 [v _checkDown `(a ~T0 @X0 1 ef1`a ]
+"79
+[; ;buttons.c: 79: {
 {
 [e :U _checkDown ]
+"78
+[; ;buttons.c: 78: _Bool checkDown(_Bool reset)
 [v _reset `a ~T0 @X0 1 r1 ]
+"79
+[; ;buttons.c: 79: {
 [f ]
-"81
-[; ;buttons.c: 81:     if (Down_Debounced)
+"80
+[; ;buttons.c: 80:     if (Down_Debounced)
 [e $ ! != -> _Down_Debounced `i -> 0 `i 294  ]
-"82
-[; ;buttons.c: 82:     {
+"81
+[; ;buttons.c: 81:     {
 {
-"83
-[; ;buttons.c: 83:         Down_Delay = 500;
+"82
+[; ;buttons.c: 82:         Down_Delay = 500;
 [e = _Down_Delay -> -> 500 `i `s ]
-"84
-[; ;buttons.c: 84:         Down_Debounced = !reset;
+"83
+[; ;buttons.c: 83:         Down_Debounced = !reset;
 [e = _Down_Debounced -> -> ! != -> _reset `i -> 0 `i `i `a ]
-"85
-[; ;buttons.c: 85:         return 1;
+"84
+[; ;buttons.c: 84:         return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 293  ]
-"86
-[; ;buttons.c: 86:     } else return 0;
+"85
+[; ;buttons.c: 85:     } else return 0;
 }
 [e $U 295  ]
 [e :U 294 ]
 [e ) -> -> 0 `i `a ]
 [e $UE 293  ]
 [e :U 295 ]
-"87
-[; ;buttons.c: 87: }
+"86
+[; ;buttons.c: 86: }
 [e :UE 293 ]
 }
-"91
-[; ;buttons.c: 91: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
+"90
+[; ;buttons.c: 90: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
 [v _debounceButton `(v ~T0 @X0 1 ef3`Va`*Vs`*Va ]
-"92
-[; ;buttons.c: 92: {
+"91
+[; ;buttons.c: 91: {
 {
 [e :U _debounceButton ]
-"91
-[; ;buttons.c: 91: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
+"90
+[; ;buttons.c: 90: void debounceButton(volatile _Bool button, volatile int16_t *delay, volatile _Bool *debounced)
 [v _button `Va ~T0 @X0 1 r1 ]
 [v _delay `*Vs ~T0 @X0 1 r2 ]
 [v _debounced `*Va ~T0 @X0 1 r3 ]
-"92
-[; ;buttons.c: 92: {
+"91
+[; ;buttons.c: 91: {
 [f ]
-"93
-[; ;buttons.c: 93:     if (button == 0)
+"92
+[; ;buttons.c: 92:     if (button == 0)
 [e $ ! == -> _button `i -> 0 `i 297  ]
-"94
-[; ;buttons.c: 94:     {
+"93
+[; ;buttons.c: 93:     {
 {
-"95
-[; ;buttons.c: 95:         if (*delay < 0)
+"94
+[; ;buttons.c: 94:         if (*delay < 0){ *delay = 50; }
 [e $ ! < -> *U _delay `i -> 0 `i 298  ]
-"96
-[; ;buttons.c: 96:             *delay = 50;
+{
 [e = *U _delay -> -> 50 `i `s ]
+}
 [e $U 299  ]
-"97
-[; ;buttons.c: 97:         else if ((*delay)-- == 0)
+"95
+[; ;buttons.c: 95:         else if ((*delay)-- == 0){ *debounced = 1; }
 [e :U 298 ]
 [e $ ! == -> -- *U _delay -> -> 1 `i `s `i -> 0 `i 300  ]
-"98
-[; ;buttons.c: 98:             *debounced = 1;
+{
 [e = *U _debounced -> -> 1 `i `a ]
+}
 [e :U 300 ]
 [e :U 299 ]
-"99
-[; ;buttons.c: 99:     }
+"96
+[; ;buttons.c: 96:     }
 }
 [e $U 301  ]
-"100
-[; ;buttons.c: 100:     else
+"97
+[; ;buttons.c: 97:     else
 [e :U 297 ]
-"101
-[; ;buttons.c: 101:     {
+"98
+[; ;buttons.c: 98:     {
 {
-"102
-[; ;buttons.c: 102:         *delay = -1;
+"99
+[; ;buttons.c: 99:         *delay = -1;
 [e = *U _delay -> -U -> 1 `i `s ]
-"103
-[; ;buttons.c: 103:         *debounced = 0;
+"100
+[; ;buttons.c: 100:         *debounced = 0;
 [e = *U _debounced -> -> 0 `i `a ]
-"104
-[; ;buttons.c: 104:     }
+"101
+[; ;buttons.c: 101:     }
 }
 [e :U 301 ]
-"105
-[; ;buttons.c: 105: }
+"102
+[; ;buttons.c: 102: }
 [e :UE 296 ]
 }
-"108
-[; ;buttons.c: 108: void checkButtons(void)
+"105
+[; ;buttons.c: 105: void checkButtons(void)
 [v _checkButtons `(v ~T0 @X0 1 ef ]
-"109
-[; ;buttons.c: 109: {
+"106
+[; ;buttons.c: 106: {
 {
 [e :U _checkButtons ]
 [f ]
-"110
-[; ;buttons.c: 110:     if (mtxButtons)
+"107
+[; ;buttons.c: 107:     if (mtxButtons)
 [e $ ! != -> _mtxButtons `i -> 0 `i 303  ]
-"111
-[; ;buttons.c: 111:     {
+"108
+[; ;buttons.c: 108:     {
 {
-"112
-[; ;buttons.c: 112:         debounceButton(PORTBbits.RB0, &Left_Delay, &Left_Debounced );
+"109
+[; ;buttons.c: 109:         debounceButton(PORTBbits.RB0, &Left_Delay, &Left_Debounced );
 [e ( _debounceButton (3 , , -> . . _PORTBbits 0 0 `a &U _Left_Delay &U _Left_Debounced ]
-"113
-[; ;buttons.c: 113:         debounceButton(PORTBbits.RB1, &Right_Delay, &Right_Debounced );
+"110
+[; ;buttons.c: 110:         debounceButton(PORTBbits.RB1, &Right_Delay, &Right_Debounced );
 [e ( _debounceButton (3 , , -> . . _PORTBbits 0 1 `a &U _Right_Delay &U _Right_Debounced ]
-"114
-[; ;buttons.c: 114:         debounceButton(PORTBbits.RB2, &Rotate_Delay, &Rotate_Debounced);
+"111
+[; ;buttons.c: 111:         debounceButton(PORTBbits.RB2, &Rotate_Delay, &Rotate_Debounced);
 [e ( _debounceButton (3 , , -> . . _PORTBbits 0 2 `a &U _Rotate_Delay &U _Rotate_Debounced ]
-"115
-[; ;buttons.c: 115:         debounceButton(PORTBbits.RB3, &Down_Delay, &Down_Debounced );
+"112
+[; ;buttons.c: 112:         debounceButton(PORTBbits.RB3, &Down_Delay, &Down_Debounced );
 [e ( _debounceButton (3 , , -> . . _PORTBbits 0 3 `a &U _Down_Delay &U _Down_Debounced ]
-"116
-[; ;buttons.c: 116:     }
+"113
+[; ;buttons.c: 113:     }
 }
 [e :U 303 ]
-"117
-[; ;buttons.c: 117: }
+"114
+[; ;buttons.c: 114: }
 [e :UE 302 ]
 }

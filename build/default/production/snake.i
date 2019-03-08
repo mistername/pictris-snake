@@ -4607,8 +4607,10 @@ typedef uint32_t uint_fast32_t;
 
 
 # 1 "./randgen.h" 1
-# 26 "./randgen.h"
-uint8_t rnd_get_num(void);
+
+
+
+uint16_t rnd_get_num(void);
 void rnd_initialize(uint8_t);
 # 5 "snake.c" 2
 
@@ -4640,32 +4642,27 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 _Bool checkForLeftWall(volatile uint16_t * );
 _Bool checkForRightWall(volatile uint16_t * );
 _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
 # 6 "snake.c" 2
 
 # 1 "./screen.h" 1
@@ -4675,7 +4672,7 @@ void waitms(unsigned);
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
@@ -4703,52 +4700,69 @@ void checkButtons(void);
 # 8 "snake.c" 2
 
 
-volatile _Bool game = 0;
 
-volatile uint16_t ObjectData[8];
-volatile uint16_t BackgroundData[8];
 
-volatile _Bool EndOfGame;
 
-const uint16_t SNAKE[] =
+struct position
 {
-    0xFB97,
-    0xA955,
-    0xAB9D,
-    0x0000,
-    0x03DF,
-    0xB881,
-    0x035F,
-    0x0000,
-};
-
-void snake_screen(void){
-    set_splashscreen(SNAKE);
-    waitms(3500);
-}
-
-
-const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
-
-
-struct position{
     uint8_t x;
     uint8_t y;
 };
-uint8_t direction;
+
 volatile _Bool moveSnake;
-struct position positions[128];
-uint8_t snakeLength;
 
-uint8_t berryX;
-uint8_t berryY;
-uint8_t previous_direction;
-volatile _Bool EndOfGame;
+_Bool snake_screen(void)
+{
+    const uint16_t SNAKE[] = {
+                              0xFB97,
+                              0xA955,
+                              0xAB9D,
+                              0x0000,
+                              0x03DF,
+                              0xB881,
+                              0x035F,
+                              0x0000,
+    };
+    set_splashscreen(SNAKE);
+    waitms(3500);
+    if(checkRight(0) && checkLeft(0))
+    {
+        return 1;
+    }
+    return 0;
+}
 
-void snake_button_left(void){if (previous_direction != 1){ direction = 3 ;}}
-void snake_button_up(void){if (previous_direction != 2){ direction = 0 ;}}
-void snake_button_right(void){if (previous_direction != 3){ direction = 1 ;}}
-void snake_button_down(void){if (previous_direction != 0){ direction = 2 ;};}
+void snake_button_left(uint8_t *direction, uint8_t *previous_direction)
+{
+    if(*previous_direction != 1)
+    {
+        *direction = 3;
+    }
+}
+
+void snake_button_up(uint8_t *direction, uint8_t *previous_direction)
+{
+    if(*previous_direction != 2)
+    {
+        *direction = 0;
+    }
+}
+
+void snake_button_right(uint8_t *direction, uint8_t *previous_direction)
+{
+    if(*previous_direction != 3)
+    {
+        *direction = 1;
+    }
+}
+
+void snake_button_down(uint8_t *direction, uint8_t *previous_direction)
+{
+    if(*previous_direction != 0)
+    {
+        *direction = 2;
+    };
+}
 
 uint8_t genBerry(uint8_t size)
 {
@@ -4757,137 +4771,209 @@ uint8_t genBerry(uint8_t size)
     temp = temp % size;
     return temp;
 }
-void CreateBerry(void)
+
+void CreateBerry(uint8_t *snakeLength, struct position *positions, struct position *berry)
 {
     _Bool randomGood;
-    uint8_t i;
     randomGood = 1;
     do
     {
         randomGood = 0;
-        berryX = genBerry(8);
-        berryY = genBerry(16);
-        for(i=0;i<snakeLength;i++)
+        berry->x = genBerry(8);
+        berry->y = genBerry(16);
+        for(uint8_t i = 0; i < *snakeLength; i++)
         {
-            if (berryX == positions[i].x && berryY == positions[i].y)
+            if(berry->x == positions[i].x && berry->y == positions[i].y)
             {
                 randomGood = 1;
             }
         }
-    } while (randomGood == 1);
+    }
+    while(randomGood == 1);
 }
 
-void SnakeGraph(void)
+void SnakeGraph(uint8_t *snakeLength, struct position *positions, struct position *berry)
 {
-    uint8_t i;
-    uint8_t j;
+    uint16_t ObjectData[8];
     clearArray(ObjectData, 8);
-    for(i=0;i<=snakeLength;i++){
-        j = positions[i].x;
-        ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
-    }
-    for(i=0;i<8;i++){
-        if (berryX == i){
-            ObjectData[i] = SnakeYtext[berryY] | ObjectData[i];
+    {
+
+        const uint16_t SnakeYtext[] = {0x001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
+        for(uint8_t i = 0; i <= *snakeLength; i++)
+        {
+            uint8_t j = positions[i].x;
+            ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
+        }
+        for(uint8_t i = 0; i < 8; i++)
+        {
+            if(berry->x == i)
+            {
+                ObjectData[i] = SnakeYtext[berry->y] | ObjectData[i];
+            }
         }
     }
     set_screen(ObjectData);
 }
 
-void MoveSnakes()
+void MoveSnakes(uint8_t *snakeLength, _Bool *EndOfGame, uint8_t *direction, uint8_t *previous_direction, struct position *positions, struct position *berry)
 {
-    uint8_t i;
-    switch (direction){
+    switch(*direction)
+    {
         case 0:
             positions[0].y = positions[0].y - 1;
-            previous_direction = 0;
-            if (positions[0].y >= 200){
+            *previous_direction = 0;
+            if(positions[0].y >= 200)
+            {
                 positions[0].y = 15;
             };
             break;
         case 1:
             positions[0].x = positions[0].x + 1;
-            previous_direction = 1;
-            if (positions[0].x > 7 & positions[0].x < 200){
+            *previous_direction = 1;
+            if(positions[0].x > 7 & positions[0].x < 200)
+            {
                 positions[0].x = 0;
             };
             break;
         case 2:
             positions[0].y = positions[0].y + 1;
-            previous_direction = 2;
-            if (positions[0].y > 15 & positions[0].y < 200) {
+            *previous_direction = 2;
+            if(positions[0].y > 15 & positions[0].y < 200)
+            {
                 positions[0].y = 0;
             };
             break;
         case 3:
             positions[0].x = positions[0].x - 1;
-            previous_direction = 3;
-            if (positions[0].x >= 200){
+            *previous_direction = 3;
+            if(positions[0].x >= 200)
+            {
                 positions[0].x = 7;
             };
             break;
     };
-    for (i=0;i<=snakeLength;i++){
-        positions[(snakeLength - i)+1].y = positions[snakeLength-i].y;
-        positions[(snakeLength - i)+1].x = positions[snakeLength-i].x;
+    for(uint8_t i = 0; i <= *snakeLength; i++)
+    {
+        positions[(*snakeLength - i) + 1].y = positions[*snakeLength - i].y;
+        positions[(*snakeLength - i) + 1].x = positions[*snakeLength - i].x;
     }
-    if (positions[0].y == berryY && positions[0].x == berryX){
-        snakeLength = snakeLength + 1;
-        CreateBerry();
+    if(positions[0].y == berry->y && positions[0].x == berry->x)
+    {
+        *snakeLength = *snakeLength + 1;
+        CreateBerry(snakeLength, positions, berry);
     }
-    for (i=4;i<=snakeLength;i++){
-        if (positions[0].y == positions[i].y && positions[0].x == positions[i].x){
-            EndOfGame = 1;
+    for(uint8_t i = 4; i <= *snakeLength; i++)
+    {
+        if(positions[0].y == positions[i].y && positions[0].x == positions[i].x)
+        {
+            *EndOfGame = 1;
         };
     };
-    SnakeGraph();
+    SnakeGraph(snakeLength, positions, berry);
 }
 
-_Bool snake_timer(void){
-    if (game){
+void snake_timer(void)
+{
     moveSnake = 1;
-    }
-    return game;
 }
 
-void inistialize_snake(void) {
+void inistialize_snake(uint8_t *snakeLength, struct position *positions, struct position *berry)
+{
     moveSnake = 0;
-    snakeLength = 3;
-    previous_direction = 3;
-    uint8_t i;
-    for (i=0;i<4;i++){
+    for(uint8_t i = 0; i < 4; i++)
+    {
         positions[i].y = 3;
-        positions[i].x = 4-i;
+        positions[i].x = 4 - i;
     }
     positions[0].y = 3;
     positions[0].x = 3;
-    direction = 1;
-    CreateBerry();
-    game = 1;
+    CreateBerry(snakeLength, positions, berry);
 }
 
-void snake_buttons(void)
+void snake_buttons(uint8_t *direction, uint8_t *previous_direction)
 {
-    if(checkLeft(1)){ snake_button_left(); }
-    if(checkRight(1)){ snake_button_right(); }
-    if(checkUp(1)){ snake_button_up(); }
-    if(checkDown(1)){ snake_button_down(); }
+    if(checkLeft(1))
+    {
+        snake_button_left(direction, previous_direction);
+    }
+    if(checkRight(1))
+    {
+        snake_button_right(direction, previous_direction);
+    }
+    if(checkUp(1))
+    {
+        snake_button_up(direction, previous_direction);
+    }
+    if(checkDown(1))
+    {
+        snake_button_down(direction, previous_direction);
+    }
 }
 
-void snake_main(void){
-    inistialize_snake();
-    snake_screen();
-    uint8_t LastHighScore = readHighScore(1);
-    show_score(LastHighScore);
-    EndOfGame = 0;
-    do{
-        snake_buttons();
-        if (moveSnake == 1)
+void aibuttons(uint8_t *direction, struct position *positions)
+{
+    if(*direction == 3)
+    {
+        if(positions[2].x == positions[1].x + 1 || positions[2].x == positions[1].x - 7)
         {
-            moveSnake = 0;
-            MoveSnakes();
-        };
-    } while(!EndOfGame);
-    writeHighScore(1, LastHighScore, snakeLength);
-    show_score(snakeLength);
+            if(positions[0].y == 15)
+            {
+                *direction = 0;
+            }
+            else if(positions[0].y == 0)
+            {
+                *direction = 2;
+            }
+        }
+    }
+    if(*direction == 0)
+    {
+        if(positions[0].y == 0)
+        {
+            *direction = 3;
+        }
+    }
+    if(*direction == 2)
+    {
+        if(positions[0].y == 15)
+        {
+            *direction = 3;
+        }
+    }
+}
+
+void snake_main(void)
+{
+        uint8_t snakeLength = 3;
+        {
+            _Bool ai = snake_screen();
+            uint8_t LastHighScore = readHighScore(1);
+            show_score(LastHighScore);
+            {
+                uint8_t direction = 1;
+                uint8_t previous_direction = 3;
+                struct position positions[128];
+                struct position berry;
+
+                inistialize_snake(&snakeLength, positions, &berry);
+                _Bool EndOfGame = 0;
+
+                do
+                {
+                    snake_buttons(&direction, &previous_direction);
+                    if(moveSnake == 1)
+                    {
+                        if(ai)
+                        {
+                            aibuttons(&direction, positions);
+                        }
+                        moveSnake = 0;
+                        MoveSnakes(&snakeLength, &EndOfGame, &direction, &previous_direction, positions, &berry);
+                    };
+                }
+                while(!EndOfGame);
+            }
+            writeHighScore(1, LastHighScore, snakeLength);
+        }
+        show_score(snakeLength);
 }

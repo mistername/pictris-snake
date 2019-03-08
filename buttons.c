@@ -3,31 +3,26 @@
 #include <limits.h>     // - for SHRT_MAX
 #include <stdint.h>
 #include "screen.h"
-#include "tetris.h"
-#include "snake.h"
 
 
 volatile int16_t Left_Delay,     Right_Delay,     Rotate_Delay,     Down_Delay;
 volatile bool Rotate_Debounced, Left_Debounced, Right_Debounced, Down_Debounced;
 volatile bool mtxButtons;
 
-void start_button(void){
-    //Left_Debounce    = false;
+void start_button(void)
+{
     Left_Delay       = -1;
     Left_Debounced   = false;
 
-    //Right_Debounce   = false;
     Right_Delay      = -1;
     Right_Debounced  = false;
 
-    //Rotate_Debounce  = false;
     Rotate_Delay     = -1;
     Rotate_Debounced = false;
 
-    //Down_Debounce    = false;
-    //Down_Delay       = -1;
-    Down_Delay = 500;
+    Down_Delay = -1;
     Down_Debounced   = false;
+    
     mtxButtons       = true;
 }
 
@@ -50,7 +45,8 @@ void resumeButtons()
     mtxButtons = true;
 }
 
-bool checkLeft(bool reset){
+bool checkLeft(bool reset)
+{
     if (Left_Debounced)
     {
         Left_Delay = REPETITION_DELAY;
@@ -59,7 +55,8 @@ bool checkLeft(bool reset){
     } else return false;
 }
 
-bool checkRight(bool reset){
+bool checkRight(bool reset)
+{
     if (Right_Debounced)
     {
         Right_Delay = REPETITION_DELAY;
@@ -68,7 +65,8 @@ bool checkRight(bool reset){
     } else return false;
 }
 
-bool checkUp(bool reset){
+bool checkUp(bool reset)
+{
     if (Rotate_Debounced)
     {
         Rotate_Delay = REPETITION_DELAY;
@@ -77,7 +75,8 @@ bool checkUp(bool reset){
     } else return false;
 }
 
-bool checkDown(bool reset){
+bool checkDown(bool reset)
+{
     if (Down_Debounced)
     {
         Down_Delay = REPETITION_DELAY;
@@ -92,10 +91,8 @@ void debounceButton(volatile bool button, volatile int16_t *delay, volatile bool
 {
     if (button == 0) // Button pressed
     {
-        if (*delay < 0)
-            *delay = DEBOUNCE_DELAY;
-        else if ((*delay)-- == 0)
-            *debounced = true;
+        if (*delay < 0){ *delay = DEBOUNCE_DELAY; }
+        else if ((*delay)-- == 0){ *debounced = true; }
     }
     else
     {

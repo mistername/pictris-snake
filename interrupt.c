@@ -1,50 +1,39 @@
-/*
- * File:   interrupt.c
- * Author: ryan
- *
- * Created on 5 februari 2019, 22:14
- */
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdbool.h>
 #include <stdint.h>
 #include "shared_logic.h"
 #include "buttons.h"
 #include "screen.h"
-#include "snake.h"
-#include "tetris.h"
+#include "gamesconfig.h"
 
 volatile bool InterruptComplete;
-volatile unsigned time;
 
+volatile unsigned RemainingWaitTime;
 void waitms(unsigned t)
 {
-    time = t;
-    while(time)
-        continue;		// time is decremented in timer0interrupt
+    RemainingWaitTime = t;
+    while(RemainingWaitTime)
+    {
+        continue; 
+    }                // time is decremented in Interrupt
 }
 
 
-void Interrupt(void) {
+void Interrupt(bool game) 
+{
+    RemainingWaitTime--;             // variable for waitms()
     
-        time--;             // variable for waitms()
-        
-        add_mS(1);
-        if (get_mS() >= 1600)
-        {
-            set_mS(0);
-        }
-        if (get_mS() % 800 == 0 && tetris_timer())
-            ;
-        if(get_mS() % 200 == 0 && snake_timer())
-            ;
-        checkButtons();
-        screen_update();
-        InterruptComplete = true;
+    add_mS(1);
+    if(get_mS() >= LCM_TIME){set_mS(0);}
+    if(game == true && get_mS() % GAME1TIME == 0){GAME1TIMER();}
+    if(game != true && get_mS() % GAME2TIME == 0){GAME2TIMER();}
+    checkButtons();
+    screen_update();
+    InterruptComplete = true;
 }
 
 void waitForInterrupt(void)
 {
     InterruptComplete = false;
-    while (!InterruptComplete)
-        continue;
+    while (!InterruptComplete){ continue; }
 }

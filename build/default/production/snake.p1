@@ -2,42 +2,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8 ./screen.h
 [; ;./screen.h: 8: void set_splashscreen(const uint16_t *newData);
 [v _set_splashscreen `(v ~T0 @X0 0 ef1`*Cus ]
-"71 ./shared_logic.h
-[; ;./shared_logic.h: 71: void waitms(unsigned);
+"49 ./shared_logic.h
+[; ;./shared_logic.h: 49: void waitms(unsigned);
 [v _waitms `(v ~T0 @X0 0 ef1`ui ]
-"38 snake.c
-[; ;snake.c: 38: struct position{
-[s S282 `uc 1 `uc 1 ]
-[n S282 position x y ]
-"26 ./randgen.h
-[; ;./randgen.h: 26: uint8_t rnd_get_num(void);
-[v _rnd_get_num `(uc ~T0 @X0 0 ef ]
-"54 ./shared_logic.h
-[; ;./shared_logic.h: 54: void clearArray(volatile uint16_t *, size_t );
-[v _clearArray `(v ~T0 @X0 0 ef2`*Vus`ui ]
-"7 ./screen.h
-[; ;./screen.h: 7: void set_screen(volatile uint16_t *newData);
-[v _set_screen `(v ~T0 @X0 0 ef1`*Vus ]
-"7 ./buttons.h
-[; ;./buttons.h: 7: _Bool checkLeft(_Bool);
-[v _checkLeft `(a ~T0 @X0 0 ef1`a ]
-"8
+"8 ./buttons.h
 [; ;./buttons.h: 8: _Bool checkRight(_Bool);
 [v _checkRight `(a ~T0 @X0 0 ef1`a ]
-"9
+"7
+[; ;./buttons.h: 7: _Bool checkLeft(_Bool);
+[v _checkLeft `(a ~T0 @X0 0 ef1`a ]
+"4 ./randgen.h
+[; ;./randgen.h: 4: uint16_t rnd_get_num(void);
+[v _rnd_get_num `(us ~T0 @X0 0 ef ]
+"14 snake.c
+[; ;snake.c: 14: {
+[s S281 `uc 1 `uc 1 ]
+[n S281 position x y ]
+"55 ./shared_logic.h
+[; ;./shared_logic.h: 55: void clearArray(volatile uint16_t *, size_t );
+[v _clearArray `(v ~T0 @X0 0 ef2`*Vus`ui ]
+"7 ./screen.h
+[; ;./screen.h: 7: void set_screen(uint16_t *newData);
+[v _set_screen `(v ~T0 @X0 0 ef1`*us ]
+"9 ./buttons.h
 [; ;./buttons.h: 9: _Bool checkUp(_Bool);
 [v _checkUp `(a ~T0 @X0 0 ef1`a ]
 "10
 [; ;./buttons.h: 10: _Bool checkDown(_Bool);
 [v _checkDown `(a ~T0 @X0 0 ef1`a ]
-"64 ./shared_logic.h
-[; ;./shared_logic.h: 64: uint8_t readHighScore(uint8_t );
+"63 ./shared_logic.h
+[; ;./shared_logic.h: 63: uint8_t readHighScore(uint8_t );
 [v _readHighScore `(uc ~T0 @X0 0 ef1`uc ]
 "66
 [; ;./shared_logic.h: 66: void show_score(uint8_t);
 [v _show_score `(v ~T0 @X0 0 ef1`uc ]
-"65
-[; ;./shared_logic.h: 65: void writeHighScore(uint8_t , uint8_t , uint8_t );
+"64
+[; ;./shared_logic.h: 64: void writeHighScore(uint8_t , uint8_t , uint8_t );
 [v _writeHighScore `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
@@ -453,25 +453,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 snake.c
-[; ;snake.c: 10: volatile _Bool game = 0;
-[v _game `Va ~T0 @X0 1 e ]
-[i _game
--> -> 0 `i `a
-]
-"12
-[; ;snake.c: 12: volatile uint16_t ObjectData[8];
-[v _ObjectData `Vus ~T0 @X0 -> 8 `i e ]
-"13
-[; ;snake.c: 13: volatile uint16_t BackgroundData[8];
-[v _BackgroundData `Vus ~T0 @X0 -> 8 `i e ]
-"15
-[; ;snake.c: 15: volatile _Bool EndOfGame;
-[v _EndOfGame `Va ~T0 @X0 1 e ]
-"17
-[; ;snake.c: 17: const uint16_t SNAKE[] =
-[v _SNAKE `Cus ~T0 @X0 -> 8 `i e ]
-[i _SNAKE
+"19 snake.c
+[; ;snake.c: 19: volatile _Bool moveSnake;
+[v _moveSnake `Va ~T0 @X0 1 e ]
+"21
+[; ;snake.c: 21: _Bool snake_screen(void)
+[v _snake_screen `(a ~T0 @X0 1 ef ]
+"22
+[; ;snake.c: 22: {
+{
+[e :U _snake_screen ]
+[f ]
+"23
+[; ;snake.c: 23:     const uint16_t SNAKE[] = {
+[v F2668 `Cus ~T0 @X0 -> 8 `i s SNAKE ]
+[i F2668
 :U ..
 -> -> 64407 `ui `us
 -> -> 43349 `ui `us
@@ -483,26 +479,292 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `us
 ..
 ]
-"29
-[; ;snake.c: 29: void snake_screen(void){
-[v _snake_screen `(v ~T0 @X0 1 ef ]
-{
-[e :U _snake_screen ]
-[f ]
-"30
-[; ;snake.c: 30:     set_splashscreen(SNAKE);
-[e ( _set_splashscreen (1 &U _SNAKE ]
-"31
-[; ;snake.c: 31:     waitms(3500);
+"33
+[; ;snake.c: 33:     set_splashscreen(SNAKE);
+[e ( _set_splashscreen (1 &U F2668 ]
+"34
+[; ;snake.c: 34:     waitms(3500);
 [e ( _waitms (1 -> -> 3500 `i `ui ]
-"32
-[; ;snake.c: 32: }
-[e :UE 281 ]
-}
 "35
-[; ;snake.c: 35: const uint16_t SnakeYtext[] = {0x001,0x0002 ,0x0004 ,0x0008 ,0x0010 ,0x0020 ,0x0040 ,0x0080 ,0x0100 ,0x0200 ,0x0400 ,0x0800 ,0x1000 ,0x2000 ,0x4000 ,0x8000 };
-[v _SnakeYtext `Cus ~T0 @X0 -> 16 `i e ]
-[i _SnakeYtext
+[; ;snake.c: 35:     if(checkRight(0) && checkLeft(0))
+[e $ ! && != -> ( _checkRight (1 -> -> 0 `i `a `i -> 0 `i != -> ( _checkLeft (1 -> -> 0 `i `a `i -> 0 `i 283  ]
+"36
+[; ;snake.c: 36:     {
+{
+"37
+[; ;snake.c: 37:         return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 282  ]
+"38
+[; ;snake.c: 38:     }
+}
+[e :U 283 ]
+"39
+[; ;snake.c: 39:     return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 282  ]
+"40
+[; ;snake.c: 40: }
+[e :UE 282 ]
+}
+"42
+[; ;snake.c: 42: void snake_button_left(uint8_t *direction, uint8_t *previous_direction)
+[v _snake_button_left `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"43
+[; ;snake.c: 43: {
+{
+[e :U _snake_button_left ]
+"42
+[; ;snake.c: 42: void snake_button_left(uint8_t *direction, uint8_t *previous_direction)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _previous_direction `*uc ~T0 @X0 1 r2 ]
+"43
+[; ;snake.c: 43: {
+[f ]
+"44
+[; ;snake.c: 44:     if(*previous_direction != 1)
+[e $ ! != -> *U _previous_direction `i -> 1 `i 285  ]
+"45
+[; ;snake.c: 45:     {
+{
+"46
+[; ;snake.c: 46:         *direction = 3;
+[e = *U _direction -> -> 3 `i `uc ]
+"47
+[; ;snake.c: 47:     }
+}
+[e :U 285 ]
+"48
+[; ;snake.c: 48: }
+[e :UE 284 ]
+}
+"50
+[; ;snake.c: 50: void snake_button_up(uint8_t *direction, uint8_t *previous_direction)
+[v _snake_button_up `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"51
+[; ;snake.c: 51: {
+{
+[e :U _snake_button_up ]
+"50
+[; ;snake.c: 50: void snake_button_up(uint8_t *direction, uint8_t *previous_direction)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _previous_direction `*uc ~T0 @X0 1 r2 ]
+"51
+[; ;snake.c: 51: {
+[f ]
+"52
+[; ;snake.c: 52:     if(*previous_direction != 2)
+[e $ ! != -> *U _previous_direction `i -> 2 `i 287  ]
+"53
+[; ;snake.c: 53:     {
+{
+"54
+[; ;snake.c: 54:         *direction = 0;
+[e = *U _direction -> -> 0 `i `uc ]
+"55
+[; ;snake.c: 55:     }
+}
+[e :U 287 ]
+"56
+[; ;snake.c: 56: }
+[e :UE 286 ]
+}
+"58
+[; ;snake.c: 58: void snake_button_right(uint8_t *direction, uint8_t *previous_direction)
+[v _snake_button_right `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"59
+[; ;snake.c: 59: {
+{
+[e :U _snake_button_right ]
+"58
+[; ;snake.c: 58: void snake_button_right(uint8_t *direction, uint8_t *previous_direction)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _previous_direction `*uc ~T0 @X0 1 r2 ]
+"59
+[; ;snake.c: 59: {
+[f ]
+"60
+[; ;snake.c: 60:     if(*previous_direction != 3)
+[e $ ! != -> *U _previous_direction `i -> 3 `i 289  ]
+"61
+[; ;snake.c: 61:     {
+{
+"62
+[; ;snake.c: 62:         *direction = 1;
+[e = *U _direction -> -> 1 `i `uc ]
+"63
+[; ;snake.c: 63:     }
+}
+[e :U 289 ]
+"64
+[; ;snake.c: 64: }
+[e :UE 288 ]
+}
+"66
+[; ;snake.c: 66: void snake_button_down(uint8_t *direction, uint8_t *previous_direction)
+[v _snake_button_down `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"67
+[; ;snake.c: 67: {
+{
+[e :U _snake_button_down ]
+"66
+[; ;snake.c: 66: void snake_button_down(uint8_t *direction, uint8_t *previous_direction)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _previous_direction `*uc ~T0 @X0 1 r2 ]
+"67
+[; ;snake.c: 67: {
+[f ]
+"68
+[; ;snake.c: 68:     if(*previous_direction != 0)
+[e $ ! != -> *U _previous_direction `i -> 0 `i 291  ]
+"69
+[; ;snake.c: 69:     {
+{
+"70
+[; ;snake.c: 70:         *direction = 2;
+[e = *U _direction -> -> 2 `i `uc ]
+"71
+[; ;snake.c: 71:     };
+}
+[e :U 291 ]
+"72
+[; ;snake.c: 72: }
+[e :UE 290 ]
+}
+"74
+[; ;snake.c: 74: uint8_t genBerry(uint8_t size)
+[v _genBerry `(uc ~T0 @X0 1 ef1`uc ]
+"75
+[; ;snake.c: 75: {
+{
+[e :U _genBerry ]
+"74
+[; ;snake.c: 74: uint8_t genBerry(uint8_t size)
+[v _size `uc ~T0 @X0 1 r1 ]
+"75
+[; ;snake.c: 75: {
+[f ]
+"76
+[; ;snake.c: 76:     uint8_t temp;
+[v _temp `uc ~T0 @X0 1 a ]
+"77
+[; ;snake.c: 77:     temp = rnd_get_num();
+[e = _temp -> ( _rnd_get_num ..  `uc ]
+"78
+[; ;snake.c: 78:     temp = temp % size;
+[e = _temp -> % -> _temp `i -> _size `i `uc ]
+"79
+[; ;snake.c: 79:     return temp;
+[e ) _temp ]
+[e $UE 292  ]
+"80
+[; ;snake.c: 80: }
+[e :UE 292 ]
+}
+"82
+[; ;snake.c: 82: void CreateBerry(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _CreateBerry `(v ~T0 @X0 1 ef3`*uc`*S281`*S281 ]
+"83
+[; ;snake.c: 83: {
+{
+[e :U _CreateBerry ]
+"82
+[; ;snake.c: 82: void CreateBerry(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _snakeLength `*uc ~T0 @X0 1 r1 ]
+[v _positions `*S281 ~T0 @X0 1 r2 ]
+[v _berry `*S281 ~T0 @X0 1 r3 ]
+"83
+[; ;snake.c: 83: {
+[f ]
+"84
+[; ;snake.c: 84:     _Bool randomGood;
+[v _randomGood `a ~T0 @X0 1 a ]
+"85
+[; ;snake.c: 85:     randomGood = 1;
+[e = _randomGood -> -> 1 `i `a ]
+"86
+[; ;snake.c: 86:     do
+[e :U 296 ]
+"87
+[; ;snake.c: 87:     {
+{
+"88
+[; ;snake.c: 88:         randomGood = 0;
+[e = _randomGood -> -> 0 `i `a ]
+"89
+[; ;snake.c: 89:         berry->x = genBerry(8);
+[e = . *U _berry 0 ( _genBerry (1 -> -> 8 `i `uc ]
+"90
+[; ;snake.c: 90:         berry->y = genBerry(16);
+[e = . *U _berry 1 ( _genBerry (1 -> -> 16 `i `uc ]
+"91
+[; ;snake.c: 91:         for(uint8_t i = 0; i < *snakeLength; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 300  ]
+[e :U 297 ]
+"92
+[; ;snake.c: 92:         {
+{
+"93
+[; ;snake.c: 93:             if(berry->x == positions[i].x && berry->y == positions[i].y)
+[e $ ! && == -> . *U _berry 0 `i -> . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 0 `i == -> . *U _berry 1 `i -> . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 1 `i 301  ]
+"94
+[; ;snake.c: 94:             {
+{
+"95
+[; ;snake.c: 95:                 randomGood = 1;
+[e = _randomGood -> -> 1 `i `a ]
+"96
+[; ;snake.c: 96:             }
+}
+[e :U 301 ]
+"97
+[; ;snake.c: 97:         }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 300 ]
+[e $ < -> _i `i -> *U _snakeLength `i 297  ]
+[e :U 298 ]
+}
+"98
+[; ;snake.c: 98:     }
+}
+[e $ == -> _randomGood `i -> 1 `i 296  ]
+[e :U 295 ]
+"100
+[; ;snake.c: 100: }
+[e :UE 293 ]
+}
+"102
+[; ;snake.c: 102: void SnakeGraph(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _SnakeGraph `(v ~T0 @X0 1 ef3`*uc`*S281`*S281 ]
+"103
+[; ;snake.c: 103: {
+{
+[e :U _SnakeGraph ]
+"102
+[; ;snake.c: 102: void SnakeGraph(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _snakeLength `*uc ~T0 @X0 1 r1 ]
+[v _positions `*S281 ~T0 @X0 1 r2 ]
+[v _berry `*S281 ~T0 @X0 1 r3 ]
+"103
+[; ;snake.c: 103: {
+[f ]
+"104
+[; ;snake.c: 104:     uint16_t ObjectData[8];
+[v _ObjectData `us ~T0 @X0 -> 8 `i a ]
+"105
+[; ;snake.c: 105:     clearArray(ObjectData, 8);
+[e ( _clearArray (2 , -> &U _ObjectData `*Vus -> -> 8 `i `ui ]
+"106
+[; ;snake.c: 106:     {
+{
+"108
+[; ;snake.c: 108:         const uint16_t SnakeYtext[] = {0x001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
+[v F2695 `Cus ~T0 @X0 -> 16 `i s SnakeYtext ]
+[i F2695
 :U ..
 -> -> 1 `i `us
 -> -> 2 `i `us
@@ -522,620 +784,643 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 32768 `ui `us
 ..
 ]
-"42
-[; ;snake.c: 42: uint8_t direction;
-[v _direction `uc ~T0 @X0 1 e ]
-"43
-[; ;snake.c: 43: volatile _Bool moveSnake;
-[v _moveSnake `Va ~T0 @X0 1 e ]
-"44
-[; ;snake.c: 44: struct position positions[128];
-[v _positions `S282 ~T0 @X0 -> 128 `i e ]
-"45
-[; ;snake.c: 45: uint8_t snakeLength;
-[v _snakeLength `uc ~T0 @X0 1 e ]
-"47
-[; ;snake.c: 47: uint8_t berryX;
-[v _berryX `uc ~T0 @X0 1 e ]
-"48
-[; ;snake.c: 48: uint8_t berryY;
-[v _berryY `uc ~T0 @X0 1 e ]
-"49
-[; ;snake.c: 49: uint8_t previous_direction;
-[v _previous_direction `uc ~T0 @X0 1 e ]
-"50
-[; ;snake.c: 50: volatile _Bool EndOfGame;
-[v _EndOfGame `Va ~T0 @X0 1 e ]
-"52
-[; ;snake.c: 52: void snake_button_left(void){if (previous_direction != 1){ direction = 3 ;}}
-[v _snake_button_left `(v ~T0 @X0 1 ef ]
-{
-[e :U _snake_button_left ]
-[f ]
-[e $ ! != -> _previous_direction `i -> 1 `i 284  ]
-{
-[e = _direction -> -> 3 `i `uc ]
-}
-[e :U 284 ]
-[e :UE 283 ]
-}
-"53
-[; ;snake.c: 53: void snake_button_up(void){if (previous_direction != 2){ direction = 0 ;}}
-[v _snake_button_up `(v ~T0 @X0 1 ef ]
-{
-[e :U _snake_button_up ]
-[f ]
-[e $ ! != -> _previous_direction `i -> 2 `i 286  ]
-{
-[e = _direction -> -> 0 `i `uc ]
-}
-[e :U 286 ]
-[e :UE 285 ]
-}
-"54
-[; ;snake.c: 54: void snake_button_right(void){if (previous_direction != 3){ direction = 1 ;}}
-[v _snake_button_right `(v ~T0 @X0 1 ef ]
-{
-[e :U _snake_button_right ]
-[f ]
-[e $ ! != -> _previous_direction `i -> 3 `i 288  ]
-{
-[e = _direction -> -> 1 `i `uc ]
-}
-[e :U 288 ]
-[e :UE 287 ]
-}
-"55
-[; ;snake.c: 55: void snake_button_down(void){if (previous_direction != 0){ direction = 2 ;};}
-[v _snake_button_down `(v ~T0 @X0 1 ef ]
-{
-[e :U _snake_button_down ]
-[f ]
-[e $ ! != -> _previous_direction `i -> 0 `i 290  ]
-{
-[e = _direction -> -> 2 `i `uc ]
-}
-[e :U 290 ]
-[e :UE 289 ]
-}
-"57
-[; ;snake.c: 57: uint8_t genBerry(uint8_t size)
-[v _genBerry `(uc ~T0 @X0 1 ef1`uc ]
-"58
-[; ;snake.c: 58: {
-{
-[e :U _genBerry ]
-"57
-[; ;snake.c: 57: uint8_t genBerry(uint8_t size)
-[v _size `uc ~T0 @X0 1 r1 ]
-"58
-[; ;snake.c: 58: {
-[f ]
-"59
-[; ;snake.c: 59:     uint8_t temp;
-[v _temp `uc ~T0 @X0 1 a ]
-"60
-[; ;snake.c: 60:     temp = rnd_get_num();
-[e = _temp ( _rnd_get_num ..  ]
-"61
-[; ;snake.c: 61:     temp = temp % size;
-[e = _temp -> % -> _temp `i -> _size `i `uc ]
-"62
-[; ;snake.c: 62:     return temp;
-[e ) _temp ]
-[e $UE 291  ]
-"63
-[; ;snake.c: 63: }
-[e :UE 291 ]
-}
-"64
-[; ;snake.c: 64: void CreateBerry(void)
-[v _CreateBerry `(v ~T0 @X0 1 ef ]
-"65
-[; ;snake.c: 65: {
-{
-[e :U _CreateBerry ]
-[f ]
-"66
-[; ;snake.c: 66:     _Bool randomGood;
-[v _randomGood `a ~T0 @X0 1 a ]
-"67
-[; ;snake.c: 67:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"68
-[; ;snake.c: 68:     randomGood = 1;
-[e = _randomGood -> -> 1 `i `a ]
-"69
-[; ;snake.c: 69:     do
-[e :U 295 ]
-"70
-[; ;snake.c: 70:     {
-{
-"71
-[; ;snake.c: 71:         randomGood = 0;
-[e = _randomGood -> -> 0 `i `a ]
-"72
-[; ;snake.c: 72:         berryX = genBerry(8);
-[e = _berryX ( _genBerry (1 -> -> 8 `i `uc ]
-"73
-[; ;snake.c: 73:         berryY = genBerry(16);
-[e = _berryY ( _genBerry (1 -> -> 16 `i `uc ]
-"74
-[; ;snake.c: 74:         for(i=0;i<snakeLength;i++)
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 299  ]
-[e :U 296 ]
-"75
-[; ;snake.c: 75:         {
-{
-"76
-[; ;snake.c: 76:             if (berryX == positions[i].x && berryY == positions[i].y)
-[e $ ! && == -> _berryX `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 `i == -> _berryY `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `i 300  ]
-"77
-[; ;snake.c: 77:             {
-{
-"78
-[; ;snake.c: 78:                 randomGood = 1;
-[e = _randomGood -> -> 1 `i `a ]
-"79
-[; ;snake.c: 79:             }
-}
-[e :U 300 ]
-"80
-[; ;snake.c: 80:         }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 299 ]
-[e $ < -> _i `i -> _snakeLength `i 296  ]
-[e :U 297 ]
-}
-"81
-[; ;snake.c: 81:     } while (randomGood == 1);
-}
-[e $ == -> _randomGood `i -> 1 `i 295  ]
-[e :U 294 ]
-"82
-[; ;snake.c: 82: }
-[e :UE 292 ]
-}
-"84
-[; ;snake.c: 84: void SnakeGraph(void)
-[v _SnakeGraph `(v ~T0 @X0 1 ef ]
-"85
-[; ;snake.c: 85: {
-{
-[e :U _SnakeGraph ]
-[f ]
-"86
-[; ;snake.c: 86:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"87
-[; ;snake.c: 87:     uint8_t j;
-[v _j `uc ~T0 @X0 1 a ]
-"88
-[; ;snake.c: 88:     clearArray(ObjectData, 8);
-[e ( _clearArray (2 , &U _ObjectData -> -> 8 `i `ui ]
-"89
-[; ;snake.c: 89:     for(i=0;i<=snakeLength;i++){
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 305  ]
-[e :U 302 ]
-{
-"90
-[; ;snake.c: 90:         j = positions[i].x;
-[e = _j . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 ]
-"91
-[; ;snake.c: 91:         ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
-[e = *U + &U _ObjectData * -> _j `ux -> -> # *U &U _ObjectData `ui `ux -> | -> *U + &U _SnakeYtext * -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `ux -> -> # *U &U _SnakeYtext `ui `ux `ui -> *U + &U _ObjectData * -> _j `ux -> -> # *U &U _ObjectData `ui `ux `ui `us ]
-"92
-[; ;snake.c: 92:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 305 ]
-[e $ <= -> _i `i -> _snakeLength `i 302  ]
-[e :U 303 ]
-}
-"93
-[; ;snake.c: 93:     for(i=0;i<8;i++){
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 306  ]
-[e $U 307  ]
-[e :U 306 ]
-{
-"94
-[; ;snake.c: 94:         if (berryX == i){
-[e $ ! == -> _berryX `i -> _i `i 309  ]
-{
-"95
-[; ;snake.c: 95:             ObjectData[i] = SnakeYtext[berryY] | ObjectData[i];
-[e = *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux -> | -> *U + &U _SnakeYtext * -> _berryY `ux -> -> # *U &U _SnakeYtext `ui `ux `ui -> *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux `ui `us ]
-"96
-[; ;snake.c: 96:         }
-}
-[e :U 309 ]
-"97
-[; ;snake.c: 97:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 306  ]
-[e :U 307 ]
-}
-"98
-[; ;snake.c: 98:     set_screen(ObjectData);
-[e ( _set_screen (1 &U _ObjectData ]
-"99
-[; ;snake.c: 99: }
-[e :UE 301 ]
-}
-"101
-[; ;snake.c: 101: void MoveSnakes()
-[v _MoveSnakes `(v ~T0 @X0 1 ef ]
-"102
-[; ;snake.c: 102: {
-{
-[e :U _MoveSnakes ]
-[f ]
-"103
-[; ;snake.c: 103:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"104
-[; ;snake.c: 104:     switch (direction){
-[e $U 312  ]
-{
-"105
-[; ;snake.c: 105:         case 0:
-[e :U 313 ]
-"106
-[; ;snake.c: 106:             positions[0].y = positions[0].y - 1;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> - -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 1 `i `uc ]
-"107
-[; ;snake.c: 107:             previous_direction = 0;
-[e = _previous_direction -> -> 0 `i `uc ]
-"108
-[; ;snake.c: 108:             if (positions[0].y >= 200){
-[e $ ! >= -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 200 `i 314  ]
-{
 "109
-[; ;snake.c: 109:                 positions[0].y = 15;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 15 `i `uc ]
+[; ;snake.c: 109:         for(uint8_t i = 0; i <= *snakeLength; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 306  ]
+[e :U 303 ]
 "110
-[; ;snake.c: 110:             };
-}
-[e :U 314 ]
+[; ;snake.c: 110:         {
+{
 "111
-[; ;snake.c: 111:             break;
-[e $U 311  ]
+[; ;snake.c: 111:             uint8_t j = positions[i].x;
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 0 ]
 "112
-[; ;snake.c: 112:         case 1:
-[e :U 315 ]
+[; ;snake.c: 112:             ObjectData[j] = (SnakeYtext[positions[i].y] | ObjectData[j]);
+[e = *U + &U _ObjectData * -> _j `ux -> -> # *U &U _ObjectData `ui `ux -> | -> *U + &U F2695 * -> . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 1 `ux -> -> # *U &U F2695 `ui `ux `ui -> *U + &U _ObjectData * -> _j `ux -> -> # *U &U _ObjectData `ui `ux `ui `us ]
 "113
-[; ;snake.c: 113:             positions[0].x = positions[0].x + 1;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> + -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 1 `i `uc ]
+[; ;snake.c: 113:         }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 306 ]
+[e $ <= -> _i `i -> *U _snakeLength `i 303  ]
+[e :U 304 ]
+}
 "114
-[; ;snake.c: 114:             previous_direction = 1;
-[e = _previous_direction -> -> 1 `i `uc ]
+[; ;snake.c: 114:         for(uint8_t i = 0; i < 8; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 307  ]
+[e $U 308  ]
+[e :U 307 ]
 "115
-[; ;snake.c: 115:             if (positions[0].x > 7 & positions[0].x < 200){
-[e $ ! & > -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 7 `i < -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 200 `i 316  ]
+[; ;snake.c: 115:         {
 {
 "116
-[; ;snake.c: 116:                 positions[0].x = 0;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 0 `i `uc ]
+[; ;snake.c: 116:             if(berry->x == i)
+[e $ ! == -> . *U _berry 0 `i -> _i `i 310  ]
 "117
-[; ;snake.c: 117:             };
-}
-[e :U 316 ]
+[; ;snake.c: 117:             {
+{
 "118
-[; ;snake.c: 118:             break;
-[e $U 311  ]
+[; ;snake.c: 118:                 ObjectData[i] = SnakeYtext[berry->y] | ObjectData[i];
+[e = *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux -> | -> *U + &U F2695 * -> . *U _berry 1 `ux -> -> # *U &U F2695 `ui `ux `ui -> *U + &U _ObjectData * -> _i `ux -> -> # *U &U _ObjectData `ui `ux `ui `us ]
 "119
-[; ;snake.c: 119:         case 2:
-[e :U 317 ]
+[; ;snake.c: 119:             }
+}
+[e :U 310 ]
 "120
-[; ;snake.c: 120:             positions[0].y = positions[0].y + 1;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> + -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 1 `i `uc ]
+[; ;snake.c: 120:         }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 307  ]
+[e :U 308 ]
+}
 "121
-[; ;snake.c: 121:             previous_direction = 2;
-[e = _previous_direction -> -> 2 `i `uc ]
+[; ;snake.c: 121:     }
+}
 "122
-[; ;snake.c: 122:             if (positions[0].y > 15 & positions[0].y < 200) {
-[e $ ! & > -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 15 `i < -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> 200 `i 318  ]
-{
+[; ;snake.c: 122:     set_screen(ObjectData);
+[e ( _set_screen (1 &U _ObjectData ]
 "123
-[; ;snake.c: 123:                 positions[0].y = 0;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 0 `i `uc ]
-"124
-[; ;snake.c: 124:             };
+[; ;snake.c: 123: }
+[e :UE 302 ]
 }
-[e :U 318 ]
 "125
-[; ;snake.c: 125:             break;
-[e $U 311  ]
+[; ;snake.c: 125: void MoveSnakes(uint8_t *snakeLength, _Bool *EndOfGame, uint8_t *direction, uint8_t *previous_direction, struct position *positions, struct position *berry)
+[v _MoveSnakes `(v ~T0 @X0 1 ef6`*uc`*a`*uc`*uc`*S281`*S281 ]
 "126
-[; ;snake.c: 126:         case 3:
-[e :U 319 ]
+[; ;snake.c: 126: {
+{
+[e :U _MoveSnakes ]
+"125
+[; ;snake.c: 125: void MoveSnakes(uint8_t *snakeLength, _Bool *EndOfGame, uint8_t *direction, uint8_t *previous_direction, struct position *positions, struct position *berry)
+[v _snakeLength `*uc ~T0 @X0 1 r1 ]
+[v _EndOfGame `*a ~T0 @X0 1 r2 ]
+[v _direction `*uc ~T0 @X0 1 r3 ]
+[v _previous_direction `*uc ~T0 @X0 1 r4 ]
+[v _positions `*S281 ~T0 @X0 1 r5 ]
+[v _berry `*S281 ~T0 @X0 1 r6 ]
+"126
+[; ;snake.c: 126: {
+[f ]
 "127
-[; ;snake.c: 127:             positions[0].x = positions[0].x - 1;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> - -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 1 `i `uc ]
+[; ;snake.c: 127:     switch(*direction)
+[e $U 313  ]
 "128
-[; ;snake.c: 128:             previous_direction = 3;
-[e = _previous_direction -> -> 3 `i `uc ]
+[; ;snake.c: 128:     {
+{
 "129
-[; ;snake.c: 129:             if (positions[0].x >= 200){
-[e $ ! >= -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> 200 `i 320  ]
-{
+[; ;snake.c: 129:         case 0:
+[e :U 314 ]
 "130
-[; ;snake.c: 130:                 positions[0].x = 7;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 7 `i `uc ]
+[; ;snake.c: 130:             positions[0].y = positions[0].y - 1;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 -> - -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 1 `i `uc ]
 "131
-[; ;snake.c: 131:             };
-}
-[e :U 320 ]
+[; ;snake.c: 131:             *previous_direction = 0;
+[e = *U _previous_direction -> -> 0 `i `uc ]
 "132
-[; ;snake.c: 132:             break;
-[e $U 311  ]
+[; ;snake.c: 132:             if(positions[0].y >= 200)
+[e $ ! >= -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 200 `i 315  ]
 "133
-[; ;snake.c: 133:     };
-}
-[e $U 311  ]
-[e :U 312 ]
-[e [\ -> _direction `i , $ -> 0 `i 313
- , $ -> 1 `i 315
- , $ -> 2 `i 317
- , $ -> 3 `i 319
- 311 ]
-[e :U 311 ]
+[; ;snake.c: 133:             {
+{
 "134
-[; ;snake.c: 134:     for (i=0;i<=snakeLength;i++){
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 324  ]
-[e :U 321 ]
-{
+[; ;snake.c: 134:                 positions[0].y = 15;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 -> -> 15 `i `uc ]
 "135
-[; ;snake.c: 135:         positions[(snakeLength - i)+1].y = positions[snakeLength-i].y;
-[e = . *U + &U _positions * -> -> + - -> _snakeLength `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 . *U + &U _positions * -> -> - -> _snakeLength `i -> _i `i `ui `ux -> -> # *U &U _positions `ui `ux 1 ]
+[; ;snake.c: 135:             };
+}
+[e :U 315 ]
 "136
-[; ;snake.c: 136:         positions[(snakeLength - i)+1].x = positions[snakeLength-i].x;
-[e = . *U + &U _positions * -> -> + - -> _snakeLength `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 . *U + &U _positions * -> -> - -> _snakeLength `i -> _i `i `ui `ux -> -> # *U &U _positions `ui `ux 0 ]
+[; ;snake.c: 136:             break;
+[e $U 312  ]
 "137
-[; ;snake.c: 137:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 324 ]
-[e $ <= -> _i `i -> _snakeLength `i 321  ]
-[e :U 322 ]
-}
+[; ;snake.c: 137:         case 1:
+[e :U 316 ]
 "138
-[; ;snake.c: 138:     if (positions[0].y == berryY && positions[0].x == berryX){
-[e $ ! && == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> _berryY `i == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> _berryX `i 325  ]
-{
+[; ;snake.c: 138:             positions[0].x = positions[0].x + 1;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 -> + -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> 1 `i `uc ]
 "139
-[; ;snake.c: 139:         snakeLength = snakeLength + 1;
-[e = _snakeLength -> + -> _snakeLength `i -> 1 `i `uc ]
+[; ;snake.c: 139:             *previous_direction = 1;
+[e = *U _previous_direction -> -> 1 `i `uc ]
 "140
-[; ;snake.c: 140:         CreateBerry();
-[e ( _CreateBerry ..  ]
+[; ;snake.c: 140:             if(positions[0].x > 7 & positions[0].x < 200)
+[e $ ! & > -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> 7 `i < -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> 200 `i 317  ]
 "141
-[; ;snake.c: 141:     }
-}
-[e :U 325 ]
+[; ;snake.c: 141:             {
+{
 "142
-[; ;snake.c: 142:     for (i=4;i<=snakeLength;i++){
-{
-[e = _i -> -> 4 `i `uc ]
-[e $U 329  ]
-[e :U 326 ]
-{
+[; ;snake.c: 142:                 positions[0].x = 0;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 -> -> 0 `i `uc ]
 "143
-[; ;snake.c: 143:         if (positions[0].y == positions[i].y && positions[0].x == positions[i].x){
-[e $ ! && == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 `i == -> . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 `i -> . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 `i 330  ]
-{
-"144
-[; ;snake.c: 144:             EndOfGame = 1;
-[e = _EndOfGame -> -> 1 `i `a ]
-"145
-[; ;snake.c: 145:         };
+[; ;snake.c: 143:             };
 }
-[e :U 330 ]
+[e :U 317 ]
+"144
+[; ;snake.c: 144:             break;
+[e $U 312  ]
+"145
+[; ;snake.c: 145:         case 2:
+[e :U 318 ]
 "146
-[; ;snake.c: 146:     };
+[; ;snake.c: 146:             positions[0].y = positions[0].y + 1;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 -> + -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 1 `i `uc ]
+"147
+[; ;snake.c: 147:             *previous_direction = 2;
+[e = *U _previous_direction -> -> 2 `i `uc ]
+"148
+[; ;snake.c: 148:             if(positions[0].y > 15 & positions[0].y < 200)
+[e $ ! & > -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 15 `i < -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 200 `i 319  ]
+"149
+[; ;snake.c: 149:             {
+{
+"150
+[; ;snake.c: 150:                 positions[0].y = 0;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 -> -> 0 `i `uc ]
+"151
+[; ;snake.c: 151:             };
+}
+[e :U 319 ]
+"152
+[; ;snake.c: 152:             break;
+[e $U 312  ]
+"153
+[; ;snake.c: 153:         case 3:
+[e :U 320 ]
+"154
+[; ;snake.c: 154:             positions[0].x = positions[0].x - 1;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 -> - -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> 1 `i `uc ]
+"155
+[; ;snake.c: 155:             *previous_direction = 3;
+[e = *U _previous_direction -> -> 3 `i `uc ]
+"156
+[; ;snake.c: 156:             if(positions[0].x >= 200)
+[e $ ! >= -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> 200 `i 321  ]
+"157
+[; ;snake.c: 157:             {
+{
+"158
+[; ;snake.c: 158:                 positions[0].x = 7;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 -> -> 7 `i `uc ]
+"159
+[; ;snake.c: 159:             };
+}
+[e :U 321 ]
+"160
+[; ;snake.c: 160:             break;
+[e $U 312  ]
+"161
+[; ;snake.c: 161:     };
+}
+[e $U 312  ]
+[e :U 313 ]
+[e [\ -> *U _direction `i , $ -> 0 `i 314
+ , $ -> 1 `i 316
+ , $ -> 2 `i 318
+ , $ -> 3 `i 320
+ 312 ]
+[e :U 312 ]
+"162
+[; ;snake.c: 162:     for(uint8_t i = 0; i <= *snakeLength; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 325  ]
+[e :U 322 ]
+"163
+[; ;snake.c: 163:     {
+{
+"164
+[; ;snake.c: 164:         positions[(*snakeLength - i) + 1].y = positions[*snakeLength - i].y;
+[e = . *U + _positions * -> + - -> *U _snakeLength `i -> _i `i -> 1 `i `x -> -> # *U _positions `i `x 1 . *U + _positions * -> - -> *U _snakeLength `i -> _i `i `x -> -> # *U _positions `i `x 1 ]
+"165
+[; ;snake.c: 165:         positions[(*snakeLength - i) + 1].x = positions[*snakeLength - i].x;
+[e = . *U + _positions * -> + - -> *U _snakeLength `i -> _i `i -> 1 `i `x -> -> # *U _positions `i `x 0 . *U + _positions * -> - -> *U _snakeLength `i -> _i `i `x -> -> # *U _positions `i `x 0 ]
+"166
+[; ;snake.c: 166:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 329 ]
-[e $ <= -> _i `i -> _snakeLength `i 326  ]
+[e :U 325 ]
+[e $ <= -> _i `i -> *U _snakeLength `i 322  ]
+[e :U 323 ]
+}
+"167
+[; ;snake.c: 167:     if(positions[0].y == berry->y && positions[0].x == berry->x)
+[e $ ! && == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> . *U _berry 1 `i == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> . *U _berry 0 `i 326  ]
+"168
+[; ;snake.c: 168:     {
+{
+"169
+[; ;snake.c: 169:         *snakeLength = *snakeLength + 1;
+[e = *U _snakeLength -> + -> *U _snakeLength `i -> 1 `i `uc ]
+"170
+[; ;snake.c: 170:         CreateBerry(snakeLength, positions, berry);
+[e ( _CreateBerry (3 , , _snakeLength _positions _berry ]
+"171
+[; ;snake.c: 171:     }
+}
+[e :U 326 ]
+"172
+[; ;snake.c: 172:     for(uint8_t i = 4; i <= *snakeLength; i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 4 `i `uc ]
+[e $U 330  ]
 [e :U 327 ]
+"173
+[; ;snake.c: 173:     {
+{
+"174
+[; ;snake.c: 174:         if(positions[0].y == positions[i].y && positions[0].x == positions[i].x)
+[e $ ! && == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 1 `i == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 `i -> . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 0 `i 331  ]
+"175
+[; ;snake.c: 175:         {
+{
+"176
+[; ;snake.c: 176:             *EndOfGame = 1;
+[e = *U _EndOfGame -> -> 1 `i `a ]
+"177
+[; ;snake.c: 177:         };
 }
-"147
-[; ;snake.c: 147:     SnakeGraph();
-[e ( _SnakeGraph ..  ]
-"148
-[; ;snake.c: 148: }
-[e :UE 310 ]
+[e :U 331 ]
+"178
+[; ;snake.c: 178:     };
 }
-"150
-[; ;snake.c: 150: _Bool snake_timer(void){
-[v _snake_timer `(a ~T0 @X0 1 ef ]
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 330 ]
+[e $ <= -> _i `i -> *U _snakeLength `i 327  ]
+[e :U 328 ]
+}
+"179
+[; ;snake.c: 179:     SnakeGraph(snakeLength, positions, berry);
+[e ( _SnakeGraph (3 , , _snakeLength _positions _berry ]
+"180
+[; ;snake.c: 180: }
+[e :UE 311 ]
+}
+"182
+[; ;snake.c: 182: void snake_timer(void)
+[v _snake_timer `(v ~T0 @X0 1 ef ]
+"183
+[; ;snake.c: 183: {
 {
 [e :U _snake_timer ]
 [f ]
-"151
-[; ;snake.c: 151:     if (game){
-[e $ ! != -> _game `i -> 0 `i 332  ]
-{
-"152
-[; ;snake.c: 152:     moveSnake = 1;
+"184
+[; ;snake.c: 184:     moveSnake = 1;
 [e = _moveSnake -> -> 1 `i `a ]
-"153
-[; ;snake.c: 153:     }
+"185
+[; ;snake.c: 185: }
+[e :UE 332 ]
 }
-[e :U 332 ]
-"154
-[; ;snake.c: 154:     return game;
-[e ) _game ]
-[e $UE 331  ]
-"155
-[; ;snake.c: 155: }
-[e :UE 331 ]
-}
-"157
-[; ;snake.c: 157: void inistialize_snake(void) {
-[v _inistialize_snake `(v ~T0 @X0 1 ef ]
+"187
+[; ;snake.c: 187: void inistialize_snake(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _inistialize_snake `(v ~T0 @X0 1 ef3`*uc`*S281`*S281 ]
+"188
+[; ;snake.c: 188: {
 {
 [e :U _inistialize_snake ]
+"187
+[; ;snake.c: 187: void inistialize_snake(uint8_t *snakeLength, struct position *positions, struct position *berry)
+[v _snakeLength `*uc ~T0 @X0 1 r1 ]
+[v _positions `*S281 ~T0 @X0 1 r2 ]
+[v _berry `*S281 ~T0 @X0 1 r3 ]
+"188
+[; ;snake.c: 188: {
 [f ]
-"158
-[; ;snake.c: 158:     moveSnake = 0;
+"189
+[; ;snake.c: 189:     moveSnake = 0;
 [e = _moveSnake -> -> 0 `i `a ]
-"159
-[; ;snake.c: 159:     snakeLength = 3;
-[e = _snakeLength -> -> 3 `i `uc ]
-"160
-[; ;snake.c: 160:     previous_direction = 3;
-[e = _previous_direction -> -> 3 `i `uc ]
-"161
-[; ;snake.c: 161:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"162
-[; ;snake.c: 162:     for (i=0;i<4;i++){
+"190
+[; ;snake.c: 190:     for(uint8_t i = 0; i < 4; i++)
 {
+[v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 4 `i 334  ]
 [e $U 335  ]
 [e :U 334 ]
+"191
+[; ;snake.c: 191:     {
 {
-"163
-[; ;snake.c: 163:         positions[i].y = 3;
-[e = . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 1 -> -> 3 `i `uc ]
-"164
-[; ;snake.c: 164:         positions[i].x = 4-i;
-[e = . *U + &U _positions * -> _i `ux -> -> # *U &U _positions `ui `ux 0 -> - -> 4 `i -> _i `i `uc ]
-"165
-[; ;snake.c: 165:     }
+"192
+[; ;snake.c: 192:         positions[i].y = 3;
+[e = . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 1 -> -> 3 `i `uc ]
+"193
+[; ;snake.c: 193:         positions[i].x = 4 - i;
+[e = . *U + _positions * -> _i `ux -> -> # *U _positions `ui `ux 0 -> - -> 4 `i -> _i `i `uc ]
+"194
+[; ;snake.c: 194:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 334  ]
 [e :U 335 ]
 }
-"166
-[; ;snake.c: 166:     positions[0].y = 3;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 1 -> -> 3 `i `uc ]
-"167
-[; ;snake.c: 167:     positions[0].x = 3;
-[e = . *U + &U _positions * -> -> -> 0 `i `ui `ux -> -> # *U &U _positions `ui `ux 0 -> -> 3 `i `uc ]
-"168
-[; ;snake.c: 168:     direction = 1;
-[e = _direction -> -> 1 `i `uc ]
-"169
-[; ;snake.c: 169:     CreateBerry();
-[e ( _CreateBerry ..  ]
-"170
-[; ;snake.c: 170:     game = 1;
-[e = _game -> -> 1 `i `a ]
-"171
-[; ;snake.c: 171: }
+"195
+[; ;snake.c: 195:     positions[0].y = 3;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 -> -> 3 `i `uc ]
+"196
+[; ;snake.c: 196:     positions[0].x = 3;
+[e = . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 0 -> -> 3 `i `uc ]
+"197
+[; ;snake.c: 197:     CreateBerry(snakeLength, positions, berry);
+[e ( _CreateBerry (3 , , _snakeLength _positions _berry ]
+"198
+[; ;snake.c: 198: }
 [e :UE 333 ]
 }
-"173
-[; ;snake.c: 173: void snake_buttons(void)
-[v _snake_buttons `(v ~T0 @X0 1 ef ]
-"174
-[; ;snake.c: 174: {
+"200
+[; ;snake.c: 200: void snake_buttons(uint8_t *direction, uint8_t *previous_direction)
+[v _snake_buttons `(v ~T0 @X0 1 ef2`*uc`*uc ]
+"201
+[; ;snake.c: 201: {
 {
 [e :U _snake_buttons ]
+"200
+[; ;snake.c: 200: void snake_buttons(uint8_t *direction, uint8_t *previous_direction)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _previous_direction `*uc ~T0 @X0 1 r2 ]
+"201
+[; ;snake.c: 201: {
 [f ]
-"175
-[; ;snake.c: 175:     if(checkLeft(1)){ snake_button_left(); }
+"202
+[; ;snake.c: 202:     if(checkLeft(1))
 [e $ ! != -> ( _checkLeft (1 -> -> 1 `i `a `i -> 0 `i 338  ]
+"203
+[; ;snake.c: 203:     {
 {
-[e ( _snake_button_left ..  ]
+"204
+[; ;snake.c: 204:         snake_button_left(direction, previous_direction);
+[e ( _snake_button_left (2 , _direction _previous_direction ]
+"205
+[; ;snake.c: 205:     }
 }
 [e :U 338 ]
-"176
-[; ;snake.c: 176:     if(checkRight(1)){ snake_button_right(); }
+"206
+[; ;snake.c: 206:     if(checkRight(1))
 [e $ ! != -> ( _checkRight (1 -> -> 1 `i `a `i -> 0 `i 339  ]
+"207
+[; ;snake.c: 207:     {
 {
-[e ( _snake_button_right ..  ]
+"208
+[; ;snake.c: 208:         snake_button_right(direction, previous_direction);
+[e ( _snake_button_right (2 , _direction _previous_direction ]
+"209
+[; ;snake.c: 209:     }
 }
 [e :U 339 ]
-"177
-[; ;snake.c: 177:     if(checkUp(1)){ snake_button_up(); }
+"210
+[; ;snake.c: 210:     if(checkUp(1))
 [e $ ! != -> ( _checkUp (1 -> -> 1 `i `a `i -> 0 `i 340  ]
+"211
+[; ;snake.c: 211:     {
 {
-[e ( _snake_button_up ..  ]
+"212
+[; ;snake.c: 212:         snake_button_up(direction, previous_direction);
+[e ( _snake_button_up (2 , _direction _previous_direction ]
+"213
+[; ;snake.c: 213:     }
 }
 [e :U 340 ]
-"178
-[; ;snake.c: 178:     if(checkDown(1)){ snake_button_down(); }
+"214
+[; ;snake.c: 214:     if(checkDown(1))
 [e $ ! != -> ( _checkDown (1 -> -> 1 `i `a `i -> 0 `i 341  ]
+"215
+[; ;snake.c: 215:     {
 {
-[e ( _snake_button_down ..  ]
+"216
+[; ;snake.c: 216:         snake_button_down(direction, previous_direction);
+[e ( _snake_button_down (2 , _direction _previous_direction ]
+"217
+[; ;snake.c: 217:     }
 }
 [e :U 341 ]
-"179
-[; ;snake.c: 179: }
+"218
+[; ;snake.c: 218: }
 [e :UE 337 ]
 }
-"181
-[; ;snake.c: 181: void snake_main(void){
+"220
+[; ;snake.c: 220: void aibuttons(uint8_t *direction, struct position *positions)
+[v _aibuttons `(v ~T0 @X0 1 ef2`*uc`*S281 ]
+"221
+[; ;snake.c: 221: {
+{
+[e :U _aibuttons ]
+"220
+[; ;snake.c: 220: void aibuttons(uint8_t *direction, struct position *positions)
+[v _direction `*uc ~T0 @X0 1 r1 ]
+[v _positions `*S281 ~T0 @X0 1 r2 ]
+"221
+[; ;snake.c: 221: {
+[f ]
+"222
+[; ;snake.c: 222:     if(*direction == 3)
+[e $ ! == -> *U _direction `i -> 3 `i 343  ]
+"223
+[; ;snake.c: 223:     {
+{
+"224
+[; ;snake.c: 224:         if(positions[2].x == positions[1].x + 1 || positions[2].x == positions[1].x - 7)
+[e $ ! || == -> . *U + _positions * -> -> 2 `i `x -> -> # *U _positions `i `x 0 `i + -> . *U + _positions * -> -> 1 `i `x -> -> # *U _positions `i `x 0 `i -> 1 `i == -> . *U + _positions * -> -> 2 `i `x -> -> # *U _positions `i `x 0 `i - -> . *U + _positions * -> -> 1 `i `x -> -> # *U _positions `i `x 0 `i -> 7 `i 344  ]
+"225
+[; ;snake.c: 225:         {
+{
+"226
+[; ;snake.c: 226:             if(positions[0].y == 15)
+[e $ ! == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 15 `i 345  ]
+"227
+[; ;snake.c: 227:             {
+{
+"228
+[; ;snake.c: 228:                 *direction = 0;
+[e = *U _direction -> -> 0 `i `uc ]
+"229
+[; ;snake.c: 229:             }
+}
+[e $U 346  ]
+"230
+[; ;snake.c: 230:             else if(positions[0].y == 0)
+[e :U 345 ]
+[e $ ! == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 0 `i 347  ]
+"231
+[; ;snake.c: 231:             {
+{
+"232
+[; ;snake.c: 232:                 *direction = 2;
+[e = *U _direction -> -> 2 `i `uc ]
+"233
+[; ;snake.c: 233:             }
+}
+[e :U 347 ]
+[e :U 346 ]
+"234
+[; ;snake.c: 234:         }
+}
+[e :U 344 ]
+"235
+[; ;snake.c: 235:     }
+}
+[e :U 343 ]
+"236
+[; ;snake.c: 236:     if(*direction == 0)
+[e $ ! == -> *U _direction `i -> 0 `i 348  ]
+"237
+[; ;snake.c: 237:     {
+{
+"238
+[; ;snake.c: 238:         if(positions[0].y == 0)
+[e $ ! == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 0 `i 349  ]
+"239
+[; ;snake.c: 239:         {
+{
+"240
+[; ;snake.c: 240:             *direction = 3;
+[e = *U _direction -> -> 3 `i `uc ]
+"241
+[; ;snake.c: 241:         }
+}
+[e :U 349 ]
+"242
+[; ;snake.c: 242:     }
+}
+[e :U 348 ]
+"243
+[; ;snake.c: 243:     if(*direction == 2)
+[e $ ! == -> *U _direction `i -> 2 `i 350  ]
+"244
+[; ;snake.c: 244:     {
+{
+"245
+[; ;snake.c: 245:         if(positions[0].y == 15)
+[e $ ! == -> . *U + _positions * -> -> 0 `i `x -> -> # *U _positions `i `x 1 `i -> 15 `i 351  ]
+"246
+[; ;snake.c: 246:         {
+{
+"247
+[; ;snake.c: 247:             *direction = 3;
+[e = *U _direction -> -> 3 `i `uc ]
+"248
+[; ;snake.c: 248:         }
+}
+[e :U 351 ]
+"249
+[; ;snake.c: 249:     }
+}
+[e :U 350 ]
+"250
+[; ;snake.c: 250: }
+[e :UE 342 ]
+}
+"252
+[; ;snake.c: 252: void snake_main(void)
 [v _snake_main `(v ~T0 @X0 1 ef ]
+"253
+[; ;snake.c: 253: {
 {
 [e :U _snake_main ]
 [f ]
-"182
-[; ;snake.c: 182:     inistialize_snake();
-[e ( _inistialize_snake ..  ]
-"183
-[; ;snake.c: 183:     snake_screen();
-[e ( _snake_screen ..  ]
-"184
-[; ;snake.c: 184:     uint8_t LastHighScore = readHighScore(1);
+"254
+[; ;snake.c: 254:         uint8_t snakeLength = 3;
+[v _snakeLength `uc ~T0 @X0 1 a ]
+[e = _snakeLength -> -> 3 `i `uc ]
+"255
+[; ;snake.c: 255:         {
+{
+"256
+[; ;snake.c: 256:             _Bool ai = snake_screen();
+[v _ai `a ~T0 @X0 1 a ]
+[e = _ai ( _snake_screen ..  ]
+"257
+[; ;snake.c: 257:             uint8_t LastHighScore = readHighScore(1);
 [v _LastHighScore `uc ~T0 @X0 1 a ]
 [e = _LastHighScore ( _readHighScore (1 -> -> 1 `i `uc ]
-"185
-[; ;snake.c: 185:     show_score(LastHighScore);
+"258
+[; ;snake.c: 258:             show_score(LastHighScore);
 [e ( _show_score (1 _LastHighScore ]
-"186
-[; ;snake.c: 186:     EndOfGame = 0;
+"259
+[; ;snake.c: 259:             {
+{
+"260
+[; ;snake.c: 260:                 uint8_t direction = 1;
+[v _direction `uc ~T0 @X0 1 a ]
+[e = _direction -> -> 1 `i `uc ]
+"261
+[; ;snake.c: 261:                 uint8_t previous_direction = 3;
+[v _previous_direction `uc ~T0 @X0 1 a ]
+[e = _previous_direction -> -> 3 `i `uc ]
+"262
+[; ;snake.c: 262:                 struct position positions[128];
+[v _positions `S281 ~T0 @X0 -> 128 `i a ]
+"263
+[; ;snake.c: 263:                 struct position berry;
+[v _berry `S281 ~T0 @X0 1 a ]
+"265
+[; ;snake.c: 265:                 inistialize_snake(&snakeLength, positions, &berry);
+[e ( _inistialize_snake (3 , , &U _snakeLength &U _positions &U _berry ]
+"266
+[; ;snake.c: 266:                 _Bool EndOfGame = 0;
+[v _EndOfGame `a ~T0 @X0 1 a ]
 [e = _EndOfGame -> -> 0 `i `a ]
-"187
-[; ;snake.c: 187:     do{
-[e :U 345 ]
+"268
+[; ;snake.c: 268:                 do
+[e :U 355 ]
+"269
+[; ;snake.c: 269:                 {
 {
-"188
-[; ;snake.c: 188:         snake_buttons();
-[e ( _snake_buttons ..  ]
-"189
-[; ;snake.c: 189:         if (moveSnake == 1)
-[e $ ! == -> _moveSnake `i -> 1 `i 346  ]
-"190
-[; ;snake.c: 190:         {
+"270
+[; ;snake.c: 270:                     snake_buttons(&direction, &previous_direction);
+[e ( _snake_buttons (2 , &U _direction &U _previous_direction ]
+"271
+[; ;snake.c: 271:                     if(moveSnake == 1)
+[e $ ! == -> _moveSnake `i -> 1 `i 356  ]
+"272
+[; ;snake.c: 272:                     {
 {
-"191
-[; ;snake.c: 191:             moveSnake = 0;
+"273
+[; ;snake.c: 273:                         if(ai)
+[e $ ! != -> _ai `i -> 0 `i 357  ]
+"274
+[; ;snake.c: 274:                         {
+{
+"275
+[; ;snake.c: 275:                             aibuttons(&direction, positions);
+[e ( _aibuttons (2 , &U _direction &U _positions ]
+"276
+[; ;snake.c: 276:                         }
+}
+[e :U 357 ]
+"277
+[; ;snake.c: 277:                         moveSnake = 0;
 [e = _moveSnake -> -> 0 `i `a ]
-"192
-[; ;snake.c: 192:             MoveSnakes();
-[e ( _MoveSnakes ..  ]
-"193
-[; ;snake.c: 193:         };
+"278
+[; ;snake.c: 278:                         MoveSnakes(&snakeLength, &EndOfGame, &direction, &previous_direction, positions, &berry);
+[e ( _MoveSnakes (4 , , , , , &U _snakeLength &U _EndOfGame &U _direction &U _previous_direction &U _positions &U _berry ]
+"279
+[; ;snake.c: 279:                     };
 }
-[e :U 346 ]
-"194
-[; ;snake.c: 194:     } while(!EndOfGame);
+[e :U 356 ]
+"280
+[; ;snake.c: 280:                 }
 }
-[e $ ! != -> _EndOfGame `i -> 0 `i 345  ]
-[e :U 344 ]
-"195
-[; ;snake.c: 195:     writeHighScore(1, LastHighScore, snakeLength);
+[e $ ! != -> _EndOfGame `i -> 0 `i 355  ]
+[e :U 354 ]
+"282
+[; ;snake.c: 282:             }
+}
+"283
+[; ;snake.c: 283:             writeHighScore(1, LastHighScore, snakeLength);
 [e ( _writeHighScore (3 , , -> -> 1 `i `uc _LastHighScore _snakeLength ]
-"196
-[; ;snake.c: 196:     show_score(snakeLength);
+"284
+[; ;snake.c: 284:         }
+}
+"285
+[; ;snake.c: 285:         show_score(snakeLength);
 [e ( _show_score (1 _snakeLength ]
-"197
-[; ;snake.c: 197: }
-[e :UE 342 ]
+"286
+[; ;snake.c: 286: }
+[e :UE 352 ]
 }

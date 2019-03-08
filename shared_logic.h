@@ -43,30 +43,25 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *__restrict, const void *__restrict, size_t);
-volatile void *memcpyvol (volatile void *__restrict, volatile const void *__restrict, size_t);
+volatile void *memcpyvol (volatile void *__restrict, const void *__restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 bool checkForLeftWall(volatile uint16_t * );
 bool checkForRightWall(volatile uint16_t * );
 bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
 #endif

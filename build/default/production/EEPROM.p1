@@ -459,109 +459,109 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"4 EEPROM.c
-[; ;EEPROM.c: 4: uint8_t ReadEEByte(uint8_t address)
+"5 EEPROM.c
+[; ;EEPROM.c: 5: uint8_t ReadEEByte(uint8_t address)
 [v _ReadEEByte `(uc ~T0 @X0 1 ef1`uc ]
-"5
-[; ;EEPROM.c: 5: {
+"6
+[; ;EEPROM.c: 6: {
 {
 [e :U _ReadEEByte ]
-"4
-[; ;EEPROM.c: 4: uint8_t ReadEEByte(uint8_t address)
-[v _address `uc ~T0 @X0 1 r1 ]
 "5
-[; ;EEPROM.c: 5: {
-[f ]
+[; ;EEPROM.c: 5: uint8_t ReadEEByte(uint8_t address)
+[v _address `uc ~T0 @X0 1 r1 ]
 "6
-[; ;EEPROM.c: 6: EEADR=address;
-[e = _EEADR _address ]
+[; ;EEPROM.c: 6: {
+[f ]
 "7
-[; ;EEPROM.c: 7: EECON1bits.EEPGD=0;
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;EEPROM.c: 7: EEADR=address;
+[e = _EEADR _address ]
 "8
-[; ;EEPROM.c: 8: EECON1bits.CFGS=0;
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;EEPROM.c: 8: EECON1bits.EEPGD=0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
 "9
-[; ;EEPROM.c: 9: EECON1bits.RD=1;
-[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;EEPROM.c: 9: EECON1bits.CFGS=0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
 "10
-[; ;EEPROM.c: 10: return EEDATA;
+[; ;EEPROM.c: 10: EECON1bits.RD=1;
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+"11
+[; ;EEPROM.c: 11: return EEDATA;
 [e ) _EEDATA ]
 [e $UE 281  ]
-"11
-[; ;EEPROM.c: 11: }
+"12
+[; ;EEPROM.c: 12: }
 [e :UE 281 ]
 }
-"14
-[; ;EEPROM.c: 14: void WriteEEByte(uint8_t address, uint8_t data)
-[v _WriteEEByte `(v ~T0 @X0 1 ef2`uc`uc ]
 "15
-[; ;EEPROM.c: 15: {
+[; ;EEPROM.c: 15: void WriteEEByte(uint8_t address, uint8_t data)
+[v _WriteEEByte `(v ~T0 @X0 1 ef2`uc`uc ]
+"16
+[; ;EEPROM.c: 16: {
 {
 [e :U _WriteEEByte ]
-"14
-[; ;EEPROM.c: 14: void WriteEEByte(uint8_t address, uint8_t data)
+"15
+[; ;EEPROM.c: 15: void WriteEEByte(uint8_t address, uint8_t data)
 [v _address `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
-"15
-[; ;EEPROM.c: 15: {
-[f ]
 "16
-[; ;EEPROM.c: 16: do{
+[; ;EEPROM.c: 16: {
+[f ]
+"17
+[; ;EEPROM.c: 17:     do{
 [e :U 285 ]
 {
-"17
-[; ;EEPROM.c: 17:     EECON1bits.WRERR = 0;
-[e = . . _EECON1bits 0 3 -> -> 0 `i `uc ]
 "18
-[; ;EEPROM.c: 18: EECON1bits.WREN=1;
-[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;EEPROM.c: 18:         EECON1bits.WRERR = 0;
+[e = . . _EECON1bits 0 3 -> -> 0 `i `uc ]
 "19
-[; ;EEPROM.c: 19: EEADR=address;
-[e = _EEADR _address ]
+[; ;EEPROM.c: 19:         EECON1bits.WREN=1;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
 "20
-[; ;EEPROM.c: 20: EEDATA=data;
-[e = _EEDATA _data ]
+[; ;EEPROM.c: 20:         EEADR=address;
+[e = _EEADR _address ]
 "21
-[; ;EEPROM.c: 21: EECON1bits.EEPGD=0;
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;EEPROM.c: 21:         EEDATA=data;
+[e = _EEDATA _data ]
 "22
-[; ;EEPROM.c: 22: EECON1bits.CFGS=0;
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;EEPROM.c: 22:         EECON1bits.EEPGD=0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
 "23
-[; ;EEPROM.c: 23: waitForInterrupt();
-[e ( _waitForInterrupt ..  ]
+[; ;EEPROM.c: 23:         EECON1bits.CFGS=0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
 "24
-[; ;EEPROM.c: 24: INTCONbits.GIE=0;
+[; ;EEPROM.c: 24:         waitForInterrupt();
+[e ( _waitForInterrupt ..  ]
+"25
+[; ;EEPROM.c: 25:         INTCONbits.GIE=0;
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"26
-[; ;EEPROM.c: 26: EECON2=0x55;
-[e = _EECON2 -> -> 85 `i `uc ]
 "27
-[; ;EEPROM.c: 27: EECON2=0xAA;
-[e = _EECON2 -> -> 170 `i `uc ]
+[; ;EEPROM.c: 27:         EECON2=0x55;
+[e = _EECON2 -> -> 85 `i `uc ]
 "28
-[; ;EEPROM.c: 28: EECON1bits.WR=1;
+[; ;EEPROM.c: 28:         EECON2=0xAA;
+[e = _EECON2 -> -> 170 `i `uc ]
+"29
+[; ;EEPROM.c: 29:         EECON1bits.WR=1;
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
-"30
-[; ;EEPROM.c: 30: INTCONbits.GIE=1;
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "31
-[; ;EEPROM.c: 31: while (EECON1bits.WR==1);
+[; ;EEPROM.c: 31:         INTCONbits.GIE=1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"32
+[; ;EEPROM.c: 32:         while (EECON1bits.WR==1);
 [e $U 286  ]
 [e :U 287 ]
 [e :U 286 ]
 [e $ == -> . . _EECON1bits 0 1 `i -> 1 `i 287  ]
 [e :U 288 ]
-"32
-[; ;EEPROM.c: 32: } while (EECON1bits.WRERR == 1);
+"33
+[; ;EEPROM.c: 33:     } while (EECON1bits.WRERR == 1);
 }
 [e $ == -> . . _EECON1bits 0 3 `i -> 1 `i 285  ]
 [e :U 284 ]
-"33
-[; ;EEPROM.c: 33: EECON1bits.WREN=0;
-[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
 "34
-[; ;EEPROM.c: 34: }
+[; ;EEPROM.c: 34:     EECON1bits.WREN=0;
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+"35
+[; ;EEPROM.c: 35: }
 [e :UE 282 ]
 }

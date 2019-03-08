@@ -5,5 +5,4 @@ config.h  \
 randgen.h  \
 screen.h  \
 shared_logic.h  \
-tetris.h  \
 buttons.h 

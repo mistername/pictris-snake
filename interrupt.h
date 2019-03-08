@@ -4,7 +4,7 @@
 #define	INTERRUPT
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-void Interrupt(void);
+void Interrupt(bool);
 void waitms(unsigned);
 void waitForInterrupt(void);
 #endif	/* XC_HEADER_TEMPLATE_H */

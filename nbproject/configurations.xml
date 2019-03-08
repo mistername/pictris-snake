@@ -9,12 +9,11 @@
       <itemPath>shapes.h</itemPath>
       <itemPath>numbers.h</itemPath>
       <itemPath>config.h</itemPath>
-      <itemPath>tetris.h</itemPath>
-      <itemPath>snake.h</itemPath>
       <itemPath>shared_logic.h</itemPath>
       <itemPath>screen.h</itemPath>
       <itemPath>buttons.h</itemPath>
       <itemPath>interrupt.h</itemPath>
+      <itemPath>gamesconfig.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerFiles"
                    displayName="Linker Files"

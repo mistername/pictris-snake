@@ -7,12 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "interrupt.c" 2
-
-
-
-
-
-
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4521,10 +4515,10 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 7 "interrupt.c" 2
+# 1 "interrupt.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdbool.h" 1 3
-# 8 "interrupt.c" 2
+# 2 "interrupt.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
@@ -4609,7 +4603,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 155 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
-# 9 "interrupt.c" 2
+# 3 "interrupt.c" 2
 
 # 1 "./shared_logic.h" 1
 # 19 "./shared_logic.h"
@@ -4639,33 +4633,28 @@ typedef enum {
     CW
 } rotation_t;
 
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
 uint16_t get_mS(void);
+void waitms(unsigned);
 void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
 void swap(char*, char*);
 void reverse(char str[], int);
 char* itoa(int, char*, int);
 void clearArray(volatile uint16_t *, size_t );
 void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
 _Bool checkForLeftWall(volatile uint16_t * );
 _Bool checkForRightWall(volatile uint16_t * );
 _Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
 uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
 void getNumber(uint8_t , uint16_t * );
 uint8_t readHighScore(uint8_t );
 void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
 void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
-# 10 "interrupt.c" 2
+# 4 "interrupt.c" 2
 
 # 1 "./buttons.h" 1
 
@@ -4683,7 +4672,7 @@ void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
 void checkButtons(void);
-# 11 "interrupt.c" 2
+# 5 "interrupt.c" 2
 
 # 1 "./screen.h" 1
 
@@ -4692,85 +4681,60 @@ void checkButtons(void);
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
 void initialise_screen(void);
-# 12 "interrupt.c" 2
+# 6 "interrupt.c" 2
 
-# 1 "./snake.h" 1
-
-
+# 1 "./gamesconfig.h" 1
 
 
 
 
 
-void snake_button_left(void);
-void snake_button_up(void);
-void snake_button_right(void);
-void snake_button_down(void);
-void snake_screen(void);
-uint8_t genBerry(uint8_t);
-void CreateBerry(void);
-void SnakeGraph(void);
-void MoveSnakes();
-_Bool snake_timer(void);
-void inistialize_snake(void);
-void snake_main(void);
-# 13 "interrupt.c" 2
 
-# 1 "./tetris.h" 1
-# 35 "./tetris.h"
-_Bool tetris_button_left(void);
-_Bool tetris_button_right(void);
-_Bool tetris_button_up(void);
-_Bool tetris_button_down(void);
-void tetris_screen(void);
-void selectNextObject(volatile uint16_t *);
-_Bool checkForBottom(volatile uint16_t *);
-void checkForLines(volatile uint16_t *);
-_Bool tetris_timer(void);
-void initialise_tetris(void);
+
+
+void tetris_timer(void);
 void tetris_main(void);
-# 14 "interrupt.c" 2
+# 19 "./gamesconfig.h"
+void snake_timer(void);
+void snake_main(void);
+# 7 "interrupt.c" 2
 
 
 volatile _Bool InterruptComplete;
-volatile unsigned time;
 
+volatile unsigned RemainingWaitTime;
 void waitms(unsigned t)
 {
-    time = t;
-    while(time)
+    RemainingWaitTime = t;
+    while(RemainingWaitTime)
+    {
         continue;
+    }
 }
 
 
-void Interrupt(void) {
+void Interrupt(_Bool game)
+{
+    RemainingWaitTime--;
 
-        time--;
-
-        add_mS(1);
-        if (get_mS() >= 1600)
-        {
-            set_mS(0);
-        }
-        if (get_mS() % 800 == 0 && tetris_timer())
-            ;
-        if(get_mS() % 200 == 0 && snake_timer())
-            ;
-        checkButtons();
-        screen_update();
-        InterruptComplete = 1;
+    add_mS(1);
+    if(get_mS() >= 800){set_mS(0);}
+    if(game == 1 && get_mS() % 800 == 0){tetris_timer();}
+    if(game != 1 && get_mS() % 200 == 0){snake_timer();}
+    checkButtons();
+    screen_update();
+    InterruptComplete = 1;
 }
 
 void waitForInterrupt(void)
 {
     InterruptComplete = 0;
-    while (!InterruptComplete)
-        continue;
+    while (!InterruptComplete){ continue; }
 }

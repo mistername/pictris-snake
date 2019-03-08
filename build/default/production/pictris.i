@@ -4616,60 +4616,6 @@ typedef uint32_t uint_fast32_t;
 # 18 "pictris.c" 2
 
 
-# 1 "./randgen.h" 1
-# 26 "./randgen.h"
-uint8_t rnd_get_num(void);
-void rnd_initialize(uint8_t);
-# 20 "pictris.c" 2
-
-# 1 "./shared_logic.h" 1
-# 28 "./shared_logic.h"
-typedef enum {
-    OVERRIDE,
-    MERGE,
-    INVERT
-} mode_t;
-
-typedef enum {
-    DOWN,
-    UP,
-    LEFT,
-    RIGHT
-} direction_t;
-
-typedef enum {
-    CCW,
-    CW
-} rotation_t;
-
-void set_mS(uint16_t amount);
-void add_mS(uint16_t amount);
-uint16_t get_mS(void);
-void *memcpy (void *restrict, const void *restrict, size_t);
-volatile void *memcpyvol (volatile void *restrict, volatile const void *restrict, size_t);
-void swap(char*, char*);
-void reverse(char str[], int);
-char* itoa(int, char*, int);
-void clearArray(volatile uint16_t *, size_t );
-void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
-void moveObject(volatile uint16_t * , direction_t, uint8_t );
-_Bool checkForLeftWall(volatile uint16_t * );
-_Bool checkForRightWall(volatile uint16_t * );
-_Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
-void newRotation(volatile uint16_t * , uint16_t * , rotation_t );
-uint8_t pixelCount(volatile uint16_t * );
-_Bool moveObjectDown(volatile uint16_t * );
-void getNumber(uint8_t , uint16_t * );
-uint8_t readHighScore(uint8_t );
-void writeHighScore(uint8_t , uint8_t , uint8_t );
-void show_score(uint8_t);
-void removeLine(volatile uint16_t * , uint8_t );
-void set_mS(uint16_t);
-void add_mS(uint16_t);
-uint16_t get_mS(void);
-void waitms(unsigned);
-# 21 "pictris.c" 2
-
 # 1 "./config.h" 1
 
 
@@ -4729,210 +4675,59 @@ void waitms(unsigned);
 
 
 #pragma config EBTRB = OFF
+# 20 "pictris.c" 2
+
+
+# 1 "./randgen.h" 1
+
+
+
+uint16_t rnd_get_num(void);
+void rnd_initialize(uint8_t);
 # 22 "pictris.c" 2
 
-# 1 "./shapes.h" 1
+# 1 "./shared_logic.h" 1
+# 28 "./shared_logic.h"
+typedef enum {
+    OVERRIDE,
+    MERGE,
+    INVERT
+} mode_t;
 
+typedef enum {
+    DOWN,
+    UP,
+    LEFT,
+    RIGHT
+} direction_t;
 
+typedef enum {
+    CCW,
+    CW
+} rotation_t;
 
-
-struct shape
-{
-    uint16_t graphic[8];
-    uint8_t x, y;
-    uint8_t limitedRotation;
-} shapes[] =
-{
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0003,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0001,
-      0x0001,
-      0x0001,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 1},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0003,
-      0x0001,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0001,
-      0x0003,
-      0x0000,
-      0x0000}, 4, 0, 0},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0003,
-      0x0003,
-      0x0000,
-      0x0000,
-      0x0000}, 3, 1, 2},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0002,
-      0x0003,
-      0x0001,
-      0x0000,
-      0x0000}, 4, 1, 1},
-    {{0x0000,
-      0x0000,
-      0x0000,
-      0x0001,
-      0x0003,
-      0x0002,
-      0x0000,
-      0x0000}, 4, 1, 1},
-};
+void set_mS(uint16_t);
+uint16_t add_mS(uint16_t);
+uint16_t get_mS(void);
+void waitms(unsigned);
+void *memcpy (void *restrict, const void *restrict, size_t);
+volatile void *memcpyvol (volatile void *restrict, const void *restrict, size_t);
+void swap(char*, char*);
+void reverse(char str[], int);
+char* itoa(int, char*, int);
+void clearArray(volatile uint16_t *, size_t );
+void mergeObjects(volatile uint16_t * , volatile uint16_t *, mode_t );
+_Bool checkForLeftWall(volatile uint16_t * );
+_Bool checkForRightWall(volatile uint16_t * );
+_Bool collisionDetect(volatile uint16_t * , volatile uint16_t * );
+uint8_t pixelCount(volatile uint16_t * );
+void removeLine(volatile uint16_t * , uint8_t );
+void getNumber(uint8_t , uint16_t * );
+uint8_t readHighScore(uint8_t );
+void writeHighScore(uint8_t , uint8_t , uint8_t );
+void moveObject(uint16_t *, direction_t , uint8_t );
+void show_score(uint8_t);
 # 23 "pictris.c" 2
-
-# 1 "./numbers.h" 1
-
-
-
-
-const uint16_t Number[10][8] = {
-    {0x001e,
-     0x0012,
-     0x0012,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x0004,
-     0x000c,
-     0x0004,
-     0x0004,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x001e,
-     0x0010,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x000e,
-     0x0002,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x0012,
-     0x0012,
-     0x001e,
-     0x0002,
-     0x0002,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0010,
-     0x001e,
-     0x0002,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0010,
-     0x001e,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0002,
-     0x0004,
-     0x0008,
-     0x0010,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0012,
-     0x001e,
-     0x0012,
-     0x001e,
-     0x0000,
-     0x0000,
-     0x0000},
-    {0x001e,
-     0x0012,
-     0x001e,
-     0x0002,
-     0x0002,
-     0x0000,
-     0x0000,
-     0x0000},
-};
-# 24 "pictris.c" 2
-
-# 1 "./EEPROM.h" 1
-# 18 "./EEPROM.h"
-uint8_t ReadEEByte(uint8_t);
-void WriteEEByte(uint8_t, uint8_t);
-# 25 "pictris.c" 2
-
-# 1 "./tetris.h" 1
-# 35 "./tetris.h"
-_Bool tetris_button_left(void);
-_Bool tetris_button_right(void);
-_Bool tetris_button_up(void);
-_Bool tetris_button_down(void);
-void tetris_screen(void);
-void selectNextObject(volatile uint16_t *);
-_Bool checkForBottom(volatile uint16_t *);
-void checkForLines(volatile uint16_t *);
-_Bool tetris_timer(void);
-void initialise_tetris(void);
-void tetris_main(void);
-# 26 "pictris.c" 2
-
-# 1 "./snake.h" 1
-
-
-
-
-
-
-
-void snake_button_left(void);
-void snake_button_up(void);
-void snake_button_right(void);
-void snake_button_down(void);
-void snake_screen(void);
-uint8_t genBerry(uint8_t);
-void CreateBerry(void);
-void SnakeGraph(void);
-void MoveSnakes();
-_Bool snake_timer(void);
-void inistialize_snake(void);
-void snake_main(void);
-# 27 "pictris.c" 2
 
 # 1 "./buttons.h" 1
 
@@ -4950,7 +4745,7 @@ void start_button(void);
 void pauseButtons(void);
 void resumeButtons(void);
 void checkButtons(void);
-# 28 "pictris.c" 2
+# 24 "pictris.c" 2
 
 # 1 "./screen.h" 1
 
@@ -4959,14 +4754,14 @@ void checkButtons(void);
 
 
 
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 _Bool choosescreen(void);
 void screen_update(void);
 void pauseMultiplexing(void);
 void resumeMultiplexing(void);
 void initialise_screen(void);
-# 29 "pictris.c" 2
+# 25 "pictris.c" 2
 
 # 1 "./interrupt.h" 1
 
@@ -4975,30 +4770,44 @@ void initialise_screen(void);
 
 
 
-void Interrupt(void);
+void Interrupt(_Bool);
 void waitms(unsigned);
 void waitForInterrupt(void);
-# 30 "pictris.c" 2
-# 49 "pictris.c"
-uint8_t LastHighScore;
+# 26 "pictris.c" 2
+
+# 1 "./gamesconfig.h" 1
 
 
 
 
-volatile _Bool tetris;
 
 
 
+
+void tetris_timer(void);
+void tetris_main(void);
+# 19 "./gamesconfig.h"
+void snake_timer(void);
+void snake_main(void);
+# 27 "pictris.c" 2
+
+
+
+
+
+
+_Bool game;
 
 void __attribute__((picinterrupt(("")))) isr(void)
 {
-    if (INTCONbits.TMR0IF)
+    if(INTCONbits.TMR0IF)
     {
         INTCONbits.TMR0IF = 0;
         TMR0 = (~125);
-        Interrupt();
+        Interrupt(game);
     }
 }
+
 
 
 void initialise_TMR0(void)
@@ -5024,10 +4833,15 @@ void initialise_hardware(void)
     ADCON1bits.PCFG = 0x0F;
 
 
-    DDRA = 0x00; PORTA = 0x00;
-    DDRB = 0xFF; PORTB = 0x00; INTCON2bits.RBPU = 0;
-    DDRC = 0x00; PORTC = 0x00;
-    DDRD = 0x00; PORTD = 0x00;
+    DDRA = 0x00;
+    PORTA = 0x00;
+    DDRB = 0xFF;
+    PORTB = 0x00;
+    INTCON2bits.RBPU = 0;
+    DDRC = 0x00;
+    PORTC = 0x00;
+    DDRD = 0x00;
+    PORTD = 0x00;
 
     initialise_TMR0();
 
@@ -5036,43 +4850,26 @@ void initialise_hardware(void)
 }
 
 
-void initialise_globals(void)
-{
-    set_mS(0);
-}
-
-
-void mainGameLoop(void)
-{
-
-    pauseMultiplexing();
-    initialise_globals();
-    resumeMultiplexing();
-    if (tetris){
-       tetris_main();
-    }
-    else {
-       snake_main();
-    }
-}
-
-
 void main(void)
 {
 
     initialise_hardware();
-    initialise_globals();
-    start_button();
-    initialise_screen();
 
+    while(1)
+    {
 
-
-    tetris = choosescreen();
-
-
-    rnd_initialize(get_mS());
-
-    for (;;)
-
-        mainGameLoop();
+        start_button();
+        initialise_screen();
+        game = choosescreen();
+        rnd_initialize(get_mS());
+        set_mS(0);
+        if(game)
+        {
+            tetris_main();
+        }
+        else
+        {
+            snake_main();
+        }
+    }
 }

@@ -4,7 +4,7 @@
 #define	SCREEN
 
 #include <xc.h>
-void set_screen(volatile uint16_t *newData);
+void set_screen(uint16_t *newData);
 void set_splashscreen(const uint16_t *newData);
 bool choosescreen(void);
 void screen_update(void);

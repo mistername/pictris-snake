@@ -7,7 +7,8 @@ struct shape
     uint16_t graphic[8];
     uint8_t x, y;
     uint8_t limitedRotation;
-} shapes[] =
+}
+shapes[] =
 {
     {{0x0000, 
       0x0000, 
